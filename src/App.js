@@ -1,5 +1,5 @@
 import './App.css';
-import React from "react";
+import React, { useState } from "react";
 import ReactEcharts from "echarts-for-react";
 import setupWKWebViewJavascriptBridge from './jsBridge';
 
@@ -8,12 +8,12 @@ function App() {
     /* Initialize your app here */
     bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
       console.log('iOS called testJavascriptHandler with', data);
-      value = data;
+      setValue(data);
       responseCallback({ 'Javascript received': data });
     });
   });
 
-  let value = [120, 200, 150, 80, 70, 110, 130];
+  const [value, setValue] = useState([120, 200, 150, 80, 70, 110, 130]);
 
   const option = {
     xAxis: {
