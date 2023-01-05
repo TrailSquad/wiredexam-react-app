@@ -25,29 +25,6 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
-    <script type="text/javascript">
-      function setupWKWebViewJavascriptBridge(callback) {
-        if (window.WKWebViewJavascriptBridge) {
-          return callback(WKWebViewJavascriptBridge);
-        }
-        if (window.WKWVJBCallbacks) {
-          return window.WKWVJBCallbacks.push(callback);
-        }
-        window.WKWVJBCallbacks = [callback];
-        window.webkit.messageHandlers.iOS_Native_InjectJavascript.postMessage(null);
-      }
-      setupWKWebViewJavascriptBridge(function (bridge) {
-        /* Initialize your app here */
-        bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
-          console.log('iOS called testJavascriptHandler with', data);
-          alert("testJavascriptHandler");
-          responseCallback({ 'Javascript Says': 'Right back atcha!' });
-        });
-        bridge.callHandler('testCallNative', { code: 'test_auth_code' }, function (response) {
-          console.log('JS got response', response);
-        });
-      });
-    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
