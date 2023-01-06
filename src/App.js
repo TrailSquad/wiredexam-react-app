@@ -13,7 +13,7 @@ function App() {
     });
   });
 
-  const [value, setValue] = useState([120, 200, 150, 80, 70, 110, 131]);
+  const [value, setValue] = useState([120, 200, 150, 80, 70, 110, 130]);
 
   const option = {
     xAxis: {
