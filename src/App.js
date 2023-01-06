@@ -13,7 +13,7 @@ function App() {
     });
   });
 
-  const [value, setValue] = useState([120, 200, 150, 80, 70, 110, 130]);
+  const [value, setValue] = useState([120, 200, 150, 80, 70, 110, 131]);
 
   const option = {
     xAxis: {
@@ -24,6 +24,7 @@ function App() {
       type: 'value'
     },
     series: [
+
       {
         data: value,
         type: 'line'
