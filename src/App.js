@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from "react";
-import setupWKWebViewJavascriptBridge from './jsBridge';
+// import setupWKWebViewJavascriptBridge from './jsBridge';
+import { isAndroid  } from './jsBridge';
 import Fps from './Fps';
 import ReportHeader from './ReportHeader/ReportHeader';
 
@@ -17,7 +18,7 @@ function App() {
   window.setupWebViewJavascriptBridge(bridge => {
     bridge.registerHandler("testJavascriptHandler", (data, responseCallback) => {
       console.log('called testJavascriptHandler with', data);
-      setValue(JSON.parse(data));
+      setValue(isAndroid ? JSON.parse(data) : data);
       responseCallback({'Javascript received': data});
     });
   });
