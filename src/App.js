@@ -17,7 +17,7 @@ function App() {
   window.setupWebViewJavascriptBridge(bridge => {
     bridge.registerHandler("testJavascriptHandler", (data, responseCallback) => {
       console.log('called testJavascriptHandler with', data);
-      setValue(data);
+      setValue(JSON.parse(data));
       responseCallback({'Javascript received': data});
     });
   });
