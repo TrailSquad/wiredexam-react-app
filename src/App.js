@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from "react";
-import ReactEcharts from "echarts-for-react";
 import setupWKWebViewJavascriptBridge from './jsBridge';
+import Fps from './Fps';
 import ReportHeader from './ReportHeader/ReportHeader';
 
 function App() {
@@ -14,46 +14,23 @@ function App() {
     });
   });
 
-  const [value, setValue] = useState([120, 200, 150, 80, 70, 110, 130]);
-
-  const option = {
-    xAxis: {
-      type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-      type: 'value'
-    },
-    series: [
-
-      {
-        data: value,
-        type: 'line'
+  const [value, setValue] = useState(
+    {
+      "fps": {
+        "xValues": [12.1, 12.2, 12.3, 12.4, 12.5, 12.6, 12.7],
+        "data": [120, 200, 150, 80, 70, 110, 130]
       }
-    ]
-  }; 
+    }
+  ) 
 
-  return <div class="md:container md:mx-auto">
+  return (
+    <div class="md:container md:mx-auto">
       <ReportHeader />
       <li id="report">
-        <ReactEcharts option={option} />
-        <ReactEcharts option={option} /> 
-        <ReactEcharts option={option} /> 
-        <ReactEcharts option={option} /> 
-        <ReactEcharts option={option} /> 
-        <ReactEcharts option={option} /> 
-        <ReactEcharts option={option} /> 
-        <ReactEcharts option={option} /> 
-        <ReactEcharts option={option} /> 
-        <ReactEcharts option={option} /> 
-        <ReactEcharts option={option} /> 
-        <ReactEcharts option={option} /> 
-        <ReactEcharts option={option} /> 
-        <ReactEcharts option={option} /> 
-        <ReactEcharts option={option} /> 
+        <Fps xValues={value.fps.xValues} data={value.fps.data} />
       </li>
-  </div>
-  // return <ReactEcharts option={option} />;    
+    </div>
+  )
 }
 
 export default App;
