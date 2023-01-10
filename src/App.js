@@ -4,15 +4,19 @@ import setupWKWebViewJavascriptBridge from './jsBridge';
 import Fps from './Fps';
 import ReportHeader from './ReportHeader/ReportHeader';
 
+const u = navigator.userAgent;
+// Android终端
+const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
+
 function App() {
-  setupWKWebViewJavascriptBridge(function (bridge) {
-    /* Initialize your app here */
-    bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
-      console.log('iOS called testJavascriptHandler with', data);
-      setValue(data);
-      responseCallback({ 'Javascript received': data });
-    });
-  });
+  // setupWKWebViewJavascriptBridge(function (bridge) {
+  //   /* Initialize your app here */
+  //   bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
+  //     console.log('iOS called testJavascriptHandler with', data);
+  //     setValue(data);
+  //     responseCallback({ 'Javascript received': data });
+  //   });
+  // });
 
   const [value, setValue] = useState(
     {
@@ -21,7 +25,15 @@ function App() {
         "data": [120, 200, 150, 80, 70, 110, 130]
       }
     }
-  ) 
+  )
+
+  window.setupWebViewJavascriptBridge(bridge => {
+    bridge.registerHandler("testJavascriptHandler", (data, responseCallback) => {
+      console.log('called testJavascriptHandler with', data);
+      setValue(data);
+      responseCallback({'Javascript received': data});
+    });
+  });
 
   return (
     <div class="md:container md:mx-auto">
