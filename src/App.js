@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from "react";
 import ReactEcharts from "echarts-for-react";
 import setupWKWebViewJavascriptBridge from './jsBridge';
+import ReportHeader from './ReportHeader/ReportHeader';
 
 function App() {
   setupWKWebViewJavascriptBridge(function (bridge) {
@@ -32,7 +33,27 @@ function App() {
     ]
   }; 
 
-  return <ReactEcharts option={option} />;    
+  return <div class="md:container md:mx-auto">
+      <ReportHeader />
+      <li id="report">
+        <ReactEcharts option={option} />
+        <ReactEcharts option={option} /> 
+        <ReactEcharts option={option} /> 
+        <ReactEcharts option={option} /> 
+        <ReactEcharts option={option} /> 
+        <ReactEcharts option={option} /> 
+        <ReactEcharts option={option} /> 
+        <ReactEcharts option={option} /> 
+        <ReactEcharts option={option} /> 
+        <ReactEcharts option={option} /> 
+        <ReactEcharts option={option} /> 
+        <ReactEcharts option={option} /> 
+        <ReactEcharts option={option} /> 
+        <ReactEcharts option={option} /> 
+        <ReactEcharts option={option} /> 
+      </li>
+  </div>
+  // return <ReactEcharts option={option} />;    
 }
 
 export default App;
