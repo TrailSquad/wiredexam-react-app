@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import setupWKWebViewJavascriptBridge from './jsBridge';
 
 /**
  * 使用 JSBridge 总结：
@@ -41,27 +42,10 @@ const andoirFunction = (callback) => {
 }
 
 /**
- * IOS 与 IOS 交互时，使用这个函数即可，别的操作都不需要执行
- * @param {*} callback 
- */
-const iosFuntion = (callback) => {
-  if (window.WebViewJavascriptBridge) { return callback(window.WebViewJavascriptBridge) }
-  if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback) }
-  window.WVJBCallbacks = [callback];
-  var WVJBIframe = document.createElement('iframe');
-  WVJBIframe.style.display = 'none';
-  WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__';
-  document.documentElement.appendChild(WVJBIframe);
-  setTimeout(function(){
-       document.documentElement.removeChild(WVJBIframe);
-  }, 0);
-}
-
-/**
  * 注册 setupWebViewJavascriptBridge 方法
  *  之所以不将上面两个方法融合成一个方法，是因为放在一起，那么就只有 iosFuntion 中相关的方法体生效
  */
-window.setupWebViewJavascriptBridge = isAndroid ? andoirFunction : iosFuntion;
+window.setupWebViewJavascriptBridge = isAndroid ? andoirFunction : setupWKWebViewJavascriptBridge;
 
 /**
  * 这里如果不做判断是不是安卓，而是直接就执行下面的方法，就会导致 

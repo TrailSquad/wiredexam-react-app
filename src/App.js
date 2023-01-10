@@ -4,20 +4,7 @@ import setupWKWebViewJavascriptBridge from './jsBridge';
 import Fps from './Fps';
 import ReportHeader from './ReportHeader/ReportHeader';
 
-const u = navigator.userAgent;
-// Android终端
-const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1;
-
 function App() {
-  // setupWKWebViewJavascriptBridge(function (bridge) {
-  //   /* Initialize your app here */
-  //   bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
-  //     console.log('iOS called testJavascriptHandler with', data);
-  //     setValue(data);
-  //     responseCallback({ 'Javascript received': data });
-  //   });
-  // });
-
   const [value, setValue] = useState(
     {
       "fps": {
