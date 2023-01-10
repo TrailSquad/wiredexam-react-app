@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from "react";
 import setupWKWebViewJavascriptBridge from './jsBridge';
 import Fps from './Fps';
+import ReportHeader from './ReportHeader/ReportHeader';
 
 function App() {
   setupWKWebViewJavascriptBridge(function (bridge) {
@@ -20,9 +21,16 @@ function App() {
         "data": [120, 200, 150, 80, 70, 110, 130]
       }
     }
+  ) 
+
+  return (
+    <div class="md:container md:mx-auto">
+      <ReportHeader />
+      <li id="report">
+        <Fps xValues={value.fps.xValues} data={value.fps.data} />
+      </li>
+    </div>
   )
-   
-  return <Fps xValues={value.fps.xValues} data={value.fps.data} />;
 }
 
 export default App;
