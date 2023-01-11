@@ -1,19 +1,11 @@
 import './App.css';
 import React, { useState } from "react";
-import setupWKWebViewJavascriptBridge from './jsBridge';
+// import setupWKWebViewJavascriptBridge from './jsBridge';
+import { isAndroid  } from './jsBridge';
 import Fps from './Fps';
 import ReportHeader from './ReportHeader/ReportHeader';
 
 function App() {
-  setupWKWebViewJavascriptBridge(function (bridge) {
-    /* Initialize your app here */
-    bridge.registerHandler('testJavascriptHandler', function (data, responseCallback) {
-      console.log('iOS called testJavascriptHandler with', data);
-      setValue(data);
-      responseCallback({ 'Javascript received': data });
-    });
-  });
-
   const [value, setValue] = useState(
     {
       "fps": {
@@ -21,7 +13,15 @@ function App() {
         "data": [120, 200, 150, 80, 70, 110, 130]
       }
     }
-  ) 
+  )
+
+  window.setupWebViewJavascriptBridge(bridge => {
+    bridge.registerHandler("testJavascriptHandler", (data, responseCallback) => {
+      console.log('called testJavascriptHandler with', data);
+      setValue(isAndroid ? JSON.parse(data) : data);
+      responseCallback({'Javascript received': data});
+    });
+  });
 
   return (
     <div class="md:container md:mx-auto">
