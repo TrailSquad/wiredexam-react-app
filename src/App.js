@@ -27,7 +27,7 @@ function App() {
   // const {reportName, appName, deviceSys, fromPpace, publishDate} = this.props;
   return (
     <div class="md:container md:mx-auto">
-      <ReportCover reportName={"App 性能检测报告"} appName={"Confirm"} deviceSys={"iOS 15.0"} fromPpace={"Wiredcraft Mobile Team"} publishDate={"2023-01-10"} />
+      <ReportCover reportName={"App 性能检测报告"} appName={"Confirm"} deviceSys={"iOS 15.0"} fromPage={"Wiredcraft Mobile Team"} publishDate={"2023-01-10"} />
       <li id="report">
         <Fps xValues={value.fps.xValues} data={value.fps.data} />
       </li>
