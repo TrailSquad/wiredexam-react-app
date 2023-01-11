@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import setupWKWebViewJavascriptBridge from './jsBridge';
 import Fps from './Fps';
 import ReportHeader from './ReportHeader/ReportHeader';
+import ReportCover from "./Cover/ReportCorver"
 
 function App() {
   setupWKWebViewJavascriptBridge(function (bridge) {
@@ -23,9 +24,10 @@ function App() {
     }
   ) 
 
+  // const {reportName, appName, deviceSys, fromPpace, publishDate} = this.props;
   return (
     <div class="md:container md:mx-auto">
-      <ReportHeader />
+      <ReportCover reportName={"App 性能检测报告"} appName={"Confirm"} deviceSys={"iOS 15.0"} fromPlace={"Wiredcraft Mobile Team"} publishDate={"2023-01-10"} />
       <li id="report">
         <Fps xValues={value.fps.xValues} data={value.fps.data} />
       </li>
