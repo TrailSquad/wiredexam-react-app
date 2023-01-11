@@ -4,8 +4,8 @@
 import { useState } from 'react';
 import { BlobProvider, PDFDownloadLink } from '@react-pdf/renderer';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
-import PDFDocument from './components/PdfDocument/index';
-import { isAndroid } from './jsBridge';
+import PDFDocument from 'src/components/PdfDocument/index';
+import { isAndroid } from 'src/jsBridge';
 import './App.css';
 
 function App() {

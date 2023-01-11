@@ -1,8 +1,8 @@
 // 实际的pdf内容在这里渲染
 import { Document, Page, Text, Font } from '@react-pdf/renderer';
 import styles from './pdfStyles';
-import Cover from '../Cover';
-import FZHei from '../../fonts/FZHei.ttf';
+import Cover from 'src/components/Cover';
+import FZHei from 'src/fonts/FZHei.ttf';
 
 // 默认只支持拉丁英文，中文字体一定要注入
 // 方正黑体相对来说非常小（3M），而且是可免费商用无书面授权的字体，因此采用
