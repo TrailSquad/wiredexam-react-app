@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import logo from "../wcl.png";
 
 function ReportCover(props) {
-    const {reportName, appName, deviceSys, fromPage, publishDate} = props;
+    const {reportName, appName, deviceSys, fromPlace, publishDate} = props;
     return (
         <div class="p-4 h-screen flex flex-col items-center">
             {/* Logo */}
@@ -20,7 +20,7 @@ function ReportCover(props) {
                 <div class="mr-6 flex flex-col items-start text-left font-medium text-lg">
                     <text class="mb-4">{appName}</text>
                     <text class="mb-4">{deviceSys}</text>
-                    <text class="mb-4">{fromPage}</text>
+                    <text class="mb-4">{fromPlace}</text>
                     <text class="mb-4">{publishDate}</text>
                 </div>
             </div>
