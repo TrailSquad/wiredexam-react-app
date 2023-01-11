@@ -3,7 +3,6 @@ import React, { useState } from "react";
 // import setupWKWebViewJavascriptBridge from './jsBridge';
 import { isAndroid  } from './jsBridge';
 import Fps from './Fps';
-import ReportHeader from './ReportHeader/ReportHeader';
 import ReportCover from "./Cover/ReportCorver"
 
 function App() {

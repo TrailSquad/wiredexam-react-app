@@ -21,7 +21,7 @@ function Fps(props) {
 
   return (
   <div>
-    <h3>FPS</h3>
+    <h3 className="text-3xl font-bold text-center">FPS</h3>
     <ReactEcharts option={option} />
   </div>
   )
