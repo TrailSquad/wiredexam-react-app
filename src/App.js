@@ -12,6 +12,8 @@ function App() {
   const [totalPageNumber, settotalPageNumber] = useState(1);
   const [pageNumber, setPageNumber] = useState(1);
 
+  // TODO: performanceData应该从一个拆分出的数据获取模块中获取
+  // 此处仅是暂时mock
   const [performanceData, setPerformanceData] = useState(
     {
       "fps": {

@@ -1,9 +1,7 @@
-import { Image, Text } from '@react-pdf/renderer';
+import { Text } from '@react-pdf/renderer';
 
 const Cover = () => (
-    <>
-        <Text>封面</Text>
-    </>
+  <Text>封面</Text>
 );
 
 export default Cover;
