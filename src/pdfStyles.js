@@ -1,7 +1,15 @@
+// PDFDocument的样式在此定义
+
+// NOTE:
+// 此处的长度单位默认为'pt'，A4的尺寸为595x842
+// more to read:
+// https://react-pdf.org/styling
+// https://www.gdpicture.com/guides/gdpicture/About%20a%20PDF%20format.html
+
 import { StyleSheet } from '@react-pdf/renderer';
 
-// PDFDocument的样式在此定义
 const styles = StyleSheet.create({
+  // 通用样式
   page: {
     paddingTop: 35,
     paddingBottom: 65,
@@ -47,6 +55,39 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'grey',
   },
+  // cover
+  coverContainer: {
+    marginTop: 50,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  coverTitle: {
+    fontSize: 28,
+    marginTop: 60,
+    marginBottom: 30
+  },
+  coverImageContainer: {
+    display: 'flex',
+    alignItems: 'center'
+  },
+  coverImage: {
+    width: 70,
+    height: 70
+  },
+  coverRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: 400,
+    marginBottom: 15
+  },
+  coverRowLeft: {
+    width: 150,
+    textAlign: 'right'
+  },
+  coverRowRight: {
+    width: 250
+  }
 });
 
 export default styles;

@@ -16,6 +16,8 @@ function App() {
   // 此处仅是暂时mock
   const [performanceData, setPerformanceData] = useState(
     {
+      "appName": 'Confirm',
+      "version": 'iOS 15.0',
       "fps": {
         "xValues": [12.1, 12.2, 12.3, 12.4, 12.5, 12.6, 12.7],
         "data": [120, 200, 150, 80, 70, 110, 130]
