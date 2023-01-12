@@ -16,8 +16,6 @@ jobs:
 
     - run: npm i -f
       shell: bash
-    - run: npm ci
-      shell: bash
     - run: npm run build
       shell: bash
     - run: git config user.name github-actions
