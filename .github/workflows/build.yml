@@ -16,19 +16,19 @@ jobs:
 
     - name: Deploy react app to github pages
       steps:
-        - run : npm i -f
+        - run: npm i -f
           shell: bash
-        - run : npm ci
+        - run: npm ci
           shell: bash
-        - run : npm run build
+        - run: npm run build
           shell: bash
-        - run : git config user.name github-actions
+        - run: git config user.name github-actions
           shell: bash
-        - run : git config user.email github-actions@github.com
+        - run: git config user.email github-actions@github.com
           shell: bash
-        - run : git --work-tree build add --all
+        - run: git --work-tree build add --all
           shell: bash
-        - run : git commit -m "Automatic Deploy action run by github-actions"
+        - run: git commit -m "Automatic Deploy action run by github-actions"
           shell: bash
-        - run : git push origin HEAD:gh-pages --force
+        - run: git push origin HEAD:gh-pages --force
           shell: bash
