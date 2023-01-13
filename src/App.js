@@ -51,6 +51,8 @@ function App() {
     }
   }
 
+  const document = <PDFDocument performanceData={performanceData} />;
+
   return (
     <div className="App">
       {/* 工具栏 */}
@@ -61,10 +63,7 @@ function App() {
       {/* PDF预览 */}
       <div className="pdf-view-container" id="pdf-view-container">
         <BlobProvider
-          document={
-            <PDFDocument
-              performanceData={performanceData} />
-          }>
+          document={document}>
           {({ blob, url, loading }) => {
             return loading ? 'loading' : (
               <Document
@@ -83,7 +82,7 @@ function App() {
       <div className='download-container'>
         <PDFDownloadLink
           style={{ color: "#fff" }}
-          document={<PDFDocument />}>
+          document={document}>
           {({ loading }) =>
             loading ? 'Loading...' : '下载该pdf'
           }
