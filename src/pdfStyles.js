@@ -8,6 +8,8 @@
 
 import { StyleSheet } from '@react-pdf/renderer';
 
+const contentHeight = 686;
+
 const styles = StyleSheet.create({
   // 通用样式
   page: {
@@ -55,13 +57,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'grey',
   },
-  // cover
-  coverContainer: {
-    marginTop: 50,
+  contentContainer: {
+    height: contentHeight,
+    // marginTop: 50,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
+  // cover
   coverTitle: {
     fontSize: 28,
     marginTop: 60,
@@ -69,7 +72,8 @@ const styles = StyleSheet.create({
   },
   coverImageContainer: {
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 50
   },
   coverImage: {
     width: 70,
@@ -87,7 +91,8 @@ const styles = StyleSheet.create({
   },
   coverRowRight: {
     width: 250
-  }
+  },
+  // FPS
 });
 
 export default styles;

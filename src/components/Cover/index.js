@@ -23,7 +23,7 @@ const Cover = () => {
   } = performanceData;
 
   return (
-    <View style={styles.coverContainer}>
+    <View style={styles.contentContainer}>
       <View style={styles.coverImageContainer}>
         <Image style={styles.coverImage} src={logo} />
       </View>

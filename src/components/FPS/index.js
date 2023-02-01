@@ -1,6 +1,8 @@
 import { useContext } from 'react';
+import { View } from '@react-pdf/renderer';
 import { Image } from '@react-pdf/renderer';
 import Context from 'src/context';
+import styles from 'src/pdfStyles';
 import getChartsBlobImage from 'src/utils/getChartsBlobImage';
 
 const FPS = () => {
@@ -24,7 +26,9 @@ const FPS = () => {
     }]
   });
   return (
-    <Image src={fpsImage} break />
+      <View style={styles.contentContainer}>
+        <Image src={fpsImage} break />
+      </View>
   );
 }
 
