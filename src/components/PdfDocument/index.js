@@ -2,6 +2,7 @@
 import { Document, Page, Text, Font } from '@react-pdf/renderer';
 import Cover from 'src/components/Cover';
 import FPS from 'src/components/FPS';
+import LaunchTime from 'src/components/LaunchTime';
 import NetAbstract from "src/components/NetAbstract"
 import FZHei from 'src/fonts/FZHei.ttf';
 import Context from 'src/context';
@@ -27,6 +28,7 @@ const PDFDocument = ({ performanceData }) => (
         <Cover />
         <FPS />
         <NetAbstract />
+        <LaunchTime />
         {/* 每页固定页脚 */}
         <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
           `${pageNumber} / ${totalPages}`

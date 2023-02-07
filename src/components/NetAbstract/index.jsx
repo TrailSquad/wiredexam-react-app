@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
@@ -140,4 +140,4 @@ const netStyles = StyleSheet.create({
   }
 });
 
-export default NetAbstract;
+export default memo(NetAbstract);

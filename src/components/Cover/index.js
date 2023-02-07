@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 import { Text, Image, View } from '@react-pdf/renderer';
 import logo from 'src/static/wcl.jpg';
 import styles from 'src/pdfStyles';
@@ -36,4 +36,4 @@ const Cover = () => {
   )
 };
 
-export default Cover;
+export default memo(Cover);
