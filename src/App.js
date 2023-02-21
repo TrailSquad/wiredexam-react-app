@@ -34,6 +34,16 @@ function App() {
         { "time": 1675763226.579802, "launchCost": 625.1590251922607, "uid": "E7B6A924-9407-4AA9-BEC6-F6FBED39032F" },
         { "uid": "A514050D-122B-4D68-ABE4-2412756F8485", "time": 1675763450.24312, "launchCost": 565.3059482574463 }
       ],
+      "memoryLeakData": [
+        {"info": "{↵  \"className\" : \"DoraemonKit.APMReportViewContro…  \"retainCycle\" : \"Fail to find a retain cycle\"↵}", "count": 6},
+        {"info": "{↵  \"className\" : \"DoraemonMLeaksFinderListViewCon…\",\\n    \\\"-> _block -> __NSMallocBlock__ \\\"\\n)\"↵}", "count": 2},
+        {"info": "{↵  \"className\" : \"DoraemonMLeaksFinderListViewCon…\",\\n    \\\"-> _block -> __NSMallocBlock__ \\\"\\n)\"↵}", "count": 2},
+        {"info": "{↵  \"className\" : \"DoraemonKit.APMReportViewContro…ansitionDidComplete -> __NSMallocBlock__ \\\"\\n)\"↵}", "count": 1},
+        {"info": "{↵  \"className\" : \"DoraemonMLeaksFinderListViewCon…\",\\n    \\\"-> _block -> __NSMallocBlock__ \\\"\\n)\"↵}", "count": 1},
+        {"info": "{↵  \"className\" : \"DoraemonKit.APMReportViewContro…er -> _UIPageSheetPresentationController \\\"\\n)\"↵}", "count": 1},
+        {"info": "{↵  \"className\" : \"DoraemonMLeaksFinderListViewCon…\",\\n    \\\"-> _block -> __NSMallocBlock__ \\\"\\n)\"↵}", "count": 1},
+        {"info": "{↵  \"className\" : \"DoraemonMLeaksFinderListViewCon…\",\\n    \\\"-> _block -> __NSMallocBlock__ \\\"\\n)\"↵}", "count": 1}
+      ],
     }
   )
 
