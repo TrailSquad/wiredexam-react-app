@@ -13,6 +13,7 @@ const MemoryLeak = () => {
   if (!memoryLeakData || memoryLeakData.length < 1) {
     return null;
   }
+  console.log(memoryLeakData);
   const sortData = memoryLeakData.sort((a, b) => (b.count - a.count));
   const rank = sortData.length > 3 ? sortData.slice(0, 3) : sortData;
   const totalCount = memoryLeakData.reduce(
