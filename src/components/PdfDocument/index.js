@@ -4,6 +4,7 @@ import Cover from 'src/components/Cover';
 import FPS from 'src/components/FPS';
 import LaunchTime from 'src/components/LaunchTime';
 import NetAbstract from "src/components/NetAbstract"
+import MemoryLeak from "src/components/MemoryLeak"
 import FZHei from 'src/fonts/FZHei.ttf';
 import Context from 'src/context';
 import styles from 'src/pdfStyles';
@@ -29,6 +30,7 @@ const PDFDocument = ({ performanceData }) => (
         <FPS />
         <NetAbstract />
         <LaunchTime />
+        <MemoryLeak />
         {/* 每页固定页脚 */}
         <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
           `${pageNumber} / ${totalPages}`
