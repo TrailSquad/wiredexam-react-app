@@ -1,4 +1,4 @@
-import { useContext, memo} from 'react';
+import { useContext } from 'react';
 import { Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
@@ -69,4 +69,4 @@ const launchStyles = StyleSheet.create({
   }
 });
 
-export default memo(LaunchTime);
+export default LaunchTime;
