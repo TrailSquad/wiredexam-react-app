@@ -5,6 +5,7 @@ import FPS from 'src/components/FPS';
 import LaunchTime from 'src/components/LaunchTime';
 import NetAbstract from "src/components/NetAbstract"
 import MemoryLeak from "src/components/MemoryLeak"
+import LocationUse from "src/components/Location"
 import FZHei from 'src/fonts/FZHei.ttf';
 import Context from 'src/context';
 import styles from 'src/pdfStyles';
@@ -29,6 +30,7 @@ const PDFDocument = ({ performanceData }) => (
         <Cover />
         <FPS />
         <NetAbstract />
+        <LocationUse />
         <LaunchTime />
         <MemoryLeak />
         {/* 每页固定页脚 */}

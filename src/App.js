@@ -27,6 +27,10 @@ function App() {
       "network": null,
       "launchTimeData": launchTimeData,
       "memoryLeakData": memoryLeakData,
+      "locationData": {
+        "count": 16,
+        "totalTime": "100"
+      },
     }
   )
 
