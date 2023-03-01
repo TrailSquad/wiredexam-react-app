@@ -3,12 +3,16 @@ import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
 import { GridComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
+import { ScatterChart } from 'echarts/charts';
+import { TitleComponent } from 'echarts/components';
 
 // 只引入需要用到的图表类型
 echarts.use([
     CanvasRenderer,
     LineChart,
-    GridComponent
+    GridComponent,
+    ScatterChart,
+    TitleComponent
 ])
 
 // options即echartsInstance.setOptions所用参数
@@ -19,7 +23,7 @@ const getChartsBlobImage = (options) => {
     canvas.style.left = '-9999px';
     canvas.style.top = '-9999px';
     canvas.width = width || 300;
-    canvas.height = height || 200;
+    canvas.height = height || 250;
     window.document.body.appendChild(canvas);
 
     const chart = echarts.init(canvas, null, {
