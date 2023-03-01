@@ -28,6 +28,14 @@ const styles = StyleSheet.create({
     color: 'grey',
     fontFamily: "FZHeiti",
   },
+  sectionsTitle: {
+    textAlign: "left",
+    fontSize: 32,
+    width: "100%",
+    fontWeight: "bold",
+    fontFamily: "FZHeiti",
+    marginBottom: 15,
+  },
   title: {
     fontSize: 24,
     fontFamily: "FZHeiti",

@@ -9,6 +9,7 @@ import { isAndroid } from 'src/jsBridge';
 import './App.css';
 import launchTimeData from './mock/launchTime.json';
 import memoryLeakData from './mock/memoryLeak.json';
+import fpsData from './mock/fps.json';
 
 function App() {
   const [totalPageNumber, settotalPageNumber] = useState(1);
@@ -20,10 +21,7 @@ function App() {
     {
       "appName": 'Confirm',
       "version": 'iOS 15.0',
-      "fps": {
-        "xValues": [12.1, 12.2, 12.3, 12.4, 12.5, 12.6, 12.7],
-        "data": [120, 200, 150, 80, 70, 110, 130]
-      },
+      "fps": fpsData,
       "network": null,
       "launchTimeData": launchTimeData,
       "memoryLeakData": memoryLeakData,
