@@ -9,6 +9,7 @@ import { isAndroid } from 'src/jsBridge';
 import './App.css';
 import launchTimeData from './mock/launchTime.json';
 import memoryLeakData from './mock/memoryLeak.json';
+import networkData from './mock/network.json';
 import fpsData from './mock/fps.json';
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
       "appName": 'Confirm',
       "version": 'iOS 15.0',
       "fps": fpsData,
-      "network": null,
+      "network": networkData,
       "launchTimeData": launchTimeData,
       "memoryLeakData": memoryLeakData,
       "locationData": {
