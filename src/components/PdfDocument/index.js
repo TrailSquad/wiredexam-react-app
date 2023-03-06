@@ -6,6 +6,7 @@ import LaunchTime from 'src/components/LaunchTime';
 import NetAbstract from "src/components/NetAbstract"
 import MemoryLeak from "src/components/MemoryLeak"
 import LocationUse from "src/components/Location"
+import PowerUsageChart from "src/components/PowerUsageChart"
 import FZHei from 'src/fonts/FZHei.ttf';
 import Context from 'src/context';
 import styles from 'src/pdfStyles';
@@ -29,9 +30,10 @@ const PDFDocument = ({ performanceData }) => (
         {/* 主体内容 */}
         <Cover />
         <FPS />
+        <LaunchTime />
+        <PowerUsageChart />
         <NetAbstract />
         <LocationUse />
-        <LaunchTime />
         <MemoryLeak />
         {/* 每页固定页脚 */}
         <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (

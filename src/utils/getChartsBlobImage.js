@@ -5,6 +5,7 @@ import { GridComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import { ScatterChart } from 'echarts/charts';
 import { TitleComponent } from 'echarts/components';
+import { CustomChart } from 'echarts/charts';
 
 // 只引入需要用到的图表类型
 echarts.use([
@@ -12,7 +13,8 @@ echarts.use([
     LineChart,
     GridComponent,
     ScatterChart,
-    TitleComponent
+    TitleComponent,
+    CustomChart
 ])
 
 // options即echartsInstance.setOptions所用参数

@@ -17,15 +17,15 @@ const FPS = () => {
   const lowFps = fps.filter(item => item.value <= droppedFramesFpsValue)
   const rate = lowFps.length / fps.length;
   const option = {
-    title: {
-      text: `Dropout Rate：${(rate * 100).toFixed(2)}%， Dropout Count：${lowFps.length}`,
-      textStyle: {
-        fontWeight: "normal",
-        fontSize: 14
-      },
-      subtext: `When the sampled fps is less than ${droppedFramesFpsValue}, \nit is considered a dropped frame.`,
-      left: 'center'
-    },
+    // title: {
+    //   text: `Dropout Rate：${(rate * 100).toFixed(2)}%， Dropout Count：${lowFps.length}`,
+    //   textStyle: {
+    //     fontWeight: "normal",
+    //     fontSize: 14
+    //   },
+    //   subtext: `When the sampled fps is less than ${droppedFramesFpsValue}, \nit is considered a dropped frame.`,
+    //   left: 'center'
+    // },
     xAxis: {
       data: fps.map(e => dayjs.unix(e.time).format('HH:mm')),
       name: "time",
