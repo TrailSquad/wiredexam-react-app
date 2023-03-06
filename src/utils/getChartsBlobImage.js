@@ -25,7 +25,7 @@ const getChartsBlobImage = (options) => {
     canvas.style.left = '-9999px';
     canvas.style.top = '-9999px';
     canvas.width = width || 300;
-    canvas.height = height || 250;
+    canvas.height = height || 200;
     window.document.body.appendChild(canvas);
 
     const chart = echarts.init(canvas, null, {

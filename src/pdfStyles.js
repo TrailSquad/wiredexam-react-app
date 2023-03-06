@@ -36,6 +36,14 @@ const styles = StyleSheet.create({
     fontFamily: "FZHeiti",
     marginBottom: 15,
   },
+  sectionsSubTitle: {
+    textAlign: "left",
+    fontSize: 24,
+    width: "100%",
+    fontWeight: "bold",
+    marginTop: 30,
+    marginBottom: 15
+  },
   title: {
     fontSize: 24,
     fontFamily: "FZHeiti",
