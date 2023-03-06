@@ -100,6 +100,26 @@ const styles = StyleSheet.create({
   coverRowRight: {
     width: 250
   },
+  tableTitle: {
+    textAlign: "left",
+    fontSize: 24,
+    width: "100%",
+    fontWeight: "bold",
+    marginTop: 30,
+    marginBottom: 15
+  },
+  tableRowLabel: {
+    padding: '8',
+    textAlign: "left",
+    backgroundColor: '#F0FFF0',
+    fontSize: 10,
+  },
+  tableRowValue: {
+    padding: '8',
+    backgroundColor: '#F0FFF0',
+    textAlign: "center",
+    fontSize: 14,
+  }
   // FPS
 });
 

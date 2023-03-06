@@ -1,8 +1,15 @@
 import { useContext } from 'react';
-import { Text, View, StyleSheet } from '@react-pdf/renderer';
+import { Text, View } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableBody } from '@david.kucsai/react-pdf-table'
+
+function formatNumber(number){
+    if(typeof number === 'number')
+        return number.toFixed(2)
+    else
+        return number
+}
 
 const NetAbstract = () => {
   const performanceData = useContext(Context);
@@ -62,82 +69,67 @@ const NetAbstract = () => {
   return (
     <View>
       <View style={styles.contentContainer}>
-        <Text style={netStyles.networkTitle}>网络监控</Text>
-        <Text style={netStyles.abstractTitle}>网络数据摘要:</Text>
+        <Text style={styles.sectionsTitle}>3 网络监控</Text>
+        <Text style={styles.text}>A very important and basic link in network management is network traffic monitoring, which monitors network traffic through continuous collection of network data. </Text>
+        <Text style={styles.text}>The performance indicators of the network and its important components are also obtained from the statistics and calculation of network traffic data. Network administrators can perform performance management.</Text>
+        <Text style={styles.tableTitle}>3.1 网络数据摘要:</Text>
         <Table data={tableData}>
           <TableBody>
-            <DataTableCell style={netStyles.abstractRow} getContent={(r) => r.categary} />
-            <DataTableCell style={netStyles.abstractRow} getContent={(r) => r.value} />
+            <DataTableCell weighting={0.5} style={styles.tableRowLabel} getContent={(r) => r.categary} />
+            <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => formatNumber(r.value)} />
           </TableBody>
         </Table>
 
-        {reqCountRank.length > 1 ? <Text style={netStyles.abstractTitle}>请求次数排行:</Text> : null}
+        {reqCountRank.length > 1 ? <Text style={styles.tableTitle}>3.2 请求次数排行:</Text> : null}
         {reqCountRank.length > 1 ? <Table data={reqCountRank}>
           <TableBody>
-            <DataTableCell style={netStyles.abstractRow} getContent={(r) => r.key} />
-            <DataTableCell style={netStyles.abstractRow} getContent={(r) => r.value} />
+            <DataTableCell weighting={0.8} style={styles.tableRowLabel} getContent={(r) => r.key} />
+            <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.value} />
           </TableBody>
         </Table> : null}
       </View>
 
       <View style={styles.contentContainer}>
-        {failReqCountRank.length > 1 ? <Text style={netStyles.abstractTitle}>请求失败次数排行:</Text> : null}
+        {failReqCountRank.length > 1 ? <Text style={styles.tableTitle}>3.3 请求失败次数排行:</Text> : null}
+        {failReqCountRank.length > 1 ? <Text style={styles.text}>A very important and basic link in network management is network traffic monitoring, which monitors network traffic through continuous collection of network data. </Text> : null}
         {failReqCountRank.length > 1 ? <Table data={failReqCountRank}>
           <TableBody>
-            <DataTableCell style={netStyles.abstractRow} getContent={(r) => r.key} />
-            <DataTableCell style={netStyles.abstractRow} getContent={(r) => r.value} />
+            <DataTableCell weighting={0.8} style={styles.tableRowLabel} getContent={(r) => r.key} />
+            <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.value} />
           </TableBody>
         </Table> : null}
 
-        {reqTimeRank.length > 1 ? <Text style={netStyles.abstractTitle}>请求时间排行:</Text> : null}
+        {reqTimeRank.length > 1 ? <Text style={styles.tableTitle}>3.4 请求时间排行:</Text> : null}
+        {reqTimeRank.length > 1 ? <Text style={styles.text}>A very important and basic link in network management is network traffic monitoring, which monitors network traffic through continuous collection of network data. </Text> : null}
         {reqTimeRank.length > 1 ? <Table data={reqTimeRank}>
           <TableBody>
-            <DataTableCell style={netStyles.abstractRow} getContent={(r) => r.key} />
-            <DataTableCell style={netStyles.abstractRow} getContent={(r) => r.value} />
+            <DataTableCell weighting={0.8} style={styles.tableRowLabel} getContent={(r) => r.key} />
+            <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => formatNumber(r.value)} />
           </TableBody>
         </Table> : null}
       </View>
 
       <View style={styles.contentContainer}>
-        {uploadDataRank.length > 1 ? <Text style={netStyles.abstractTitle}>上行流量排行:</Text> : null}
+        {uploadDataRank.length > 1 ? <Text style={styles.tableTitle}>3.5 上行流量排行:</Text> : null}
+        {uploadDataRank.length > 1 ? <Text style={styles.text}>A very important and basic link in network management is network traffic monitoring, which monitors network traffic through continuous collection of network data. </Text> : null}
         {uploadDataRank.length > 1 ? <Table data={uploadDataRank}>
           <TableBody>
-            <DataTableCell style={netStyles.abstractRow} getContent={(r) => r.key} />
-            <DataTableCell style={netStyles.abstractRow} getContent={(r) => r.value} />
+            <DataTableCell weighting={0.8} style={styles.tableRowLabel} getContent={(r) => r.key} />
+            <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => formatNumber(r.value)} />
           </TableBody>
         </Table> : null}
 
-        {downloadDataRank.length > 1 ? <Text style={netStyles.abstractTitle}>下行流量排行:</Text> : null}
+        {downloadDataRank.length > 1 ? <Text style={styles.tableTitle}>3.6 下行流量排行:</Text> : null}
+        {downloadDataRank.length > 1 ? <Text style={styles.text}>A very important and basic link in network management is network traffic monitoring, which monitors network traffic through continuous collection of network data. </Text> : null}
         {downloadDataRank.length > 1 ? <Table data={downloadDataRank}>
           <TableBody>
-            <DataTableCell style={netStyles.abstractRow} getContent={(r) => r.key} />
-            <DataTableCell style={netStyles.abstractRow} getContent={(r) => r.value} />
+            <DataTableCell weighting={0.8} style={styles.tableRowLabel} getContent={(r) => r.key} />
+            <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => formatNumber(r.value)} />
           </TableBody>
         </Table> : null}
       </View>
     </View>
   )
 };
-
-const netStyles = StyleSheet.create({
-  networkTitle: styles.title = {
-    textAlign: "left",
-    fontSize: 28,
-    width: "100%",
-    fontWeight: "bold"
-  },
-  abstractTitle: styles.title = {
-    textAlign: "left",
-    fontSize: 24,
-    width: "100%",
-    fontWeight: "bold",
-    marginTop: 30,
-    marginBottom: 15
-  },
-  abstractRow: {
-    margin: '8',
-    textAlign: "center"
-  }
-});
 
 export default NetAbstract;
