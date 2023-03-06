@@ -14,7 +14,7 @@ const LocationUse = () => {
     }
     const { count, totalTime } = locationData;
     return (
-        <View>
+        <View break>
             <View style={styles.contentContainer}>
                 <Text style={locationUseStyles.title}>Use of GPS positioning</Text>
                 <Text style={locationUseStyles.subTitle}>Total Count: {count}</Text>

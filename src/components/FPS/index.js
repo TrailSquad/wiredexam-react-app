@@ -82,7 +82,7 @@ const FPS = () => {
       - Avoid unnecessary re-layout and re-drawing: avoid unnecessary re-layout and re-drawing without affecting the display of the interface
       `
   return (
-    <View>
+    <View break>
       <View style={styles.contentContainer}>
         <Text style={styles.sectionsTitle}>Section: FPS</Text>
         <Image src={fpsImage} break />

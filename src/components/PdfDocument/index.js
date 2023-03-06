@@ -24,7 +24,7 @@ const PDFDocument = ({ performanceData }) => (
       <Page size="A4" style={styles.page}>
         {/* 每页固定页头 */}
         <Text style={styles.header} fixed>
-          Wiredcreaft
+          Wiredcraft
         </Text>
         {/* 主体内容 */}
         <Cover />
