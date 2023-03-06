@@ -8,7 +8,7 @@ import getChartsBlobImage from 'src/utils/getChartsBlobImage';
 const getStartTime = (netTimes, locationTimes) => {
     const netStart = netTimes.length > 0 ? netTimes[0] : 0;
     const locationStart = locationTimes.length > 0 ? locationTimes[0] : 0;
-    if (netStart == 0 || locationStart == 0) return Math.max(netStart, locationStart);
+    if (netStart === 0 || locationStart === 0) return Math.max(netStart, locationStart);
     return Math.min(netStart, locationStart)
 }
 
@@ -109,13 +109,12 @@ const PowerUsageChart = () => {
             min: startTime,
             // max: endTime,
             scale: true,
-            type: "value",
-            // axisLabel: {
-            //     formatter: function (val) {
-            //         return Math.max(0, val - startTime) + ' ms';
-            //     }
-            // },
-            // data: data.map(e => e[0])
+            interval: (endTime - startTime),
+            axisLabel: {
+                formatter: function (val) {
+                    return Math.max(0, val - startTime) + ' ms';
+                }
+            }
         },
         yAxis: {
             data: categories.map(e => e.name)
