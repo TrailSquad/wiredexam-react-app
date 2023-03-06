@@ -20,7 +20,7 @@ const MemoryLeak = () => {
     0
   );
   return (
-    <View>
+    <View break>
       <View style={styles.contentContainer}>
         <Text style={memoryLeakStyles.leakStylesTitle}>MemoryLeak</Text>
         <Text style={memoryLeakStyles.leakStylesSubTitle}>MemoryLeak Total Count: {totalCount}</Text>

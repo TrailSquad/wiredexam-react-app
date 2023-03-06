@@ -50,7 +50,16 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     fontSize: 14,
     fontFamily: "FZHeiti",
-    textAlign: 'justify',
+    width: "100%",
+    textAlign: 'left',
+  },
+  hint: {
+    marginBottom: 12,
+    fontSize: 12,
+    fontFamily: "FZHeiti",
+    width: "100%",
+    textAlign: 'left',
+    color: 'grey',
   },
   image: {
     marginVertical: 15,
@@ -66,8 +75,18 @@ const styles = StyleSheet.create({
     color: 'grey',
   },
   contentContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  pageContainer: {
     height: contentHeight,
-    // marginTop: 50,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  tableContainer: {
+    width: "100%",
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -105,20 +124,28 @@ const styles = StyleSheet.create({
     fontSize: 24,
     width: "100%",
     fontWeight: "bold",
-    marginTop: 30,
-    marginBottom: 15
+    marginTop: 40,
+    marginBottom: 16
+  },
+  tableHeader: {
+    padding: 8,
+    textAlign: "center",
+    backgroundColor: '#90EE90',
+    fontSize: 10,
   },
   tableRowLabel: {
-    padding: '8',
+    padding: 8,
     textAlign: "left",
     backgroundColor: '#F0FFF0',
     fontSize: 10,
+    maxLines: 1,
+    textOverflow: 'ellipsis',
   },
   tableRowValue: {
-    padding: '8',
+    padding: 8,
     backgroundColor: '#F0FFF0',
     textAlign: "center",
-    fontSize: 14,
+    fontSize: 10,
   }
   // FPS
 });

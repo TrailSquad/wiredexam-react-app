@@ -32,7 +32,7 @@ const LaunchTime = () => {
   const sortTimeObjs = launchTimeData.sort((a, b) => (b.launchCost - a.launchCost));
   const launchRank = sortTimeObjs.length > 5 ? sortTimeObjs.slice(0, 5) : sortTimeObjs;
   return (
-    <View>
+    <View break>
       <View style={styles.contentContainer}>
         <Text style={launchStyles.launchStylesTitle}>启动速度</Text>
         <Image src={launchTimeImage} break />
