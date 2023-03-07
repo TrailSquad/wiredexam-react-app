@@ -122,7 +122,7 @@ const FPS = () => {
 
         {topRankArray.length > 0 ? <Text style={styles.sectionsSubTitle}>1.1 Dropout Rank Table</Text> : null}
         {topRankArray.length > 0 ? <Text style={styles.hint}>The number on the right is the number of frame drops in left</Text> : null}
-        {topRankArray.length > 0 ? <Table data={topRankArray}>
+        {topRankArray.length > 0 ? <View style={styles.tableContainer} wrap={false}><Table data={topRankArray}>
           <TableHeader>
             <TableCell weighting={0.5} style={styles.tableHeader}>View</TableCell>
             <TableCell weighting={0.5} style={styles.tableHeader}>Count</TableCell>
@@ -131,7 +131,7 @@ const FPS = () => {
             <DataTableCell weighting={0.5} style={styles.tableRowLabel} getContent={(r) => r.name} />
             <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => r.count} />
           </TableBody>
-        </Table> : null}
+        </Table></View> : null}
         {topRankArray.length <= 0 ? <Text style={styles.subtitle}>{notDroppedFramesDes}</Text> : null}
       </View>
       {topRankArray.length > 0 ?
