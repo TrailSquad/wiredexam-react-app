@@ -36,6 +36,14 @@ const styles = StyleSheet.create({
     fontFamily: "FZHeiti",
     marginBottom: 15,
   },
+  sectionsSubTitle: {
+    textAlign: "left",
+    fontSize: 24,
+    width: "100%",
+    fontWeight: "bold",
+    marginTop: 30,
+    marginBottom: 15
+  },
   title: {
     fontSize: 24,
     fontFamily: "FZHeiti",
@@ -45,6 +53,7 @@ const styles = StyleSheet.create({
     fontFamily: "FZHeiti",
     fontSize: 18,
     marginBottom: 12,
+    marginTop: 16
   },
   text: {
     marginBottom: 12,
@@ -64,6 +73,9 @@ const styles = StyleSheet.create({
   image: {
     marginVertical: 15,
     marginHorizontal: 100,
+  },
+  chartContainer: {
+    width: "100%",
   },
   pageNumber: {
     position: 'absolute',

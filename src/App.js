@@ -2,7 +2,7 @@
 // 解决方法 https://github.com/diegomura/react-pdf/issues/1113#issuecomment-781053667
 
 import { useState } from 'react';
-import { BlobProvider, PDFDownloadLink } from '@react-pdf/renderer';
+import { BlobProvider } from '@react-pdf/renderer';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import PDFDocument from 'src/components/PdfDocument/index';
 import { isAndroid } from 'src/jsBridge';
@@ -11,6 +11,9 @@ import launchTimeData from './mock/launchTime.json';
 import memoryLeakData from './mock/memoryLeak.json';
 import networkData from './mock/network.json';
 import fpsData from './mock/fps.json';
+import netFlowData from './mock/netFlow.json';
+import locationData from './mock/location.json';
+
 
 function App() {
   const [totalPageNumber, settotalPageNumber] = useState(1);
@@ -24,12 +27,10 @@ function App() {
       "version": 'iOS 15.0',
       "fps": fpsData,
       "network": networkData,
+      "networkFlowData": netFlowData,
       "launchTimeData": launchTimeData,
       "memoryLeakData": memoryLeakData,
-      "locationData": {
-        "count": 16,
-        "totalTime": "100"
-      },
+      "locationData": locationData
     }
   )
 
@@ -37,7 +38,7 @@ function App() {
     bridge.registerHandler("testJavascriptHandler", (data, responseCallback) => {
       console.log('called testJavascriptHandler with', data);
       setPerformanceData(isAndroid ? JSON.parse(data) : data);
-      responseCallback({ 'Javascript received': data });
+      // responseCallback({ 'Javascript received': data });
     });
   });
 
@@ -57,6 +58,27 @@ function App() {
     if (pageNumber < totalPageNumber) {
       setPageNumber(pageNumber + 1);
     }
+  }
+
+  const goDownload = (blob) => {
+    window.setupWebViewJavascriptBridge(bridge => {
+      var reader = new FileReader();
+      reader.readAsDataURL(blob);
+      reader.onloadend = () => {
+        bridge.callHandler('lookPdf', { 'pdfData': reader.result.toString() }, function (response) {
+          console.log('JS got response', response)
+        })
+      }
+    });
+
+    // window.setupWebViewJavascriptBridge(bridge => {
+    //   blob.arrayBuffer().then(buffer => {
+    //     bridge.callHandler('lookPdf', { 'pdfData': buffer }, function (response) {
+    //       console.log('JS got response', response)
+    //     })
+    //   });
+    // });
+
   }
 
   const document = <PDFDocument performanceData={performanceData} />;
@@ -88,16 +110,31 @@ function App() {
       </div>
       {/* 下载 */}
       <div className='download-container'>
-        <PDFDownloadLink
+        <BlobProvider
+          document={document}>
+          {({ blob, url, loading }) => {
+            return loading ? 'loading' : (
+              <button onClick={() => goDownload(blob)}>Dowload and Shared</button>
+            )
+          }}
+        </BlobProvider>
+        {/* <PDFDownloadLink
           style={{ color: "#fff" }}
           document={document}>
-          {({ loading }) =>
-            loading ? 'Loading...' : '下载该pdf'
+          {({ url, loading }) =>
+            <Button onClick={()=>callNative({"pdfurl": url})} >{loading ? 'Loading' : '下载'}</Button>
           }
-        </PDFDownloadLink>
+        </PDFDownloadLink> */}
       </div>
     </div>
   );
 }
 
 export default App;
+
+// <Button style={{ color: "red" }}
+            //   onClick={() => {
+            //     callNative({ "pdf rul": url })
+            //   }}
+            // >下载
+            // </Button>

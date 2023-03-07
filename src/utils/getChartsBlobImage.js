@@ -5,6 +5,7 @@ import { GridComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import { ScatterChart } from 'echarts/charts';
 import { TitleComponent } from 'echarts/components';
+import { CustomChart } from 'echarts/charts';
 
 // 只引入需要用到的图表类型
 echarts.use([
@@ -12,7 +13,8 @@ echarts.use([
     LineChart,
     GridComponent,
     ScatterChart,
-    TitleComponent
+    TitleComponent,
+    CustomChart
 ])
 
 // options即echartsInstance.setOptions所用参数
@@ -22,8 +24,8 @@ const getChartsBlobImage = (options) => {
     canvas.style.position = 'absolute';
     canvas.style.left = '-9999px';
     canvas.style.top = '-9999px';
-    canvas.width = width || 300;
-    canvas.height = height || 250;
+    canvas.width = width || 400;
+    canvas.height = height || 200;
     window.document.body.appendChild(canvas);
 
     const chart = echarts.init(canvas, null, {
