@@ -114,7 +114,7 @@ function App() {
           document={document}>
           {({ blob, url, loading }) => {
             return loading ? 'loading' : (
-              <button onClick={() => goDownload(blob)}>去下载</button>
+              <button onClick={() => goDownload(blob)}>Dowload and Shared</button>
             )
           }}
         </BlobProvider>

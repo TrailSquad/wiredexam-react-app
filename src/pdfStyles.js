@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     fontFamily: "FZHeiti",
     fontSize: 18,
     marginBottom: 12,
+    marginTop: 16
   },
   text: {
     marginBottom: 12,
@@ -72,6 +73,9 @@ const styles = StyleSheet.create({
   image: {
     marginVertical: 15,
     marginHorizontal: 100,
+  },
+  chartContainer: {
+    width: "100%",
   },
   pageNumber: {
     position: 'absolute',

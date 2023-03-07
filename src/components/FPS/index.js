@@ -5,7 +5,7 @@ import Context from 'src/context';
 import styles from 'src/pdfStyles';
 import getChartsBlobImage from 'src/utils/getChartsBlobImage';
 import dayjs from 'dayjs';
-import { Table, DataTableCell, TableBody } from '@david.kucsai/react-pdf-table'
+import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 
 const FPS = () => {
   const droppedFramesFpsValue = 50
@@ -23,7 +23,8 @@ const FPS = () => {
       left: '0%',
       right: '6%',
       bottom: '3%',
-      containLabel: true
+      containLabel: true,
+      show: true,
     },
     xAxis: {
       data: fps.map(e => Date(e.time)),
@@ -100,15 +101,15 @@ const FPS = () => {
   const fpsDes = `FPS is a simple and direct reflection of the app's lag,55-60fps is excellent,50-55 is normal,below 50 is considered to be dropped frames`;
   const notDroppedFramesDes = "No frame drops were found in this test, which means the app is running quite smoothly. Keep it up"
   const recommendations = `
-      - optimisation of code: unnecessary code should be minimised and if there is code that can be reused, it should be reused as much as possible
+      a、 optimisation of code: unnecessary code should be minimised and if there is code that can be reused, it should be reused as much as possible
       
-      - reducing page elements: reducing the number of elements in a page, such as images, text, animations, etc.
+      b、 reducing page elements: reducing the number of elements in a page, such as images, text, animations, etc.
      
-      - rational use of layout: use a rational layout to reduce rendering time.
+      c、 rational use of layout: use a rational layout to reduce rendering time.
       
-      - optimise image resources: optimise the size and format of image resources to avoid excessively large images taking too long to load.
+      d、 optimise image resources: optimise the size and format of image resources to avoid excessively large images taking too long to load.
       
-      - Avoid unnecessary re-layout and re-drawing: avoid unnecessary re-layout and re-drawing without affecting the display of the interface
+      e、 Avoid unnecessary re-layout and re-drawing: avoid unnecessary re-layout and re-drawing without affecting the display of the interface
       `
   return (
     <View break>
@@ -116,22 +117,26 @@ const FPS = () => {
         <Text style={styles.sectionsTitle}>1 FPS</Text>
         <Text style={styles.text}>{fpsDes}</Text>
         <Text style={styles.text}>The x-axis represents the time, the y-axis represents the FPS value, blue dots indicate excellent or normal FPS, red dots indicate abnormal FPS</Text>
-        <Text style={styles.text}>{chartTitle}</Text>
-        <Image src={fpsImage} break />
+        <Text style={styles.subtitle}>{chartTitle}</Text>
+        <View style={styles.chartContainer}><Image src={fpsImage} break /></View>
 
-        {topRankArray.length > 0 ? <Text style={styles.sectionsSubTitle}>Dropout Top3:</Text> : null}
+        {topRankArray.length > 0 ? <Text style={styles.sectionsSubTitle}>1.1 Dropout Rank Table</Text> : null}
+        {topRankArray.length > 0 ? <Text style={styles.hint}>The number on the right is the number of frame drops in left</Text> : null}
         {topRankArray.length > 0 ? <Table data={topRankArray}>
+          <TableHeader>
+            <TableCell weighting={0.5} style={styles.tableHeader}>View</TableCell>
+            <TableCell weighting={0.5} style={styles.tableHeader}>Count</TableCell>
+          </TableHeader>
           <TableBody>
-            <DataTableCell style={styles.tableRowLabel} getContent={(r) => r.name} />
-            <DataTableCell style={styles.tableRowValue} getContent={(r) => r.count} />
+            <DataTableCell weighting={0.5} style={styles.tableRowLabel} getContent={(r) => r.name} />
+            <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => r.count} />
           </TableBody>
         </Table> : null}
-        {topRankArray.length <= 0 ? <Text style={styles.text}>{notDroppedFramesDes}</Text> : null}
+        {topRankArray.length <= 0 ? <Text style={styles.subtitle}>{notDroppedFramesDes}</Text> : null}
       </View>
       {topRankArray.length > 0 ?
-        <View style={styles.contentContainer}>
-          <Text style={styles.sectionsTitle}>Section: FPS</Text>
-          <Text style={styles.sectionsSubTitle}>Recommendations for optimisation：</Text>
+        <View>
+          <Text style={styles.sectionsSubTitle}>1.2 Recommendations for optimisation</Text>
           <Text style={styles.text}>{recommendations}</Text>
         </View> : null}
     </View>

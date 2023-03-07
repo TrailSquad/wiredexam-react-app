@@ -137,7 +137,7 @@ const PowerUsageChart = () => {
     const chartImage = getChartsBlobImage(option);
 
     return (
-        <View>
+        <View break>
             <View style={styles.contentContainer}>
                 <Text style={styles.sectionsTitle}>Section: PowerUsage</Text>
                 <Image src={chartImage} break />

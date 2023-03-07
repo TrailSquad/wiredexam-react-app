@@ -28,11 +28,11 @@ const PDFDocument = ({ performanceData }) => (
           Wiredcraft
         </Text>
         {/* 主体内容 */}
-        <FPS />
         <Cover />
+        <FPS />
+        <NetAbstract />
         <LaunchTime />
         <PowerUsageChart />
-        <NetAbstract />
         <LocationUse />
         <MemoryLeak />
         {/* 每页固定页脚 */}
