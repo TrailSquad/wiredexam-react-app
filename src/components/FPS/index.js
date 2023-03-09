@@ -14,7 +14,10 @@ const FPS = () => {
     return null;
   }
   const { fps } = performanceData;
-  const lowFps = fps.filter(item => item.value <= droppedFramesFpsValue)
+  if (!fps) {
+    return null;
+  }
+  const lowFps = fps.filter(item => item.value <= droppedFramesFpsValue);
   const rate = lowFps.length / fps.length;
   const chartTitle = `Dropout Rate：${(rate * 100).toFixed(2)}%， Dropout Count：${lowFps.length}`
   const option = {
@@ -27,7 +30,7 @@ const FPS = () => {
       show: true,
     },
     xAxis: {
-      data: fps.map(e => Date(e.time)),
+      data: fps.map(e => Math.round(e.time)),
       boundaryGap: false,
       axisTick: { show: false },
       axisLine: {
@@ -56,7 +59,7 @@ const FPS = () => {
           fontSize: 12,
         },
         formatter: function (_, index) {
-          return dayjs.unix(fps[index].time).format('HH:mm');
+          return dayjs.unix(Math.round(fps[index].time)).format('HH:mm');
         }
       }
     },
@@ -70,7 +73,7 @@ const FPS = () => {
       {
         data: fps.map(e => e.value),
         type: 'scatter',
-        symbolSize: 5,
+        symbolSize: 3,
         itemStyle: {
           color: (params) => params.value <= droppedFramesFpsValue ? 'red' : '#5470c6'
         }

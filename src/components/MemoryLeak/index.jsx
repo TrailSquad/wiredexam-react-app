@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Text, View, StyleSheet } from '@react-pdf/renderer';
+import { Text, View } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableBody } from '@david.kucsai/react-pdf-table'
@@ -22,39 +22,18 @@ const MemoryLeak = () => {
   return (
     <View break>
       <View style={styles.contentContainer}>
-        <Text style={memoryLeakStyles.leakStylesTitle}>MemoryLeak</Text>
-        <Text style={memoryLeakStyles.leakStylesSubTitle}>MemoryLeak Total Count: {totalCount}</Text>
-        {rank.length > 0 ? <Text style={memoryLeakStyles.leakStylesSubTitle}>Top 3:</Text> : null}
+        <Text style={styles.sectionsTitle}>4 MemoryLeak</Text>
+        <Text style={styles.sectionsSubTitle}>MemoryLeak Total Count: {totalCount}</Text>
+        {rank.length > 0 ? <Text style={styles.sectionsSubTitle}>Top 3:</Text> : null}
         {rank.length > 0 ? <Table data={rank}>
           <TableBody>
-            <DataTableCell style={memoryLeakStyles.row} getContent={(r) => r.info} />
-            <DataTableCell style={memoryLeakStyles.row} getContent={(r) => r.count} />
+            <DataTableCell style={styles.tableRowLabel} getContent={(r) => r.info} />
+            <DataTableCell style={styles.tableRowValue} getContent={(r) => r.count} />
           </TableBody>
         </Table> : null}
       </View>
     </View>
   )
 };
-
-const memoryLeakStyles = StyleSheet.create({
-  leakStylesTitle: styles.title = {
-    textAlign: "left",
-    fontSize: 28,
-    width: "100%",
-    fontWeight: "bold"
-  },
-  leakStylesSubTitle: styles.title = {
-    textAlign: "left",
-    fontSize: 24,
-    width: "100%",
-    fontWeight: "bold",
-    marginTop: 30,
-    marginBottom: 15
-  },
-  row: {
-    margin: '8',
-    textAlign: "center"
-  }
-});
 
 export default MemoryLeak;

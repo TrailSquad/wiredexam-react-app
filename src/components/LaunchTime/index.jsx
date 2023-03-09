@@ -31,7 +31,7 @@ const LaunchTime = () => {
       show: true,
     },
     xAxis: {
-      data: sortData.map(e => dayjs.unix(e.time)),
+      data: sortData.map(e => Math.round(e.time)),
       boundaryGap: false,
       axisTick: { show: false },
       axisLine: {
@@ -60,7 +60,7 @@ const LaunchTime = () => {
           fontSize: 12,
         },
         formatter: function (_, index) {
-          return dayjs.unix(sortData[index].time).format('HH:mm');
+          return dayjs.unix(Math.round(sortData[index].time)).format('HH:mm');
         }
       }
     },
