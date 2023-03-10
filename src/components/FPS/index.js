@@ -117,7 +117,7 @@ const FPS = () => {
   return (
     <View bookmark={{ title: "Chapter 1: FPS", fit: true }} break>
       <View style={styles.contentContainer}>
-        <Text style={styles.sectionsTitle}>1 FPS</Text>
+        <Text style={styles.sectionsTitle} id='link_fps'>1 FPS</Text>
         <Text style={styles.text}>{fpsDes}</Text>
         <Text style={styles.text}>The x-axis represents the time, the y-axis represents the FPS value, blue dots indicate excellent or normal FPS, red dots indicate abnormal FPS</Text>
         <Text style={styles.subtitle}>{chartTitle}</Text>

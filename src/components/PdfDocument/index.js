@@ -1,6 +1,7 @@
 // 实际的pdf内容在这里渲染
 import { Document, Page, Text, Font } from '@react-pdf/renderer';
 import Cover from 'src/components/Cover';
+import Contents from 'src/components/Contents';
 import FPS from 'src/components/FPS';
 import LaunchTime from 'src/components/LaunchTime';
 import NetAbstract from "src/components/NetAbstract"
@@ -29,6 +30,7 @@ const PDFDocument = ({ performanceData }) => (
         </Text>
         {/* 主体内容 */}
         <Cover />
+        <Contents />
         <FPS />
         <PowerUsageChart />
         <NetAbstract />

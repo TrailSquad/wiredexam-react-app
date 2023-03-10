@@ -131,6 +131,35 @@ const styles = StyleSheet.create({
   coverRowRight: {
     width: 250
   },
+  //
+  contentsTitle:{
+    textAlign: "center",
+    fontSize: 32,
+    width: "100%",
+    fontWeight: "bold",
+    fontFamily: "FZHeiti",
+    margin: 16,
+  },
+  contentsItem: {
+    textAlign: "left",
+    fontSize: 20,
+    width: "80%",
+    fontWeight: "bold",
+    fontFamily: "FZHeiti",
+    margin: 8,
+    color: '#000000',
+  },
+  contentsSubItem: {
+    textAlign: "left",
+    fontSize: 20,
+    width: "80%",
+    fontWeight: "bold",
+    fontFamily: "FZHeiti",
+    paddingHorizontal: 24,
+    marginVertical: 8,
+    color: '#000000',
+  },
+  //
   tableTitle: {
     textAlign: "left",
     fontSize: 20,

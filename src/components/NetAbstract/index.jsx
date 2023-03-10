@@ -73,7 +73,7 @@ const NetAbstract = () => {
   return (
     <View>
       <View style={styles.contentContainer}>
-        <Text style={styles.sectionsSubTitle}>2.1 Network Monitoring</Text>
+        <Text style={styles.sectionsSubTitle} id='link_network'>2.1 Network Monitoring</Text>
         <Text style={styles.text}>Network traffic monitoring is to monitor network traffic through continuous collection of network data. By monitoring network traffic, we can find potential problems with too many or too large requests in the application.</Text>
         <Text style={styles.tableTitle}>2.1.1 Network Data Summary:</Text>
         <View style={styles.tableContainer} wrap={false}><Table data={tableData}>

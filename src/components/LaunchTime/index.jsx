@@ -105,7 +105,7 @@ const LaunchTime = () => {
   return (
     <View break>
       <View style={styles.contentContainer}>
-        <Text style={styles.sectionsTitle}>3 LaunchTime</Text>
+        <Text style={styles.sectionsTitle} id='link_launch'>3 LaunchTime</Text>
         <Text style={styles.text}>{launchTimeDes}</Text>
         <Text style={styles.text}>The x-axis represents the time, the y-axis represents the launch time value, blue dots indicate excellent or normal time, red dots indicate abnormal launch time</Text>
         <Text style={styles.subtitle}>{chartTitle}</Text>
