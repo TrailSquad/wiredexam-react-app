@@ -21,8 +21,8 @@ Font.register({
 // 需要使用指定Component组织内容，更多可见 https://react-pdf.org/components
 const PDFDocument = ({ performanceData }) => (
   <Context.Provider value={performanceData}>
-    <Document>
-      <Page size="A4" style={styles.page}>
+    <Document pageMode='useOutlines'>
+      <Page size="A4" style={styles.page} bookmark="APM" >
         {/* 每页固定页头 */}
         <Text style={styles.header} fixed>
           Wiredcraft
@@ -30,10 +30,10 @@ const PDFDocument = ({ performanceData }) => (
         {/* 主体内容 */}
         <Cover />
         <FPS />
-        <NetAbstract />
-        <LaunchTime />
         <PowerUsageChart />
+        <NetAbstract />
         <LocationUse />
+        <LaunchTime />
         <MemoryLeak />
         {/* 每页固定页脚 */}
         <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (

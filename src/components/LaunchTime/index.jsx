@@ -31,7 +31,7 @@ const LaunchTime = () => {
       show: true,
     },
     xAxis: {
-      data: sortData.map(e => dayjs.unix(e.time)),
+      data: sortData.map(e => Math.round(e.time)),
       boundaryGap: false,
       axisTick: { show: false },
       axisLine: {
@@ -60,7 +60,7 @@ const LaunchTime = () => {
           fontSize: 12,
         },
         formatter: function (_, index) {
-          return dayjs.unix(sortData[index].time).format('HH:mm');
+          return dayjs.unix(Math.round(sortData[index].time)).format('HH:mm');
         }
       }
     },
@@ -112,7 +112,7 @@ const LaunchTime = () => {
         <View style={styles.chartContainer}><Image src={launchTimeImage} /></View>
         {launchRank.length > 0 ? <Text style={styles.sectionsSubTitle}>3.1 Rank Table</Text> : null}
         {launchRank.length > 0 ? <Text style={styles.hint}>The number on the right is the cost time of this launch</Text> : null}
-        {launchRank.length > 0 ? <Table data={launchRank}>
+        {launchRank.length > 0 ? <View style={styles.tableContainer} wrap={false}><Table data={launchRank}>
           <TableHeader>
             <TableCell weighting={0.5} style={styles.tableHeader}>Time</TableCell>
             <TableCell weighting={0.5} style={styles.tableHeader}>Cost</TableCell>
@@ -121,7 +121,7 @@ const LaunchTime = () => {
             <DataTableCell weighting={0.5} style={styles.tableRowLabel} getContent={(r) => dayjs.unix(r.time).format('M-D HH:mm')} />
             <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => ((r.launchCost / 1000).toFixed(2) + " seconds")} />
           </TableBody>
-        </Table> : null}
+        </Table></View> : null}
         <Text style={styles.sectionsSubTitle}>3.2 Recommendations for optimisation</Text>
         <Text style={styles.text}>{recommendations}</Text>
       </View>

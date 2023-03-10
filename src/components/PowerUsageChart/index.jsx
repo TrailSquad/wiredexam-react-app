@@ -4,18 +4,19 @@ import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import * as echarts from 'echarts';
 import getChartsBlobImage from 'src/utils/getChartsBlobImage';
+import dayjs from 'dayjs';
 
 const getStartTime = (netTimes, locationTimes) => {
     const netStart = netTimes.length > 0 ? netTimes[0] : 0;
     const locationStart = locationTimes.length > 0 ? locationTimes[0] : 0;
     if (netStart === 0 || locationStart === 0) return Math.max(netStart, locationStart);
-    return Math.min(netStart, locationStart)
+    return Math.round(Math.min(netStart, locationStart))
 }
 
 const getEndTime = (netTimes, locationTimes) => {
     const netEnd = netTimes.length > 0 ? netTimes[netTimes.length - 1] : 0;
     const locationEnd = locationTimes.length > 0 ? locationTimes[locationTimes.length - 1] : 0;
-    return Math.max(netEnd, locationEnd)
+    return Math.round(Math.max(netEnd, locationEnd))
 }
 
 function renderItem(params, api) {
@@ -27,7 +28,7 @@ function renderItem(params, api) {
         {
             x: start[0],
             y: start[1] - height / 2,
-            width: end[0] - start[0],
+            width: (end[0] - start[0]) + 1,
             height: height
         },
         {
@@ -57,66 +58,109 @@ const PowerUsageChart = () => {
     const sortNetworkFlowData = networkFlowData.sort((a, b) => (a.time - b.time));
     const sortLocationData = locationData.sort((a, b) => (a.time - b.time));
 
-    var categories = [{ name: "N", color: "#72b362", data: sortNetworkFlowData }, { name: "G", color: "#dc77dc", data: sortLocationData }];
+    var categories = [{ name: "Network", color: "#72b362", data: sortNetworkFlowData }, { name: "Gps", color: "#dc77dc", data: sortLocationData }];
 
-    const startTime = +new Date(getStartTime(sortNetworkFlowData.map(e => e.time), sortLocationData.map(e => e.time)))
-    const endTime = +new Date(getEndTime(sortNetworkFlowData.map(e => e.time), sortLocationData.map(e => e.time)))
+    const startTime = getStartTime(sortNetworkFlowData.map(e => e.time), sortLocationData.map(e => e.time))
+    const endTime = getEndTime(sortNetworkFlowData.map(e => e.time), sortLocationData.map(e => e.time))
 
     var data = [];
+    data.push({
+        name: "Network",
+        value: [0, startTime, endTime, endTime - startTime],
+        color: "#72b36222"
+    });
+    data.push({
+        name: "Gps",
+        value: [1, startTime, endTime, endTime - startTime],
+        color: "#dc77dc22"
+    });
     categories.forEach(function (category, index) {
-        var baseTime = startTime;
         var datas = category.data;
         for (var i = 0; i < datas.length; i++) {
             var item = datas[i];
             var duration = item.duration;
-            // var time = item.time;
-            // var baseTime = new Date(time)
+            var time = item.time;
+            var beginTime = time
+            var endTime = beginTime + duration
             data.push({
                 name: category.name,
-                value: [index, baseTime, (baseTime += duration) , duration],
+                value: [index, beginTime, endTime, duration],
                 color: category.color
             });
-            baseTime += duration;
         }
     });
 
     const option = {
-        title: {
-            text: `Profile`,
-            textStyle: {
-                fontWeight: "normal",
-                fontSize: 14
-            },
-            left: 'center'
+        grid: {
+            top: '5%',
+            left: '0%',
+            right: '6%',
+            bottom: '3%',
+            containLabel: true,
+            show: true,
+            borderWidth: 0,
         },
-        // dataZoom: [
-        //     {
-        //         type: 'slider',
-        //         filterMode: 'weakFilter',
-        //         showDataShadow: false,
-        //         top: 400,
-        //         labelFormatter: ''
-        //     },
-        //     {
-        //         type: 'inside',
-        //         filterMode: 'weakFilter'
-        //     }
-        // ],
-        // grid: {
-        //     height: 300
-        // },
         xAxis: {
-            min: startTime,
-            // max: endTime,
-            scale: true,
-            interval: (endTime - startTime),
-            axisLabel: {
-                formatter: function (val) {
-                    return Math.max(0, val - startTime) + ' ms';
+            boundaryGap: false,
+            axisTick: { show: false },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: '#ccc',
+                    type: 'solid',
+                },
+            },
+            splitLine: {
+                show: true,
+                interval: '20%',
+                lineStyle: {
+                    color: '#f1f1f100',
+                    type: 'solid',
                 }
-            }
+            },
+            min: startTime,
+            max: endTime,
+            axisLabel: {
+                show: true,
+                margin: 10,
+                interval: 10000,
+                showMinLabel: true,
+                showMaxLabel: true,
+                textStyle: {
+                    color: '#999',
+                    fontSize: 12,
+                },
+                formatter: function (val) {
+                    if (Math.abs((val - startTime)) > 1000 && Math.abs((endTime - val)) > 1000) return "";
+                    return dayjs(val).format('HH:mm');
+                  }
+            },
         },
         yAxis: {
+            axisTick: { show: false },
+            axisLine: {
+                show: true,
+                lineStyle: {
+                    color: '#ccc',
+                    type: 'solid',
+                },
+            },
+            splitLine: {
+                show: true,
+                interval: '20%',
+                lineStyle: {
+                    color: '#f1f1f100',
+                    type: 'solid',
+                }
+            },
+            verticalAlign: 'middle',
+            axisLabel: {
+                rotate: 90,
+                textStyle: {
+                    color: '#999',
+                    fontSize: 12,
+                },
+            },
             data: categories.map(e => e.name)
         },
         series: [
@@ -137,30 +181,15 @@ const PowerUsageChart = () => {
     const chartImage = getChartsBlobImage(option);
 
     return (
-        <View break>
+        <View bookmark={{ title: "Chapter 1: PwerUsage", fit: true }}  break>
             <View style={styles.contentContainer}>
-                <Text style={styles.sectionsTitle}>Section: PowerUsage</Text>
-                <Image src={chartImage} break />
+                <Text style={styles.sectionsTitle}>2 PowerUsage</Text>
+                <Text style={styles.text}>Network requests and GPS location both affect the app's power consumption. The more network requests, the more data requested and the more time spent on requests, the more power is consumed, and the more positioning is used and the longer it is used, the more power is consumed.</Text>
+                <Text style={styles.text}>The x-axis represents time and the y-axis represents the hardware used, with denser lines on the way indicating more frequent use and wider lines indicating longer use</Text>
+                <View style={styles.chartContainer}><Image src={chartImage} /></View>
             </View>
         </View>
     )
 };
-
-// const powerUsageChart = StyleSheet.create({
-//     title: styles.title = {
-//         textAlign: "left",
-//         fontSize: 28,
-//         width: "100%",
-//         fontWeight: "bold"
-//     },
-//     subTitle: styles.title = {
-//         textAlign: "left",
-//         fontSize: 24,
-//         width: "100%",
-//         fontWeight: "bold",
-//         marginTop: 0,
-//         marginBottom: 15
-//     }
-// });
 
 export default PowerUsageChart;

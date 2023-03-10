@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   },
   tableTitle: {
     textAlign: "left",
-    fontSize: 24,
+    fontSize: 20,
     width: "100%",
     fontWeight: "bold",
     marginTop: 40,
