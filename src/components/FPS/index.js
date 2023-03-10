@@ -115,7 +115,7 @@ const FPS = () => {
       e、 Avoid unnecessary re-layout and re-drawing: avoid unnecessary re-layout and re-drawing without affecting the display of the interface
       `
   return (
-    <View break>
+    <View bookmark={{ title: "Chapter 1: FPS", fit: true }} break>
       <View style={styles.contentContainer}>
         <Text style={styles.sectionsTitle}>1 FPS</Text>
         <Text style={styles.text}>{fpsDes}</Text>

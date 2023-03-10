@@ -181,7 +181,7 @@ const PowerUsageChart = () => {
     const chartImage = getChartsBlobImage(option);
 
     return (
-        <View break>
+        <View bookmark={{ title: "Chapter 1: PwerUsage", fit: true }}  break>
             <View style={styles.contentContainer}>
                 <Text style={styles.sectionsTitle}>2 PowerUsage</Text>
                 <Text style={styles.text}>Network requests and GPS location both affect the app's power consumption. The more network requests, the more data requested and the more time spent on requests, the more power is consumed, and the more positioning is used and the longer it is used, the more power is consumed.</Text>

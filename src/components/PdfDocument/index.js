@@ -20,9 +20,9 @@ Font.register({
 
 // 需要使用指定Component组织内容，更多可见 https://react-pdf.org/components
 const PDFDocument = ({ performanceData }) => (
-  <Context.Provider value={{performanceData: true}}>
-    <Document >
-      <Page size="A4" style={styles.page} >
+  <Context.Provider value={performanceData}>
+    <Document pageMode='useOutlines'>
+      <Page size="A4" style={styles.page} bookmark="APM" >
         {/* 每页固定页头 */}
         <Text style={styles.header} fixed>
           Wiredcraft
