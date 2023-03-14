@@ -24,7 +24,7 @@ function App() {
   const [performanceData, setPerformanceData] = useState(
     {
       "appName": 'Confirm',
-      "version": 'iOS 15.0',
+      "deviceInfo": 'iphone 12, iOS 15.0',
       "fps": fpsData,
       "network": networkData,
       "networkFlowData": netFlowData,
