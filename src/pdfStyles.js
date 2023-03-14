@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
     fontFamily: "FZHeiti",
     fontSize: 18,
     marginBottom: 12,
-    marginTop: 16
+    marginTop: 16,
+    width: "100%",
   },
   text: {
     marginBottom: 12,

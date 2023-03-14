@@ -19,7 +19,7 @@ const Cover = () => {
   }
   const {
     appName,
-    version
+    deviceInfo
   } = performanceData;
 
   return (
@@ -29,7 +29,7 @@ const Cover = () => {
       </View>
       <Text style={styles.coverTitle}>App 性能检测报告</Text>
       <CoverRow left="产品名：" right={appName} />
-      <CoverRow left="产品型号：" right={version} />
+      <CoverRow left="产品型号：" right={deviceInfo} />
       <CoverRow left="报告出处：" right="Wiredcraft Mobile Team" />
       <CoverRow left="报告日期：" right={dayjs().format('YYYY-MM-DD')} />
     </View>
