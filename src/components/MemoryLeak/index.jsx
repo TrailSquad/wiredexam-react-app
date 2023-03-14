@@ -22,7 +22,7 @@ const MemoryLeak = () => {
   return (
     <View break>
       <View style={styles.contentContainer}>
-        <Text style={styles.sectionsTitle} id='link_memory'>4 MemoryLeak</Text>
+        <Text style={styles.sectionsTitle} id='link_memory'>4 Memory Leak</Text>
         <Text style={styles.sectionsSubTitle}>MemoryLeak Total Count: {totalCount}</Text>
         {rank.length > 0 ? <Text style={styles.sectionsSubTitle}>Top 3:</Text> : null}
         {rank.length > 0 ? <Table data={rank}>
