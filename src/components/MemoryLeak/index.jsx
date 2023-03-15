@@ -20,9 +20,10 @@ const MemoryLeak = () => {
     0
   );
   return (
-    <View break>
+    <View bookmark={{ title: "Chapter 4: Memory Leak", fit: true }} break>
       <View style={styles.contentContainer}>
-        <Text style={styles.sectionsTitle} id='link_memory'>4 Memory Leak</Text>
+        <Text style={styles.sectionsChapter}>Chapter 4</Text>
+        <Text style={styles.sectionsTitle} id='link_memory'>Memory Leak</Text>
         <Text style={styles.text}>What is Memory Leak? </Text>
         <Text style={styles.text}>Failure to release unused objects from the memory, which means that there are unused objects in the application that the GC cannot clear from memory.</Text>
         <Text style={styles.text}>How does it affect the app?</Text>

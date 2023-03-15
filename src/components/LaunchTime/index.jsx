@@ -103,9 +103,10 @@ const LaunchTime = () => {
         e. delaying the initialisation or loading of some less frequently used functions.
       `
   return (
-    <View break>
+    <View  bookmark={{ title: "Chapter 3: Launch Time", fit: true }} break>
       <View style={styles.contentContainer}>
-        <Text style={styles.sectionsTitle} id='link_launch'>3 Launch Time</Text>
+        <Text style={styles.sectionsChapter}>Chapter 3</Text>
+        <Text style={styles.sectionsTitle} id='link_launch'>Launch Time</Text>
         <Text style={styles.text}>{launchTimeDes}</Text>
         <Text style={styles.text}>The x-axis represents the time, the y-axis represents the launch time value, blue dots indicate excellent or normal time, red dots indicate abnormal launch time</Text>
         <Text style={styles.sectionsSubTitle}>{chartTitle}</Text>

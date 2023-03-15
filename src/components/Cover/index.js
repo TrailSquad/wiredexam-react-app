@@ -23,7 +23,7 @@ const Cover = () => {
   } = performanceData;
 
   return (
-    <View style={styles.pageContainer}>
+    <View style={styles.pageContainer} bookmark={{ title: "Cover", fit: true }}>
       <View style={styles.coverImageContainer}>
         <Image style={styles.coverImage} src={logo} />
       </View>
