@@ -23,8 +23,8 @@ function App() {
   // 此处仅是暂时mock
   const [performanceData, setPerformanceData] = useState(
     {
-      "appName": 'Confirm',
-      "deviceInfo": 'iphone 12, iOS 15.0',
+      "appName": 'CONFIRMED',
+      "deviceInfo": 'iPhone 12, iOS 15.0',
       "fps": fpsData,
       "network": networkData,
       "networkFlowData": netFlowData,

@@ -108,7 +108,7 @@ const LaunchTime = () => {
         <Text style={styles.sectionsTitle} id='link_launch'>3 Launch Time</Text>
         <Text style={styles.text}>{launchTimeDes}</Text>
         <Text style={styles.text}>The x-axis represents the time, the y-axis represents the launch time value, blue dots indicate excellent or normal time, red dots indicate abnormal launch time</Text>
-        <Text style={styles.subtitle}>{chartTitle}</Text>
+        <Text style={styles.sectionsSubTitle}>{chartTitle}</Text>
         <View style={styles.chartContainer}><Image src={launchTimeImage} /></View>
         {launchRank.length > 0 ? <Text style={styles.sectionsSubTitle}>3.1 Rank Table</Text> : null}
         {launchRank.length > 0 ? <Text style={styles.hint}>The number on the right is the cost time of this launch</Text> : null}

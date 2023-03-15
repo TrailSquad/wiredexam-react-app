@@ -168,7 +168,7 @@ const FPS = () => {
         <Text style={styles.text}>{stutteringDes}</Text>
         <Text style={styles.text}>{impactDes}</Text>
         {/* Indicator classification */}
-        <Text style={styles.subtitle}>Indicator classification</Text>
+        <Text style={styles.sectionsSubTitle}>Indicator classification</Text>
         <Text style={styles.text}>{indicatorsDes}</Text>
         <Text style={styles.hint}>The right is the range of indicator for left category</Text>
         <View style={styles.tableContainer} wrap={false}><Table data={indicators}>
@@ -202,7 +202,7 @@ const FPS = () => {
             <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => r.count} />
           </TableBody>
         </Table></View> : null}
-        {topRankArray.length <= 0 ? <Text style={styles.subtitle}>{notDroppedFramesDes}</Text> : null}
+        {topRankArray.length <= 0 ? <Text style={styles.sectionsSubTitle}>{notDroppedFramesDes}</Text> : null}
       </View>
       {topRankArray.length > 0 ?
         <View>
