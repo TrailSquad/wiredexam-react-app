@@ -1,9 +1,7 @@
 import { useContext } from 'react';
 import { Text, View, Link } from '@react-pdf/renderer';
-import logo from 'src/static/wcl.jpg';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
-import { Table, DataTableCell, TableCell, TableBody } from '@david.kucsai/react-pdf-table'
 
 const Contents = () => {
   const performanceData = useContext(Context);
