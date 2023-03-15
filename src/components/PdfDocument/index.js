@@ -11,6 +11,7 @@ import PowerUsageChart from "src/components/PowerUsageChart"
 import FZHei from 'src/fonts/FZHei.ttf';
 import Context from 'src/context';
 import styles from 'src/pdfStyles';
+import Conclusion from '../Conclusion';
 
 // 默认只支持拉丁英文，中文字体一定要注入
 // 方正黑体相对来说非常小（3M），而且是可免费商用无书面授权的字体，因此采用
@@ -31,6 +32,7 @@ const PDFDocument = ({ performanceData }) => (
         {/* 主体内容 */}
         <Cover />
         <Contents />
+        <Conclusion/>
         <FPS />
         <PowerUsageChart />
         <NetAbstract />
