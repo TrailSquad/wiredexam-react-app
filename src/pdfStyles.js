@@ -13,18 +13,17 @@ const contentHeight = 686;
 const styles = StyleSheet.create({
   // 通用样式
   page: {
-    paddingTop: 35,
-    paddingBottom: 65,
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingHorizontal: 35,
+    paddingVertical: 68,
+    paddingHorizontal: 48,
     fontFamily: "FZHeiti",
   },
   header: {
+    position: 'absolute',
     fontSize: 10,
-    marginTop: 20,
-    marginBottom: 20,
+    marginTop: 30,
     textAlign: 'center',
+    left: 0,
+    right: 0,
     color: 'grey',
     fontFamily: "FZHeiti",
   },
