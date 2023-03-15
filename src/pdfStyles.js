@@ -13,24 +13,23 @@ const contentHeight = 686;
 const styles = StyleSheet.create({
   // 通用样式
   page: {
-    paddingTop: 35,
-    paddingBottom: 65,
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingHorizontal: 35,
+    paddingVertical: 68,
+    paddingHorizontal: 48,
     fontFamily: "FZHeiti",
   },
   header: {
-    fontSize: 12,
-    marginTop: 20,
-    marginBottom: 20,
+    position: 'absolute',
+    fontSize: 10,
+    marginTop: 30,
     textAlign: 'center',
+    left: 0,
+    right: 0,
     color: 'grey',
     fontFamily: "FZHeiti",
   },
   sectionsTitle: {
     textAlign: "left",
-    fontSize: 32,
+    fontSize: 28,
     width: "100%",
     fontWeight: "bold",
     fontFamily: "FZHeiti",
@@ -38,34 +37,31 @@ const styles = StyleSheet.create({
   },
   sectionsSubTitle: {
     textAlign: "left",
-    fontSize: 24,
+    fontSize: 20,
     width: "100%",
     fontWeight: "bold",
-    marginTop: 30,
-    marginBottom: 15
-  },
-  title: {
-    fontSize: 24,
-    fontFamily: "FZHeiti",
-    textAlign: 'center',
-  },
-  subtitle: {
-    fontFamily: "FZHeiti",
-    fontSize: 18,
-    marginBottom: 12,
-    marginTop: 16,
-    width: "100%",
+    marginTop: 32,
+    marginBottom: 16
   },
   text: {
-    marginBottom: 12,
+    marginBottom: 14,
     fontSize: 14,
     fontFamily: "FZHeiti",
     width: "100%",
     textAlign: 'left',
   },
+  highlightNumber: {
+    backgroundColor: '#F0FFF0',
+    fontSize: 56,
+    fontFamily: "FZHeiti",
+    padding: 16,
+    maxLines: 1,
+    textOverflow: 'ellipsis',
+    textAlign: 'center',
+  },
   hint: {
     marginBottom: 12,
-    fontSize: 12,
+    fontSize: 10,
     fontFamily: "FZHeiti",
     width: "100%",
     textAlign: 'left',
@@ -76,11 +72,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 100,
   },
   chartContainer: {
-    width: "100%",
+    width: "80%",
+    marginVertical: 24,
   },
   pageNumber: {
     position: 'absolute',
-    fontSize: 12,
+    fontSize: 10,
     bottom: 30,
     left: 0,
     right: 0,
@@ -135,7 +132,7 @@ const styles = StyleSheet.create({
   //
   contentsTitle:{
     textAlign: "center",
-    fontSize: 32,
+    fontSize: 28,
     width: "100%",
     fontWeight: "bold",
     fontFamily: "FZHeiti",
@@ -175,17 +172,17 @@ const styles = StyleSheet.create({
     fontSize: 20,
     width: "100%",
     fontWeight: "bold",
-    marginTop: 40,
+    marginTop: 32,
     marginBottom: 16
   },
   tableHeader: {
-    padding: 8,
+    padding: 4,
     textAlign: "center",
     backgroundColor: '#90EE90',
     fontSize: 10,
   },
   tableRowLabel: {
-    padding: 8,
+    padding: 4,
     textAlign: "left",
     backgroundColor: '#F0FFF0',
     fontSize: 10,
@@ -193,7 +190,7 @@ const styles = StyleSheet.create({
     textOverflow: 'ellipsis',
   },
   tableRowValue: {
-    padding: 8,
+    padding: 4,
     backgroundColor: '#F0FFF0',
     textAlign: "center",
     fontSize: 10,

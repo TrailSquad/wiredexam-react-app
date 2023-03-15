@@ -136,9 +136,7 @@ const FPS = () => {
 
   const fpsDes = `PS (frames per second) is an important metric in app development that measures the smoothness and performance of a app; higher FPS means smoother graphics, while low FPS can lead to problems such as lagging and frame skipping. Therefore, FPS is one of the key metrics to measure a app performance.`;
   const stutteringDes = `If the screen stutters when the user is using the app, the interface will keep flickering, jittering or there will be a noticeable delay.`
-  const impactDes = `
-  The lagging will have a bad impact on the user experience and users will feel uncomfortable.lag may cause app function failure, data loss, security vulnerability and other problems
-  `
+  const impactDes = `The lagging will have a bad impact on the user experience and users will feel uncomfortable.lag may cause app function failure, data loss, security vulnerability and other problems`
 
   const indicators = [
     { name: "Perfect", value: "55 ~ 60" },
@@ -148,8 +146,8 @@ const FPS = () => {
   const indicatorsDes = "The indicators of PFS are divided into three categories as Perfect, Normal and Bad, as follows"
 
   const notDroppedFramesDes = "No frame drops were found in this test, which means the app is running quite smoothly. Keep it up"
-  const recommendations = `
-      a、 optimisation of code: unnecessary code should be minimised and if there is code that can be reused, it should be reused as much as possible
+  const recommendations =
+      `a、 optimisation of code: unnecessary code should be minimised and if there is code that can be reused, it should be reused as much as possible
       
       b、 reducing page elements: reducing the number of elements in a page, such as images, text, animations, etc.
      
@@ -168,7 +166,7 @@ const FPS = () => {
         <Text style={styles.text}>{stutteringDes}</Text>
         <Text style={styles.text}>{impactDes}</Text>
         {/* Indicator classification */}
-        <Text style={styles.subtitle}>Indicator classification</Text>
+        <Text style={styles.sectionsSubTitle}>Indicator classification</Text>
         <Text style={styles.text}>{indicatorsDes}</Text>
         <Text style={styles.hint}>The right is the range of indicator for left category</Text>
         <View style={styles.tableContainer} wrap={false}><Table data={indicators}>
@@ -202,7 +200,7 @@ const FPS = () => {
             <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => r.count} />
           </TableBody>
         </Table></View> : null}
-        {topRankArray.length <= 0 ? <Text style={styles.subtitle}>{notDroppedFramesDes}</Text> : null}
+        {topRankArray.length <= 0 ? <Text style={styles.sectionsSubTitle}>{notDroppedFramesDes}</Text> : null}
       </View>
       {topRankArray.length > 0 ?
         <View>
