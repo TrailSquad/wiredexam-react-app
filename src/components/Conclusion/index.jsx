@@ -4,23 +4,40 @@ import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 
+function formatFPSGrade(number){
+  if( number < 90)
+      return "A"
+  if( number < 80)
+      return "B"
+  if( number <70)
+      return "B"
+  else
+      return "D"
+}
+
 const Conclusion = () => {
   const performanceData = useContext(Context);
   if (!performanceData) {
     return null;
   }
-
+  const { fps } = performanceData;
+  if (!fps) {
+    return null;
+  }
+  const droppedFramesFpsValue = 50
+  const lowFps = fps.filter(item => item.value <= droppedFramesFpsValue);
+  const lowrate = (lowFps.length / fps.length)*100;
   const fpsDes = `FPS is a simple and direct reflection of the app's lag,55-60fps is excellent,50-55 is normal,below 50 is considered to be dropped frames`
-
+  const launchTimeDes = "Launch speed is the first thing users experience about our app, 400-600ms is excellent, 600-800 is normal, more than 800ms is considered to be in need of optimisation";
   const tableData = [
     {
       "categary": "FPS",
       "summary": fpsDes,
-      "value": "A",
+      "value":formatFPSGrade(lowrate),
     },
     {
       "categary": "LaunchTime",
-      "summary": "LaunchTime",
+      "summary": launchTimeDes,
       "value": "A",
     },
     {
@@ -48,7 +65,7 @@ const Conclusion = () => {
         <Table data={tableData}>
           <TableHeader>
             <TableCell weighting={0.2} style={styles.tableHeader}>Category</TableCell>
-            <TableCell weighting={0.6} style={styles.tableHeader}>suggest</TableCell>
+            <TableCell weighting={0.6} style={styles.tableHeader}>Suggest</TableCell>
             <TableCell weighting={0.2} style={styles.tableHeader}>Grade</TableCell>
           </TableHeader>
           <TableBody>
