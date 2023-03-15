@@ -28,7 +28,7 @@ const MemoryLeak = () => {
         <Text style={styles.text}>How does it affect the app?</Text>
         <Text style={styles.text}>The memory resources allocated by the system to a single application are limited, and memory leaks lead to less available memory, resulting in application freezes even crashes.</Text>
         <Text style={styles.sectionsSubTitle}>4.1 Memory leak occurrences</Text>
-        <Text style={styles.text}>The total number of memory leaks that occurred during this test.</Text>
+        <Text style={styles.hint}>The total number of memory leaks that occurred during this test.</Text>
         <Text style={styles.highlightNumber}>{totalCount}</Text>
         {rank.length > 0 ? <Text style={styles.sectionsSubTitle}>4.2 Occurrence Ranking</Text> : null}
         {rank.length > 0 ? <View style={styles.tableContainer} wrap={false}><Table data={rank}>

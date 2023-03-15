@@ -73,7 +73,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 100,
   },
   chartContainer: {
-    width: "100%",
+    width: "80%",
+    marginVertical: 24,
   },
   pageNumber: {
     position: 'absolute',
