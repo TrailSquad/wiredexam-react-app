@@ -150,6 +150,15 @@ const styles = StyleSheet.create({
     margin: 8,
     color: '#000000',
   },
+  contentsPage: {
+    textAlign: "right",
+    fontSize: 20,
+    width: "80%",
+    fontWeight: "bold",
+    fontFamily: "FZHeiti",
+    margin: 8,
+    color: '#000000',
+  },
   contentsSubItem: {
     textAlign: "left",
     fontSize: 20,

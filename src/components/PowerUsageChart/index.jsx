@@ -183,7 +183,7 @@ const PowerUsageChart = () => {
     return (
         <View bookmark={{ title: "Chapter 1: PwerUsage", fit: true }}  break>
             <View style={styles.contentContainer}>
-                <Text style={styles.sectionsTitle} id='link_power'>2 PowerUsage</Text>
+                <Text style={styles.sectionsTitle} id='link_power'>2 Power Usage</Text>
                 <Text style={styles.text}>Network requests and GPS location both affect the app's power consumption. The more network requests, the more data requested and the more time spent on requests, the more power is consumed, and the more positioning is used and the longer it is used, the more power is consumed.</Text>
                 <Text style={styles.text}>The x-axis represents time and the y-axis represents the hardware used, with denser lines on the way indicating more frequent use and wider lines indicating longer use</Text>
                 <View style={styles.chartContainer}><Image src={chartImage} /></View>
