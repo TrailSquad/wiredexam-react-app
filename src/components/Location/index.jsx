@@ -26,7 +26,7 @@ const LocationUse = () => {
     const gpsDes = `GPS positioning is an important factor in the app's power consumption, and the more frequently it is used and the longer it is used the greater the impact on power consumption.`
 
     return (
-        <View>
+        <View bookmark={{ title: "2.2 GPS Positioning", fit: true }}>
             <View style={styles.contentContainer}>
                 <Text style={styles.sectionsSubTitle} id='link_gps'>2.2 GPS Positioning</Text>
                 <Text style={styles.text}>{gpsDes}</Text>

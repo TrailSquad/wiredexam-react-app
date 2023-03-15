@@ -134,7 +134,7 @@ const FPS = () => {
   const sortRankArray = rankArray.sort((a, b) => (b.count - a.count));
   const topRankArray = sortRankArray.length > 3 ? sortRankArray.slice(0, 3) : sortRankArray;
 
-  const fpsDes = `PS (frames per second) is an important metric in app development that measures the smoothness and performance of a app; higher FPS means smoother graphics, while low FPS can lead to problems such as lagging and frame skipping. Therefore, FPS is one of the key metrics to measure a app performance.`;
+  const fpsDes = `FPS (frames per second) is an important metric in app development that measures the smoothness and performance of a app; higher FPS means smoother graphics, while low FPS can lead to problems such as lagging and frame skipping. Therefore, FPS is one of the key metrics to measure a app performance.`;
   const stutteringDes = `If the screen stutters when the user is using the app, the interface will keep flickering, jittering or there will be a noticeable delay.`
   const impactDes = `The lagging will have a bad impact on the user experience and users will feel uncomfortable.lag may cause app function failure, data loss, security vulnerability and other problems`
 
@@ -160,7 +160,8 @@ const FPS = () => {
   return (
     <View bookmark={{ title: "Chapter 1: FPS", fit: true }} break>
       <View style={styles.contentContainer}>
-        <Text style={styles.sectionsTitle} id='link_fps'>1 FPS</Text>
+        <Text style={styles.sectionsChapter}>Chapter 1</Text>
+        <Text style={styles.sectionsTitle} id='link_fps'>FPS</Text>
         {/* Description */}
         <Text style={styles.text}>{fpsDes}</Text>
         <Text style={styles.text}>{stutteringDes}</Text>

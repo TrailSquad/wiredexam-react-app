@@ -71,7 +71,7 @@ const NetAbstract = () => {
   ]
 
   return (
-    <View>
+    <View bookmark={{ title: "2.1 Network Monitoring", fit: true }}>
       <View style={styles.contentContainer}>
         <Text style={styles.sectionsSubTitle} id='link_network'>2.1 Network Monitoring</Text>
         <Text style={styles.text}>Network traffic monitoring is to monitor network traffic through continuous collection of network data. By monitoring network traffic, we can find potential problems with too many or too large requests in the application.</Text>
@@ -100,9 +100,7 @@ const NetAbstract = () => {
             <DataTableCell  weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.value} />
           </TableBody>
         </Table></View> : null}
-      </View>
 
-      <View style={styles.contentContainer}>
         {failReqCountRank.length > 1 ? <Text style={styles.tableTitle}>2.1.3 Ranking of Failed Requests:</Text> : null}
         {failReqCountRank.length > 1 ? <Text style={styles.text}>Failed requests tell us there is a problem with the backend. Discover them and solve them.</Text> : null}
         {failReqCountRank.length > 1 ? <Text style={styles.hint}>The number on the right is the number of requests</Text> : null}
@@ -130,9 +128,7 @@ const NetAbstract = () => {
             <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => formatNumber(r.value)} />
           </TableBody>
         </Table></View> : null}
-      </View>
 
-      <View style={styles.contentContainer}>
         {uploadDataRank.length > 1 ? <Text style={styles.tableTitle}>2.1.5 Uplink Traffic Ranking:</Text> : null}
         {uploadDataRank.length > 1 ? <Text style={styles.text}>Optimizing the request with too large request data can improve the response speed, thereby improving the user experience</Text> : null}
         {uploadDataRank.length > 1 ? <Text style={styles.hint}>The number on the right is the average uplink traffic size of a single request</Text> : null}

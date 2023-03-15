@@ -15,6 +15,19 @@ function formatFPSGrade(number){
       return "D"
 }
 
+function generalMarkMap(score) {
+  if(score >= 100)
+      return "A+"
+  if(score >= 90)
+      return "A"
+  if(score >= 80)
+      return "B"
+  if(score >= 60)
+      return "C"
+  else
+      return "D"
+}
+
 const Conclusion = () => {
   const performanceData = useContext(Context);
   if (!performanceData) {
@@ -29,6 +42,32 @@ const Conclusion = () => {
   const lowrate = (lowFps.length / fps.length)*100;
   const fpsDes = `FPS is a simple and direct reflection of the app's lag,55-60fps is excellent,50-55 is normal,below 50 is considered to be dropped frames`
   const launchTimeDes = "Launch speed is the first thing users experience about our app, 400-600ms is excellent, 600-800 is normal, more than 800ms is considered to be in need of optimisation";
+
+  // Power Usage
+  const { network } = performanceData;
+  const { locationData } = performanceData;
+  var networkMark = network.requestSucsessRate + (network.summaryRequestCount - network.slowRequestCount) / network.summaryRequestCount;
+  var locationMark = 100; // TODO
+  var powerUsageMark = (networkMark + locationMark) / 2;
+  var powerUsageDes = "Power consumption scoring is based on a number of subcategories.";
+
+  // Memory Leak
+  const { memoryLeakData } = performanceData;
+  var memoryLeakMark;
+  var memoryLeakDes = "The memory leak score is mainly based on the number of detected memory leaks. This test detected " + memoryLeakData.length + " memory leaks, and it is recommended to fix them before going live.";
+  if(memoryLeakData.length <= 0) {
+    memoryLeakMark = 100
+    memoryLeakDes = "The memory leak score is mainly based on the number of detected memory leaks. This monitoring found no memory leaks.";
+  } else if(memoryLeakData.length <= 1) {
+    memoryLeakMark = 90
+  } else if(memoryLeakData.length <= 3) {
+    memoryLeakMark = 80
+  } else if(memoryLeakData.length <= 5) {
+    memoryLeakMark = 60
+  } else {
+    memoryLeakMark = 0
+  }
+
   const tableData = [
     {
       "categary": "FPS",
@@ -36,19 +75,19 @@ const Conclusion = () => {
       "value":formatFPSGrade(lowrate),
     },
     {
-      "categary": "LaunchTime",
+      "categary": "Launch Time",
       "summary": launchTimeDes,
       "value": "A",
     },
     {
-      "categary": "PwerUsage",
-      "summary": "",
-      "value": "A",
+      "categary": "Power Usage",
+      "summary": powerUsageDes,
+      "value": generalMarkMap(powerUsageMark),
     },
     {
-      "categary": "MemoryLeak",
-      "summary": "",
-      "value": "A",
+      "categary": "Memory Leak",
+      "summary": memoryLeakDes,
+      "value": generalMarkMap(memoryLeakMark),
     },
   ]
   // const counclusionImage = getChartsBlobImage(option);
@@ -58,10 +97,11 @@ const Conclusion = () => {
 
   return (
 
-    <View break>
+    <View bookmark={{ title: "Overview", fit: true }} break>
       <View style={styles.contentContainer}>
-        <Text style={conclusionStyles.leakStylesTitle}>Conclusion</Text>
-        <Text style={styles.sectionsSubTitle}>{des}</Text>
+        <Text style={styles.sectionsChapter} id='link_overview'>Overview</Text>
+        <Text style={styles.sectionsTitle}> </Text>
+        <Text style={styles.text}>{des}</Text>
         <Table data={tableData}>
           <TableHeader>
             <TableCell weighting={0.2} style={styles.tableHeader}>Category</TableCell>
@@ -69,8 +109,8 @@ const Conclusion = () => {
             <TableCell weighting={0.2} style={styles.tableHeader}>Grade</TableCell>
           </TableHeader>
           <TableBody>
-            <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.categary} />
-            <DataTableCell weighting={0.6} getContent={(r) => r.summary} />
+            <DataTableCell weighting={0.2} style={styles.tableRowLabel} getContent={(r) => r.categary} />
+            <DataTableCell weighting={0.6} style={styles.tableRowLabel} getContent={(r) => r.summary} />
             <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.value} />
           </TableBody>
         </Table>
@@ -80,12 +120,6 @@ const Conclusion = () => {
 };
 
 const conclusionStyles = StyleSheet.create({
-  leakStylesTitle: styles.title = {
-    textAlign: "left",
-    fontSize: 28,
-    width: "100%",
-    fontWeight: "bold"
-  },
   leakStylesSubTitle: styles.title = {
     textAlign: "left",
     fontSize: 24,
