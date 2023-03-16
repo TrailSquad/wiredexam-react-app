@@ -280,12 +280,12 @@ const PowerUsageChart = () => {
                 <Text style={styles.text}>{impactOfPowerUsage}</Text>
                 <View style={styles.chartContainer}><Image src={chartImage} /></View>
                 <View style={styles.chartDesContainer}>
-                <Text style={styles.hit}>The x-axis represents time and the y-axis represents the hardware used, with denser lines on the way indicating more frequent use and wider lines indicating longer use</Text>
+                <Text style={styles.hint}>The x-axis represents time and the y-axis represents the hardware used, with denser lines on the way indicating more frequent use and wider lines indicating longer use</Text>
                 </View>
                 <View style={styles.chartContainer}><Image src={countPieImage} /></View>
                 <View style={styles.chartContainer}><Image src={timePieImage} /></View>
                 <View style={styles.chartDesContainer}>
-                <Text style={styles.hit}>{dataSourceDes}</Text>
+                <Text style={styles.hint}>{dataSourceDes}</Text>
                 </View>
             </View>
         </View>
