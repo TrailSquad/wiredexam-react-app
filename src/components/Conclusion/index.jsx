@@ -4,28 +4,43 @@ import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 
-function formatFPSGrade(number){
-  if( number < 90)
-      return "A"
-  if( number < 80)
-      return "B"
-  if( number <70)
-      return "B"
+function formatFPSGrade(number) {
+  if (number >= 100)
+    return "A+"
+  if (number < 90)
+    return "A"
+  if (number < 80)
+    return "B"
+  if (number < 70)
+    return "B"
   else
-      return "D"
+    return "D"
 }
 
 function generalMarkMap(score) {
-  if(score >= 100)
-      return "A+"
-  if(score >= 90)
-      return "A"
-  if(score >= 80)
-      return "B"
-  if(score >= 60)
-      return "C"
+  if (score >= 100)
+    return "A+"
+  if (score >= 90)
+    return "A"
+  if (score >= 80)
+    return "B"
+  if (score >= 60)
+    return "C"
   else
-      return "D"
+    return "D"
+}
+
+function formatLaunchTimeGrade(average) {
+  if (average <= 0.6)
+    return "A+"
+  if (average <= 0.8)
+    return "A"
+  if (average <= 0.9)
+    return "B"
+  if (average <= 1)
+    return "C"
+  else
+    return "D"
 }
 
 const Conclusion = () => {
@@ -37,11 +52,21 @@ const Conclusion = () => {
   if (!fps) {
     return null;
   }
+
+  //FPS 
   const droppedFramesFpsValue = 50
   const lowFps = fps.filter(item => item.value <= droppedFramesFpsValue);
-  const lowrate = (lowFps.length / fps.length)*100;
+  const lowrate = (lowFps.length / fps.length) * 100;
   const fpsDes = `FPS is a simple and direct reflection of the app's lag,55-60fps is excellent,50-55 is normal,below 50 is considered to be dropped frames`
+
+  //launchTimeDes
   const launchTimeDes = "Launch speed is the first thing users experience about our app, 400-600ms is excellent, 600-800 is normal, more than 800ms is considered to be in need of optimisation";
+  const { launchTimeData } = performanceData;
+  const sortData = launchTimeData.sort((a, b) => (a.time - b.time));
+  const averageCost = sortData.reduce(function (sum, item) {
+    return sum + item.launchCost;
+  }, 0) / sortData.length
+  const launchAverage = (averageCost / 1000).toFixed(2)
 
   // Power Usage
   const { network } = performanceData;
@@ -55,14 +80,14 @@ const Conclusion = () => {
   const { memoryLeakData } = performanceData;
   var memoryLeakMark;
   var memoryLeakDes = "The memory leak score is mainly based on the number of detected memory leaks. This test detected " + memoryLeakData.length + " memory leaks, and it is recommended to fix them before going live.";
-  if(memoryLeakData.length <= 0) {
+  if (memoryLeakData.length <= 0) {
     memoryLeakMark = 100
     memoryLeakDes = "The memory leak score is mainly based on the number of detected memory leaks. This monitoring found no memory leaks.";
-  } else if(memoryLeakData.length <= 1) {
+  } else if (memoryLeakData.length <= 1) {
     memoryLeakMark = 90
-  } else if(memoryLeakData.length <= 3) {
+  } else if (memoryLeakData.length <= 3) {
     memoryLeakMark = 80
-  } else if(memoryLeakData.length <= 5) {
+  } else if (memoryLeakData.length <= 5) {
     memoryLeakMark = 60
   } else {
     memoryLeakMark = 0
@@ -72,12 +97,12 @@ const Conclusion = () => {
     {
       "categary": "FPS",
       "summary": fpsDes,
-      "value":formatFPSGrade(lowrate),
+      "value": formatFPSGrade(lowrate),
     },
     {
       "categary": "Launch Time",
       "summary": launchTimeDes,
-      "value": "A",
+      "value": formatLaunchTimeGrade(launchAverage),
     },
     {
       "categary": "Power Usage",
