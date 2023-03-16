@@ -26,10 +26,10 @@ const Contents = () => {
           <Text style={styles.contentsPage}>3</Text>
           <Text style={styles.contentsPage}>4</Text>
           <Text style={styles.contentsPage}>7</Text>
-          <Text style={styles.contentsPage}>7</Text>
-          <Text style={styles.contentsPage}>10</Text>
-          <Text style={styles.contentsPage}>11</Text>
+          <Text style={styles.contentsPage}>9</Text>
+          <Text style={styles.contentsPage}>12</Text>
           <Text style={styles.contentsPage}>13</Text>
+          <Text style={styles.contentsPage}>15</Text>
         </View>
       </View>
     </View>

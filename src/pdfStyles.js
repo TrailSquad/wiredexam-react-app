@@ -239,8 +239,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#F0FFF0',
     textAlign: "center",
     fontSize: 10,
-  }
+  },
   // FPS
+  // Back Cover
+  backCoverTitle: {
+    position: 'absolute',
+    bottom: 0,
+    fontSize: 10,
+  },
+  backCoverImageContainer: {
+    position: 'absolute',
+    bottom: 32,
+    alignItems: 'center',
+  },
+  backCoverImage: {
+    width: 70,
+    height: 70
+  },
 });
 
 export default styles;
