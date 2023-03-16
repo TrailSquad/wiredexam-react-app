@@ -146,17 +146,17 @@ const FPS = () => {
   const indicatorsDes = "The indicators of PFS are divided into three categories as Perfect, Normal and Bad, as follows"
 
   const notDroppedFramesDes = "No frame drops were found in this test, which means the app is running quite smoothly. Keep it up"
-  const recommendations =
-      `a、 optimisation of code: unnecessary code should be minimised and if there is code that can be reused, it should be reused as much as possible
-      
-      b、 reducing page elements: reducing the number of elements in a page, such as images, text, animations, etc.
-     
-      c、 rational use of layout: use a rational layout to reduce rendering time.
-      
-      d、 optimise image resources: optimise the size and format of image resources to avoid excessively large images taking too long to load.
-      
-      e、 Avoid unnecessary re-layout and re-drawing: avoid unnecessary re-layout and re-drawing without affecting the display of the interface
-      `
+  const recommendations = [
+    `a、 optimisation of code: unnecessary code should be minimised and if there is code that can be reused, it should be reused as much as possible.`,
+
+    `b、 reducing page elements: reducing the number of elements in a page, such as images, text, animations, etc.`,
+
+    `c、 rational use of layout: use a rational layout to reduce rendering time.`,
+
+    `d、 optimise image resources: optimise the size and format of image resources to avoid excessively large images taking too long to load.`,
+
+    `e、 Avoid unnecessary re-layout and re-drawing: avoid unnecessary re-layout and re-drawing without affecting the display of the interface .`
+  ]
   return (
     <View bookmark={{ title: "Chapter 1: FPS", fit: true }} break>
       <View style={styles.contentContainer}>
@@ -206,7 +206,14 @@ const FPS = () => {
       {topRankArray.length > 0 ?
         <View>
           <Text style={styles.sectionsSubTitle}>1.2 Recommendations for optimisation</Text>
-          <Text style={styles.text}>{recommendations}</Text>
+          <Table data={recommendations}>
+            <TableHeader>
+              <TableCell weighting={1} style={styles.tableHeader}>Optimisation</TableCell>
+            </TableHeader>
+            <TableBody>
+              <DataTableCell weighting={1} style={styles.tableRowLabel} getContent={(r) => r} />
+            </TableBody>
+          </Table>
         </View> : null}
     </View>
   );
