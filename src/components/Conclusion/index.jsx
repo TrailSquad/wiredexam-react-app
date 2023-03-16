@@ -3,7 +3,7 @@ import { Text, View } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
-import RichText from 'src/components/RichText';
+import RichText from 'src/components/customize/RichText';
 
 function generalMarkMap(score) {
   if (score >= 100)
@@ -73,13 +73,13 @@ const Conclusion = () => {
   const lowRate = (fps.length - lowFps.length) * 100 / fps.length;
   // const fpsDes = `FPS is a simple and direct reflection of the app's lag,55-60fps is excellent,50-55 is normal,below 50 is considered to be dropped frames`
   const fpsDes = [
-    {"text": "FPS is a simple and direct reflection of the app's lag,", "isRich": false},
+    {"text": "FPS is a simple and direct reflection of the app's lag, ", "isRich": false},
     {"text": "55-60fps", "isRich": true},
-    {"text": "is excellent,", "isRich": false},
+    {"text": " is excellent, ", "isRich": false},
     {"text": "50-55", "isRich": true},
-    {"text": "is normal,below", "isRich": false},
+    {"text": " is normal,below ", "isRich": false},
     {"text": "50", "isRich": true},
-    {"text": "is considered to be dropped frames", "isRich": false},
+    {"text": " is considered to be dropped frames.", "isRich": false},
   ]
 
   //launchTimeDes
@@ -88,7 +88,7 @@ const Conclusion = () => {
     {"text": "Launch speed is the first thing users experience about our app, ", "isRich": false},
     {"text": "400-600ms", "isRich": true},
     {"text": " is excellent, ", "isRich": false},
-    {"text": "600-800", "isRich": true},
+    {"text": "600-800ms", "isRich": true},
     {"text": " is normal, more than ", "isRich": false},
     {"text": "800ms", "isRich": true},
     {"text": " is considered to be in need of optimisation", "isRich": false},
