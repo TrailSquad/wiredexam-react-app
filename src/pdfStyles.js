@@ -225,20 +225,20 @@ const styles = StyleSheet.create({
   tableHeader: {
     padding: 4,
     textAlign: "center",
-    backgroundColor: '#90EE90',
+    backgroundColor: '#727171',
     fontSize: 10,
   },
   tableRowLabel: {
     padding: 4,
     textAlign: "left",
-    backgroundColor: '#F0FFF0',
+    backgroundColor: '#DCDDDD',
     fontSize: 10,
     maxLines: 1,
     textOverflow: 'ellipsis',
   },
   tableRowValue: {
     padding: 4,
-    backgroundColor: '#F0FFF0',
+    backgroundColor: '#DCDDDD',
     textAlign: "center",
     fontSize: 10,
   },

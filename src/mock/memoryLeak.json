@@ -5,14 +5,14 @@
     },
     {
         "count": 1,
-        "info": "className: DoraemonKit.APMReportViewController\nviewStack:DoraemonKit.APMReportViewController\nretainCycle:    \"-> __presentedViewController -> DoraemonKit.APMReportViewController \",    \"-> _dropShadowView -> UIDropShadowView \",    \"-> _gestureRecognizers -> __NSArrayM \",    \"-> UIPanGestureRecognizer \",    \"-> _movingTouches -> __NSArrayM \",    \"-> UITouch \",    \"-> __windowServerHitTestWindow -> UIWindow \",    \"-> _rootViewController -> NSKVONotifying_Staging.MainTabBarViewController \",    \"-> _presentationController -> _UIPageSheetPresentationController \",    \"-> __layoutInfo -> _UISheetLayoutInfo \""
+        "info": "className: DoraemonKit.APMReportViewController\nviewStack:DoraemonKit.APMReportViewController\nretainCycle:"
+    },
+    {
+        "count": 3,
+        "info": "className: DoraemonMLeaksFinderListViewController\nviewStack:DoraemonMLeaksFinderListViewController\nretainCycle:"
     },
     {
         "count": 1,
-        "info": "className: DoraemonMLeaksFinderListViewController\nviewStack:DoraemonMLeaksFinderListViewController\nretainCycle:    \"-> DoraemonMLeaksFinderListViewController.6__CN.SENSORSDATA \",    \"-> _block -> __NSMallocBlock__ \""
-    },
-    {
-        "count": 1,
-        "info": "className: DoraemonMLeaksFinderListViewController\nviewStack:DoraemonMLeaksFinderListViewController\nretainCycle:    \"-> DoraemonMLeaksFinderListViewController.8__CN.SENSORSDATA \",    \"-> _block -> __NSMallocBlock__ \""
+        "info": "className: DoraemonMLeaksFinderListViewController\nviewStack:DoraemonMLeaksFinderListViewController\nretainCycle:"
     }
 ]
