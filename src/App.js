@@ -2,7 +2,7 @@
 // 解决方法 https://github.com/diegomura/react-pdf/issues/1113#issuecomment-781053667
 
 import { useState } from 'react';
-import { BlobProvider } from '@react-pdf/renderer';
+import { BlobProvider, PDFDownloadLink } from '@react-pdf/renderer';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import PDFDocument from 'src/components/PdfDocument/index';
 import { isAndroid } from 'src/jsBridge';
@@ -70,15 +70,6 @@ function App() {
         })
       }
     });
-
-    // window.setupWebViewJavascriptBridge(bridge => {
-    //   blob.arrayBuffer().then(buffer => {
-    //     bridge.callHandler('lookPdf', { 'pdfData': buffer }, function (response) {
-    //       console.log('JS got response', response)
-    //     })
-    //   });
-    // });
-
   }
 
   const document = <PDFDocument performanceData={performanceData} />;
@@ -110,31 +101,24 @@ function App() {
       </div>
       {/* 下载 */}
       <div className='download-container'>
-        <BlobProvider
+        {/* <BlobProvider
           document={document}>
           {({ blob, url, loading }) => {
             return loading ? 'loading' : (
               <button onClick={() => goDownload(blob)}>Dowload and Shared</button>
             )
           }}
-        </BlobProvider>
-        {/* <PDFDownloadLink
+        </BlobProvider> */}
+        <PDFDownloadLink
           style={{ color: "#fff" }}
           document={document}>
           {({ url, loading }) =>
-            <Button onClick={()=>callNative({"pdfurl": url})} >{loading ? 'Loading' : '下载'}</Button>
+           (loading ? 'Loading' : '下载')
           }
-        </PDFDownloadLink> */}
+        </PDFDownloadLink>
       </div>
     </div>
   );
 }
 
 export default App;
-
-// <Button style={{ color: "red" }}
-            //   onClick={() => {
-            //     callNative({ "pdf rul": url })
-            //   }}
-            // >下载
-            // </Button>

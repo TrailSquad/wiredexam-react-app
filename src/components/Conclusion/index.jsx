@@ -3,6 +3,7 @@ import { Text, View, StyleSheet } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
+import RichText from 'src/components/RichText';
 
 function formatFPSGrade(number) {
   if (number >= 100)
@@ -57,10 +58,28 @@ const Conclusion = () => {
   const droppedFramesFpsValue = 50
   const lowFps = fps.filter(item => item.value <= droppedFramesFpsValue);
   const lowrate = (lowFps.length / fps.length) * 100;
-  const fpsDes = `FPS is a simple and direct reflection of the app's lag,55-60fps is excellent,50-55 is normal,below 50 is considered to be dropped frames`
+  // const fpsDes = `FPS is a simple and direct reflection of the app's lag,55-60fps is excellent,50-55 is normal,below 50 is considered to be dropped frames`
+  const fpsDes = [
+    {"text": "FPS is a simple and direct reflection of the app's lag,", "isRich": false},
+    {"text": "55-60fps", "isRich": true},
+    {"text": "is excellent,", "isRich": false},
+    {"text": "50-55", "isRich": true},
+    {"text": "is normal,below", "isRich": false},
+    {"text": "50", "isRich": true},
+    {"text": "is considered to be dropped frames", "isRich": false},
+  ]
 
   //launchTimeDes
-  const launchTimeDes = "Launch speed is the first thing users experience about our app, 400-600ms is excellent, 600-800 is normal, more than 800ms is considered to be in need of optimisation";
+  // const launchTimeDes = "Launch speed is the first thing users experience about our app, 400-600ms is excellent, 600-800 is normal, more than 800ms is considered to be in need of optimisation";
+  const launchTimeDes = [
+    {"text": "Launch speed is the first thing users experience about our app, ", "isRich": false},
+    {"text": "400-600ms", "isRich": true},
+    {"text": " is excellent, ", "isRich": false},
+    {"text": "600-800", "isRich": true},
+    {"text": " is normal, more than ", "isRich": false},
+    {"text": "800ms", "isRich": true},
+    {"text": " is considered to be in need of optimisation", "isRich": false},
+  ]
   const { launchTimeData } = performanceData;
   const sortData = launchTimeData.sort((a, b) => (a.time - b.time));
   const averageCost = sortData.reduce(function (sum, item) {
@@ -74,15 +93,25 @@ const Conclusion = () => {
   var networkMark = network.requestSucsessRate + (network.summaryRequestCount - network.slowRequestCount) / network.summaryRequestCount;
   var locationMark = 100; // TODO
   var powerUsageMark = (networkMark + locationMark) / 2;
-  var powerUsageDes = "Power consumption scoring is based on a number of subcategories.";
+  var powerUsageDes = [
+    {"text": "Power consumption scoring is based on a number of subcategories.", "isRich": false},
+  ]
 
   // Memory Leak
   const { memoryLeakData } = performanceData;
   var memoryLeakMark;
-  var memoryLeakDes = "The memory leak score is mainly based on the number of detected memory leaks. This test detected " + memoryLeakData.length + " memory leaks, and it is recommended to fix them before going live.";
+  // var memoryLeakDes = "The memory leak score is mainly based on the number of detected memory leaks. This test detected " + memoryLeakData.length + " memory leaks, and it is recommended to fix them before going live.";
+  var memoryLeakDes = [
+    {"text": "The memory leak score is mainly based on the number of detected memory leaks. This test detected ", "isRich": false},
+    {"text": memoryLeakData.length , "isRich": true},
+    {"text": " memory leaks, and it is recommended to fix them before going live.", "isRich": false},
+  ]
   if (memoryLeakData.length <= 0) {
     memoryLeakMark = 100
     memoryLeakDes = "The memory leak score is mainly based on the number of detected memory leaks. This monitoring found no memory leaks.";
+    memoryLeakDes = [
+      {"text": "The memory leak score is mainly based on the number of detected memory leaks. This monitoring found no memory leaks.", "isRich": false},
+    ]
   } else if (memoryLeakData.length <= 1) {
     memoryLeakMark = 90
   } else if (memoryLeakData.length <= 3) {
@@ -135,7 +164,7 @@ const Conclusion = () => {
           </TableHeader>
           <TableBody>
             <DataTableCell weighting={0.2} style={styles.tableRowLabel} getContent={(r) => r.categary} />
-            <DataTableCell weighting={0.6} style={styles.tableRowLabel} getContent={(r) => r.summary} />
+            <DataTableCell weighting={0.6} style={styles.tableRowLabel} getContent={(r) => <RichText richItems={r.summary} />} />
             <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.value} />
           </TableBody>
         </Table>

@@ -193,12 +193,12 @@ const FPS = () => {
         {topRankArray.length > 0 ? <Text style={styles.hint}>The number on the right is the number of frame drops in left</Text> : null}
         {topRankArray.length > 0 ? <View style={styles.tableContainer} wrap={false}><Table data={topRankArray}>
           <TableHeader>
-            <TableCell weighting={0.5} style={styles.tableHeader}>View</TableCell>
-            <TableCell weighting={0.5} style={styles.tableHeader}>Count</TableCell>
+            <TableCell weighting={0.8} style={styles.tableHeader}>View</TableCell>
+            <TableCell weighting={0.2} style={styles.tableHeader}>Count</TableCell>
           </TableHeader>
           <TableBody>
-            <DataTableCell weighting={0.5} style={styles.tableRowLabel} getContent={(r) => r.name} />
-            <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => r.count} />
+            <DataTableCell weighting={0.8} style={styles.tableRowLabel} getContent={(r) => r.name} />
+            <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.count} />
           </TableBody>
         </Table></View> : null}
         {topRankArray.length <= 0 ? <Text style={styles.sectionsSubTitle}>{notDroppedFramesDes}</Text> : null}
