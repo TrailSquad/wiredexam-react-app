@@ -182,9 +182,13 @@ const FPS = () => {
         </Table></View>
         {/* chart */}
         <View style={styles.chartContainer}><Image src={fpsImage} break /></View>
-        <Text style={styles.text}>The x-axis represents the time, the y-axis represents the FPS value, blue dots indicate excellent or normal FPS, red dots indicate abnormal FPS</Text>
+        <View style={styles.chartDesContainer}>
+          <Text style={styles.hint}>The x-axis represents the time, the y-axis represents the FPS value, blue dots indicate excellent or normal FPS, red dots indicate abnormal FPS</Text>
+        </View>
         <View style={styles.chartContainer}><Image src={fpsPieImage} break /></View>
-        <Text style={styles.text}>{chartTitle}</Text>
+        <View style={styles.chartDesContainer}>
+        <Text style={styles.hint}>{chartTitle}</Text>
+        </View>
         {/* data source description */}
         {dataSourceDes === undefined ? <></> : <Text style={styles.text}>{dataSourceDes}</Text>}
         {/* Rank Table */}

@@ -110,20 +110,17 @@ const LaunchTime = () => {
     const endDate = dayjs.unix(Math.round(sortTimeObjs[sortTimeObjs.length - 1].time)).format('MM/DD HH:mm');
     dataSourceDes = `The above data is derived from every launch the app between ${beginDate} and ${endDate}`
   }
-
-  const recommendations = `a. minimizing the loading of resources at startup, such as images, audio, video, etc.
-  const launchTimeDes = "Launch speed is the first thing users experience about our app, 400-600ms is excellent, 600-800 is normal, more than 800ms is considered to be in need of optimisation";
   const recommendations =
     [
       `a. minimizing the loading of resources at startup, such as images, audio, video, etc.`,
 
-        `b. optimising the code logic at startup to minimise unnecessary judgements and loops.`,
+      `b. optimising the code logic at startup to minimise unnecessary judgements and loops.`,
 
-        `c. running some time-consuming tasks in the background, such as database queries, network requests, etc.`,
+      `c. running some time-consuming tasks in the background, such as database queries, network requests, etc.`,
 
-        `d. using multi-process or multi-threaded approaches to achieve parallel processing.`,
+      `d. using multi-process or multi-threaded approaches to achieve parallel processing.`,
 
-        `e. delaying the initialisation or loading of some less frequently used functions.`
+      `e. delaying the initialisation or loading of some less frequently used functions.`
     ]
   return (
     <View bookmark={{ title: "Chapter 3: Launch Time", fit: true }} break>
@@ -152,7 +149,9 @@ const LaunchTime = () => {
         </Table></View>
         {/* chart and descraption */}
         <View style={styles.chartContainer}><Image src={launchTimeImage} /></View>
-        <View style={styles.chartDesContainer}><Text style={styles.hint}>The x-axis represents the time, the y-axis represents the launch time value, blue dots indicate excellent or normal time, red dots indicate abnormal launch time</Text></View>
+        <View style={styles.chartDesContainer}>
+          <Text style={styles.hint}>The x-axis represents the time, the y-axis represents the launch time value, blue dots indicate excellent or normal time, red dots indicate abnormal launch time</Text>
+        </View>
         {/* averageCost */}
         <Text style={styles.subTitle}>{chartTitle}</Text>
         <Text style={styles.highlightNumber}>{`${(averageCost / 1000).toFixed(2)} s`}</Text>
@@ -173,13 +172,13 @@ const LaunchTime = () => {
         </Table></View> : null}
         <Text style={styles.sectionsSubTitle}>3.2 Recommendations for optimisation</Text>
         <Table data={recommendations}>
-            <TableHeader>
-              <TableCell weighting={1} style={styles.tableHeader}>Optimisation</TableCell>
-            </TableHeader>
-            <TableBody>
-              <DataTableCell weighting={1} style={styles.tableRowLabel} getContent={(r) => r} />
-            </TableBody>
-          </Table>
+          <TableHeader>
+            <TableCell weighting={1} style={styles.tableHeader}>Optimisation</TableCell>
+          </TableHeader>
+          <TableBody>
+            <DataTableCell weighting={1} style={styles.tableRowLabel} getContent={(r) => r} />
+          </TableBody>
+        </Table>
       </View>
     </View>
   )
