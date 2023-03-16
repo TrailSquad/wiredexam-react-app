@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
     maxLines: 1,
     textOverflow: 'ellipsis',
     textAlign: 'center',
+    margin: 24,
   },
   hint: {
     marginBottom: 12,
@@ -133,9 +134,9 @@ const styles = StyleSheet.create({
   },
   // cover
   coverTitle: {
-    fontSize: 28,
+    fontSize: 40,
     marginTop: 60,
-    marginBottom: 30
+    marginBottom: 60
   },
   coverImageContainer: {
     display: 'flex',
@@ -154,10 +155,12 @@ const styles = StyleSheet.create({
   },
   coverRowLeft: {
     width: 150,
-    textAlign: 'right'
+    fontSize: 14,
+    textAlign: 'right',
   },
   coverRowRight: {
-    width: 250
+    width: 250,
+    fontSize: 14,
   },
   //
   contentsTitle:{
@@ -172,29 +175,42 @@ const styles = StyleSheet.create({
   contentsItem: {
     textAlign: "left",
     fontSize: 20,
-    width: "80%",
+    height: 24,
+    width: "100%",
     fontWeight: "bold",
     fontFamily: "FZHeiti",
+    maxLines: 1,
+    textOverflow: 'clip',
     margin: 8,
     color: '#000000',
-  },
-  contentsPage: {
-    textAlign: "right",
-    fontSize: 20,
-    width: "80%",
-    fontWeight: "bold",
-    fontFamily: "FZHeiti",
-    margin: 8,
-    color: '#000000',
+    textDecoration: 'none',
+    overflow: 'hidden',
   },
   contentsSubItem: {
     textAlign: "left",
     fontSize: 20,
-    width: "80%",
+    height: 24,
+    width: "100%",
     fontWeight: "bold",
     fontFamily: "FZHeiti",
-    paddingHorizontal: 24,
-    marginVertical: 8,
+    maxLines: 1,
+    textOverflow: 'clip',
+    paddingLeft: 24,
+    margin: 8,
+    color: '#000000',
+    textDecoration: 'none',
+    overflow: 'hidden',
+  },
+  contentsPage: {
+    textAlign: "right",
+    fontSize: 20,
+    height: 24,
+    width: "100%",
+    fontWeight: "bold",
+    fontFamily: "FZHeiti",
+    maxLines: 1,
+    textOverflow: 'ellipsis',
+    margin: 8,
     color: '#000000',
   },
   //
@@ -225,8 +241,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#F0FFF0',
     textAlign: "center",
     fontSize: 10,
-  }
+  },
   // FPS
+  // Back Cover
+  backCoverTitle: {
+    position: 'absolute',
+    bottom: 0,
+    fontSize: 10,
+  },
+  backCoverImageContainer: {
+    position: 'absolute',
+    bottom: 32,
+    alignItems: 'center',
+  },
+  backCoverImage: {
+    width: 70,
+    height: 70
+  },
 });
 
 export default styles;

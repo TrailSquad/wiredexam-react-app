@@ -1,0 +1,16 @@
+import { Text, Image, View } from '@react-pdf/renderer';
+import qrcode from 'src/static/qrcode.png';
+import styles from 'src/pdfStyles';
+
+const BackCover = () => {
+  return (
+    <View style={styles.pageContainer} bookmark={{ title: "BackCover", fit: true }} break>
+      <View style={styles.backCoverImageContainer}>
+        <Image style={styles.backCoverImage} src={qrcode} />
+      </View>
+      <Text style={styles.backCoverTitle}>Copyright © 2023 Wiredcraft Co. Ltd.</Text>
+    </View>
+  )
+};
+
+export default BackCover;

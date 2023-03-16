@@ -1,22 +1,9 @@
 import { useContext } from 'react';
-import { Text, View, StyleSheet } from '@react-pdf/renderer';
+import { Text, View } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 import RichText from 'src/components/RichText';
-
-function formatFPSGrade(number) {
-  if (number >= 100)
-    return "A+"
-  if (number < 90)
-    return "A"
-  if (number < 80)
-    return "B"
-  if (number < 70)
-    return "B"
-  else
-    return "D"
-}
 
 function generalMarkMap(score) {
   if (score >= 100)
@@ -31,17 +18,43 @@ function generalMarkMap(score) {
     return "D"
 }
 
+function mapToTextColor(score) {
+  if (score >= 100)
+    return "#2E7D32"
+  if (score >= 90)
+    return "#9E9D24"
+  if (score >= 80)
+    return "#F9A825"
+  if (score >= 60)
+    return "#EF6C00"
+  else
+    return "#D84315"
+}
+
+function mapToBgColor(score) {
+  if (score >= 100)
+    return "#A5D6A7"
+  if (score >= 90)
+    return "#E6EE9C"
+  if (score >= 80)
+    return "#FFF59D"
+  if (score >= 60)
+    return "#FFCC80"
+  else
+    return "#FFAB91"
+}
+
 function formatLaunchTimeGrade(average) {
   if (average <= 0.6)
-    return "A+"
+    return 100
   if (average <= 0.8)
-    return "A"
+    return 95 // TODO Median of this grade, a more linear value is required
   if (average <= 0.9)
-    return "B"
+    return 85 // TODO Median of this grade, a more linear value is required
   if (average <= 1)
-    return "C"
+    return 70 // TODO Median of this grade, a more linear value is required
   else
-    return "D"
+    return 30 // TODO Median of this grade, a more linear value is required
 }
 
 const Conclusion = () => {
@@ -57,7 +70,7 @@ const Conclusion = () => {
   //FPS 
   const droppedFramesFpsValue = 50
   const lowFps = fps.filter(item => item.value <= droppedFramesFpsValue);
-  const lowrate = (lowFps.length / fps.length) * 100;
+  const lowRate = (fps.length - lowFps.length) * 100 / fps.length;
   // const fpsDes = `FPS is a simple and direct reflection of the app's lag,55-60fps is excellent,50-55 is normal,below 50 is considered to be dropped frames`
   const fpsDes = [
     {"text": "FPS is a simple and direct reflection of the app's lag,", "isRich": false},
@@ -85,11 +98,10 @@ const Conclusion = () => {
   const averageCost = sortData.reduce(function (sum, item) {
     return sum + item.launchCost;
   }, 0) / sortData.length
-  const launchAverage = (averageCost / 1000).toFixed(2)
+  const launchAverage = formatLaunchTimeGrade((averageCost / 1000).toFixed(2))
 
   // Power Usage
   const { network } = performanceData;
-  const { locationData } = performanceData;
   var networkMark = network.requestSucsessRate + (network.summaryRequestCount - network.slowRequestCount) / network.summaryRequestCount;
   var locationMark = 100; // TODO
   var powerUsageMark = (networkMark + locationMark) / 2;
@@ -113,30 +125,33 @@ const Conclusion = () => {
       {"text": "The memory leak score is mainly based on the number of detected memory leaks. This monitoring found no memory leaks.", "isRich": false},
     ]
   } else if (memoryLeakData.length <= 1) {
-    memoryLeakMark = 90
+    memoryLeakMark = 95 // TODO Median of this grade, a more linear value is required
   } else if (memoryLeakData.length <= 3) {
-    memoryLeakMark = 80
+    memoryLeakMark = 85 // TODO Median of this grade, a more linear value is required
   } else if (memoryLeakData.length <= 5) {
-    memoryLeakMark = 60
+    memoryLeakMark = 70 // TODO Median of this grade, a more linear value is required
   } else {
-    memoryLeakMark = 0
+    memoryLeakMark = 30 // TODO Median of this grade, a more linear value is required
   }
+
+  // Total Mark
+  const totalMark = (lowRate + powerUsageMark + launchAverage + memoryLeakMark) / 4
 
   const tableData = [
     {
       "categary": "FPS",
       "summary": fpsDes,
-      "value": formatFPSGrade(lowrate),
-    },
-    {
-      "categary": "Launch Time",
-      "summary": launchTimeDes,
-      "value": formatLaunchTimeGrade(launchAverage),
+      "value": generalMarkMap(lowRate),
     },
     {
       "categary": "Power Usage",
       "summary": powerUsageDes,
       "value": generalMarkMap(powerUsageMark),
+    },
+    {
+      "categary": "Launch Time",
+      "summary": launchTimeDes,
+      "value": generalMarkMap(launchAverage),
     },
     {
       "categary": "Memory Leak",
@@ -148,14 +163,27 @@ const Conclusion = () => {
 
   const des = 'According to the professional test team, the average score given';
 
+  function getColorStyle(mark) {
+    return {
+      color: mapToTextColor(mark),
+      backgroundColor: mapToBgColor(mark),
+      fontSize: 56,
+      fontFamily: "FZHeiti",
+      padding: 16,
+      maxLines: 1,
+      textOverflow: 'ellipsis',
+      textAlign: 'center',
+      margin: 24,
+    }
+  }
 
   return (
-
     <View bookmark={{ title: "Overview", fit: true }} break>
       <View style={styles.contentContainer}>
         <Text style={styles.sectionsChapter} id='link_overview'>Overview</Text>
         <Text style={styles.sectionsTitle}> </Text>
         <Text style={styles.text}>{des}</Text>
+        <Text style={getColorStyle(totalMark)}>{generalMarkMap(totalMark)}</Text>
         <Table data={tableData}>
           <TableHeader>
             <TableCell weighting={0.2} style={styles.tableHeader}>Category</TableCell>
@@ -172,20 +200,5 @@ const Conclusion = () => {
     </View>
   )
 };
-
-const conclusionStyles = StyleSheet.create({
-  leakStylesSubTitle: styles.title = {
-    textAlign: "left",
-    fontSize: 24,
-    width: "100%",
-    fontWeight: "bold",
-    marginTop: 30,
-    marginBottom: 15
-  },
-  row: {
-    margin: '8',
-    textAlign: "center"
-  }
-});
 
 export default Conclusion;
