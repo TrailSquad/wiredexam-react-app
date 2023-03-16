@@ -18,6 +18,32 @@ function generalMarkMap(score) {
     return "D"
 }
 
+function mapToTextColor(score) {
+  if (score >= 100)
+    return "#2E7D32"
+  if (score >= 90)
+    return "#9E9D24"
+  if (score >= 80)
+    return "#F9A825"
+  if (score >= 60)
+    return "#EF6C00"
+  else
+    return "#D84315"
+}
+
+function mapToBgColor(score) {
+  if (score >= 100)
+    return "#A5D6A7"
+  if (score >= 90)
+    return "#E6EE9C"
+  if (score >= 80)
+    return "#FFF59D"
+  if (score >= 60)
+    return "#FFCC80"
+  else
+    return "#FFAB91"
+}
+
 function formatLaunchTimeGrade(average) {
   if (average <= 0.6)
     return 100
@@ -138,6 +164,19 @@ const Conclusion = () => {
 
   const des = 'According to the professional test team, the average score given';
 
+  function getColorStyle(mark) {
+    return {
+      color: mapToTextColor(mark),
+      backgroundColor: mapToBgColor(mark),
+      fontSize: 56,
+      fontFamily: "FZHeiti",
+      padding: 16,
+      maxLines: 1,
+      textOverflow: 'ellipsis',
+      textAlign: 'center',
+      margin: 24,
+    }
+  }
 
   return (
 
@@ -146,7 +185,7 @@ const Conclusion = () => {
         <Text style={styles.sectionsChapter} id='link_overview'>Overview</Text>
         <Text style={styles.sectionsTitle}> </Text>
         <Text style={styles.text}>{des}</Text>
-        <Text style={styles.highlightNumber}>{generalMarkMap(totalMark)}</Text>
+        <Text style={getColorStyle(totalMark)}>{generalMarkMap(totalMark)}</Text>
         <Table data={tableData}>
           <TableHeader>
             <TableCell weighting={0.2} style={styles.tableHeader}>Category</TableCell>

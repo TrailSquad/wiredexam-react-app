@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
     maxLines: 1,
     textOverflow: 'ellipsis',
     textAlign: 'center',
+    margin: 24,
   },
   hint: {
     marginBottom: 12,
