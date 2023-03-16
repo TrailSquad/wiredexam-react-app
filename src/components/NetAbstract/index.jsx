@@ -41,31 +41,31 @@ const NetAbstract = () => {
 
   const tableData = [
     {
-      "categary": "请求总次数",
+      "categary": "Total number of requests",
       "value": summaryRequestCount,
     },
     {
-      "categary": "请求总时长",
+      "categary": "Total time requested",
       "value": summaryRequestTime,
     },
     {
-      "categary": "数据上传流量",
+      "categary": "Data upload flow",
       "value": summaryRequestUploadFlow,
     },
     {
-      "categary": "数据下载流量",
+      "categary": "Data download flow",
       "value": summaryRequestDownFlow,
     },
     {
-      "categary": "平均请求时长",
+      "categary": "Average request time",
       "value": requestAverageTime,
     },
     {
-      "categary": "请求成功率",
+      "categary": "Request success rates",
       "value": requestSucsessRate,
     },
     {
-      "categary": "慢请求次数",
+      "categary": "Number of slow request",
       "value": slowRequestCount,
     }
   ]
