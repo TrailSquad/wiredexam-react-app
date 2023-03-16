@@ -70,15 +70,6 @@ function App() {
         })
       }
     });
-
-    // window.setupWebViewJavascriptBridge(bridge => {
-    //   blob.arrayBuffer().then(buffer => {
-    //     bridge.callHandler('lookPdf', { 'pdfData': buffer }, function (response) {
-    //       console.log('JS got response', response)
-    //     })
-    //   });
-    // });
-
   }
 
   const document = <PDFDocument performanceData={performanceData} />;
@@ -122,7 +113,7 @@ function App() {
           style={{ color: "#fff" }}
           document={document}>
           {({ url, loading }) =>
-            <Button onClick={()=>callNative({"pdfurl": url})} >{loading ? 'Loading' : '下载'}</Button>
+           (loading ? 'Loading' : '下载')
           }
         </PDFDownloadLink> */}
       </div>
@@ -131,10 +122,3 @@ function App() {
 }
 
 export default App;
-
-// <Button style={{ color: "red" }}
-            //   onClick={() => {
-            //     callNative({ "pdf rul": url })
-            //   }}
-            // >下载
-            // </Button>

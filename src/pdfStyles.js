@@ -59,6 +59,23 @@ const styles = StyleSheet.create({
     width: "100%",
     textAlign: 'left',
   },
+  richText: {
+    marginBottom: 14,
+    fontSize: 18,
+    fontFamily: "FZHeiti",
+    width: "100%",
+    textAlign: 'left',
+    fontWeight: "bold",
+    color: "blue"
+  },
+  subTitle: {
+    fontSize: 18,
+    fontFamily: "FZHeiti",
+    width: "100%",
+    fontWeight: "bold",
+    textAlign: 'left',
+    marginBottom: 14,
+  },
   highlightNumber: {
     backgroundColor: '#F0FFF0',
     fontSize: 56,
@@ -83,6 +100,10 @@ const styles = StyleSheet.create({
   chartContainer: {
     width: "80%",
     marginVertical: 24,
+  },
+  chartDesContainer: {
+    width: "80%",
+    marginVertical: 20,
   },
   pageNumber: {
     position: 'absolute',

@@ -29,6 +29,7 @@ const PDFDocument = ({ performanceData }) => (
         <Text style={styles.header} fixed>
           Wiredcraft
         </Text>
+        
         {/* 主体内容 */}
         <Cover />
         <Contents />
