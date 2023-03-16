@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Text, View, StyleSheet } from '@react-pdf/renderer';
+import { Text, View } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
@@ -102,7 +102,6 @@ const Conclusion = () => {
 
   // Power Usage
   const { network } = performanceData;
-  const { locationData } = performanceData;
   var networkMark = network.requestSucsessRate + (network.summaryRequestCount - network.slowRequestCount) / network.summaryRequestCount;
   var locationMark = 100; // TODO
   var powerUsageMark = (networkMark + locationMark) / 2;
@@ -179,7 +178,6 @@ const Conclusion = () => {
   }
 
   return (
-
     <View bookmark={{ title: "Overview", fit: true }} break>
       <View style={styles.contentContainer}>
         <Text style={styles.sectionsChapter} id='link_overview'>Overview</Text>
@@ -202,20 +200,5 @@ const Conclusion = () => {
     </View>
   )
 };
-
-const conclusionStyles = StyleSheet.create({
-  leakStylesSubTitle: styles.title = {
-    textAlign: "left",
-    fontSize: 24,
-    width: "100%",
-    fontWeight: "bold",
-    marginTop: 30,
-    marginBottom: 15
-  },
-  row: {
-    margin: '8',
-    textAlign: "center"
-  }
-});
 
 export default Conclusion;

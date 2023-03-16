@@ -134,9 +134,9 @@ const styles = StyleSheet.create({
   },
   // cover
   coverTitle: {
-    fontSize: 28,
+    fontSize: 40,
     marginTop: 60,
-    marginBottom: 30
+    marginBottom: 60
   },
   coverImageContainer: {
     display: 'flex',
@@ -155,10 +155,12 @@ const styles = StyleSheet.create({
   },
   coverRowLeft: {
     width: 150,
-    textAlign: 'right'
+    fontSize: 14,
+    textAlign: 'right',
   },
   coverRowRight: {
-    width: 250
+    width: 250,
+    fontSize: 14,
   },
   //
   contentsTitle:{
