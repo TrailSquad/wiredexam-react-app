@@ -5,6 +5,7 @@ import Context from 'src/context';
 import * as echarts from 'echarts';
 import getChartsBlobImage from 'src/utils/getChartsBlobImage';
 import dayjs from 'dayjs';
+import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 
 const getStartTime = (netTimes, locationTimes) => {
     const netStart = netTimes.length > 0 ? netTimes[0] : 0;
@@ -138,9 +139,12 @@ const PowerUsageChart = () => {
                 },
                 formatter: function (val) {
                     if (Math.abs((val - startTime)) > 1000 && Math.abs((endTime - val)) > 1000) return "";
-                    return dayjs(val).format('HH:mm');
+                    // return dayjs(val).format('HH:mm');
+                    return dayjs(val).diff(dayjs(startTime), "minute")
                 }
             },
+            name: "Unit(minute)",
+            nameLocation: "center"
         },
         yAxis: {
             axisTick: { show: false },
@@ -185,6 +189,8 @@ const PowerUsageChart = () => {
         ]
     };
     const chartImage = getChartsBlobImage(option);
+    const chartDes = "The x-axis represents time and the y-axis represents the hardware used, with denser lines on the way indicating more frequent use and wider lines indicating longer use"
+
     const impactOfPowerUsage = `
     1, power consumption will affect the user experience: apps with high power consumption will consume more power, which will lead to rapid power consumption of the phone and affect the user experience.
 
@@ -196,79 +202,10 @@ const PowerUsageChart = () => {
     const endDate = dayjs(endTime).format('YYYY MM/DD HH:mm');
     const dataSourceDes = `The data for the above chart comes from app usage between ${beginDate} and ${endDate}`
 
-    var countPieDatas = [
-        { name: 'Network', value: sortNetworkFlowData.length },
-        { name: 'GPS', value: sortLocationData.length },
+    var tableDatas = [
+        { name: 'Network', count: sortNetworkFlowData.length, duration: Math.round(networkTotalTime) },
+        { name: 'GPS', count: sortLocationData.length, duration: Math.round(locationTotalTime) },
     ];
-    const countPieChartOption = {
-        series: [
-            {
-                type: 'pie',
-                radius: [20, 60],
-                itemStyle: {
-                    borderColor: '#fff',
-                    borderWidth: 1
-                },
-                label: {
-                    alignTo: 'edge',
-                    formatter: '{name|{b}}\n{time|{c} times}',
-                    minMargin: 5,
-                    edgeDistance: 10,
-                    lineHeight: 15,
-                    rich: {
-                        time: {
-                            fontSize: 10,
-                            color: '#999'
-                        }
-                    }
-                },
-                labelLine: {
-                    length: 15,
-                    length2: 0,
-                    maxSurfaceAngle: 80
-                },
-                data: countPieDatas
-            }
-        ]
-    };
-    const countPieImage = getChartsBlobImage(countPieChartOption);
-
-    var timePieDatas = [
-        { name: 'Network', value: Math.round(networkTotalTime) },
-        { name: 'GPS', value: Math.round(locationTotalTime) },
-    ];
-    const timePieChartOption = {
-        series: [
-            {
-                type: 'pie',
-                radius: [20, 60],
-                itemStyle: {
-                    borderColor: '#fff',
-                    borderWidth: 1
-                },
-                label: {
-                    alignTo: 'edge',
-                    formatter: '{name|{b}}\n{time|{c} ms}',
-                    minMargin: 5,
-                    edgeDistance: 10,
-                    lineHeight: 15,
-                    rich: {
-                        time: {
-                            fontSize: 10,
-                            color: '#999'
-                        }
-                    }
-                },
-                labelLine: {
-                    length: 15,
-                    length2: 0,
-                    maxSurfaceAngle: 80
-                },
-                data: timePieDatas
-            }
-        ]
-    };
-    const timePieImage = getChartsBlobImage(timePieChartOption);
 
     return (
         <View bookmark={{ title: "Chapter 2: Power Usage", fit: true }} break>
@@ -280,12 +217,23 @@ const PowerUsageChart = () => {
                 <Text style={styles.text}>{impactOfPowerUsage}</Text>
                 <View style={styles.chartContainer}><Image src={chartImage} /></View>
                 <View style={styles.chartDesContainer}>
-                <Text style={styles.hint}>The x-axis represents time and the y-axis represents the hardware used, with denser lines on the way indicating more frequent use and wider lines indicating longer use</Text>
+                    <Text style={styles.hint}>{chartDes}</Text>
                 </View>
-                <View style={styles.chartContainer}><Image src={countPieImage} /></View>
-                <View style={styles.chartContainer}><Image src={timePieImage} /></View>
+
+                <View style={styles.tableContainer} wrap={false}><Table data={tableDatas}>
+                    <TableHeader>
+                        <TableCell weighting={0.3} style={styles.tableHeader}>Category</TableCell>
+                        <TableCell weighting={0.35} style={styles.tableHeader}>Total Count</TableCell>
+                        <TableCell weighting={0.35} style={styles.tableHeader}>Total Duration</TableCell>
+                    </TableHeader>
+                    <TableBody>
+                        <DataTableCell weighting={0.3} style={styles.tableHeader} getContent={(r) => r.name} />
+                        <DataTableCell weighting={0.35} style={styles.tableRowValue} getContent={(r) => r.count} />
+                        <DataTableCell weighting={0.35} style={styles.tableRowValue} getContent={(r) => r.duration} />
+                    </TableBody>
+                </Table></View>
                 <View style={styles.chartDesContainer}>
-                <Text style={styles.hint}>{dataSourceDes}</Text>
+                    <Text style={styles.hint}>{dataSourceDes}</Text>
                 </View>
             </View>
         </View>
