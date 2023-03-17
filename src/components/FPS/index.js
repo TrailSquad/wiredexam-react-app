@@ -70,7 +70,8 @@ const FPS = () => {
           fontSize: 12,
         },
         formatter: function (_, index) {
-          return dayjs.unix(Math.round(fps[index].time)).format('HH:mm');
+          return index
+          // return dayjs.unix(Math.round(fps[index].time)).format('HH:mm');
         }
       }
     },
@@ -92,6 +93,7 @@ const FPS = () => {
     ]
   };
   const fpsImage = getChartsBlobImage(option);
+  const chartDes = "The x-axis represents the index of the sample, the y-axis represents the FPS value, blue dots indicate excellent or normal FPS, red dots indicate abnormal FPS"
 
   const pieChartOption = {
     series: [
@@ -183,7 +185,7 @@ const FPS = () => {
         {/* chart */}
         <View style={styles.chartContainer}><Image src={fpsImage} break /></View>
         <View style={styles.chartDesContainer}>
-          <Text style={styles.hint}>The x-axis represents the time, the y-axis represents the FPS value, blue dots indicate excellent or normal FPS, red dots indicate abnormal FPS</Text>
+          <Text style={styles.hint}>{chartDes}</Text>
         </View>
         <View style={styles.chartContainer}><Image src={fpsPieImage} break /></View>
         <View style={styles.chartDesContainer}>

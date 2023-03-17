@@ -60,7 +60,8 @@ const LaunchTime = () => {
           fontSize: 12,
         },
         formatter: function (_, index) {
-          return dayjs.unix(Math.round(sortData[index].time)).format('HH:mm');
+          return index
+          // return dayjs.unix(Math.round(sortData[index].time)).format('HH:mm');
         }
       }
     },
@@ -87,6 +88,7 @@ const LaunchTime = () => {
     ]
   };
   const launchTimeImage = getChartsBlobImage(option);
+  const chartDes = "The x-axis represents the index of sample, the y-axis represents the launch time value, blue dots indicate excellent or normal time, red dots indicate abnormal launch time"
 
   const sortTimeObjs = launchTimeData.sort((a, b) => (b.launchCost - a.launchCost));
   const launchRank = sortTimeObjs.length > 5 ? sortTimeObjs.slice(0, 5) : sortTimeObjs;
@@ -150,7 +152,7 @@ const LaunchTime = () => {
         {/* chart and descraption */}
         <View style={styles.chartContainer}><Image src={launchTimeImage} /></View>
         <View style={styles.chartDesContainer}>
-          <Text style={styles.hint}>The x-axis represents the time, the y-axis represents the launch time value, blue dots indicate excellent or normal time, red dots indicate abnormal launch time</Text>
+          <Text style={styles.hint}>{chartDes}</Text>
         </View>
         {/* averageCost */}
         <Text style={styles.subTitle}>{chartTitle}</Text>
