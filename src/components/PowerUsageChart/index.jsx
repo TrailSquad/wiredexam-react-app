@@ -208,9 +208,9 @@ const PowerUsageChart = () => {
     ];
 
     return (
-        <View bookmark={{ title: "Chapter 2: Power Usage", fit: true }} break>
+        <View bookmark={{ title: "Section 3: Power Usage", fit: true }} break>
             <View style={styles.contentContainer}>
-                <Text style={styles.sectionsChapter}>Chapter 2</Text>
+                <Text style={styles.sectionsChapter}>Section 3</Text>
                 <Text style={styles.sectionsTitle} id='link_power'>Power Usage</Text>
                 <Text style={styles.text}>Network requests and GPS location both affect the app's power consumption. The more network requests, the more data requested and the more time spent on requests, the more power is consumed, and the more positioning is used and the longer it is used, the more power is consumed.</Text>
                 <Text style={styles.text}>What will be the impact of the app's power consumption?</Text>

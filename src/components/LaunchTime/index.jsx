@@ -6,6 +6,32 @@ import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.
 import dayjs from 'dayjs';
 import getChartsBlobImage from 'src/utils/getChartsBlobImage';
 
+function generalMarkMap(score) {
+  if (score >= 100)
+    return "A+"
+  if (score >= 90)
+    return "A"
+  if (score >= 80)
+    return "B"
+  if (score >= 60)
+    return "C"
+  else
+    return "D"
+}
+
+function formatLaunchTimeGrade(average) {
+  if (average <= 0.6)
+    return 100
+  if (average <= 0.8)
+    return 95 // TODO Median of this grade, a more linear value is required
+  if (average <= 0.9)
+    return 85 // TODO Median of this grade, a more linear value is required
+  if (average <= 1)
+    return 70 // TODO Median of this grade, a more linear value is required
+  else
+    return 30 // TODO Median of this grade, a more linear value is required
+}
+
 const LaunchTime = () => {
   const performanceData = useContext(Context);
   if (!performanceData) {
@@ -19,7 +45,7 @@ const LaunchTime = () => {
   const averageCost = sortData.reduce(function (sum, item) {
     return sum + item.launchCost;
   }, 0) / sortData.length
-  const chartTitle = `Average LaunTime`
+  const launchAverage = formatLaunchTimeGrade((averageCost / 1000).toFixed(2))
 
   const option = {
     grid: {
@@ -125,18 +151,24 @@ const LaunchTime = () => {
       `e. delaying the initialisation or loading of some less frequently used functions.`
     ]
   return (
-    <View bookmark={{ title: "Chapter 3: Launch Time", fit: true }} break>
+    <View bookmark={{ title: "Section 4: Launch Time", fit: true }} break>
       <View style={styles.contentContainer}>
-        <Text style={styles.sectionsChapter}>Chapter 3</Text>
+        <Text style={styles.sectionsChapter}>Section 4</Text>
         <Text style={styles.sectionsTitle} id='link_launch'>Launch Time</Text>
         {/* launchTimeDes */}
-        <Text style={styles.subTitle}>What is the launch time?</Text>
+        <Text style={styles.sectionsSubTitle}>4.1 Description</Text>
         <Text style={styles.text}>{launchTimeDes}</Text>
         {/* impact of launch time */}
-        <Text style={styles.subTitle}>What will be the impact of the app's slowly launch time?</Text>
+        <Text style={styles.text}>The impact of the app's slowly launch time</Text>
         <Text style={styles.text}>{impactOfLaunchTime}</Text>
+
+        <Text style={styles.sectionsSubTitle}>4.2 Grade</Text>
+        <Text style={styles.highlightNumber} wrap={false}>{generalMarkMap(launchAverage)}</Text>
+
+
+        <Text style={styles.sectionsSubTitle}>4.3 Data Detail</Text>
         {/* indicators of launch time */}
-        <Text style={styles.subTitle}>Indicator classification</Text>
+        <Text style={styles.subTitle}>4.3.1 Indicator classification</Text>
         <Text style={styles.text}>{indicatorsDes}</Text>
         <Text style={styles.hint}>The right is the range of indicator for left category</Text>
         <View style={styles.tableContainer} wrap={false}><Table data={indicators}>
@@ -149,18 +181,19 @@ const LaunchTime = () => {
             <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => r.value} />
           </TableBody>
         </Table></View>
+        <Text style={styles.subTitle}>4.3.2 Data Chart</Text>
         {/* chart and descraption */}
         <View style={styles.chartContainer}><Image src={launchTimeImage} /></View>
         <View style={styles.chartDesContainer}>
           <Text style={styles.hint}>{chartDes}</Text>
         </View>
         {/* averageCost */}
-        <Text style={styles.subTitle}>{chartTitle}</Text>
+        <Text style={styles.subTitle}>Average LaunTime</Text>
         <Text style={styles.highlightNumber}>{`${(averageCost / 1000).toFixed(2)} s`}</Text>
         {/* data source descraption */}
         {dataSourceDes === undefined ? <></> : <Text style={styles.text}>{dataSourceDes}</Text>}
 
-        {launchRank.length > 0 ? <Text style={styles.sectionsSubTitle}>3.1 Rank Table</Text> : null}
+        {launchRank.length > 0 ? <Text style={styles.subTitle}>Rank Table</Text> : null}
         {launchRank.length > 0 ? <Text style={styles.hint}>The number on the right is the cost time of this launch</Text> : null}
         {launchRank.length > 0 ? <View style={styles.tableContainer} wrap={false}><Table data={launchRank}>
           <TableHeader>
@@ -172,7 +205,8 @@ const LaunchTime = () => {
             <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => ((r.launchCost / 1000).toFixed(2) + " seconds")} />
           </TableBody>
         </Table></View> : null}
-        <Text style={styles.sectionsSubTitle}>3.2 Recommendations for optimisation</Text>
+
+        <Text style={styles.sectionsSubTitle}>4.4 Recommendations for optimisation</Text>
         <Table data={recommendations}>
           <TableHeader>
             <TableCell weighting={1} style={styles.tableHeader}>Optimisation</TableCell>

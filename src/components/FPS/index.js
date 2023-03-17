@@ -160,9 +160,9 @@ const FPS = () => {
     `e、 Avoid unnecessary re-layout and re-drawing: avoid unnecessary re-layout and re-drawing without affecting the display of the interface .`
   ]
   return (
-    <View bookmark={{ title: "Chapter 1: FPS", fit: true }} break>
+    <View bookmark={{ title: "Section 2: FPS", fit: true }} break>
       <View style={styles.contentContainer}>
-        <Text style={styles.sectionsChapter}>Chapter 1</Text>
+        <Text style={styles.sectionsChapter}>Section 2</Text>
         <Text style={styles.sectionsTitle} id='link_fps'>FPS</Text>
         {/* Description */}
         <Text style={styles.text}>{fpsDes}</Text>
