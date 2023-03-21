@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   highlightNumber: {
-    backgroundColor: '#F0FFF0',
+    backgroundColor: '#F5F5F5',
     fontSize: 56,
     fontFamily: "FZHeiti",
     padding: 16,
