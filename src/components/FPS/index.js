@@ -28,7 +28,7 @@ const FPS = () => {
   if (fps.length > 2) {
     const beginDate = dayjs.unix(Math.round(fps[0].time)).format('MM/DD HH:mm');
     const endDate = dayjs.unix(Math.round(fps[fps.length - 1].time)).format('MM/DD HH:mm');
-    dataSourceDes = `The above data is derived from Fps sampling using the app between ${beginDate} and ${endDate}`
+    dataSourceDes = `The follow data is derived from Fps sampling using the app between ${beginDate} and ${endDate}`
   }
 
   const option = {
@@ -147,7 +147,6 @@ const FPS = () => {
   ]
   const indicatorsDes = "The indicators of PFS are divided into three categories as Perfect, Normal and Bad, as follows"
 
-  const notDroppedFramesDes = "No frame drops were found in this test, which means the app is running quite smoothly. Keep it up"
   const recommendations = [
     `a、 optimisation of code: unnecessary code should be minimised and if there is code that can be reused, it should be reused as much as possible.`,
 
@@ -191,16 +190,11 @@ const FPS = () => {
           </TableBody>
         </Table></View>
         {/* chart */}
+        <Text style={styles.subTitle}>1.3.2 Chart</Text>
         <View style={styles.chartContainer}><Image src={fpsImage} break /></View>
-        <View style={styles.chartDesContainer}>
-          <Text style={styles.hint}>{chartDes}</Text>
-        </View>
+        <View style={styles.chartDesContainer}><Text style={styles.hint}>{chartDes}</Text></View>
         <View style={styles.chartContainer}><Image src={fpsPieImage} break /></View>
-        <View style={styles.chartDesContainer}>
-        <Text style={styles.hint}>{chartTitle}</Text>
-        </View>
-        {/* data source description */}
-        {dataSourceDes === undefined ? <></> : <Text style={styles.text}>{dataSourceDes}</Text>}
+        <View style={styles.chartDesContainer}><Text style={styles.hint}>{chartTitle}</Text></View>
         {/* Rank Table */}
         {topRankArray.length > 0 ? <Text style={styles.subTitle}>2.3.2 Dropout Rank Table</Text> : null}
         {topRankArray.length > 0 ? <Text style={styles.text}>Here are the screens where the most jams occur</Text> : null}
@@ -215,7 +209,6 @@ const FPS = () => {
             <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.count} />
           </TableBody>
         </Table></View> : null}
-        {topRankArray.length <= 0 ? <Text style={styles.sectionsSubTitle}>{notDroppedFramesDes}</Text> : null}
       </View>
       {topRankArray.length > 0 ?
         <View>
