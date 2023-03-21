@@ -164,12 +164,20 @@ const FPS = () => {
       <View style={styles.contentContainer}>
         <Text style={styles.sectionsChapter}>Section 2</Text>
         <Text style={styles.sectionsTitle} id='link_fps'>FPS</Text>
+
         {/* Description */}
+        <Text style={styles.sectionsSubTitle}>2.1 Description</Text>
         <Text style={styles.text}>{fpsDes}</Text>
         <Text style={styles.text}>{stutteringDes}</Text>
         <Text style={styles.text}>{impactDes}</Text>
+
+        <Text style={styles.sectionsSubTitle}>2.2 Grade</Text>
+        <Text style={styles.highlightNumber} wrap={false}>TODO</Text>
+
+
+        <Text style={styles.sectionsSubTitle}>2.3 Data Detail</Text>
         {/* Indicator classification */}
-        <Text style={styles.sectionsSubTitle}>Indicator classification</Text>
+        <Text style={styles.subTitle}>2.3.1 Indicator classification</Text>
         <Text style={styles.text}>{indicatorsDes}</Text>
         <Text style={styles.hint}>The right is the range of indicator for left category</Text>
         <View style={styles.tableContainer} wrap={false}><Table data={indicators}>
@@ -194,7 +202,7 @@ const FPS = () => {
         {/* data source description */}
         {dataSourceDes === undefined ? <></> : <Text style={styles.text}>{dataSourceDes}</Text>}
         {/* Rank Table */}
-        {topRankArray.length > 0 ? <Text style={styles.sectionsSubTitle}>1.1 Dropout Rank Table</Text> : null}
+        {topRankArray.length > 0 ? <Text style={styles.subTitle}>2.3.2 Dropout Rank Table</Text> : null}
         {topRankArray.length > 0 ? <Text style={styles.text}>Here are the screens where the most jams occur</Text> : null}
         {topRankArray.length > 0 ? <Text style={styles.hint}>The number on the right is the number of frame drops in left</Text> : null}
         {topRankArray.length > 0 ? <View style={styles.tableContainer} wrap={false}><Table data={topRankArray}>
@@ -211,7 +219,7 @@ const FPS = () => {
       </View>
       {topRankArray.length > 0 ?
         <View>
-          <Text style={styles.sectionsSubTitle}>1.2 Recommendations for optimisation</Text>
+          <Text style={styles.sectionsSubTitle}>2.4 Recommendations for optimisation</Text>
           <Table data={recommendations}>
             <TableHeader>
               <TableCell weighting={1} style={styles.tableHeader}>Optimisation</TableCell>

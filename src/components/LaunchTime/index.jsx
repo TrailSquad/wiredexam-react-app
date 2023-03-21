@@ -5,19 +5,7 @@ import Context from 'src/context';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 import dayjs from 'dayjs';
 import getChartsBlobImage from 'src/utils/getChartsBlobImage';
-
-function generalMarkMap(score) {
-  if (score >= 100)
-    return "A+"
-  if (score >= 90)
-    return "A"
-  if (score >= 80)
-    return "B"
-  if (score >= 60)
-    return "C"
-  else
-    return "D"
-}
+import generalMarkMap from 'src/grade';
 
 function formatLaunchTimeGrade(average) {
   if (average <= 0.6)

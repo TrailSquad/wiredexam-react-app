@@ -3,6 +3,7 @@ import { Text, View } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableCell, TableHeader, TableBody } from '@david.kucsai/react-pdf-table'
+import generalMarkMap from 'src/grade';
 
 const MemoryLeak = () => {
   const performanceData = useContext(Context);
@@ -19,6 +20,18 @@ const MemoryLeak = () => {
     (accumulator, currentValue) => accumulator + currentValue.count,
     0
   );
+  var memoryLeakMark;
+  if (memoryLeakData.length <= 0) {
+    memoryLeakMark = 100
+  } else if (memoryLeakData.length <= 1) {
+    memoryLeakMark = 95 // TODO Median of this grade, a more linear value is required
+  } else if (memoryLeakData.length <= 3) {
+    memoryLeakMark = 85 // TODO Median of this grade, a more linear value is required
+  } else if (memoryLeakData.length <= 5) {
+    memoryLeakMark = 70 // TODO Median of this grade, a more linear value is required
+  } else {
+    memoryLeakMark = 30 // TODO Median of this grade, a more linear value is required
+  }
   return (
     <View bookmark={{ title: "Section 5: Memory Leak", fit: true }} break>
       <View style={styles.contentContainer}>
@@ -29,9 +42,8 @@ const MemoryLeak = () => {
         <Text style={styles.text}>Failure to release unused objects from the memory, which means that there are unused objects in the application that the GC cannot clear from memory.</Text>
         <Text style={styles.text}>The memory resources allocated by the system to a single application are limited, and memory leaks lead to less available memory, resulting in application freezes even crashes.</Text>
 
-
         <Text style={styles.sectionsSubTitle}>5.2 Grade</Text>
-        <Text style={styles.highlightNumber} wrap={false}>TODO</Text>
+        <Text style={styles.highlightNumber} wrap={false}>{generalMarkMap(memoryLeakMark)}</Text>
 
         <Text style={styles.sectionsSubTitle}>5.3 Data Detail</Text>
         <Text style={styles.subTitle}>5.3.1 Memory leak occurrences</Text>

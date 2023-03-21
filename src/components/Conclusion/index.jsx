@@ -4,19 +4,7 @@ import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 import RichText from 'src/components/customize/RichText';
-
-function generalMarkMap(score) {
-  if (score >= 100)
-    return "A+"
-  if (score >= 90)
-    return "A"
-  if (score >= 80)
-    return "B"
-  if (score >= 60)
-    return "C"
-  else
-    return "D"
-}
+import generalMarkMap from 'src/grade';
 
 function mapToTextColor(score) {
   if (score >= 100)
@@ -104,7 +92,7 @@ const Conclusion = () => {
   const { network } = performanceData;
   var networkMark = network.requestSucsessRate + (network.summaryRequestCount - network.slowRequestCount) / network.summaryRequestCount;
   var locationMark = 100; // TODO
-  var powerUsageMark = (networkMark + locationMark) / 2;
+  var powerUsageMark = networkMark * 0.8 + locationMark * 0.2;
   var powerUsageDes = [
     { "text": "Power consumption scoring is based on a number of subcategories.", "isRich": false },
   ]
@@ -161,7 +149,7 @@ const Conclusion = () => {
   ]
   // const counclusionImage = getChartsBlobImage(option);
 
-  const des = 'According to the professional test team, the average score given';
+  const des = 'According to the professional test team, the average score given:';
 
   var explanationRichText = [
     { "text": "The report rating includes ", "isRich": false },
@@ -222,7 +210,7 @@ const Conclusion = () => {
       <View style={styles.contentContainer}>
         <Text style={styles.sectionsChapter}>Section 1</Text>
         <Text style={styles.sectionsTitle} id='link_overview'>Overview</Text>
-        <Text style={styles.sectionsTitle}> </Text>
+
         <Text style={styles.text}>{des}</Text>
         <Text style={getColorStyle(totalMark)}>{generalMarkMap(totalMark)}</Text>
         <View style={styles.tableContainer} wrap={false}>

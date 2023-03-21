@@ -212,9 +212,16 @@ const PowerUsageChart = () => {
             <View style={styles.contentContainer}>
                 <Text style={styles.sectionsChapter}>Section 3</Text>
                 <Text style={styles.sectionsTitle} id='link_power'>Power Usage</Text>
+
+                <Text style={styles.sectionsSubTitle}>3.1 Description</Text>
                 <Text style={styles.text}>Network requests and GPS location both affect the app's power consumption. The more network requests, the more data requested and the more time spent on requests, the more power is consumed, and the more positioning is used and the longer it is used, the more power is consumed.</Text>
                 <Text style={styles.text}>What will be the impact of the app's power consumption?</Text>
                 <Text style={styles.text}>{impactOfPowerUsage}</Text>
+
+                <Text style={styles.sectionsSubTitle}>3.2 Grade</Text>
+                <Text style={styles.highlightNumber} wrap={false}>TODO</Text>
+
+                <Text style={styles.sectionsSubTitle}>3.3 Data Detail</Text>
                 <View style={styles.chartContainer}><Image src={chartImage} /></View>
                 <View style={styles.chartDesContainer}>
                     <Text style={styles.hint}>{chartDes}</Text>
