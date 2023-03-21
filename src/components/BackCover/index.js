@@ -8,7 +8,7 @@ const BackCover = () => {
       <View style={styles.backCoverImageContainer}>
         <Image style={styles.backCoverImage} src={qrcode} />
       </View>
-      <Text style={styles.backCoverTitle}>Copyright © 2023 Wiredcraft Co. Ltd.</Text>
+      <Text style={styles.backCoverTitle} id='link_back_cover'>Copyright © 2023 Wiredcraft Co. Ltd.</Text>
     </View>
   )
 };

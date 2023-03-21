@@ -32,14 +32,14 @@ const styles = StyleSheet.create({
     fontSize: 40,
     width: "100%",
     paddingTop: 8,
-    marginBottom: 150,
+    marginBottom: 72,
     fontWeight: 900,
   },
   sectionsChapter: {
     textAlign: "right",
     fontSize: 28,
     width: "100%",
-    marginTop: 48,
+    marginTop: 24,
     paddingBottom: 8,
     fontWeight: 900,
     borderBottom: 3,
@@ -60,13 +60,8 @@ const styles = StyleSheet.create({
     textAlign: 'left',
   },
   richText: {
-    marginBottom: 14,
-    fontSize: 18,
-    fontFamily: "FZHeiti",
-    width: "100%",
-    textAlign: 'left',
     fontWeight: "bold",
-    color: "blue"
+    color: "#FF4948"
   },
   subTitle: {
     fontSize: 18,
@@ -74,7 +69,8 @@ const styles = StyleSheet.create({
     width: "100%",
     fontWeight: "bold",
     textAlign: 'left',
-    marginBottom: 14,
+    marginTop: 24,
+    marginBottom: 16,
   },
   highlightNumber: {
     backgroundColor: '#F0FFF0',
@@ -131,6 +127,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    marginVertical: 8,
   },
   // cover
   coverTitle: {
@@ -225,20 +222,26 @@ const styles = StyleSheet.create({
   tableHeader: {
     padding: 4,
     textAlign: "center",
-    backgroundColor: '#727171',
+    backgroundColor: '#DCDCDC',
     fontSize: 10,
   },
   tableRowLabel: {
     padding: 4,
     textAlign: "left",
-    backgroundColor: '#DCDDDD',
+    backgroundColor: '#F5F5F5',
+    fontSize: 10,
+  },
+  tableRowLabelSingleLine: {
+    padding: 4,
+    textAlign: "left",
+    backgroundColor: '#F5F5F5',
     fontSize: 10,
     maxLines: 1,
     textOverflow: 'ellipsis',
   },
   tableRowValue: {
     padding: 4,
-    backgroundColor: '#DCDDDD',
+    backgroundColor: '#F5F5F5',
     textAlign: "center",
     fontSize: 10,
   },

@@ -2,7 +2,7 @@
 // 解决方法 https://github.com/diegomura/react-pdf/issues/1113#issuecomment-781053667
 
 import { useState } from 'react';
-import { BlobProvider } from '@react-pdf/renderer';
+import { BlobProvider, PDFDownloadLink } from '@react-pdf/renderer';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import PDFDocument from 'src/components/PdfDocument/index';
 import { isAndroid } from 'src/jsBridge';
@@ -104,18 +104,19 @@ function App() {
         <BlobProvider
           document={document}>
           {({ blob, url, loading }) => {
-            return loading ? 'loading' : (
-              <button onClick={() => goDownload(blob)}>Dowload and Shared</button>
+            return loading ? 'Loading' : (
+              <button onClick={() => goDownload(blob)}>Download in App</button>
             )
           }}
         </BlobProvider>
-        {/* <PDFDownloadLink
+        &nbsp;&nbsp;
+        <PDFDownloadLink
           style={{ color: "#fff" }}
           document={document}>
           {({ url, loading }) =>
-           (loading ? 'Loading' : '下载')
+           (loading ? 'Loading' : 'Download')
           }
-        </PDFDownloadLink> */}
+        </PDFDownloadLink>
       </div>
     </div>
   );

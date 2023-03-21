@@ -3,7 +3,7 @@ import { Text, View } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
-import RichText from 'src/components/RichText';
+import RichText from 'src/components/customize/RichText';
 
 function generalMarkMap(score) {
   if (score >= 100)
@@ -73,25 +73,25 @@ const Conclusion = () => {
   const lowRate = (fps.length - lowFps.length) * 100 / fps.length;
   // const fpsDes = `FPS is a simple and direct reflection of the app's lag,55-60fps is excellent,50-55 is normal,below 50 is considered to be dropped frames`
   const fpsDes = [
-    {"text": "FPS is a simple and direct reflection of the app's lag,", "isRich": false},
-    {"text": "55-60fps", "isRich": true},
-    {"text": "is excellent,", "isRich": false},
-    {"text": "50-55", "isRich": true},
-    {"text": "is normal,below", "isRich": false},
-    {"text": "50", "isRich": true},
-    {"text": "is considered to be dropped frames", "isRich": false},
+    { "text": "FPS is a simple and direct reflection of the app's lag, ", "isRich": false },
+    { "text": "55-60fps", "isRich": true },
+    { "text": " is excellent, ", "isRich": false },
+    { "text": "50-55", "isRich": true },
+    { "text": " is normal,below ", "isRich": false },
+    { "text": "50", "isRich": true },
+    { "text": " is considered to be dropped frames.", "isRich": false },
   ]
 
   //launchTimeDes
   // const launchTimeDes = "Launch speed is the first thing users experience about our app, 400-600ms is excellent, 600-800 is normal, more than 800ms is considered to be in need of optimisation";
   const launchTimeDes = [
-    {"text": "Launch speed is the first thing users experience about our app, ", "isRich": false},
-    {"text": "400-600ms", "isRich": true},
-    {"text": " is excellent, ", "isRich": false},
-    {"text": "600-800", "isRich": true},
-    {"text": " is normal, more than ", "isRich": false},
-    {"text": "800ms", "isRich": true},
-    {"text": " is considered to be in need of optimisation", "isRich": false},
+    { "text": "Launch speed is the first thing users experience about our app, ", "isRich": false },
+    { "text": "400-600ms", "isRich": true },
+    { "text": " is excellent, ", "isRich": false },
+    { "text": "600-800ms", "isRich": true },
+    { "text": " is normal, more than ", "isRich": false },
+    { "text": "800ms", "isRich": true },
+    { "text": " is considered to be in need of optimisation", "isRich": false },
   ]
   const { launchTimeData } = performanceData;
   const sortData = launchTimeData.sort((a, b) => (a.time - b.time));
@@ -106,7 +106,7 @@ const Conclusion = () => {
   var locationMark = 100; // TODO
   var powerUsageMark = (networkMark + locationMark) / 2;
   var powerUsageDes = [
-    {"text": "Power consumption scoring is based on a number of subcategories.", "isRich": false},
+    { "text": "Power consumption scoring is based on a number of subcategories.", "isRich": false },
   ]
 
   // Memory Leak
@@ -114,15 +114,15 @@ const Conclusion = () => {
   var memoryLeakMark;
   // var memoryLeakDes = "The memory leak score is mainly based on the number of detected memory leaks. This test detected " + memoryLeakData.length + " memory leaks, and it is recommended to fix them before going live.";
   var memoryLeakDes = [
-    {"text": "The memory leak score is mainly based on the number of detected memory leaks. This test detected ", "isRich": false},
-    {"text": memoryLeakData.length , "isRich": true},
-    {"text": " memory leaks, and it is recommended to fix them before going live.", "isRich": false},
+    { "text": "The memory leak score is mainly based on the number of detected memory leaks. This test detected ", "isRich": false },
+    { "text": memoryLeakData.length, "isRich": true },
+    { "text": " memory leaks, and it is recommended to fix them before going live.", "isRich": false },
   ]
   if (memoryLeakData.length <= 0) {
     memoryLeakMark = 100
     memoryLeakDes = "The memory leak score is mainly based on the number of detected memory leaks. This monitoring found no memory leaks.";
     memoryLeakDes = [
-      {"text": "The memory leak score is mainly based on the number of detected memory leaks. This monitoring found no memory leaks.", "isRich": false},
+      { "text": "The memory leak score is mainly based on the number of detected memory leaks. This monitoring found no memory leaks.", "isRich": false },
     ]
   } else if (memoryLeakData.length <= 1) {
     memoryLeakMark = 95 // TODO Median of this grade, a more linear value is required
@@ -135,26 +135,26 @@ const Conclusion = () => {
   }
 
   // Total Mark
-  const totalMark = (lowRate + powerUsageMark + launchAverage + memoryLeakMark) / 4
+  const totalMark = lowRate * 0.3 + powerUsageMark * 0.1 + launchAverage * 0.3 + memoryLeakMark * 0.3
 
   const tableData = [
     {
-      "categary": "FPS",
+      "section": "FPS",
       "summary": fpsDes,
       "value": generalMarkMap(lowRate),
     },
     {
-      "categary": "Power Usage",
+      "section": "Power Usage",
       "summary": powerUsageDes,
       "value": generalMarkMap(powerUsageMark),
     },
     {
-      "categary": "Launch Time",
+      "section": "Launch Time",
       "summary": launchTimeDes,
       "value": generalMarkMap(launchAverage),
     },
     {
-      "categary": "Memory Leak",
+      "section": "Memory Leak",
       "summary": memoryLeakDes,
       "value": generalMarkMap(memoryLeakMark),
     },
@@ -162,6 +162,46 @@ const Conclusion = () => {
   // const counclusionImage = getChartsBlobImage(option);
 
   const des = 'According to the professional test team, the average score given';
+
+  var explanationRichText = [
+    { "text": "The report rating includes ", "isRich": false },
+    { "text": "A+", "isRich": true },
+    { "text": ", ", "isRich": false },
+    { "text": "A", "isRich": true },
+    { "text": ", ", "isRich": false },
+    { "text": "B", "isRich": true },
+    { "text": ", ", "isRich": false },
+    { "text": "C", "isRich": true },
+    { "text": ", ", "isRich": false },
+    { "text": "D", "isRich": true },
+    { "text": " 5 grades, ", "isRich": false },
+    { "text": "A+", "isRich": true },
+    { "text": " is the best and ", "isRich": false },
+    { "text": "D", "isRich": true },
+    { "text": " is the worst. Ratings are converted based on specific numerical values ​​(", "isRich": false },
+    { "text": "0", "isRich": true },
+    { "text": " to ", "isRich": false },
+    { "text": "100", "isRich": true },
+    { "text": "). The total rating comes from the weighted average of the values ​​of each section. The weights for each section are as follows:", "isRich": false },
+  ]
+  const weightTableData = [
+    {
+      "section": "FPS",
+      "weight": 0.3,
+    },
+    {
+      "section": "Power Usage",
+      "weight": 0.1,
+    },
+    {
+      "section": "Launch Time",
+      "weight": 0.3,
+    },
+    {
+      "section": "Memory Leak",
+      "weight": 0.3,
+    },
+  ]
 
   function getColorStyle(mark) {
     return {
@@ -178,26 +218,43 @@ const Conclusion = () => {
   }
 
   return (
-    <View bookmark={{ title: "Overview", fit: true }} break>
+    <View bookmark={{ title: "Section 1: Overview", fit: true }} break>
       <View style={styles.contentContainer}>
-        <Text style={styles.sectionsChapter} id='link_overview'>Overview</Text>
+        <Text style={styles.sectionsChapter}>Section 1</Text>
+        <Text style={styles.sectionsTitle} id='link_overview'>Overview</Text>
         <Text style={styles.sectionsTitle}> </Text>
         <Text style={styles.text}>{des}</Text>
         <Text style={getColorStyle(totalMark)}>{generalMarkMap(totalMark)}</Text>
-        <Table data={tableData}>
-          <TableHeader>
-            <TableCell weighting={0.2} style={styles.tableHeader}>Category</TableCell>
-            <TableCell weighting={0.6} style={styles.tableHeader}>Suggest</TableCell>
-            <TableCell weighting={0.2} style={styles.tableHeader}>Grade</TableCell>
-          </TableHeader>
-          <TableBody>
-            <DataTableCell weighting={0.2} style={styles.tableRowLabel} getContent={(r) => r.categary} />
-            <DataTableCell weighting={0.6} style={styles.tableRowLabel} getContent={(r) => <RichText richItems={r.summary} />} />
-            <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.value} />
-          </TableBody>
-        </Table>
+        <View style={styles.tableContainer} wrap={false}>
+          <Table data={tableData}>
+            <TableHeader>
+              <TableCell weighting={0.2} style={styles.tableHeader}>Section</TableCell>
+              <TableCell weighting={0.7} style={styles.tableHeader}>Description</TableCell>
+              <TableCell weighting={0.1} style={styles.tableHeader}>Grade</TableCell>
+            </TableHeader>
+            <TableBody>
+              <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.section} />
+              <DataTableCell weighting={0.7} style={styles.tableRowLabel} getContent={(r) => <RichText richItems={r.summary} normalStyle={styles.tableRowLabel} richStyle={styles.richText} />} />
+              <DataTableCell weighting={0.1} style={styles.tableRowValue} getContent={(r) => r.value} />
+            </TableBody>
+          </Table>
+        </View>
+        <Text style={styles.subTitle}>Explanation</Text>
+        <RichText richItems={explanationRichText} normalStyle={styles.text} richStyle={styles.richText} />
+        <View style={styles.tableContainer} wrap={false}>
+          <Table data={weightTableData}>
+            <TableHeader>
+              <TableCell weighting={0.5} style={styles.tableHeader}>Section</TableCell>
+              <TableCell weighting={0.5} style={styles.tableHeader}>Weight</TableCell>
+            </TableHeader>
+            <TableBody>
+              <DataTableCell weighting={0.5} style={styles.tableRowLabel} getContent={(r) => r.section} />
+              <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => r.weight} />
+            </TableBody>
+          </Table>
+        </View>
       </View>
-    </View>
+    </View >
   )
 };
 
