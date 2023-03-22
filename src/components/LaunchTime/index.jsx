@@ -5,20 +5,9 @@ import Context from 'src/context';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 import dayjs from 'dayjs';
 import getChartsBlobImage from 'src/utils/getChartsBlobImage';
-import generalMarkMap from 'src/grade';
+import gradeUtil from 'src/utils/grade';
 
-function formatLaunchTimeGrade(average) {
-  if (average <= 0.6)
-    return 100
-  if (average <= 0.8)
-    return 95 // TODO Median of this grade, a more linear value is required
-  if (average <= 0.9)
-    return 85 // TODO Median of this grade, a more linear value is required
-  if (average <= 1)
-    return 70 // TODO Median of this grade, a more linear value is required
-  else
-    return 30 // TODO Median of this grade, a more linear value is required
-}
+const {generalMarkMap, formatLaunchTimeGrade} = gradeUtil;
 
 const LaunchTime = () => {
   const performanceData = useContext(Context);
@@ -122,9 +111,9 @@ const LaunchTime = () => {
 
   var dataSourceDes
   if (sortTimeObjs.length > 2) {
-    const beginDate = dayjs.unix(Math.round(sortTimeObjs[0].time)).format('MM/DD HH:mm');
-    const endDate = dayjs.unix(Math.round(sortTimeObjs[sortTimeObjs.length - 1].time)).format('MM/DD HH:mm');
-    dataSourceDes = `The above data is derived from every launch the app between ${beginDate} and ${endDate}`
+    const beginDate = dayjs.unix(Math.round(sortTimeObjs[0].time)).format('YYYY-MM-DD HH:mm:ss');
+    const endDate = dayjs.unix(Math.round(sortTimeObjs[sortTimeObjs.length - 1].time)).format('YYYY-MM-DD HH:mm:ss');
+    dataSourceDes = `The follow data is derived from every launch the app between ${beginDate} and ${endDate}`
   }
   const recommendations =
     [
@@ -155,6 +144,8 @@ const LaunchTime = () => {
 
 
         <Text style={styles.sectionsSubTitle}>4.3 Data Detail</Text>
+        {/* data source descraption */}
+        {dataSourceDes === undefined ? <></> : <Text style={styles.text}>{dataSourceDes}</Text>}
         {/* indicators of launch time */}
         <Text style={styles.subTitle}>4.3.1 Indicator classification</Text>
         <Text style={styles.text}>{indicatorsDes}</Text>
@@ -176,12 +167,10 @@ const LaunchTime = () => {
           <Text style={styles.hint}>{chartDes}</Text>
         </View>
         {/* averageCost */}
-        <Text style={styles.subTitle}>Average LaunTime</Text>
+        <Text style={styles.subTitle}>4.3.3 Average LaunTime</Text>
         <Text style={styles.highlightNumber}>{`${(averageCost / 1000).toFixed(2)} s`}</Text>
-        {/* data source descraption */}
-        {dataSourceDes === undefined ? <></> : <Text style={styles.text}>{dataSourceDes}</Text>}
 
-        {launchRank.length > 0 ? <Text style={styles.subTitle}>Rank Table</Text> : null}
+        {launchRank.length > 0 ? <Text style={styles.subTitle}>4.3.4 Rank Table</Text> : null}
         {launchRank.length > 0 ? <Text style={styles.hint}>The number on the right is the cost time of this launch</Text> : null}
         {launchRank.length > 0 ? <View style={styles.tableContainer} wrap={false}><Table data={launchRank}>
           <TableHeader>
@@ -195,14 +184,7 @@ const LaunchTime = () => {
         </Table></View> : null}
 
         <Text style={styles.sectionsSubTitle}>4.4 Recommendations for optimisation</Text>
-        <Table data={recommendations}>
-          <TableHeader>
-            <TableCell weighting={1} style={styles.tableHeader}>Optimisation</TableCell>
-          </TableHeader>
-          <TableBody>
-            <DataTableCell weighting={1} style={styles.tableRowLabel} getContent={(r) => r} />
-          </TableBody>
-        </Table>
+        {recommendations.map(e => <Text style={styles.text}>{e}</Text>)}
       </View>
     </View>
   )

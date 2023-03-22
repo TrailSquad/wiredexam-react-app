@@ -3,7 +3,9 @@ import { Text, View } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableCell, TableHeader, TableBody } from '@david.kucsai/react-pdf-table'
-import generalMarkMap from 'src/grade';
+import grateUtil from 'src/utils/grade';
+
+const {generalMarkMap, getMemoryLeakMark} = grateUtil
 
 const MemoryLeak = () => {
   const performanceData = useContext(Context);
@@ -20,18 +22,23 @@ const MemoryLeak = () => {
     (accumulator, currentValue) => accumulator + currentValue.count,
     0
   );
-  var memoryLeakMark;
-  if (memoryLeakData.length <= 0) {
-    memoryLeakMark = 100
-  } else if (memoryLeakData.length <= 1) {
-    memoryLeakMark = 95 // TODO Median of this grade, a more linear value is required
-  } else if (memoryLeakData.length <= 3) {
-    memoryLeakMark = 85 // TODO Median of this grade, a more linear value is required
-  } else if (memoryLeakData.length <= 5) {
-    memoryLeakMark = 70 // TODO Median of this grade, a more linear value is required
-  } else {
-    memoryLeakMark = 30 // TODO Median of this grade, a more linear value is required
-  }
+  var memoryLeakMark = getMemoryLeakMark(memoryLeakData.length);
+
+  const recommendations = [
+    `a、 Use memory management tools: Using memory management tools such as Valgrind, LeakCanary, Instruments, etc. can help you quickly identify and fix memory leak issues.`,
+
+    `b、 Avoid circular references: Make sure there are no circular references in your code, which can prevent memory from being released.`,
+
+    `c、 Release resources in a timely manner: Release resources that are no longer needed, such as closing file handles, freeing dynamically allocated memory, etc.`,
+
+    `d、 Avoid unnecessary memory allocation: Avoid unnecessarily allocating memory in loops or recursive functions.`,
+
+    `e、 Use weak references: If you need to reference an object but don't want to keep it alive, you can use weak references, which can reduce the risk of memory leaks.`,
+    
+    `f、 Use autorelease pools: In iOS development, you can use autorelease pools to release temporarily allocated objects, which can help reduce the risk of memory leaks.`,
+
+    `g、 Check for errors in your code: Check for errors in your code such as array out of bounds, pointer errors, etc., which can lead to memory leaks or other issues.`
+  ]
   return (
     <View bookmark={{ title: "Section 5: Memory Leak", fit: true }} break>
       <View style={styles.contentContainer}>
@@ -62,7 +69,7 @@ const MemoryLeak = () => {
         </Table></View> : null}
 
         <Text style={styles.sectionsSubTitle}>5.4 Recommendations for optimisation</Text>
-        <Text style={styles.text}>TODO</Text>
+        {recommendations.map(e => <Text style={styles.text}>{e}</Text>)}
       </View>
     </View>
   )

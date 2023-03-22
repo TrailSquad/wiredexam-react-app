@@ -4,7 +4,9 @@ import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 import RichText from 'src/components/customize/RichText';
-import generalMarkMap from 'src/grade';
+import gradeUtil from 'src/utils/grade';
+
+const { generalMarkMap, formatLaunchTimeGrade, getMemoryLeakMark, getFpsMark, getLocationMark, getNetworkMark } = gradeUtil
 
 function mapToTextColor(score) {
   if (score >= 100)
@@ -32,19 +34,6 @@ function mapToBgColor(score) {
     return "#FFAB91"
 }
 
-function formatLaunchTimeGrade(average) {
-  if (average <= 0.6)
-    return 100
-  if (average <= 0.8)
-    return 95 // TODO Median of this grade, a more linear value is required
-  if (average <= 0.9)
-    return 85 // TODO Median of this grade, a more linear value is required
-  if (average <= 1)
-    return 70 // TODO Median of this grade, a more linear value is required
-  else
-    return 30 // TODO Median of this grade, a more linear value is required
-}
-
 const Conclusion = () => {
   const performanceData = useContext(Context);
   if (!performanceData) {
@@ -58,7 +47,8 @@ const Conclusion = () => {
   //FPS 
   const droppedFramesFpsValue = 50
   const lowFps = fps.filter(item => item.value <= droppedFramesFpsValue);
-  const lowRate = (fps.length - lowFps.length) * 100 / fps.length;
+  const lowRate = lowFps.length / fps.length;
+  const fpsMark = getFpsMark(lowRate);
   // const fpsDes = `FPS is a simple and direct reflection of the app's lag,55-60fps is excellent,50-55 is normal,below 50 is considered to be dropped frames`
   const fpsDes = [
     { "text": "FPS is a simple and direct reflection of the app's lag, ", "isRich": false },
@@ -90,8 +80,8 @@ const Conclusion = () => {
 
   // Power Usage
   const { network } = performanceData;
-  var networkMark = network.requestSucsessRate + (network.summaryRequestCount - network.slowRequestCount) / network.summaryRequestCount;
-  var locationMark = 100; // TODO
+  var networkMark = getNetworkMark(network.requestSucsessRate, network.slowRequestCount/network.summaryRequestCount);
+  var locationMark = getLocationMark();
   var powerUsageMark = networkMark * 0.8 + locationMark * 0.2;
   var powerUsageDes = [
     { "text": "Power consumption scoring is based on a number of subcategories.", "isRich": false },
@@ -99,37 +89,29 @@ const Conclusion = () => {
 
   // Memory Leak
   const { memoryLeakData } = performanceData;
-  var memoryLeakMark;
+  var memoryLeakMark = getMemoryLeakMark(memoryLeakData.length);
   // var memoryLeakDes = "The memory leak score is mainly based on the number of detected memory leaks. This test detected " + memoryLeakData.length + " memory leaks, and it is recommended to fix them before going live.";
-  var memoryLeakDes = [
-    { "text": "The memory leak score is mainly based on the number of detected memory leaks. This test detected ", "isRich": false },
-    { "text": memoryLeakData.length, "isRich": true },
-    { "text": " memory leaks, and it is recommended to fix them before going live.", "isRich": false },
-  ]
+  var memoryLeakDes;
   if (memoryLeakData.length <= 0) {
-    memoryLeakMark = 100
-    memoryLeakDes = "The memory leak score is mainly based on the number of detected memory leaks. This monitoring found no memory leaks.";
     memoryLeakDes = [
       { "text": "The memory leak score is mainly based on the number of detected memory leaks. This monitoring found no memory leaks.", "isRich": false },
     ]
-  } else if (memoryLeakData.length <= 1) {
-    memoryLeakMark = 95 // TODO Median of this grade, a more linear value is required
-  } else if (memoryLeakData.length <= 3) {
-    memoryLeakMark = 85 // TODO Median of this grade, a more linear value is required
-  } else if (memoryLeakData.length <= 5) {
-    memoryLeakMark = 70 // TODO Median of this grade, a more linear value is required
   } else {
-    memoryLeakMark = 30 // TODO Median of this grade, a more linear value is required
+    memoryLeakDes = [
+      { "text": "The memory leak score is mainly based on the number of detected memory leaks. This test detected ", "isRich": false },
+      { "text": memoryLeakData.length, "isRich": true },
+      { "text": " memory leaks, and it is recommended to fix them before going live.", "isRich": false },
+    ]
   }
 
   // Total Mark
-  const totalMark = lowRate * 0.3 + powerUsageMark * 0.1 + launchAverage * 0.3 + memoryLeakMark * 0.3
+  const totalMark = fpsMark * 0.3 + powerUsageMark * 0.1 + launchAverage * 0.3 + memoryLeakMark * 0.3
 
   const tableData = [
     {
       "section": "FPS",
       "summary": fpsDes,
-      "value": generalMarkMap(lowRate),
+      "value": generalMarkMap(fpsMark),
     },
     {
       "section": "Power Usage",
