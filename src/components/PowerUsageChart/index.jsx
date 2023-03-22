@@ -6,6 +6,9 @@ import * as echarts from 'echarts';
 import getChartsBlobImage from 'src/utils/getChartsBlobImage';
 import dayjs from 'dayjs';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
+import grateUtil from 'src/utils/grade';
+
+const {generalMarkMap, getNetworkMark, getLocationMark} = grateUtil
 
 const getStartTime = (netTimes, locationTimes) => {
     const netStart = netTimes.length > 0 ? netTimes[0] : 0;
@@ -64,6 +67,11 @@ const PowerUsageChart = () => {
     const locationTotalTime = sortLocationData.reduce(function (sum, item) {
         return sum + item.duration;
     }, 0);
+
+    const { network } = performanceData;
+    var networkMark = getNetworkMark(network.requestSucsessRate, network.slowRequestCount / network.summaryRequestCount);
+    var locationMark = getLocationMark();
+    var powerUsageMark = networkMark * 0.8 + locationMark * 0.2;
 
     var categories = [{ name: "Network", color: "#72b362", data: sortNetworkFlowData }, { name: "GPS", color: "#dc77dc", data: sortLocationData }];
 
@@ -198,8 +206,8 @@ const PowerUsageChart = () => {
 
     3. High power consumption may cause damage to the phone: If an app consumes too much power, it may cause the phone to heat up too much, damage internal components and other problems.
     `
-    const beginDate = dayjs(startTime).format('YYYY MM/DD HH:mm');
-    const endDate = dayjs(endTime).format('YYYY MM/DD HH:mm');
+    const beginDate = dayjs(startTime).format('YYYY-MM-DD HH:mm:ss');
+    const endDate = dayjs(endTime).format('YYYY-MM-DD HH:mm:ss');
     const dataSourceDes = `The data for the above chart comes from app usage between ${beginDate} and ${endDate}`
 
     var tableDatas = [
@@ -219,14 +227,10 @@ const PowerUsageChart = () => {
                 <Text style={styles.text}>{impactOfPowerUsage}</Text>
 
                 <Text style={styles.sectionsSubTitle}>3.2 Grade</Text>
-                <Text style={styles.highlightNumber} wrap={false}>TODO</Text>
+                <Text style={styles.highlightNumber} wrap={false}>{generalMarkMap(powerUsageMark)}</Text>
 
                 <Text style={styles.sectionsSubTitle}>3.3 Data Detail</Text>
-                <View style={styles.chartContainer}><Image src={chartImage} /></View>
-                <View style={styles.chartDesContainer}>
-                    <Text style={styles.hint}>{chartDes}</Text>
-                </View>
-
+                <Text style={styles.text}>{dataSourceDes}</Text>
                 <View style={styles.tableContainer} wrap={false}><Table data={tableDatas}>
                     <TableHeader>
                         <TableCell weighting={0.3} style={styles.tableHeader}>Category</TableCell>
@@ -239,8 +243,10 @@ const PowerUsageChart = () => {
                         <DataTableCell weighting={0.35} style={styles.tableRowValue} getContent={(r) => r.duration} />
                     </TableBody>
                 </Table></View>
+
+                <View style={styles.chartContainer}><Image src={chartImage} /></View>
                 <View style={styles.chartDesContainer}>
-                    <Text style={styles.hint}>{dataSourceDes}</Text>
+                    <Text style={styles.hint}>{chartDes}</Text>
                 </View>
             </View>
         </View>

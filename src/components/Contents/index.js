@@ -17,8 +17,6 @@ const Contents = () => {
           <Link style={styles.contentsItem} src='#link_overview'>1. Overview   … … … … … … … … … … … … … … … … … … … …</Link>
           <Link style={styles.contentsItem} src='#link_fps'>2. FPS  … … … … … … … … … … … … … … … … … … … … … … … …</Link>
           <Link style={styles.contentsItem} src='#link_power'>3. Power Usage  … … … … … … … … … … … … … … … … … … …</Link>
-          <Link style={styles.contentsSubItem} src='#link_network'>3.1. Network Monitoring  … … … … … … … … … … … …</Link>
-          <Link style={styles.contentsSubItem} src='#link_gps'>3.2. GPS Positioning  … … … … … … … … … … … … … … … …</Link>
           <Link style={styles.contentsItem} src='#link_launch'>4. Launch Time  … … … … … … … … … … … … … … … … … … …</Link>
           <Link style={styles.contentsItem} src='#link_memory'>5. Memory Leak  … … … … … … … … … … … … … … … … … … …</Link>
           <Link style={styles.contentsItem} src='#link_back_cover'>6. About  … … … … … … … … … … … … … … … … … … …</Link>
@@ -30,8 +28,6 @@ const Contents = () => {
           <Text style={styles.contentsPage}>9</Text>
           <Text style={styles.contentsPage}>12</Text>
           <Text style={styles.contentsPage}>13</Text>
-          <Text style={styles.contentsPage}>15</Text>
-          <Text style={styles.contentsPage}>17</Text>
         </View>
       </View>
     </View>
