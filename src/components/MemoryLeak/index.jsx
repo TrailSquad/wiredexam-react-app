@@ -40,9 +40,9 @@ const MemoryLeak = () => {
     `g、 Check for errors in your code: Check for errors in your code such as array out of bounds, pointer errors, etc., which can lead to memory leaks or other issues.`
   ]
   return (
-    <View bookmark={{ title: "Section 5: Memory Leak", fit: true }} break>
+    <View bookmark={{ title: "Section 5: Memory Leak", fit: true }}>
       <View style={styles.contentContainer}>
-        <Text style={styles.sectionsChapter}>Section 5</Text>
+        {/* <Text style={styles.sectionsChapter}>Section 5</Text> */}
         <Text style={styles.sectionsTitle} id='link_memory'>Memory Leak</Text>
 
         <Text style={styles.sectionsSubTitle}>5.1 Description</Text>
