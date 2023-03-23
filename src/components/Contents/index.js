@@ -1,9 +1,10 @@
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 import { Text, View, Link } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
 
-const Contents = () => {
+const Contents = (props) => {
+  const { powerIndex ,launchTimeIndex, memoryIndex, endIndex } = props
   const performanceData = useContext(Context);
   if (!performanceData) {
     return null;
@@ -23,15 +24,15 @@ const Contents = () => {
         </View>
         <View style={{ width: "10%" }}>
           <Text style={styles.contentsPage}>3</Text>
-          <Text style={styles.contentsPage}>4</Text>
-          <Text style={styles.contentsPage}>7</Text>
-          <Text style={styles.contentsPage}>9</Text>
-          <Text style={styles.contentsPage}>12</Text>
-          <Text style={styles.contentsPage}>13</Text>
+          <Text style={styles.contentsPage}>5</Text>
+          <Text style={styles.contentsPage}>{powerIndex}</Text>
+          <Text style={styles.contentsPage}>{launchTimeIndex}</Text>
+          <Text style={styles.contentsPage}>{memoryIndex}</Text>
+          <Text style={styles.contentsPage}>{endIndex}</Text>
         </View>
       </View>
     </View>
   )
 };
 
-export default Contents;
+export default memo(Contents);

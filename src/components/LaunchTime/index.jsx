@@ -128,9 +128,9 @@ const LaunchTime = () => {
       `e. delaying the initialisation or loading of some less frequently used functions.`
     ]
   return (
-    <View bookmark={{ title: "Section 4: Launch Time", fit: true }} break>
+    <View bookmark={{ title: "Section 4: Launch Time", fit: true }}>
       <View style={styles.contentContainer}>
-        <Text style={styles.sectionsChapter}>Section 4</Text>
+        {/* <Text style={styles.sectionsChapter}>Section 4</Text> */}
         <Text style={styles.sectionsTitle} id='link_launch'>Launch Time</Text>
         {/* launchTimeDes */}
         <Text style={styles.sectionsSubTitle}>4.1 Description</Text>

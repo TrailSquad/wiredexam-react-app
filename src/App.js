@@ -43,7 +43,7 @@ function App() {
   });
 
   const handleLoadSuccess = (pdf) => {
-    settotalPageNumber(pdf.numPages);
+    settotalPageNumber(pdf.numPages)
   }
 
   // 上一页
@@ -72,7 +72,7 @@ function App() {
     });
   }
 
-  const document = <PDFDocument performanceData={performanceData} />;
+  const document = <PDFDocument performanceData={performanceData}/>;
 
   return (
     <div className="App">

@@ -216,9 +216,9 @@ const PowerUsageChart = () => {
     ];
 
     return (
-        <View bookmark={{ title: "Section 3: Power Usage", fit: true }} break>
+        <View bookmark={{ title: "Section 3: Power Usage", fit: true }}>
             <View style={styles.contentContainer}>
-                <Text style={styles.sectionsChapter}>Section 3</Text>
+                {/* <Text style={styles.sectionsChapter}>Section 3</Text> */}
                 <Text style={styles.sectionsTitle} id='link_power'>Power Usage</Text>
 
                 <Text style={styles.sectionsSubTitle}>3.1 Description</Text>

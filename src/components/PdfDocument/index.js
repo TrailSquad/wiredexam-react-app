@@ -13,6 +13,7 @@ import Context from 'src/context';
 import styles from 'src/pdfStyles';
 import Conclusion from '../Conclusion';
 import BackCover from '../BackCover';
+import { memo, useState } from 'react';
 
 // 默认只支持拉丁英文，中文字体一定要注入
 // 方正黑体相对来说非常小（3M），而且是可免费商用无书面授权的字体，因此采用
@@ -22,33 +23,93 @@ Font.register({
 });
 
 // 需要使用指定Component组织内容，更多可见 https://react-pdf.org/components
-const PDFDocument = ({ performanceData }) => (
-  <Context.Provider value={performanceData}>
+const PDFDocument = ({ performanceData }) => {
+  const [indexMap, setIndexMap] = useState({
+    powerIndex: 0,
+    launchTimeIndex: 0,
+    memoryIndex: 0,
+    endIndex: totalPageNumber
+  })
+
+  return (<Context.Provider value={performanceData}>
     <Document pageMode='useOutlines'>
-      <Page size="A4" style={styles.page} bookmark="APM" >
-        {/* 每页固定页头 */}
-        <Text style={styles.header} fixed>
-          Wiredcraft
-        </Text>
-        
-        {/* 主体内容 */}
+      <Page size="A4" style={styles.page} >
+        <Text style={styles.header} fixed>Wiredcraft</Text>
         <Cover />
-        <Contents />
-        <Conclusion/>
+        <Contents powerIndex={indexMap.powerIndex} launchTimeIndex={indexMap.launchTimeIndex} memoryIndex={indexMap.memoryIndex} endIndex={indexMap.endIndex}/>
+        <Conclusion />
         <FPS />
+        <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
+          `${pageNumber} / ${totalPages}`
+        )} fixed />
+      </Page>
+
+      <Page size="A4" style={styles.page} >
+        <Text style={styles.header} fixed>Wiredcraft</Text>
+        <Text style={styles.sectionsChapter} render={({pageNumber})=>{
+          var data = {...indexMap}
+          if (pageNumber !== indexMap.powerIndex) {
+            data.powerIndex = pageNumber
+            setIndexMap(data)
+          }
+          return "Section 3"
+        }} />
         <PowerUsageChart />
         <NetAbstract />
         <LocationUse />
+        <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
+          `${pageNumber} / ${totalPages}`
+        )} fixed />
+      </Page>
+
+      <Page size="A4" style={styles.page} >
+        <Text style={styles.header} fixed>Wiredcraft</Text>
+        <Text style={styles.sectionsChapter} render={({pageNumber})=>{
+          var data = {...indexMap}
+          if (pageNumber !== indexMap.launchTimeIndex) {
+            data.launchTimeIndex = pageNumber
+            setIndexMap(data)
+          }
+          return "Section 4"
+        }} />
         <LaunchTime />
+        <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
+          `${pageNumber} / ${totalPages}`
+        )} fixed />
+      </Page>
+
+      <Page size="A4" style={styles.page} >
+        <Text style={styles.header} fixed>Wiredcraft</Text>
+        <Text style={styles.sectionsChapter} render={({pageNumber})=>{
+          var data = {...indexMap}
+          if (pageNumber !== indexMap.memoryIndex) {
+            data.memoryIndex = pageNumber
+            setIndexMap(data)
+          }
+          return "Section 5"
+        }} />
         <MemoryLeak />
+        <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
+          `${pageNumber} / ${totalPages}`
+        )} fixed />
+      </Page>
+      <Page size="A4" style={styles.page} >
+        <Text style={styles.header} fixed>Wiredcraft</Text>
+        <Text style={styles.sectionsChapter} render={({pageNumber})=>{
+          var data = {...indexMap}
+          if (pageNumber !== indexMap.endIndex) {
+            data.endIndex = pageNumber
+            setIndexMap(data)
+          }
+          return ""
+        }} />
         <BackCover />
-        {/* 每页固定页脚 */}
         <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
           `${pageNumber} / ${totalPages}`
         )} fixed />
       </Page>
     </Document>
-  </Context.Provider>
-);
+  </Context.Provider>)
+}
 
-export default PDFDocument;
+export default memo(PDFDocument);
