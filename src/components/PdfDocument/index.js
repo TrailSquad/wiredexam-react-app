@@ -28,7 +28,7 @@ const PDFDocument = ({ performanceData }) => {
     powerIndex: 0,
     launchTimeIndex: 0,
     memoryIndex: 0,
-    endIndex: totalPageNumber
+    endIndex: 0
   })
 
   return (<Context.Provider value={performanceData}>
