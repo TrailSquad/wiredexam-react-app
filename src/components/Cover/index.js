@@ -24,11 +24,11 @@ const Cover = ({performanceData}) => {
       <View style={styles.coverImageContainer}>
         <Image style={styles.coverImage} src={logo} />
       </View>
-      <Text style={styles.coverTitle}>App 性能检测报告</Text>
-      <CoverRow left="应用名称：" right={appName} />
-      <CoverRow left="测试机型：" right={deviceInfo} />
-      <CoverRow left="报告出处：" right="Wiredcraft Mobile Team" />
-      <CoverRow left="报告日期：" right={dayjs().format('YYYY-MM-DD')} />
+      <Text style={styles.coverTitle}>App Performance Test Report</Text>
+      <CoverRow left="App:&nbsp;&nbsp;" right={appName} />
+      <CoverRow left="Device:&nbsp;&nbsp;" right={deviceInfo} />
+      <CoverRow left="By:&nbsp;&nbsp;" right="Wiredcraft Mobile Team" />
+      <CoverRow left="Date:&nbsp;&nbsp;" right={dayjs().format('YYYY-MM-DD')} />
     </View>
   )
 };

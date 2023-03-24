@@ -41,11 +41,11 @@ const getMemoryLeakMark = (leakCount) => {
 }
 
 const getFpsMark = (lowRate) => {
-  return Math.round((1-lowRate) * 100)
+  return Math.round((1 - lowRate) * 100)
 }
 
 const getNetworkMark = (sucsessRate, slowReqRate) => {
-  return Math.round((sucsessRate * (1 - slowReqRate)) * 100)
+  return Math.round(sucsessRate * 50 + (1 - slowReqRate) * 50)
 }
 
 const getLocationMark = () => {

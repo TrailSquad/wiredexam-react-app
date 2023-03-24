@@ -7,8 +7,9 @@ import getChartsBlobImage from 'src/utils/getChartsBlobImage';
 import dayjs from 'dayjs';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 import grateUtil from 'src/utils/grade';
+import RichText from 'src/components/customize/RichText';
 
-const {generalMarkMap, getNetworkMark, getLocationMark} = grateUtil
+const { generalMarkMap, getNetworkMark, getLocationMark } = grateUtil
 
 const getStartTime = (netTimes, locationTimes) => {
     const netStart = netTimes.length > 0 ? netTimes[0] : 0;
@@ -200,15 +201,21 @@ const PowerUsageChart = () => {
     const chartDes = "The x-axis represents time and the y-axis represents the hardware used, with denser lines on the way indicating more frequent use and wider lines indicating longer use"
 
     const impactOfPowerUsage = `
-    1, power consumption will affect the user experience: apps with high power consumption will consume more power, which will lead to rapid power consumption of the phone and affect the user experience.
+    1. Power consumption will affect the user experience: apps with high power consumption will consume more power, which will lead to rapid power consumption of the phone and affect the user experience.
 
-    2, power consumption will reduce the performance of the phone: if an app's power consumption is too large, it will take up system resources, thus reducing the performance of the phone.
+    2. Power consumption will reduce the performance of the phone: if an app's power consumption is too large, it will take up system resources, thus reducing the performance of the phone.
 
     3. High power consumption may cause damage to the phone: If an app consumes too much power, it may cause the phone to heat up too much, damage internal components and other problems.
     `
     const beginDate = dayjs(startTime).format('YYYY-MM-DD HH:mm:ss');
     const endDate = dayjs(endTime).format('YYYY-MM-DD HH:mm:ss');
-    const dataSourceDes = `The data for the above chart comes from app usage between ${beginDate} and ${endDate}`
+    const dataSourceDes = [
+        { "text": `The data for the above chart comes from app usage between `, "isRich": false },
+        { "text": `${beginDate}`, "isRich": true },
+        { "text": " and ", "isRich": false },
+        { "text": `${endDate}`, "isRich": true },
+        { "text": ".", "isRich": false },
+    ]
 
     var tableDatas = [
         { name: 'Network', count: sortNetworkFlowData.length, duration: Math.round(networkTotalTime) },
@@ -230,7 +237,7 @@ const PowerUsageChart = () => {
                 <Text style={styles.highlightNumber} wrap={false}>{generalMarkMap(powerUsageMark)}</Text>
 
                 <Text style={styles.sectionsSubTitle}>3.3 Data Detail</Text>
-                <Text style={styles.text}>{dataSourceDes}</Text>
+                <RichText richItems={dataSourceDes} normalStyle={styles.text} richStyle={styles.richText} />
                 <View style={styles.tableContainer} wrap={false}><Table data={tableDatas}>
                     <TableHeader>
                         <TableCell weighting={0.3} style={styles.tableHeader}>Category</TableCell>

@@ -7,6 +7,7 @@ import getChartsBlobImage from 'src/utils/getChartsBlobImage';
 import dayjs from 'dayjs';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 import gradeUtil from 'src/utils/grade';
+import RichText from 'src/components/customize/RichText';
 
 const { generalMarkMap, getFpsMark } = gradeUtil;
 const FPS = () => {
@@ -30,7 +31,13 @@ const FPS = () => {
   if (fps.length > 2) {
     const beginDate = dayjs.unix(Math.round(fps[0].time)).format('YYYY-MM-DD HH:mm:ss');
     const endDate = dayjs.unix(Math.round(fps[fps.length - 1].time)).format('YYYY-MM-DD HH:mm:ss');
-    dataSourceDes = `The follow data is derived from Fps sampling using the app between ${beginDate} and ${endDate}`
+    dataSourceDes = [
+      { "text": `The follow data is derived from Fps sampling using the app between `, "isRich": false },
+      { "text": `${beginDate}`, "isRich": true },
+      { "text": " and ", "isRich": false },
+      { "text": `${endDate}`, "isRich": true },
+      { "text": ".", "isRich": false },
+    ]
   }
 
   const option = {
@@ -152,15 +159,15 @@ const FPS = () => {
   const indicatorsDes = "The indicators of PFS are divided into three categories as Perfect, Normal and Bad, as follows"
 
   const recommendations = [
-    `a、 optimisation of code: unnecessary code should be minimised and if there is code that can be reused, it should be reused as much as possible.`,
+    `1. Optimisation of code: unnecessary code should be minimised and if there is code that can be reused, it should be reused as much as possible.`,
 
-    `b、 reducing page elements: reducing the number of elements in a page, such as images, text, animations, etc.`,
+    `2. Reducing page elements: reducing the number of elements in a page, such as images, text, animations, etc.`,
 
-    `c、 rational use of layout: use a rational layout to reduce rendering time.`,
+    `3. Rational use of layout: use a rational layout to reduce rendering time.`,
 
-    `d、 optimise image resources: optimise the size and format of image resources to avoid excessively large images taking too long to load.`,
+    `4. Optimise image resources: optimise the size and format of image resources to avoid excessively large images taking too long to load.`,
 
-    `e、 Avoid unnecessary re-layout and re-drawing: avoid unnecessary re-layout and re-drawing without affecting the display of the interface .`
+    `5. Avoid unnecessary re-layout and re-drawing: avoid unnecessary re-layout and re-drawing without affecting the display of the interface.`
   ]
   return (
     <View bookmark={{ title: "Section 2: FPS", fit: true }} break>
@@ -179,9 +186,9 @@ const FPS = () => {
 
         {/* 2.3 Detail */}
         <Text style={styles.sectionsSubTitle}>2.3 Data Detail</Text>
-        <Text style={styles.text}>{dataSourceDes}</Text>
-        {/* 2.3.1 Indicator classification */}
-        <Text style={styles.subTitle}>2.3.1 Indicator classification</Text>
+        <RichText richItems={dataSourceDes} normalStyle={styles.text} richStyle={styles.richText} />
+        {/* 2.3.1 Indicator Classification */}
+        <Text style={styles.subTitle}>2.3.1 Indicator Classification</Text>
         <Text style={styles.text}>{indicatorsDes}</Text>
         <Text style={styles.hint}>The right is the range of indicator for left category</Text>
         <View style={styles.tableContainer} wrap={false}><Table data={indicators}>
@@ -219,8 +226,10 @@ const FPS = () => {
       {/* 2.4 Recommendations */}
       {topRankArray.length > 0 ?
         <View>
-          <Text style={styles.sectionsSubTitle}>2.4 Recommendations for optimisation</Text>
-          {recommendations.map(e => <Text style={styles.text}>{e}</Text>)}
+          <Text style={styles.sectionsSubTitle}>2.4 Recommendations for Optimisation</Text>
+          <View style={styles.recommendationLayout} wrap={false}>
+            {recommendations.map(e => <Text style={styles.text}>{e}</Text>)}
+          </View>
         </View> : null}
     </View>
   );

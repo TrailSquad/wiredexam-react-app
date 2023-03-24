@@ -31,7 +31,7 @@ const LocationUse = () => {
                 <Text style={styles.sectionsSubTitle} id='link_gps'>3.5 GPS Positioning</Text>
                 <Text style={styles.text}>{gpsDes}</Text>
                 <Text style={styles.text}>Frequent positioning or long positioning times indicate a greater impact on power consumption, please judge according to the specific business scenario</Text>
-                <View style={styles.chartDesContainer}><Text style={styles.hint}>{gpsTableHint}</Text></View>
+                <Text style={styles.hint}>{gpsTableHint}</Text>
                 <View style={styles.tableContainer} wrap={false}><Table data={tableData}>
                     <TableHeader>
                         <TableCell weighting={0.5} style={styles.tableHeader}>Name</TableCell>

@@ -75,7 +75,7 @@ const NetAbstract = () => {
       <View style={styles.contentContainer}>
         <Text style={styles.sectionsSubTitle} id='link_network'>3.4 Network Monitoring</Text>
         <Text style={styles.text}>Network traffic monitoring is to monitor network traffic through continuous collection of network data. By monitoring network traffic, we can find potential problems with too many or too large requests in the application.</Text>
-        <Text style={styles.tableTitle}>3.4.1 Network Data Summary:</Text>
+        <Text style={styles.tableTitle}>3.4.1 Network Data Summary</Text>
         <View style={styles.tableContainer} wrap={false}><Table data={tableData}>
           <TableHeader>
             <TableCell weighting={0.5} style={styles.tableHeader}>Item</TableCell>
@@ -87,7 +87,7 @@ const NetAbstract = () => {
           </TableBody>
         </Table></View>
 
-        {reqCountRank.length > 1 ? <Text style={styles.tableTitle}>3.4.2 Ranking of Requests:</Text> : null}
+        {reqCountRank.length > 1 ? <Text style={styles.tableTitle}>3.4.2 Ranking of Requests</Text> : null}
         {reqCountRank.length > 1 ? <Text style={styles.text}>Too many requests may be unnecessary and can be optimized. Here is a list of the most frequently requested items in the collected data.</Text> : null}
         {reqCountRank.length > 1 ? <Text style={styles.hint}>The number on the right is the number of requests</Text> : null}
         {reqCountRank.length > 1 ? <View style={styles.tableContainer} wrap={false}><Table data={reqCountRank}>
@@ -101,7 +101,7 @@ const NetAbstract = () => {
           </TableBody>
         </Table></View> : null}
 
-        {failReqCountRank.length > 1 ? <Text style={styles.tableTitle}>3.4.3 Ranking of Failed Requests:</Text> : null}
+        {failReqCountRank.length > 1 ? <Text style={styles.tableTitle}>3.4.3 Ranking of Failed Requests</Text> : null}
         {failReqCountRank.length > 1 ? <Text style={styles.text}>Failed requests tell us there is a problem with the backend. Discover them and solve them.</Text> : null}
         {failReqCountRank.length > 1 ? <Text style={styles.hint}>The number on the right is the number of requests</Text> : null}
         {failReqCountRank.length > 1 ? <View style={styles.tableContainer} wrap={false}><Table data={failReqCountRank}>
@@ -115,7 +115,7 @@ const NetAbstract = () => {
           </TableBody>
         </Table></View> : null}
 
-        {reqTimeRank.length > 1 ? <Text style={styles.tableTitle}>3.4.4 Request Time Ranking:</Text> : null}
+        {reqTimeRank.length > 1 ? <Text style={styles.tableTitle}>3.4.4 Request Time Ranking</Text> : null}
         {reqTimeRank.length > 1 ? <Text style={styles.text}>Excessive request time means that it can be optimized to improve response speed and improve user experience.</Text> : null}
         {reqTimeRank.length > 1 ? <Text style={styles.hint}>The number on the right is the average request time of a single request</Text> : null}
         {reqTimeRank.length > 1 ? <View style={styles.tableContainer} wrap={false}><Table data={reqTimeRank}>
@@ -129,7 +129,7 @@ const NetAbstract = () => {
           </TableBody>
         </Table></View> : null}
 
-        {uploadDataRank.length > 1 ? <Text style={styles.tableTitle}>3.4.5 Uplink Traffic Ranking:</Text> : null}
+        {uploadDataRank.length > 1 ? <Text style={styles.tableTitle}>3.4.5 Uplink Traffic Ranking</Text> : null}
         {uploadDataRank.length > 1 ? <Text style={styles.text}>Optimizing the request with too large request data can improve the response speed, thereby improving the user experience</Text> : null}
         {uploadDataRank.length > 1 ? <Text style={styles.hint}>The number on the right is the average uplink traffic size of a single request</Text> : null}
         {uploadDataRank.length > 1 ? <View style={styles.tableContainer} wrap={false}><Table data={uploadDataRank}>
@@ -143,7 +143,7 @@ const NetAbstract = () => {
           </TableBody>
         </Table></View> : null}
 
-        {downloadDataRank.length > 1 ? <Text style={styles.tableTitle}>3.4.6 Downstream Traffic Ranking:</Text> : null}
+        {downloadDataRank.length > 1 ? <Text style={styles.tableTitle}>3.4.6 Downstream Traffic Ranking</Text> : null}
         {downloadDataRank.length > 1 ? <Text style={styles.text}>Optimizing the request with too large request data can improve the response speed, thereby improving the user experience</Text> : null}
         {downloadDataRank.length > 1 ? <Text style={styles.hint}>The number on the right is the average downstream traffic size of a single request</Text> : null}
         {downloadDataRank.length > 1 ? <View style={styles.tableContainer} wrap={false}><Table data={downloadDataRank}>
