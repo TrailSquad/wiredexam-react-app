@@ -46,45 +46,52 @@ const Conclusion = () => {
 
   //FPS 
   const droppedFramesFpsValue = 50
-  const lowFps = fps.filter(item => item.value <= droppedFramesFpsValue);
+  const highFpsValue = 55
+  const lowFps = fps.filter(item => item.value < droppedFramesFpsValue);
   const lowRate = lowFps.length / fps.length;
+  const highFps = fps.filter(item => item.value >= highFpsValue);
+  const highRate = (highFps.length * 100 / fps.length).toFixed(0);
   const fpsMark = getFpsMark(lowRate);
-  // const fpsDes = `FPS is a simple and direct reflection of the app's lag,55-60fps is excellent,50-55 is normal,below 50 is considered to be dropped frames`
   const fpsDes = [
     { "text": "FPS is a simple and direct reflection of the app's lag, ", "isRich": false },
-    { "text": "55-60fps", "isRich": true },
+    { "text": `${highFpsValue} ~ 60`, "isRich": true },
     { "text": " is excellent, ", "isRich": false },
-    { "text": "50-55", "isRich": true },
+    { "text": `${droppedFramesFpsValue} ~ ${highFpsValue}`, "isRich": true },
     { "text": " is normal,below ", "isRich": false },
-    { "text": "50", "isRich": true },
-    { "text": " is considered to be dropped frames.", "isRich": false },
+    { "text": `${droppedFramesFpsValue}`, "isRich": true },
+    { "text": " is considered to be dropped frames. In this test, ", "isRich": false },
+    { "text": `${highRate}%`, "isRich": true },
+    { "text": " of the FPS sampling values ​​are excellent.", "isRich": false },
   ]
-
-  //launchTimeDes
-  // const launchTimeDes = "Launch speed is the first thing users experience about our app, 400-600ms is excellent, 600-800 is normal, more than 800ms is considered to be in need of optimisation";
-  const launchTimeDes = [
-    { "text": "Launch speed is the first thing users experience about our app, ", "isRich": false },
-    { "text": "400-600ms", "isRich": true },
-    { "text": " is excellent, ", "isRich": false },
-    { "text": "600-800ms", "isRich": true },
-    { "text": " is normal, more than ", "isRich": false },
-    { "text": "800ms", "isRich": true },
-    { "text": " is considered to be in need of optimisation", "isRich": false },
-  ]
-  const { launchTimeData } = performanceData;
-  const sortData = launchTimeData.sort((a, b) => (a.time - b.time));
-  const averageCost = sortData.reduce(function (sum, item) {
-    return sum + item.launchCost;
-  }, 0) / sortData.length
-  const launchAverage = formatLaunchTimeGrade((averageCost / 1000).toFixed(2))
 
   // Power Usage
   const { network } = performanceData;
-  var networkMark = getNetworkMark(network.requestSucsessRate, network.slowRequestCount/network.summaryRequestCount);
+  var networkMark = getNetworkMark(network.requestSucsessRate, network.slowRequestCount / network.summaryRequestCount);
   var locationMark = getLocationMark();
   var powerUsageMark = networkMark * 0.8 + locationMark * 0.2;
   var powerUsageDes = [
-    { "text": "Power consumption scoring is based on a number of subcategories.", "isRich": false },
+    { "text": "Power consumption grade is based on success rate of network requests and rate of slow requests. In this test, success rate of network requests is ", "isRich": false },
+    { "text": `${(network.requestSucsessRate * 100).toFixed(0)}%`, "isRich": true },
+    { "text": `. Rate of slow requests is `, "isRich": false },
+    { "text": `${(network.slowRequestCount / network.summaryRequestCount * 100).toFixed(0)}%`, "isRich": true },
+    { "text": ". ", "isRich": false },
+  ]
+
+  //launchTimeDes
+  const { launchTimeData } = performanceData;
+  const sortData = launchTimeData.sort((a, b) => (a.time - b.time));
+  const averageCost = (sortData.reduce(function (sum, item) { return sum + item.launchCost; }, 0) / sortData.length / 1000).toFixed(3)
+  const launchAverage = formatLaunchTimeGrade(averageCost)
+  const launchTimeDes = [
+    { "text": "Launch speed is the first thing users experience about our app, ", "isRich": false },
+    { "text": "400 ms ~ 600 ms", "isRich": true },
+    { "text": " is excellent, ", "isRich": false },
+    { "text": "600 ms ~ 800 ms", "isRich": true },
+    { "text": " is normal, more than ", "isRich": false },
+    { "text": "800 ms", "isRich": true },
+    { "text": " is considered to be in need of optimisation. In this test, the average launch time is ", "isRich": false },
+    { "text": `${averageCost}ms`, "isRich": true },
+    { "text": ".", "isRich": false },
   ]
 
   // Memory Leak

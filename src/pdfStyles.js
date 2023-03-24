@@ -127,11 +127,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginVertical: 8,
+    marginTop: 8,
   },
   // cover
   coverTitle: {
-    fontSize: 40,
+    fontSize: 32,
     marginTop: 60,
     marginBottom: 60
   },
@@ -244,6 +244,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5F5F5',
     textAlign: "center",
     fontSize: 10,
+  },
+  // recommendation
+  recommendationLayout: {
+    padding: 16,
+    backgroundColor: '#F5F5F5',
   },
   // FPS
   // Back Cover
