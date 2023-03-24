@@ -1,18 +1,18 @@
 [
     {
         "count": 2,
-        "info": "className: DoraemonKit.APMReportViewController\nviewStack:DoraemonKit.APMReportViewController\nretainCycle:Fail to find a retain cycle"
+        "info": "className: APMReportViewController"
     },
     {
         "count": 1,
-        "info": "className: DoraemonKit.APMReportViewController\nviewStack:DoraemonKit.APMReportViewController\nretainCycle:"
+        "info": "className: APMReportViewController"
     },
     {
         "count": 3,
-        "info": "className: DoraemonMLeaksFinderListViewController\nviewStack:DoraemonMLeaksFinderListViewController\nretainCycle:"
+        "info": "className: LeaksFinderListViewController"
     },
     {
         "count": 1,
-        "info": "className: DoraemonMLeaksFinderListViewController\nviewStack:DoraemonMLeaksFinderListViewController\nretainCycle:"
+        "info": "className: LeaksFinderListViewController"
     }
 ]

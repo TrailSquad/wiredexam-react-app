@@ -4,7 +4,7 @@ import styles from 'src/pdfStyles';
 
 const BackCover = () => {
   return (
-    <View style={styles.pageContainer} bookmark={{ title: "BackCover", fit: true }} break>
+    <View style={styles.pageContainer} bookmark={{ title: "BackCover", fit: true }}>
       <View style={styles.backCoverImageContainer}>
         <Image style={styles.backCoverImage} src={qrcode} />
       </View>

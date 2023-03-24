@@ -1,9 +1,8 @@
-import { useContext } from 'react';
 import { Text, Image, View } from '@react-pdf/renderer';
 import logo from 'src/static/wcl.jpg';
 import styles from 'src/pdfStyles';
-import Context from 'src/context';
 import dayjs from 'dayjs';
+import { memo } from 'react';
 
 const CoverRow = ({left, right}) => (
   <View style={styles.coverRow}>
@@ -12,8 +11,7 @@ const CoverRow = ({left, right}) => (
   </View>
 )
 
-const Cover = () => {
-  const performanceData = useContext(Context);
+const Cover = ({performanceData}) => {
   if (!performanceData) {
     return null;
   }
@@ -21,7 +19,6 @@ const Cover = () => {
     appName,
     deviceInfo
   } = performanceData;
-
   return (
     <View style={styles.pageContainer} bookmark={{ title: "Cover", fit: true }}>
       <View style={styles.coverImageContainer}>
@@ -36,4 +33,4 @@ const Cover = () => {
   )
 };
 
-export default Cover;
+export default memo(Cover);

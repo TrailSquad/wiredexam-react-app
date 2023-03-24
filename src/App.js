@@ -1,7 +1,7 @@
 // mobile不支持 PDFViewer
 // 解决方法 https://github.com/diegomura/react-pdf/issues/1113#issuecomment-781053667
 
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { BlobProvider, PDFDownloadLink } from '@react-pdf/renderer';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack5';
 import PDFDocument from 'src/components/PdfDocument/index';
@@ -122,4 +122,4 @@ function App() {
   );
 }
 
-export default App;
+export default memo(App);
