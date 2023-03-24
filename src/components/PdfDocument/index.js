@@ -22,21 +22,21 @@ Font.register({
   src: FZHei
 });
 
+
 // 需要使用指定Component组织内容，更多可见 https://react-pdf.org/components
 const PDFDocument = ({ performanceData }) => {
-  const [indexMap, setIndexMap] = useState({
-    powerIndex: 0,
-    launchTimeIndex: 0,
-    memoryIndex: 0,
-    endIndex: 0
-  })
+
+  const [powerIndex, setPowerIndex] = useState(0)
+  const [launchTimeIndex, setLaunchTimeIndex] = useState(0)
+  const [memoryIndex, setMemoryIndex] = useState(0)
+  const [endIndex, setEndIndex] = useState(0)
 
   return (<Context.Provider value={performanceData}>
     <Document pageMode='useOutlines'>
       <Page size="A4" style={styles.page} >
         <Text style={styles.header} fixed>Wiredcraft</Text>
-        <Cover />
-        <Contents powerIndex={indexMap.powerIndex} launchTimeIndex={indexMap.launchTimeIndex} memoryIndex={indexMap.memoryIndex} endIndex={indexMap.endIndex}/>
+        <Cover performanceData={performanceData} />
+        <Contents powerIndex={powerIndex} launchTimeIndex={launchTimeIndex} memoryIndex={memoryIndex} endIndex={endIndex} />
         <Conclusion />
         <FPS />
         <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
@@ -46,11 +46,9 @@ const PDFDocument = ({ performanceData }) => {
 
       <Page size="A4" style={styles.page} >
         <Text style={styles.header} fixed>Wiredcraft</Text>
-        <Text style={styles.sectionsChapter} render={({pageNumber})=>{
-          var data = {...indexMap}
-          if (pageNumber !== indexMap.powerIndex) {
-            data.powerIndex = pageNumber
-            setIndexMap(data)
+        <Text style={styles.sectionsChapter} render={({ pageNumber }) => {
+          if (pageNumber !== powerIndex) {
+            setPowerIndex(pageNumber)
           }
           return "Section 3"
         }} />
@@ -64,11 +62,9 @@ const PDFDocument = ({ performanceData }) => {
 
       <Page size="A4" style={styles.page} >
         <Text style={styles.header} fixed>Wiredcraft</Text>
-        <Text style={styles.sectionsChapter} render={({pageNumber})=>{
-          var data = {...indexMap}
-          if (pageNumber !== indexMap.launchTimeIndex) {
-            data.launchTimeIndex = pageNumber
-            setIndexMap(data)
+        <Text style={styles.sectionsChapter} render={({ pageNumber }) => {
+          if (pageNumber !== launchTimeIndex) {
+            setLaunchTimeIndex(pageNumber)
           }
           return "Section 4"
         }} />
@@ -80,11 +76,9 @@ const PDFDocument = ({ performanceData }) => {
 
       <Page size="A4" style={styles.page} >
         <Text style={styles.header} fixed>Wiredcraft</Text>
-        <Text style={styles.sectionsChapter} render={({pageNumber})=>{
-          var data = {...indexMap}
-          if (pageNumber !== indexMap.memoryIndex) {
-            data.memoryIndex = pageNumber
-            setIndexMap(data)
+        <Text style={styles.sectionsChapter} render={({ pageNumber }) => {
+          if (pageNumber !== memoryIndex) {
+            setMemoryIndex(pageNumber)
           }
           return "Section 5"
         }} />
@@ -95,11 +89,9 @@ const PDFDocument = ({ performanceData }) => {
       </Page>
       <Page size="A4" style={styles.page} >
         <Text style={styles.header} fixed>Wiredcraft</Text>
-        <Text style={styles.sectionsChapter} render={({pageNumber})=>{
-          var data = {...indexMap}
-          if (pageNumber !== indexMap.endIndex) {
-            data.endIndex = pageNumber
-            setIndexMap(data)
+        <Text render={({ pageNumber }) => {
+          if (pageNumber !== endIndex) {
+            setEndIndex(pageNumber)
           }
           return ""
         }} />
