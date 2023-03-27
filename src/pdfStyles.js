@@ -96,11 +96,13 @@ const styles = StyleSheet.create({
   },
   chartContainer: {
     width: "80%",
-    marginVertical: 24,
+    backgroundColor: '#F5F5F5',
+    padding: 16
   },
   chartDesContainer: {
     width: "80%",
-    marginVertical: 20,
+    backgroundColor: '#F5F5F5',
+    padding: 16
   },
   pageNumber: {
     position: 'absolute',
