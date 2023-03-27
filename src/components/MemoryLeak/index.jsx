@@ -4,6 +4,7 @@ import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableCell, TableHeader, TableBody } from '@david.kucsai/react-pdf-table'
 import grateUtil from 'src/utils/grade';
+import RichText from 'src/components/customize/RichText';
 
 const { generalMarkMap, getMemoryLeakMark } = grateUtil
 
@@ -18,11 +19,13 @@ const MemoryLeak = () => {
   }
   const sortData = memoryLeakData.sort((a, b) => (b.count - a.count));
   const rank = sortData.length > 3 ? sortData.slice(0, 3) : sortData;
-  const totalCount = memoryLeakData.reduce(
-    (accumulator, currentValue) => accumulator + currentValue.count,
-    0
-  );
   var memoryLeakMark = getMemoryLeakMark(memoryLeakData.length);
+
+  const dataSourceDes = [
+    { "text": `This test found `, "isRich": false },
+    { "text": `${sortData.length}`, "isRich": true },
+    { "text": " memory leaks in total.", "isRich": false },
+  ]
 
   const recommendations = [
     `1. Use memory management tools: Using memory management tools such as Valgrind, LeakCanary, Instruments, etc. can help you quickly identify and fix memory leak issues.`,
@@ -53,10 +56,8 @@ const MemoryLeak = () => {
         <Text style={styles.highlightNumber} wrap={false}>{generalMarkMap(memoryLeakMark)}</Text>
 
         <Text style={styles.sectionsSubTitle}>5.3 Data Detail</Text>
-        <Text style={styles.subTitle}>5.3.1 Memory Leak Occurrences</Text>
-        <Text style={styles.hint}>The total number of memory leaks that occurred during this test.</Text>
-        <Text style={styles.highlightNumber}>{totalCount}</Text>
-        {rank.length > 0 ? <Text style={styles.subTitle}>5.3.2 Occurrence Ranking</Text> : null}
+        <RichText richItems={dataSourceDes} normalStyle={styles.text} richStyle={styles.richText} />
+        {rank.length > 0 ? <Text style={styles.subTitle}>5.3.1 Occurrence Ranking</Text> : null}
         {rank.length > 0 ? <View style={styles.tableContainer} wrap={false}><Table data={rank}>
           <TableHeader>
             <TableCell weighting={0.8} style={styles.tableHeader}>Description</TableCell>

@@ -90,7 +90,7 @@ const Conclusion = () => {
     { "text": " is normal, more than ", "isRich": false },
     { "text": "800 ms", "isRich": true },
     { "text": " is considered to be in need of optimisation. In this test, the average launch time is ", "isRich": false },
-    { "text": `${averageCost}ms`, "isRich": true },
+    { "text": `${averageCost} ms`, "isRich": true },
     { "text": ".", "isRich": false },
   ]
 
@@ -210,7 +210,7 @@ const Conclusion = () => {
               <TableCell weighting={0.1} style={styles.tableHeader}>Grade</TableCell>
             </TableHeader>
             <TableBody>
-              <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.section} />
+              <DataTableCell weighting={0.2} style={styles.tableRowLabel} getContent={(r) => r.section} />
               <DataTableCell weighting={0.7} style={styles.tableRowLabel} getContent={(r) => <RichText richItems={r.summary} normalStyle={styles.tableRowLabel} richStyle={styles.richText} />} />
               <DataTableCell weighting={0.1} style={styles.tableRowValue} getContent={(r) => r.value} />
             </TableBody>
