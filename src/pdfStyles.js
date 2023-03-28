@@ -158,6 +158,8 @@ const styles = StyleSheet.create({
     width: 150,
     fontSize: 14,
     textAlign: 'right',
+    paddingRight: 16,
+    color: 'grey',
   },
   coverRowRight: {
     width: 250,

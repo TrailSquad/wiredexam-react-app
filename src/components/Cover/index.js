@@ -25,10 +25,11 @@ const Cover = ({performanceData}) => {
         <Image style={styles.coverImage} src={logo} />
       </View>
       <Text style={styles.coverTitle}>App Performance Test Report</Text>
-      <CoverRow left="App:&nbsp;&nbsp;" right={appName} />
-      <CoverRow left="Device:&nbsp;&nbsp;" right={deviceInfo} />
-      <CoverRow left="By:&nbsp;&nbsp;" right="Wiredcraft Mobile Team" />
-      <CoverRow left="Date:&nbsp;&nbsp;" right={dayjs().format('YYYY-MM-DD')} />
+      <CoverRow left="App:" right={appName} />
+      <CoverRow left="Device:" right={deviceInfo} />
+      <CoverRow left="By:" right="Wiredcraft Mobile Team" />
+      <CoverRow left="Date:" right={dayjs().format('YYYY-MM-DD')} />
+      <CoverRow left="Version:" right="v0.1" />
     </View>
   )
 };
