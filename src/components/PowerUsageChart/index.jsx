@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 import grateUtil from 'src/utils/grade';
 import RichText from 'src/components/customize/RichText';
+import Constants from 'src/constants';
 
 const { generalMarkMap, getNetworkMark, getLocationMark } = grateUtil
 
@@ -200,13 +201,6 @@ const PowerUsageChart = () => {
     const chartImage = getChartsBlobImage(option);
     const chartDes = "The x-axis represents time and the y-axis represents the hardware used, with denser lines on the way indicating more frequent use and wider lines indicating longer use"
 
-    const impactOfPowerUsage = `
-    1. Power consumption will affect the user experience: apps with high power consumption will consume more power, which will lead to rapid power consumption of the phone and affect the user experience.
-
-    2. Power consumption will reduce the performance of the phone: if an app's power consumption is too large, it will take up system resources, thus reducing the performance of the phone.
-
-    3. High power consumption may cause damage to the phone: If an app consumes too much power, it may cause the phone to heat up too much, damage internal components and other problems.
-    `
     const beginDate = dayjs(startTime).format('YYYY-MM-DD HH:mm:ss');
     const endDate = dayjs(endTime).format('YYYY-MM-DD HH:mm:ss');
     const dataSourceDes = [
@@ -229,9 +223,7 @@ const PowerUsageChart = () => {
                 <Text style={styles.sectionsTitle} id='link_power'>Power Usage</Text>
 
                 <Text style={styles.sectionsSubTitle}>3.1 Description</Text>
-                <Text style={styles.text}>Network requests and GPS location both affect the app's power consumption. The more network requests, the more data requested and the more time spent on requests, the more power is consumed, and the more positioning is used and the longer it is used, the more power is consumed.</Text>
-                <Text style={styles.text}>What will be the impact of the app's power consumption?</Text>
-                <Text style={styles.text}>{impactOfPowerUsage}</Text>
+                <Text style={styles.text}>{Constants.strings.powerUsage.sectionDescription}</Text>
 
                 <Text style={styles.sectionsSubTitle}>3.2 Grade</Text>
                 <Text style={styles.highlightNumber} wrap={false}>{generalMarkMap(powerUsageMark)}</Text>
