@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 import gradeUtil from 'src/utils/grade';
 import RichText from 'src/components/customize/RichText';
+import Constants from 'src/constants';
 
 const { generalMarkMap, getFpsMark } = gradeUtil;
 const FPS = () => {
@@ -147,28 +148,6 @@ const FPS = () => {
 
   const fpsMark = getFpsMark(lowrate);
 
-  const fpsDes = `FPS stands for "Frames Per Second," and it refers to the number of frames (or images) that a device or application can display per second. In other words, it is a measure of how smoothly and quickly a device or application can render graphics.`;
-  const stutteringDes = `In mobile app performance, FPS can have a significant impact on user experience. If an app's FPS is too low, the app may appear sluggish or choppy, making it frustrating for users to interact with. On the other hand, if an app's FPS is high, the app will feel smoother and more responsive, leading to a better user experience.`
-  const impactDes = `Factors that can affect FPS in mobile apps include the complexity of the graphics being rendered, the processing power of the device, and the optimization of the app's code. To ensure optimal performance, developers must carefully balance the visual quality of an app with its performance requirements, testing the app on a variety of devices and optimizing its code to achieve the best possible FPS.`
-
-  const indicatorsDes = [
-    `FPS indicators are typically classified as follows:`,
-    `1. High FPS: This refers to a high number of frames per second, usually above 55 FPS. High FPS is desirable for smooth and responsive gameplay or graphics-intensive applications.`,
-    `2. Medium FPS: This refers to a moderate number of frames per second, usually between 50-55 FPS. Medium FPS is still acceptable for most applications, but it may not feel as smooth or responsive as high FPS.`,
-    `3. Low FPS: This refers to a low number of frames per second, usually below 50 FPS. Low FPS can result in choppy or sluggish performance, making it difficult or frustrating for users to interact with the application.`,
-  ]
-
-  const recommendations = [
-    `1. Optimisation of code: unnecessary code should be minimised and if there is code that can be reused, it should be reused as much as possible.`,
-
-    `2. Reducing page elements: reducing the number of elements in a page, such as images, text, animations, etc.`,
-
-    `3. Rational use of layout: use a rational layout to reduce rendering time.`,
-
-    `4. Optimise image resources: optimise the size and format of image resources to avoid excessively large images taking too long to load.`,
-
-    `5. Avoid unnecessary re-layout and re-drawing: avoid unnecessary re-layout and re-drawing without affecting the display of the interface.`
-  ]
   return (
     <View bookmark={{ title: "Section 2: FPS", fit: true }} break>
       <View style={styles.contentContainer}>
@@ -177,9 +156,7 @@ const FPS = () => {
 
         {/* 2.1 Description */}
         <Text style={styles.sectionsSubTitle}>2.1 Description</Text>
-        <Text style={styles.text}>{fpsDes}</Text>
-        <Text style={styles.text}>{stutteringDes}</Text>
-        <Text style={styles.text}>{impactDes}</Text>
+        <Text style={styles.text}>{Constants.strings.fps.sectionDescription}</Text>
         {/* 2.2 Grade */}
         <Text style={styles.sectionsSubTitle}>2.2 Grade</Text>
         <Text style={styles.highlightNumber} wrap={false}>{generalMarkMap(fpsMark)}</Text>
@@ -189,7 +166,7 @@ const FPS = () => {
         <RichText richItems={dataSourceDes} normalStyle={styles.text} richStyle={styles.richText} />
         {/* 2.3.1 Indicator Classification */}
         <Text style={styles.subTitle}>2.3.1 Indicator Classification</Text>
-        {indicatorsDes.map(e => <Text style={styles.text}>{e}</Text>)}
+        <Text style={styles.text}>{Constants.strings.fps.indicatorDescription}</Text>
         {/* 2.3.2 chart */}
         <Text style={styles.subTitle}>2.3.2 Data Chart</Text>
         <Text style={styles.text}>A dot line chart is a common choice for FPS data because it can show changes over time or frames.</Text>
@@ -222,7 +199,7 @@ const FPS = () => {
         <View>
           <Text style={styles.sectionsSubTitle}>2.4 Recommendations for Optimisation</Text>
           <View style={styles.recommendationLayout} wrap={false}>
-            {recommendations.map(e => <Text style={styles.text}>{e}</Text>)}
+            <Text style={styles.text}>{Constants.strings.fps.recommendation}</Text>
           </View>
         </View> : null}
     </View>

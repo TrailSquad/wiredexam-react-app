@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import getChartsBlobImage from 'src/utils/getChartsBlobImage';
 import gradeUtil from 'src/utils/grade';
 import RichText from 'src/components/customize/RichText';
+import Constants from 'src/constants';
 
 const { generalMarkMap, formatLaunchTimeGrade } = gradeUtil;
 
@@ -96,13 +97,6 @@ const LaunchTime = () => {
 
   const sortTimeObjs = launchTimeData.sort((a, b) => (b.launchCost - a.launchCost));
   const launchRank = sortTimeObjs.length > 5 ? sortTimeObjs.slice(0, 5) : sortTimeObjs;
-  const launchTimeDes = "Launch speed is the time elapsed from the time the user clicks on the app Icon to the time the user sees the first screen";
-  const impactOfLaunchTime = `1. Impact on user experience: when users open the app, if they find that the start-up speed is slow, it will affect the user's experience and the user may get bored.
-
-  2. Impact on activity: If the app starts slowly, it will have a certain impact on the user's frequency of use, thus affecting the app's activity.
-
-  3. Impact on retention rate: If the app starts slowly, it will have a certain impact on the user's usage habits, thus affecting the app's retention rate.
-  `
   const indicatorsDes = "The indicators of launch time are divided into three categories as Perfect, Normal and Bad, as follows"
   const indicators = [
     { name: "Perfect", value: "400 ms ~ 600 ms" },
@@ -126,18 +120,7 @@ const LaunchTime = () => {
       { "text": " ms.", "isRich": false },
     ]
   }
-  const recommendations =
-    [
-      `1. Minimizing the loading of resources at startup, such as images, audio, video, etc.`,
 
-      `2. Optimising the code logic at startup to minimise unnecessary judgements and loops.`,
-
-      `3. Running some time-consuming tasks in the background, such as database queries, network requests, etc.`,
-
-      `4. Using multi-process or multi-threaded approaches to achieve parallel processing.`,
-
-      `5. Delaying the initialisation or loading of some less frequently used functions.`
-    ]
   return (
     <View bookmark={{ title: "Section 4: Launch Time", fit: true }}>
       <View style={styles.contentContainer}>
@@ -145,10 +128,7 @@ const LaunchTime = () => {
         <Text style={styles.sectionsTitle} id='link_launch'>Launch Time</Text>
         {/* launchTimeDes */}
         <Text style={styles.sectionsSubTitle}>4.1 Description</Text>
-        <Text style={styles.text}>{launchTimeDes}</Text>
-        {/* impact of launch time */}
-        <Text style={styles.text}>The impact of the app's slowly launch time</Text>
-        <Text style={styles.text}>{impactOfLaunchTime}</Text>
+        <Text style={styles.text}>{Constants.strings.launchTime.sectionDescription}</Text>
 
         <Text style={styles.sectionsSubTitle}>4.2 Grade</Text>
         <Text style={styles.highlightNumber} wrap={false}>{generalMarkMap(launchAverage)}</Text>
@@ -196,7 +176,7 @@ const LaunchTime = () => {
       <View>
         <Text style={styles.sectionsSubTitle}>4.4 Recommendations for Optimisation</Text>
         <View style={styles.recommendationLayout} wrap={false}>
-          {recommendations.map(e => <Text style={styles.text}>{e}</Text>)}
+          <Text style={styles.text}>{Constants.strings.launchTime.recommendation}</Text>
         </View>
       </View>
 
