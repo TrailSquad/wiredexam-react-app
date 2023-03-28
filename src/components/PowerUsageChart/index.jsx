@@ -253,9 +253,9 @@ const PowerUsageChart = () => {
                 </Table></View>
                 <Text style={styles.text}></Text>
                 <Text style={styles.text}>Through this chart, we can visually see the distribution of GPS and network requests in the time dimension.</Text>
-                <View style={styles.chartContainer}><Image src={chartImage} /></View>
-                <View style={styles.chartDesContainer}>
-                    <Text style={styles.hint}>{chartDes}</Text>
+                <View style={styles.chartDesBox} break>
+                    <View style={styles.chartContainer}><Image src={chartImage} /></View>
+                    <View style={styles.chartDesContainer}><Text style={styles.hint}>{chartDes}</Text></View>
                 </View>
             </View>
         </View>

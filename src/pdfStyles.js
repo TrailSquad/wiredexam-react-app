@@ -94,14 +94,16 @@ const styles = StyleSheet.create({
     marginVertical: 15,
     marginHorizontal: 100,
   },
+  chartDesBox: {
+    backgroundColor: '#F5F5F5',
+    marginBottom: 10,
+  },
   chartContainer: {
     width: "80%",
-    backgroundColor: '#F5F5F5',
-    padding: 16
+    padding: 16,
   },
   chartDesContainer: {
     width: "80%",
-    backgroundColor: '#F5F5F5',
     padding: 16
   },
   pageNumber: {
