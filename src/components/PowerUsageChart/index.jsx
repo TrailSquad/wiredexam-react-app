@@ -238,6 +238,7 @@ const PowerUsageChart = () => {
 
                 <Text style={styles.sectionsSubTitle}>3.3 Data Detail</Text>
                 <RichText richItems={dataSourceDes} normalStyle={styles.text} richStyle={styles.richText} />
+                <Text style={styles.text}>Through the statistics of the number and time of GPS and network requests, some unexpected problems may be found, such as too many times or long-term requests.</Text>
                 <View style={styles.tableContainer} wrap={false}><Table data={tableDatas}>
                     <TableHeader>
                         <TableCell weighting={0.3} style={styles.tableHeader}>Category</TableCell>
@@ -250,7 +251,8 @@ const PowerUsageChart = () => {
                         <DataTableCell weighting={0.35} style={styles.tableRowValue} getContent={(r) => r.duration} />
                     </TableBody>
                 </Table></View>
-
+                <Text style={styles.text}></Text>
+                <Text style={styles.text}>Through this chart, we can visually see the distribution of GPS and network requests in the time dimension.</Text>
                 <View style={styles.chartContainer}><Image src={chartImage} /></View>
                 <View style={styles.chartDesContainer}>
                     <Text style={styles.hint}>{chartDes}</Text>

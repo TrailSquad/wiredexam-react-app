@@ -25,14 +25,14 @@ const FPS = () => {
   const normalFps = fps.filter(item => (item.value <= droppedFramesFpsValue && item.value >= 50));
   const normalrate = normalFps.length / fps.length;
   const perfectRate = 1 - lowrate - normalrate
-  const chartTitle = `Dropout Rate：${(lowrate * 100).toFixed(2)}%， Dropout Count：${lowFps.length}, Normal Rate: ${(lowrate * 100).toFixed(2)}%, Noemal Count: ${normalFps.length}, Perfect Rate: ${(perfectRate * 100).toFixed(2)}%, Perfect Count: ${fps.length - lowFps.length - normalFps.length}`
+  const chartTitle = `Low PFS Rate: ${(lowrate * 100).toFixed(2)}%. Low PFS Count: ${lowFps.length}. Medium FPS Rate: ${(lowrate * 100).toFixed(2)}%. Medium FPS Count: ${normalFps.length}. High FPS Rate: ${(perfectRate * 100).toFixed(2)}%. High FPS Count: ${fps.length - lowFps.length - normalFps.length}.`
 
   var dataSourceDes
   if (fps.length > 2) {
     const beginDate = dayjs.unix(Math.round(fps[0].time)).format('YYYY-MM-DD HH:mm:ss');
     const endDate = dayjs.unix(Math.round(fps[fps.length - 1].time)).format('YYYY-MM-DD HH:mm:ss');
     dataSourceDes = [
-      { "text": `The follow data is derived from Fps sampling using the app between `, "isRich": false },
+      { "text": `The follow data is derived from FPS sampling using the app between `, "isRich": false },
       { "text": `${beginDate}`, "isRich": true },
       { "text": " and ", "isRich": false },
       { "text": `${endDate}`, "isRich": true },
@@ -147,16 +147,16 @@ const FPS = () => {
 
   const fpsMark = getFpsMark(lowrate);
 
-  const fpsDes = `FPS (frames per second) is an important metric in app development that measures the smoothness and performance of a app; higher FPS means smoother graphics, while low FPS can lead to problems such as lagging and frame skipping. Therefore, FPS is one of the key metrics to measure a app performance.`;
-  const stutteringDes = `If the screen stutters when the user is using the app, the interface will keep flickering, jittering or there will be a noticeable delay.`
-  const impactDes = `The lagging will have a bad impact on the user experience and users will feel uncomfortable.lag may cause app function failure, data loss, security vulnerability and other problems`
+  const fpsDes = `FPS stands for "Frames Per Second," and it refers to the number of frames (or images) that a device or application can display per second. In other words, it is a measure of how smoothly and quickly a device or application can render graphics.`;
+  const stutteringDes = `In mobile app performance, FPS can have a significant impact on user experience. If an app's FPS is too low, the app may appear sluggish or choppy, making it frustrating for users to interact with. On the other hand, if an app's FPS is high, the app will feel smoother and more responsive, leading to a better user experience.`
+  const impactDes = `Factors that can affect FPS in mobile apps include the complexity of the graphics being rendered, the processing power of the device, and the optimization of the app's code. To ensure optimal performance, developers must carefully balance the visual quality of an app with its performance requirements, testing the app on a variety of devices and optimizing its code to achieve the best possible FPS.`
 
-  const indicators = [
-    { name: "Perfect", value: "55 ~ 60" },
-    { name: "Normal", value: "50 ~ 55" },
-    { name: "Bad", value: "<50" },
+  const indicatorsDes = [
+    `FPS indicators are typically classified as follows:`,
+    `1. High FPS: This refers to a high number of frames per second, usually above 55 FPS. High FPS is desirable for smooth and responsive gameplay or graphics-intensive applications.`,
+    `2. Medium FPS: This refers to a moderate number of frames per second, usually between 50-55 FPS. Medium FPS is still acceptable for most applications, but it may not feel as smooth or responsive as high FPS.`,
+    `3. Low FPS: This refers to a low number of frames per second, usually below 50 FPS. Low FPS can result in choppy or sluggish performance, making it difficult or frustrating for users to interact with the application.`,
   ]
-  const indicatorsDes = "The indicators of PFS are divided into three categories as Perfect, Normal and Bad, as follows"
 
   const recommendations = [
     `1. Optimisation of code: unnecessary code should be minimised and if there is code that can be reused, it should be reused as much as possible.`,
@@ -189,28 +189,18 @@ const FPS = () => {
         <RichText richItems={dataSourceDes} normalStyle={styles.text} richStyle={styles.richText} />
         {/* 2.3.1 Indicator Classification */}
         <Text style={styles.subTitle}>2.3.1 Indicator Classification</Text>
-        <Text style={styles.text}>{indicatorsDes}</Text>
-        <Text style={styles.hint}>The right is the range of indicator for left category</Text>
-        <View style={styles.tableContainer} wrap={false}><Table data={indicators}>
-          <TableHeader>
-            <TableCell weighting={0.5} style={styles.tableHeader}>Category</TableCell>
-            <TableCell weighting={0.5} style={styles.tableHeader}>Value</TableCell>
-          </TableHeader>
-          <TableBody>
-            <DataTableCell weighting={0.5} style={styles.tableRowLabel} getContent={(r) => r.name} />
-            <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => r.value} />
-          </TableBody>
-        </Table></View>
+        {indicatorsDes.map(e => <Text style={styles.text}>{e}</Text>)}
         {/* 2.3.2 chart */}
         <Text style={styles.subTitle}>2.3.2 Data Chart</Text>
+        <Text style={styles.text}>A dot line chart is a common choice for FPS data because it can show changes over time or frames.</Text>
         <View style={styles.chartContainer}><Image src={fpsImage} break /></View>
         <View style={styles.chartDesContainer}><Text style={styles.hint}>{chartDes}</Text></View>
+        <Text style={styles.text}>Divide the FPS data into categories based on the FPS ranges. We have categories as "High FPS" (above 55 FPS), "Medium FPS" (between 50-55 FPS), and "Low FPS" (below 50 FPS). Through this pie chart, we can intuitively see the ratio of the 3 pieces.</Text>
         <View style={styles.chartContainer}><Image src={fpsPieImage} break /></View>
         <View style={styles.chartDesContainer}><Text style={styles.hint}>{chartTitle}</Text></View>
         {/* 2.3.3 Rank Table */}
-        {topRankArray.length > 0 ? <Text style={styles.subTitle}>2.3.3 Dropout Rank Table</Text> : null}
-        {topRankArray.length > 0 ? <Text style={styles.text}>Here are the screens where the most jams occur</Text> : null}
-        {topRankArray.length > 0 ? <Text style={styles.hint}>The number on the right is the number of frame drops in left</Text> : null}
+        {topRankArray.length > 0 ? <Text style={styles.subTitle}>2.3.3 Dropout Ranking</Text> : null}
+        {topRankArray.length > 0 ? <Text style={styles.text}>Here is a list of code locations where the most stuck occur. Occurrences are listed on the right side of the table.</Text> : null}
         {topRankArray.length > 0 ? <View style={styles.tableContainer} wrap={false}><Table data={topRankArray}>
           <TableHeader>
             <TableCell weighting={0.8} style={styles.tableHeader}>View</TableCell>

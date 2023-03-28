@@ -80,7 +80,7 @@ const Conclusion = () => {
   //launchTimeDes
   const { launchTimeData } = performanceData;
   const sortData = launchTimeData.sort((a, b) => (a.time - b.time));
-  const averageCost = (sortData.reduce(function (sum, item) { return sum + item.launchCost; }, 0) / sortData.length / 1000).toFixed(3)
+  const averageCost = (sortData.reduce(function (sum, item) { return sum + item.launchCost; }, 0) / sortData.length).toFixed(0)
   const launchAverage = formatLaunchTimeGrade(averageCost)
   const launchTimeDes = [
     { "text": "Launch speed is the first thing users experience about our app, ", "isRich": false },

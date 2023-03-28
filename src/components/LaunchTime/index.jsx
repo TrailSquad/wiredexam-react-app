@@ -23,7 +23,7 @@ const LaunchTime = () => {
   const averageCost = sortData.reduce(function (sum, item) {
     return sum + item.launchCost;
   }, 0) / sortData.length
-  const launchAverage = formatLaunchTimeGrade((averageCost / 1000).toFixed(2))
+  const launchAverage = formatLaunchTimeGrade((averageCost).toFixed(0))
 
   const option = {
     grid: {

@@ -69,6 +69,17 @@ const NetAbstract = () => {
       "value": slowRequestCount,
     }
   ]
+  const recommendations = [
+    `Optimizing network requests on mobile devices is crucial for improving application performance and user experience. Here are some suggestions for optimizing network requests on mobile devices:`,
+
+    `1. Reduce the number of network requests: By combining multiple requests into one or using caching techniques, the number of requests can be reduced, which reduces network latency and data transfer time.`,
+
+    `2. Compress data: Compressing data can reduce data transfer size, thereby reducing response time and bandwidth usage.`,
+
+    `3. Use lazy loading: Lazy loading is a technique that delays loading resources until they are needed in the visible area of the page, which can reduce page load time and bandwidth usage.`,
+
+    `4. Cache data: Using caching on both the client and server can reduce network request times and response time, improving application performance.`,
+  ]
 
   return (
     <View bookmark={{ title: "3.4 Network Monitoring", fit: true }}>
@@ -156,6 +167,13 @@ const NetAbstract = () => {
             <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => formatNumber(r.value)} />
           </TableBody>
         </Table></View> : null}
+      </View>
+
+      <View>
+        <Text style={styles.subTitle}>3.4.7 Recommendations for Optimisation</Text>
+        <View style={styles.recommendationLayout} wrap={false}>
+          {recommendations.map(e => <Text style={styles.text}>{e}</Text>)}
+        </View>
       </View>
     </View>
   )
