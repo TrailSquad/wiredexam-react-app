@@ -193,11 +193,15 @@ const FPS = () => {
         {/* 2.3.2 chart */}
         <Text style={styles.subTitle}>2.3.2 Data Chart</Text>
         <Text style={styles.text}>A dot line chart is a common choice for FPS data because it can show changes over time or frames.</Text>
-        <View style={styles.chartContainer}><Image src={fpsImage} break /></View>
-        <View style={styles.chartDesContainer}><Text style={styles.hint}>{chartDes}</Text></View>
+        <View style={styles.chartDesBox} break>
+          <View style={styles.chartContainer}><Image src={fpsImage} break /></View>
+          <View style={styles.chartDesContainer}><Text style={styles.hint}>{chartDes}</Text></View>
+        </View>
         <Text style={styles.text}>Divide the FPS data into categories based on the FPS ranges. We have categories as "High FPS" (above 55 FPS), "Medium FPS" (between 50-55 FPS), and "Low FPS" (below 50 FPS). Through this pie chart, we can intuitively see the ratio of the 3 pieces.</Text>
-        <View style={styles.chartContainer}><Image src={fpsPieImage} break /></View>
-        <View style={styles.chartDesContainer}><Text style={styles.hint}>{chartTitle}</Text></View>
+        <View style={styles.chartDesBox} break>
+          <View style={styles.chartContainer}><Image src={fpsPieImage} break /></View>
+          <View style={styles.chartDesContainer}><Text style={styles.hint}>{chartTitle}</Text></View>
+        </View>
         {/* 2.3.3 Rank Table */}
         {topRankArray.length > 0 ? <Text style={styles.subTitle}>2.3.3 Dropout Ranking</Text> : null}
         {topRankArray.length > 0 ? <Text style={styles.text}>Here is a list of code locations where the most stuck occur. Occurrences are listed on the right side of the table.</Text> : null}

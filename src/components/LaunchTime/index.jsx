@@ -172,9 +172,11 @@ const LaunchTime = () => {
         </Table></View>
         <Text style={styles.subTitle}>4.3.2 Data Chart</Text>
         {/* chart and descraption */}
-        <View style={styles.chartContainer}><Image src={launchTimeImage} /></View>
-        <View style={styles.chartDesContainer}>
-          <Text style={styles.hint}>{chartDes}</Text>
+        <View style={styles.chartDesBox} break>
+          <View style={styles.chartContainer}><Image src={launchTimeImage} /></View>
+          <View style={styles.chartDesContainer}>
+            <Text style={styles.hint}>{chartDes}</Text>
+          </View>
         </View>
 
         {launchRank.length > 0 ? <Text style={styles.subTitle}>4.3.3 Rank Table</Text> : null}
