@@ -4,6 +4,7 @@ import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableCell, TableHeader, TableBody } from '@david.kucsai/react-pdf-table'
 import grateUtil from 'src/utils/grade';
+import RichText from 'src/components/customize/RichText';
 
 const { generalMarkMap, getMemoryLeakMark } = grateUtil
 
@@ -18,11 +19,13 @@ const MemoryLeak = () => {
   }
   const sortData = memoryLeakData.sort((a, b) => (b.count - a.count));
   const rank = sortData.length > 3 ? sortData.slice(0, 3) : sortData;
-  const totalCount = memoryLeakData.reduce(
-    (accumulator, currentValue) => accumulator + currentValue.count,
-    0
-  );
   var memoryLeakMark = getMemoryLeakMark(memoryLeakData.length);
+
+  const dataSourceDes = [
+    { "text": `This test found `, "isRich": false },
+    { "text": `${sortData.length}`, "isRich": true },
+    { "text": " memory leaks in total. All issues should be fixed before going live. Here is a list of the most frequently occurring issues.", "isRich": false },
+  ]
 
   const recommendations = [
     `1. Use memory management tools: Using memory management tools such as Valgrind, LeakCanary, Instruments, etc. can help you quickly identify and fix memory leak issues.`,
@@ -46,17 +49,19 @@ const MemoryLeak = () => {
         <Text style={styles.sectionsTitle} id='link_memory'>Memory Leak</Text>
 
         <Text style={styles.sectionsSubTitle}>5.1 Description</Text>
-        <Text style={styles.text}>Failure to release unused objects from the memory, which means that there are unused objects in the application that the GC cannot clear from memory.</Text>
-        <Text style={styles.text}>The memory resources allocated by the system to a single application are limited, and memory leaks lead to less available memory, resulting in application freezes even crashes.</Text>
+        <Text style={styles.text}>Memory leak means failure to release unused objects from the memory, which means that there are unused objects in the application that the GC cannot clear from memory.</Text>
+        <Text style={styles.text}>The impact of memory leaks on mobile applications is significant and can lead to the following issues:</Text>
+        <Text style={styles.text}>1. App crashes: When memory leaks cause the application to occupy more memory than the device's available memory, the application will crash or be forcibly closed by the system.</Text>
+        <Text style={styles.text}>2. Performance degradation: Memory leaks can cause the application's performance to degrade because they occupy the device's resources and make the application slow and unstable.</Text>
+        <Text style={styles.text}>3. Increased battery consumption: Memory leaks can cause the application to occupy the device's resources, including CPU and memory, thereby increasing the device's battery consumption.</Text>
+        <Text style={styles.text}>4. Poor user experience: When memory leaks cause the application to become slow, unstable, or crash, the user experience is affected.</Text>
+        <Text style={styles.text}>Therefore, to ensure the stability and performance of the application</Text>
 
         <Text style={styles.sectionsSubTitle}>5.2 Grade</Text>
         <Text style={styles.highlightNumber} wrap={false}>{generalMarkMap(memoryLeakMark)}</Text>
 
         <Text style={styles.sectionsSubTitle}>5.3 Data Detail</Text>
-        <Text style={styles.subTitle}>5.3.1 Memory Leak Occurrences</Text>
-        <Text style={styles.hint}>The total number of memory leaks that occurred during this test.</Text>
-        <Text style={styles.highlightNumber}>{totalCount}</Text>
-        {rank.length > 0 ? <Text style={styles.subTitle}>5.3.2 Occurrence Ranking</Text> : null}
+        <RichText richItems={dataSourceDes} normalStyle={styles.text} richStyle={styles.richText} />
         {rank.length > 0 ? <View style={styles.tableContainer} wrap={false}><Table data={rank}>
           <TableHeader>
             <TableCell weighting={0.8} style={styles.tableHeader}>Description</TableCell>

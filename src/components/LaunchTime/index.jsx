@@ -23,7 +23,7 @@ const LaunchTime = () => {
   const averageCost = sortData.reduce(function (sum, item) {
     return sum + item.launchCost;
   }, 0) / sortData.length
-  const launchAverage = formatLaunchTimeGrade((averageCost / 1000).toFixed(2))
+  const launchAverage = formatLaunchTimeGrade((averageCost).toFixed(0))
 
   const option = {
     grid: {
@@ -103,7 +103,7 @@ const LaunchTime = () => {
 
   3. Impact on retention rate: If the app starts slowly, it will have a certain impact on the user's usage habits, thus affecting the app's retention rate.
   `
-  const indicatorsDes = "The indicators of LaunchTime are divided into three categories as Perfect, Normal and Bad, as follows"
+  const indicatorsDes = "The indicators of launch time are divided into three categories as Perfect, Normal and Bad, as follows"
   const indicators = [
     { name: "Perfect", value: "400 ms ~ 600 ms" },
     { name: "Normal", value: "600 ms ~ 800 ms" },
@@ -119,7 +119,11 @@ const LaunchTime = () => {
       { "text": `${beginDate}`, "isRich": true },
       { "text": " and ", "isRich": false },
       { "text": `${endDate}`, "isRich": true },
-      { "text": ".", "isRich": false },
+      { "text": ". A total of ", "isRich": false },
+      { "text": `${sortTimeObjs.length}`, "isRich": true },
+      { "text": " times were recorded in this test, and the average time was ", "isRich": false },
+      { "text": `${averageCost.toFixed(0)}`, "isRich": true },
+      { "text": " ms.", "isRich": false },
     ]
   }
   const recommendations =
@@ -149,7 +153,6 @@ const LaunchTime = () => {
         <Text style={styles.sectionsSubTitle}>4.2 Grade</Text>
         <Text style={styles.highlightNumber} wrap={false}>{generalMarkMap(launchAverage)}</Text>
 
-
         <Text style={styles.sectionsSubTitle}>4.3 Data Detail</Text>
         {/* data source descraption */}
         {dataSourceDes === undefined ? <></> : <RichText richItems={dataSourceDes} normalStyle={styles.text} richStyle={styles.richText} />}
@@ -173,11 +176,8 @@ const LaunchTime = () => {
         <View style={styles.chartDesContainer}>
           <Text style={styles.hint}>{chartDes}</Text>
         </View>
-        {/* averageCost */}
-        <Text style={styles.subTitle}>4.3.3 Average LaunTime</Text>
-        <Text style={styles.highlightNumber}>{`${averageCost.toFixed(0)} ms`}</Text>
 
-        {launchRank.length > 0 ? <Text style={styles.subTitle}>4.3.4 Rank Table</Text> : null}
+        {launchRank.length > 0 ? <Text style={styles.subTitle}>4.3.3 Rank Table</Text> : null}
         {launchRank.length > 0 ? <Text style={styles.hint}>The number on the right is the cost time of this launch</Text> : null}
         {launchRank.length > 0 ? <View style={styles.tableContainer} wrap={false}><Table data={launchRank}>
           <TableHeader>

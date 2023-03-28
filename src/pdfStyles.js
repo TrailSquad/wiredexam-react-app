@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     width: "100%",
     fontWeight: "bold",
-    marginTop: 32,
+    marginTop: 40,
     marginBottom: 16
   },
   text: {
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     width: "100%",
     fontWeight: "bold",
     textAlign: 'left',
-    marginTop: 24,
+    marginTop: 28,
     marginBottom: 16,
   },
   highlightNumber: {
@@ -213,10 +213,10 @@ const styles = StyleSheet.create({
   //
   tableTitle: {
     textAlign: "left",
-    fontSize: 20,
+    fontSize: 18,
     width: "100%",
     fontWeight: "bold",
-    marginTop: 32,
+    marginTop: 28,
     marginBottom: 16
   },
   tableHeader: {

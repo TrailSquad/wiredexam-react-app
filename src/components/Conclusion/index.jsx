@@ -80,7 +80,7 @@ const Conclusion = () => {
   //launchTimeDes
   const { launchTimeData } = performanceData;
   const sortData = launchTimeData.sort((a, b) => (a.time - b.time));
-  const averageCost = (sortData.reduce(function (sum, item) { return sum + item.launchCost; }, 0) / sortData.length / 1000).toFixed(3)
+  const averageCost = (sortData.reduce(function (sum, item) { return sum + item.launchCost; }, 0) / sortData.length).toFixed(0)
   const launchAverage = formatLaunchTimeGrade(averageCost)
   const launchTimeDes = [
     { "text": "Launch speed is the first thing users experience about our app, ", "isRich": false },
@@ -90,7 +90,7 @@ const Conclusion = () => {
     { "text": " is normal, more than ", "isRich": false },
     { "text": "800 ms", "isRich": true },
     { "text": " is considered to be in need of optimisation. In this test, the average launch time is ", "isRich": false },
-    { "text": `${averageCost}ms`, "isRich": true },
+    { "text": `${averageCost} ms`, "isRich": true },
     { "text": ".", "isRich": false },
   ]
 
@@ -210,7 +210,7 @@ const Conclusion = () => {
               <TableCell weighting={0.1} style={styles.tableHeader}>Grade</TableCell>
             </TableHeader>
             <TableBody>
-              <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.section} />
+              <DataTableCell weighting={0.2} style={styles.tableRowLabel} getContent={(r) => r.section} />
               <DataTableCell weighting={0.7} style={styles.tableRowLabel} getContent={(r) => <RichText richItems={r.summary} normalStyle={styles.tableRowLabel} richStyle={styles.richText} />} />
               <DataTableCell weighting={0.1} style={styles.tableRowValue} getContent={(r) => r.value} />
             </TableBody>
