@@ -66,10 +66,10 @@ const Conclusion = () => {
 
   // Power Usage
   const { network } = performanceData;
-  var networkMark = getNetworkMark(network.requestSucsessRate, network.slowRequestCount / network.summaryRequestCount);
-  var locationMark = getLocationMark();
-  var powerUsageMark = networkMark * 0.8 + locationMark * 0.2;
-  var powerUsageDes = [
+  let networkMark = getNetworkMark(network.requestSucsessRate, network.slowRequestCount / network.summaryRequestCount);
+  let locationMark = getLocationMark();
+  let powerUsageMark = networkMark * 0.8 + locationMark * 0.2;
+  let powerUsageDes = [
     { "text": "Power consumption grade is based on success rate of network requests and rate of slow requests. In this test, success rate of network requests is ", "isRich": false },
     { "text": `${(network.requestSucsessRate * 100).toFixed(0)}%`, "isRich": true },
     { "text": `. Rate of slow requests is `, "isRich": false },
@@ -96,9 +96,9 @@ const Conclusion = () => {
 
   // Memory Leak
   const { memoryLeakData } = performanceData;
-  var memoryLeakMark = getMemoryLeakMark(memoryLeakData.length);
-  // var memoryLeakDes = "The memory leak score is mainly based on the number of detected memory leaks. This test detected " + memoryLeakData.length + " memory leaks, and it is recommended to fix them before going live.";
-  var memoryLeakDes;
+  let memoryLeakMark = getMemoryLeakMark(memoryLeakData.length);
+  // let memoryLeakDes = "The memory leak score is mainly based on the number of detected memory leaks. This test detected " + memoryLeakData.length + " memory leaks, and it is recommended to fix them before going live.";
+  let memoryLeakDes;
   if (memoryLeakData.length <= 0) {
     memoryLeakDes = [
       { "text": "The memory leak score is mainly based on the number of detected memory leaks. This monitoring found no memory leaks.", "isRich": false },
@@ -140,7 +140,7 @@ const Conclusion = () => {
 
   const des = 'According to the professional test team, the average score given:';
 
-  var explanationRichText = [
+  let explanationRichText = [
     { "text": "The report rating includes ", "isRich": false },
     { "text": "A+", "isRich": true },
     { "text": ", ", "isRich": false },

@@ -25,7 +25,7 @@ const formatLaunchTimeGrade = (average) => {
 }
 
 const getMemoryLeakMark = (leakCount) => {
-  var memoryLeakMark
+  let memoryLeakMark
   if (leakCount <= 0) {
     memoryLeakMark = 100
   } else if (leakCount <= 1) {

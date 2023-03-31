@@ -26,11 +26,11 @@ const getEndTime = (netTimes, locationTimes) => {
 }
 
 function renderItem(params, api) {
-    var categoryIndex = api.value(0);
-    var start = api.coord([api.value(1), categoryIndex]);
-    var end = api.coord([api.value(2), categoryIndex]);
-    var height = api.size([0, 1])[1] * 0.6;
-    var rectShape = echarts.graphic.clipRectByRect(
+    let categoryIndex = api.value(0);
+    let start = api.coord([api.value(1), categoryIndex]);
+    let end = api.coord([api.value(2), categoryIndex]);
+    let height = api.size([0, 1])[1] * 0.6;
+    let rectShape = echarts.graphic.clipRectByRect(
         {
             x: start[0],
             y: start[1] - height / 2,
@@ -71,16 +71,16 @@ const PowerUsageChart = () => {
     }, 0);
 
     const { network } = performanceData;
-    var networkMark = getNetworkMark(network.requestSucsessRate, network.slowRequestCount / network.summaryRequestCount);
-    var locationMark = getLocationMark();
-    var powerUsageMark = networkMark * 0.8 + locationMark * 0.2;
+    let networkMark = getNetworkMark(network.requestSucsessRate, network.slowRequestCount / network.summaryRequestCount);
+    let locationMark = getLocationMark();
+    let powerUsageMark = networkMark * 0.8 + locationMark * 0.2;
 
-    var categories = [{ name: "Network", color: "#72b362", data: sortNetworkFlowData }, { name: "GPS", color: "#dc77dc", data: sortLocationData }];
+    let categories = [{ name: "Network", color: "#72b362", data: sortNetworkFlowData }, { name: "GPS", color: "#dc77dc", data: sortLocationData }];
 
     const startTime = getStartTime(sortNetworkFlowData.map(e => e.time), sortLocationData.map(e => e.time))
     const endTime = getEndTime(sortNetworkFlowData.map(e => e.time), sortLocationData.map(e => e.time))
 
-    var data = [];
+    let data = [];
     data.push({
         name: "Network",
         value: [0, startTime, endTime, endTime - startTime],
@@ -92,13 +92,13 @@ const PowerUsageChart = () => {
         color: "#dc77dc22"
     });
     categories.forEach(function (category, index) {
-        var datas = category.data;
-        for (var i = 0; i < datas.length; i++) {
-            var item = datas[i];
-            var duration = item.duration;
-            var time = item.time;
-            var beginTime = time
-            var endTime = beginTime + duration
+        let datas = category.data;
+        for (let i = 0; i < datas.length; i++) {
+            let item = datas[i];
+            let duration = item.duration;
+            let time = item.time;
+            let beginTime = time
+            let endTime = beginTime + duration
             data.push({
                 name: category.name,
                 value: [index, beginTime, endTime, duration],
@@ -211,7 +211,7 @@ const PowerUsageChart = () => {
         { "text": ".", "isRich": false },
     ]
 
-    var tableDatas = [
+    const tableDatas = [
         { name: 'Network', count: sortNetworkFlowData.length, duration: Math.round(networkTotalTime) },
         { name: 'GPS', count: sortLocationData.length, duration: Math.round(locationTotalTime) },
     ];
