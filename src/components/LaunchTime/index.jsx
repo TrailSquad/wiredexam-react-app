@@ -104,7 +104,7 @@ const LaunchTime = () => {
     { name: "Bad", value: "> 800 ms" },
   ]
 
-  var dataSourceDes
+  let dataSourceDes
   if (sortTimeObjs.length > 2) {
     const beginDate = dayjs.unix(Math.round(sortTimeObjs[0].time)).format('YYYY-MM-DD HH:mm:ss');
     const endDate = dayjs.unix(Math.round(sortTimeObjs[sortTimeObjs.length - 1].time)).format('YYYY-MM-DD HH:mm:ss');

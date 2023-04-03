@@ -62,7 +62,7 @@ function App() {
 
   const goDownload = (blob) => {
     window.setupWebViewJavascriptBridge(bridge => {
-      var reader = new FileReader();
+      let reader = new FileReader();
       reader.readAsDataURL(blob);
       reader.onloadend = () => {
         bridge.callHandler('lookPdf', { 'pdfData': reader.result.toString() }, function (response) {

@@ -28,7 +28,7 @@ const FPS = () => {
   const perfectRate = 1 - lowrate - normalrate
   const chartTitle = `Low PFS Rate: ${(lowrate * 100).toFixed(2)}%. Low PFS Count: ${lowFps.length}. Medium FPS Rate: ${(lowrate * 100).toFixed(2)}%. Medium FPS Count: ${normalFps.length}. High FPS Rate: ${(perfectRate * 100).toFixed(2)}%. High FPS Count: ${fps.length - lowFps.length - normalFps.length}.`
 
-  var dataSourceDes
+  let dataSourceDes
   if (fps.length > 2) {
     const beginDate = dayjs.unix(Math.round(fps[0].time)).format('YYYY-MM-DD HH:mm:ss');
     const endDate = dayjs.unix(Math.round(fps[fps.length - 1].time)).format('YYYY-MM-DD HH:mm:ss');
@@ -127,16 +127,16 @@ const FPS = () => {
   };
   const fpsPieImage = getChartsBlobImage(pieChartOption);
 
-  var rankObj = {};
+  let rankObj = {};
   lowFps.forEach((element, index) => {
-    var count = rankObj[element.topView]
+    let count = rankObj[element.topView]
     if (count === undefined) {
       rankObj[element.topView] = 1;
     } else {
       rankObj[element.topView] = count + 1;
     }
   })
-  var rankArray = [];
+  let rankArray = [];
   Object.keys(rankObj).forEach(key => {
     rankArray.push({
       name: key,

@@ -3,11 +3,11 @@ import styles from 'src/pdfStyles';
 
 const RichText = (props) => {
     const { richItems } = props
-    var { normalStyle } = props
+    let { normalStyle } = props
     if (normalStyle == null) {
         normalStyle = styles.text
     }
-    var { richStyle } = props
+    let { richStyle } = props
     if (richStyle == null) {
         richStyle = styles.richText
     }

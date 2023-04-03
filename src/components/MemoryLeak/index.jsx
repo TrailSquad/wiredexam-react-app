@@ -20,7 +20,7 @@ const MemoryLeak = () => {
   }
   const sortData = memoryLeakData.sort((a, b) => (b.count - a.count));
   const rank = sortData.length > 3 ? sortData.slice(0, 3) : sortData;
-  var memoryLeakMark = getMemoryLeakMark(memoryLeakData.length);
+  const memoryLeakMark = getMemoryLeakMark(memoryLeakData.length);
 
   const dataSourceDes = [
     { "text": `This test found `, "isRich": false },
