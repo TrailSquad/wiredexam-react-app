@@ -211,6 +211,41 @@ const PowerUsageChart = () => {
         { "text": ".", "isRich": false },
     ]
 
+    const tableHeader = [
+        {
+          weight: 0.3,
+          text: "Category"
+        },
+        {
+          weight: 0.35,
+          text: "Total Count"
+        },{
+          weight: 0.35,
+          text: "Total Duration"
+        },
+    ]
+
+    const tableContent = [
+        {
+          weight: 0.3,
+          text: "name",
+          style: styles.tableHeader,
+          content: (r) => r.name
+        },
+        {
+          weight: 0.35,
+          text: "count",
+          style: styles.tableRowValue,
+          content: (r) => r.count
+        },{
+          weight: 0.35,
+          text: "duration",
+          style: styles.tableRowValue,
+          content: (r) => r.duration
+      
+        },
+    ]
+
     const tableDatas = [
         { name: 'Network', count: sortNetworkFlowData.length, duration: Math.round(networkTotalTime) },
         { name: 'GPS', count: sortLocationData.length, duration: Math.round(locationTotalTime) },
@@ -233,14 +268,14 @@ const PowerUsageChart = () => {
                 <Text style={styles.text}>Through the statistics of the number and time of GPS and network requests, some unexpected problems may be found, such as too many times or long-term requests.</Text>
                 <View style={styles.tableContainer} wrap={false}><Table data={tableDatas}>
                     <TableHeader>
-                        <TableCell weighting={0.3} style={styles.tableHeader}>Category</TableCell>
-                        <TableCell weighting={0.35} style={styles.tableHeader}>Total Count</TableCell>
-                        <TableCell weighting={0.35} style={styles.tableHeader}>Total Duration</TableCell>
+                        {tableHeader.map(header => 
+                            <TableCell weighting={header.weight} style={styles.tableHeader} key={header.text}>{header.text}</TableCell>
+                        )}
                     </TableHeader>
                     <TableBody>
-                        <DataTableCell weighting={0.3} style={styles.tableHeader} getContent={(r) => r.name} />
-                        <DataTableCell weighting={0.35} style={styles.tableRowValue} getContent={(r) => r.count} />
-                        <DataTableCell weighting={0.35} style={styles.tableRowValue} getContent={(r) => r.duration} />
+                        {tableContent.map(({ weight, style, content, text }) => 
+                            <DataTableCell weighting={weight} style={style} getContent={content} key={text} 
+                        />)}
                     </TableBody>
                 </Table></View>
                 <Text style={styles.text}></Text>

@@ -6,6 +6,34 @@ import Context from 'src/context';
 const Contents = (props) => {
   const { powerIndex ,launchTimeIndex, memoryIndex, endIndex } = props
   const performanceData = useContext(Context);
+  const CONTENT_ITEMS = [
+    {
+      title: "1. Overview   … … … … … … … … … … … … … … … … … … … …",
+      source: "#link_overview",
+      pageIndex: 3,
+    },{
+      title: "2. FPS  … … … … … … … … … … … … … … … … … … … … … … … …",
+      source: "#link_fps",
+      pageIndex: 5,
+    },{
+      title: "3. Power Usage  … … … … … … … … … … … … … … … … … … …",
+      source: "#link_power",
+      pageIndex: powerIndex,
+    },{
+      title: "4. Launch Time  … … … … … … … … … … … … … … … … … … …",
+      source: "#link_launch",
+      pageIndex: launchTimeIndex,
+    },{
+      title: "5. Memory Leak  … … … … … … … … … … … … … … … … … … …",
+      source: "#link_memory",
+      pageIndex: memoryIndex,
+    },{
+      title: "6. About  … … … … … … … … … … … … … … … … … … …",
+      source: "#link_back_cover",
+      pageIndex: endIndex,
+    },
+  ]
+  
   if (!performanceData) {
     return null;
   }
@@ -15,20 +43,14 @@ const Contents = (props) => {
       <Text style={styles.contentsTitle}>Contents</Text>
       <View style={{ width: "80%", flexDirection: "row" }}>
         <View style={{ width: "90%" }}>
-          <Link style={styles.contentsItem} src='#link_overview'>1. Overview   … … … … … … … … … … … … … … … … … … … …</Link>
-          <Link style={styles.contentsItem} src='#link_fps'>2. FPS  … … … … … … … … … … … … … … … … … … … … … … … …</Link>
-          <Link style={styles.contentsItem} src='#link_power'>3. Power Usage  … … … … … … … … … … … … … … … … … … …</Link>
-          <Link style={styles.contentsItem} src='#link_launch'>4. Launch Time  … … … … … … … … … … … … … … … … … … …</Link>
-          <Link style={styles.contentsItem} src='#link_memory'>5. Memory Leak  … … … … … … … … … … … … … … … … … … …</Link>
-          <Link style={styles.contentsItem} src='#link_back_cover'>6. About  … … … … … … … … … … … … … … … … … … …</Link>
+          {CONTENT_ITEMS.map(i => 
+            <Link key={i.source} style={styles.contentsItem} src={i.source} >{i.title}</Link>
+          )}
         </View>
         <View style={{ width: "10%" }}>
-          <Text style={styles.contentsPage}>3</Text>
-          <Text style={styles.contentsPage}>5</Text>
-          <Text style={styles.contentsPage}>{powerIndex}</Text>
-          <Text style={styles.contentsPage}>{launchTimeIndex}</Text>
-          <Text style={styles.contentsPage}>{memoryIndex}</Text>
-          <Text style={styles.contentsPage}>{endIndex}</Text>
+          {CONTENT_ITEMS.map(i => 
+            <Text key={i.source} style={styles.contentsPage}>{i.pageIndex}</Text>
+          )}
         </View>
       </View>
     </View>

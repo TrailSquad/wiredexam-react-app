@@ -7,6 +7,103 @@ import RichText from 'src/components/customize/RichText';
 import gradeUtil from 'src/utils/grade';
 
 const { generalMarkMap, formatLaunchTimeGrade, getMemoryLeakMark, getFpsMark, getLocationMark, getNetworkMark } = gradeUtil
+const des = 'According to the professional test team, the average score given:';
+const explanationRichText = [
+  { "text": "The report rating includes ", "isRich": false },
+  { "text": "A+", "isRich": true },
+  { "text": ", ", "isRich": false },
+  { "text": "A", "isRich": true },
+  { "text": ", ", "isRich": false },
+  { "text": "B", "isRich": true },
+  { "text": ", ", "isRich": false },
+  { "text": "C", "isRich": true },
+  { "text": ", ", "isRich": false },
+  { "text": "D", "isRich": true },
+  { "text": " 5 grades, ", "isRich": false },
+  { "text": "A+", "isRich": true },
+  { "text": " is the best and ", "isRich": false },
+  { "text": "D", "isRich": true },
+  { "text": " is the worst. Ratings are converted based on specific numerical values ​​(", "isRich": false },
+  { "text": "0", "isRich": true },
+  { "text": " to ", "isRich": false },
+  { "text": "100", "isRich": true },
+  { "text": "). The total rating comes from the weighted average of the values ​​of each section. The weights for each section are as follows:", "isRich": false },
+]
+const weightTableData = [
+  {
+    "section": "FPS",
+    "weight": 0.3,
+  },
+  {
+    "section": "Power Usage",
+    "weight": 0.1,
+  },
+  {
+    "section": "Launch Time",
+    "weight": 0.3,
+  },
+  {
+    "section": "Memory Leak",
+    "weight": 0.3,
+  },
+]
+const tableHeader = [
+  {
+    weight: 0.2,
+    text: "Section"
+  },
+  {
+    weight: 0.7,
+    text: "Description"
+  },{
+    weight: 0.1,
+    text: "Grade"
+  },
+]
+const tableContent = [
+  {
+    weight: 0.2,
+    text: "Section",
+    style: styles.tableRowLabel,
+    content: (r) => r.section
+  },
+  {
+    weight: 0.7,
+    text: "Description",
+    style: styles.tableRowLabel,
+    content: (r) => <RichText richItems={r.summary} normalStyle={styles.tableRowLabel} richStyle={styles.richText} />
+  },{
+    weight: 0.1,
+    text: "Grade",
+    style: styles.tableRowValue,
+    content: (r) => r.value
+
+  },
+]
+const weightTableHeader = [
+  {
+    weight: 0.5,
+    text: "Section"
+  },
+  {
+    weight: 0.5,
+    text: "Weight"
+  }
+]
+const weightTableContent = [
+  {
+    weight: 0.5,
+    text: "Section",
+    style: styles.tableRowLabel,
+    content: (r) => r.section
+  },
+  {
+    weight: 0.5,
+    text: "Weight",
+    style: styles.tableRowValue,
+    content: (r) => r.weight
+  }
+]
 
 function mapToTextColor(score) {
   if (score >= 100)
@@ -34,6 +131,21 @@ function mapToBgColor(score) {
     return "#FFAB91"
 }
 
+function getColorStyle(mark) {
+  return {
+    color: mapToTextColor(mark),
+    backgroundColor: mapToBgColor(mark),
+    fontSize: 56,
+    fontFamily: "FZHeiti",
+    padding: 16,
+    maxLines: 1,
+    textOverflow: 'ellipsis',
+    textAlign: 'center',
+    margin: 24,
+  }
+}
+
+
 const Conclusion = () => {
   const performanceData = useContext(Context);
   if (!performanceData) {
@@ -44,7 +156,7 @@ const Conclusion = () => {
     return null;
   }
 
-  //FPS 
+  //FPS
   const droppedFramesFpsValue = 50
   const highFpsValue = 55
   const lowFps = fps.filter(item => item.value < droppedFramesFpsValue);
@@ -138,62 +250,6 @@ const Conclusion = () => {
   ]
   // const counclusionImage = getChartsBlobImage(option);
 
-  const des = 'According to the professional test team, the average score given:';
-
-  let explanationRichText = [
-    { "text": "The report rating includes ", "isRich": false },
-    { "text": "A+", "isRich": true },
-    { "text": ", ", "isRich": false },
-    { "text": "A", "isRich": true },
-    { "text": ", ", "isRich": false },
-    { "text": "B", "isRich": true },
-    { "text": ", ", "isRich": false },
-    { "text": "C", "isRich": true },
-    { "text": ", ", "isRich": false },
-    { "text": "D", "isRich": true },
-    { "text": " 5 grades, ", "isRich": false },
-    { "text": "A+", "isRich": true },
-    { "text": " is the best and ", "isRich": false },
-    { "text": "D", "isRich": true },
-    { "text": " is the worst. Ratings are converted based on specific numerical values ​​(", "isRich": false },
-    { "text": "0", "isRich": true },
-    { "text": " to ", "isRich": false },
-    { "text": "100", "isRich": true },
-    { "text": "). The total rating comes from the weighted average of the values ​​of each section. The weights for each section are as follows:", "isRich": false },
-  ]
-  const weightTableData = [
-    {
-      "section": "FPS",
-      "weight": 0.3,
-    },
-    {
-      "section": "Power Usage",
-      "weight": 0.1,
-    },
-    {
-      "section": "Launch Time",
-      "weight": 0.3,
-    },
-    {
-      "section": "Memory Leak",
-      "weight": 0.3,
-    },
-  ]
-
-  function getColorStyle(mark) {
-    return {
-      color: mapToTextColor(mark),
-      backgroundColor: mapToBgColor(mark),
-      fontSize: 56,
-      fontFamily: "FZHeiti",
-      padding: 16,
-      maxLines: 1,
-      textOverflow: 'ellipsis',
-      textAlign: 'center',
-      margin: 24,
-    }
-  }
-
   return (
     <View bookmark={{ title: "Section 1: Overview", fit: true }} break>
       <View style={styles.contentContainer}>
@@ -205,14 +261,12 @@ const Conclusion = () => {
         <View style={styles.tableContainer} wrap={false}>
           <Table data={tableData}>
             <TableHeader>
-              <TableCell weighting={0.2} style={styles.tableHeader}>Section</TableCell>
-              <TableCell weighting={0.7} style={styles.tableHeader}>Description</TableCell>
-              <TableCell weighting={0.1} style={styles.tableHeader}>Grade</TableCell>
+            {tableHeader.map(header => 
+               <TableCell weighting={header.weight} style={styles.tableHeader} key={header.text}>{header.text}</TableCell>
+            )}
             </TableHeader>
             <TableBody>
-              <DataTableCell weighting={0.2} style={styles.tableRowLabel} getContent={(r) => r.section} />
-              <DataTableCell weighting={0.7} style={styles.tableRowLabel} getContent={(r) => <RichText richItems={r.summary} normalStyle={styles.tableRowLabel} richStyle={styles.richText} />} />
-              <DataTableCell weighting={0.1} style={styles.tableRowValue} getContent={(r) => r.value} />
+              {tableContent.map(({ weight, style, content, text }) => <DataTableCell weighting={weight} style={style} getContent={content} key={text} />)}
             </TableBody>
           </Table>
         </View>
@@ -221,12 +275,12 @@ const Conclusion = () => {
         <View style={styles.tableContainer} wrap={false}>
           <Table data={weightTableData}>
             <TableHeader>
-              <TableCell weighting={0.5} style={styles.tableHeader}>Section</TableCell>
-              <TableCell weighting={0.5} style={styles.tableHeader}>Weight</TableCell>
+              {weightTableHeader.map(header => 
+                <TableCell weighting={header.weight} style={styles.tableHeader} key={header.text}>{header.text}</TableCell>
+              )}
             </TableHeader>
             <TableBody>
-              <DataTableCell weighting={0.5} style={styles.tableRowLabel} getContent={(r) => r.section} />
-              <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => r.weight} />
+              {weightTableContent.map(({ weight, style, content, text }) => <DataTableCell weighting={weight} style={style} getContent={content} key={text} />)}
             </TableBody>
           </Table>
         </View>

@@ -180,18 +180,22 @@ const FPS = () => {
           <View style={styles.chartDesContainer}><Text style={styles.hint}>{chartTitle}</Text></View>
         </View>
         {/* 2.3.3 Rank Table */}
-        {topRankArray.length > 0 ? <Text style={styles.subTitle}>2.3.3 Dropout Ranking</Text> : null}
-        {topRankArray.length > 0 ? <Text style={styles.text}>Here is a list of code locations where the most stuck occur. Occurrences are listed on the right side of the table.</Text> : null}
-        {topRankArray.length > 0 ? <View style={styles.tableContainer} wrap={false}><Table data={topRankArray}>
-          <TableHeader>
-            <TableCell weighting={0.8} style={styles.tableHeader}>View</TableCell>
-            <TableCell weighting={0.2} style={styles.tableHeader}>Count</TableCell>
-          </TableHeader>
-          <TableBody>
-            <DataTableCell weighting={0.8} style={styles.tableRowLabel} getContent={(r) => r.name} />
-            <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.count} />
-          </TableBody>
-        </Table></View> : null}
+        {topRankArray.length > 0 ? <>
+          <Text style={styles.subTitle}>2.3.3 Dropout Ranking</Text>
+          <Text style={styles.text}>Here is a list of code locations where the most stuck occur. Occurrences are listed on the right side of the table.</Text>
+          <View style={styles.tableContainer} wrap={false}>
+            <Table data={topRankArray}>
+              <TableHeader>
+                <TableCell weighting={0.8} style={styles.tableHeader}>View</TableCell>
+                <TableCell weighting={0.2} style={styles.tableHeader}>Count</TableCell>
+              </TableHeader>
+              <TableBody>
+                <DataTableCell weighting={0.8} style={styles.tableRowLabel} getContent={(r) => r.name} />
+                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.count} />
+              </TableBody>
+            </Table>
+          </View> 
+        </>: null}
       </View>
 
       {/* 2.4 Recommendations */}
