@@ -71,7 +71,7 @@ const PowerUsageChart = () => {
     }, 0);
 
     const { network } = performanceData;
-    let networkMark = getNetworkMark(network.requestSucsessRate, network.slowRequestCount / network.summaryRequestCount);
+    let networkMark = getNetworkMark(network.requestSuccessRate, network.slowRequestCount / network.summaryRequestCount);
     let locationMark = getLocationMark();
     let powerUsageMark = networkMark * 0.8 + locationMark * 0.2;
 
@@ -241,14 +241,13 @@ const PowerUsageChart = () => {
           weight: 0.35,
           text: "duration",
           style: styles.tableRowValue,
-          content: (r) => r.duration
-      
+          content: (r) => `${r.duration} ms`
         },
     ]
 
     const tableDatas = [
-        { name: 'Network', count: sortNetworkFlowData.length, duration: Math.round(networkTotalTime) },
-        { name: 'GPS', count: sortLocationData.length, duration: Math.round(locationTotalTime) },
+        { name: 'Network', count: sortNetworkFlowData.length, duration: networkTotalTime },
+        { name: 'GPS', count: sortLocationData.length, duration: locationTotalTime },
     ];
 
     return (

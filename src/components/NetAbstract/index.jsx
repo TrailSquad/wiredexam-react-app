@@ -4,15 +4,26 @@ import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableCell, TableHeader, TableBody } from '@david.kucsai/react-pdf-table'
 
-function formatNumber(number){
-    if(typeof number === 'number')
-        return number.toFixed(2)
-    else
-        return number
+function formatNumber(number) {
+  if (typeof number === 'number')
+    return number.toFixed(2)
+  else
+    return number
+}
+
+function getReadableSizeString(sizeInBytes) {
+  var i = -1;
+  var byteUnits = [' kB', ' MB', ' GB', ' TB', 'PB', 'EB', 'ZB', 'YB'];
+  do {
+    sizeInBytes /= 1024;
+    i++;
+  } while (sizeInBytes > 1024);
+
+  return Math.max(sizeInBytes, 0.1).toFixed(1) + byteUnits[i];
 }
 
 function formatUrl(url) {
-    return url.replace(" ", ":")
+  return url.replace(" ", ":")
 }
 
 const NetAbstract = () => {
@@ -30,7 +41,7 @@ const NetAbstract = () => {
     summaryRequestUploadFlow,  // 数据上传流量
     summaryRequestDownFlow,  // 数据下载流量
     requestAverageTime,  // 平均请求时长
-    requestSucsessRate,  // 请求成功率
+    requestSuccessRate,  // 请求成功率
     slowRequestCount,  // 慢请求次数（请求时长大于1秒）
     reqCountRank,  // 请求次数排行
     failReqCountRank,  // 失败次数排行
@@ -46,23 +57,23 @@ const NetAbstract = () => {
     },
     {
       "categary": "Total time requested",
-      "value": summaryRequestTime,
+      "value": `${summaryRequestTime} ms`,
     },
     {
       "categary": "Data upload flow",
-      "value": summaryRequestUploadFlow,
+      "value": getReadableSizeString(summaryRequestUploadFlow),
     },
     {
       "categary": "Data download flow",
-      "value": summaryRequestDownFlow,
+      "value": getReadableSizeString(summaryRequestDownFlow),
     },
     {
       "categary": "Average request time",
-      "value": requestAverageTime,
+      "value": `${requestAverageTime} ms`,
     },
     {
       "categary": "Request success rates",
-      "value": requestSucsessRate,
+      "value": formatNumber(requestSuccessRate),
     },
     {
       "categary": "Number of slow request",
@@ -94,11 +105,11 @@ const NetAbstract = () => {
           </TableHeader>
           <TableBody>
             <DataTableCell weighting={0.5} style={styles.tableRowLabel} getContent={(r) => r.categary} />
-            <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => formatNumber(r.value)} />
+            <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => r.value} />
           </TableBody>
         </Table></View>
 
-        {reqCountRank.length > 1 ? <>
+        {reqCountRank.length > 0 ? <>
           <Text style={styles.tableTitle}>3.4.2 Ranking of Requests</Text>
           <Text style={styles.text}>Too many requests may be unnecessary and can be optimized. Here is a list of the most frequently requested items in the collected data.</Text>
           <Text style={styles.hint}>The number on the right is the number of requests</Text>
@@ -109,14 +120,14 @@ const NetAbstract = () => {
                 <TableCell weighting={0.2} style={styles.tableHeader}>Count</TableCell>
               </TableHeader>
               <TableBody>
-                <DataTableCell  weighting={0.8} getContent={(r) => (<Text style={styles.tableRowLabelSingleLine}>{formatUrl(r.key)}</Text>)} />
-                <DataTableCell  weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.value} />
+                <DataTableCell weighting={0.8} getContent={(r) => (<Text style={styles.tableRowLabelSingleLine}>{formatUrl(r.key)}</Text>)} />
+                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.value} />
               </TableBody>
             </Table>
           </View>
-         </> : null}
+        </> : null}
 
-        {failReqCountRank.length > 1 ? <>
+        {failReqCountRank.length > 0 ? <>
           <Text style={styles.tableTitle}>3.4.3 Ranking of Failed Requests</Text>
           <Text style={styles.text}>Failed requests tell us there is a problem with the backend. Discover them and solve them.</Text>
           <Text style={styles.hint}>The number on the right is the number of requests</Text>
@@ -132,9 +143,9 @@ const NetAbstract = () => {
               </TableBody>
             </Table>
           </View>
-         </> : null}
+        </> : null}
 
-        {reqTimeRank.length > 1 ? <>
+        {reqTimeRank.length > 0 ? <>
           <Text style={styles.tableTitle}>3.4.4 Request Time Ranking</Text>
           <Text style={styles.text}>Excessive request time means that it can be optimized to improve response speed and improve user experience.</Text>
           <Text style={styles.hint}>The number on the right is the average request time of a single request</Text>
@@ -146,13 +157,13 @@ const NetAbstract = () => {
               </TableHeader>
               <TableBody>
                 <DataTableCell weighting={0.8} getContent={(r) => (<Text style={styles.tableRowLabelSingleLine}>{formatUrl(r.key)}</Text>)} />
-                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => formatNumber(r.value)} />
+                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => `${r.value} ms`} />
               </TableBody>
             </Table>
           </View>
-         </> : null}
+        </> : null}
 
-        {uploadDataRank.length > 1 ? <>
+        {uploadDataRank.length > 0 ? <>
           <Text style={styles.tableTitle}>3.4.5 Uplink Traffic Ranking</Text>
           <Text style={styles.text}>Optimizing the request with too large request data can improve the response speed, thereby improving the user experience</Text>
           <Text style={styles.hint}>The number on the right is the average uplink traffic size of a single request</Text>
@@ -164,13 +175,13 @@ const NetAbstract = () => {
               </TableHeader>
               <TableBody>
                 <DataTableCell weighting={0.8} getContent={(r) => (<Text style={styles.tableRowLabelSingleLine}>{formatUrl(r.key)}</Text>)} />
-                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => formatNumber(r.value)} />
+                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => getReadableSizeString(r.value)} />
               </TableBody>
             </Table>
           </View>
-         </> : null}
+        </> : null}
 
-        {uploadDataRank.length > 1 ? <>
+        {uploadDataRank.length > 0 ? <>
           <Text style={styles.tableTitle}>3.4.6 Downstream Traffic Ranking</Text>
           <Text style={styles.text}>Optimizing the request with too large request data can improve the response speed, thereby improving the user experience</Text>
           <Text style={styles.hint}>The number on the right is the average downstream traffic size of a single request</Text>
@@ -182,11 +193,11 @@ const NetAbstract = () => {
               </TableHeader>
               <TableBody>
                 <DataTableCell weighting={0.8} getContent={(r) => (<Text style={styles.tableRowLabelSingleLine}>{formatUrl(r.key)}</Text>)} />
-                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => formatNumber(r.value)} />
+                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => getReadableSizeString(r.value)} />
               </TableBody>
             </Table>
           </View>
-         </> : null}
+        </> : null}
 
       </View>
 

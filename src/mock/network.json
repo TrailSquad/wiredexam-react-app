@@ -1,119 +1,47 @@
 {
-  "reqTimeRank": [
+  "downloadDataRank":[
     {
-      "key": "GET https://stg-hype.api.adidas.com.cn/api/external/golden-tickets",
-      "value": 169.5950315
-    },
-    {
-      "key": "GET https://sit-ecp-public.api.adidas.com.cn/o2wl/v1/favorite/article",
-      "value": 197.54983518750004
-    },
-    {
-      "key": "GET https://stg-media.confirmed.adidas.com.cn/image/8c31afa6-d23d-4392-abf5-b35991060946.jpg",
-      "value": 595.35205099999996
-    },
-    {
-      "key": "GET https://static-sit.adidas.com.cn/ecp-product/cdn-image/article/WSY018/product/color/0/WSY018_SLC_eCom_1637812732487.jpg",
-      "value": 58.018799000000001
-    },
-    {
-      "key": "GET https://stg-hype.api.adidas.com.cn/api/external/public/products/WSY017:d86c87a7-afe8-4631-b159-033a2aa4b9b2/stocks",
-      "value": 346.80464876171874
+      "key":"POST https://wanandroid.com/user_article/list/0/json?b=bb&a=aa",
+      "value":1333
     }
   ],
-  "uploadDataRank": [
+  "failReqCountRank":[
     {
-      "key": "GET https://stg-hype.api.adidas.com.cn/api/external/golden-tickets",
-      "value": 2434.75
-    },
-    {
-      "key": "GET https://sit-ecp-public.api.adidas.com.cn/o2wl/v1/favorite/article",
-      "value": 2009.9375
-    },
-    {
-      "key": "GET https://stg-media.confirmed.adidas.com.cn/image/8c31afa6-d23d-4392-abf5-b35991060946.jpg",
-      "value": 2207
-    },
-    {
-      "key": "GET https://static-sit.adidas.com.cn/ecp-product/cdn-image/article/WSY018/product/color/0/WSY018_SLC_eCom_1637812732487.jpg",
-      "value": 497
-    },
-    {
-      "key": "GET https://stg-hype.api.adidas.com.cn/api/external/public/products/WSY017:d86c87a7-afe8-4631-b159-033a2aa4b9b2/stocks",
-      "value": 2458.33984375
+      "key":"POST https://wanandroid.com/user_article/list/0/json?b=bb&a=aa",
+      "value":3
     }
   ],
-  "failReqCountRank": [
+  "reqCountRank":[
     {
-      "key": "GET https://static-sit.adidas.com.cnempty",
-      "value": 5
+      "key":"GET https://wanandroid.com/user_article/list/0/json",
+      "value":2
     },
     {
-      "key": "POST https://wkdcm2.tingyun.com/getTaskDefs",
-      "value": 1
-    },
-    {
-      "key": "POST https://zxid-m.mobileservice.cn/sdk/config/init",
-      "value": 12
-    },
-    {
-      "key": "GET http://a.amap.com/lbs/static/img/default_main_autonavi_logo@2x.png",
-      "value": 3
-    },
-    {
-      "key": "GET https://stg-hype.api.adidas.com.cn/api/external/hypes/surprise/e8405b66-5433-4110-87c2-e99750976daf",
-      "value": 1
+      "key":"POST https://wanandroid.com/user_article/list/0/json?b=bb&a=aa",
+      "value":1
     }
   ],
-  "requestAverageTime": 447897.28455135121,
-  "slowRequestCount": 555,
-  "downloadDataRank": [
+  "reqTimeRank":[
     {
-      "key": "GET https://stg-hype.api.adidas.com.cn/api/external/golden-tickets",
-      "value": 2059.5
+      "key":"POST https://wanandroid.com/user_article/list/0/json?b=bb&a=aa",
+      "value":133
     },
     {
-      "key": "GET https://sit-ecp-public.api.adidas.com.cn/o2wl/v1/favorite/article",
-      "value": 822.5
-    },
-    {
-      "key": "GET https://stg-media.confirmed.adidas.com.cn/image/8c31afa6-d23d-4392-abf5-b35991060946.jpg",
-      "value": 67360
-    },
-    {
-      "key": "GET https://static-sit.adidas.com.cn/ecp-product/cdn-image/article/WSY018/product/color/0/WSY018_SLC_eCom_1637812732487.jpg",
-      "value": 16841
-    },
-    {
-      "key": "GET https://stg-hype.api.adidas.com.cn/api/external/public/products/WSY017:d86c87a7-afe8-4631-b159-033a2aa4b9b2/stocks",
-      "value": 1051.427734375
+      "key":"GET https://wanandroid.com/user_article/list/0/json",
+      "value":432
     }
   ],
-  "summaryRequestTime": 248582992.92599994,
-  "summaryRequestUploadFlow": "904.79KB",
-  "summaryRequestDownFlow": "5.34MB",
-  "summaryRequestCount": 555,
-  "reqCountRank": [
+  "requestAverageTime":11,
+  "requestSuccessRate":0.6666666666666666,
+  "slowRequestCount":1,
+  "summaryRequestCount":3,
+  "summaryRequestDownFlow":19,
+  "summaryRequestTime":111,
+  "summaryRequestUploadFlow":12,
+  "uploadDataRank":[
     {
-      "key": "GET https://stg-hype.api.adidas.com.cn/api/external/golden-tickets",
-      "value": 3
-    },
-    {
-      "key": "GET https://sit-ecp-public.api.adidas.com.cn/o2wl/v1/favorite/article",
-      "value": 5
-    },
-    {
-      "key": "GET https://stg-media.confirmed.adidas.com.cn/image/8c31afa6-d23d-4392-abf5-b35991060946.jpg",
-      "value": 1
-    },
-    {
-      "key": "GET https://static-sit.adidas.com.cn/ecp-product/cdn-image/article/WSY018/product/color/0/WSY018_SLC_eCom_1637812732487.jpg",
-      "value": 1
-    },
-    {
-      "key": "GET https://stg-hype.api.adidas.com.cn/api/external/public/products/WSY017:d86c87a7-afe8-4631-b159-033a2aa4b9b2/stocks",
-      "value": 10
+      "key":"POST https://wanandroid.com/user_article/list/0/json?b=bb&a=aa",
+      "value":192
     }
-  ],
-  "requestSucsessRate": 0.91171171171171173
+  ]
 }
