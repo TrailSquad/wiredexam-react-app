@@ -30,8 +30,8 @@ const FPS = () => {
 
   let dataSourceDes
   if (fps.length > 2) {
-    const beginDate = dayjs.unix(Math.round(fps[0].time)).format('YYYY-MM-DD HH:mm:ss');
-    const endDate = dayjs.unix(Math.round(fps[fps.length - 1].time)).format('YYYY-MM-DD HH:mm:ss');
+    const beginDate = dayjs(fps[0].time).format('YYYY-MM-DD HH:mm:ss');
+    const endDate = dayjs(fps[fps.length - 1].time).format('YYYY-MM-DD HH:mm:ss');
     dataSourceDes = [
       { "text": `The follow data is derived from FPS sampling using the app between `, "isRich": false },
       { "text": `${beginDate}`, "isRich": true },
@@ -194,8 +194,8 @@ const FPS = () => {
                 <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.count} />
               </TableBody>
             </Table>
-          </View> 
-        </>: null}
+          </View>
+        </> : null}
       </View>
 
       {/* 2.4 Recommendations */}

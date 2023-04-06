@@ -178,12 +178,12 @@ const Conclusion = () => {
 
   // Power Usage
   const { network } = performanceData;
-  let networkMark = getNetworkMark(network.requestSucsessRate, network.slowRequestCount / network.summaryRequestCount);
+  let networkMark = getNetworkMark(network.requestSuccessRate, network.slowRequestCount / network.summaryRequestCount);
   let locationMark = getLocationMark();
   let powerUsageMark = networkMark * 0.8 + locationMark * 0.2;
   let powerUsageDes = [
     { "text": "Power consumption grade is based on success rate of network requests and rate of slow requests. In this test, success rate of network requests is ", "isRich": false },
-    { "text": `${(network.requestSucsessRate * 100).toFixed(0)}%`, "isRich": true },
+    { "text": `${(network.requestSuccessRate * 100).toFixed(0)}%`, "isRich": true },
     { "text": `. Rate of slow requests is `, "isRich": false },
     { "text": `${(network.slowRequestCount / network.summaryRequestCount * 100).toFixed(0)}%`, "isRich": true },
     { "text": ". ", "isRich": false },

@@ -106,8 +106,8 @@ const LaunchTime = () => {
 
   let dataSourceDes
   if (sortTimeObjs.length > 2) {
-    const beginDate = dayjs.unix(Math.round(sortTimeObjs[0].time)).format('YYYY-MM-DD HH:mm:ss');
-    const endDate = dayjs.unix(Math.round(sortTimeObjs[sortTimeObjs.length - 1].time)).format('YYYY-MM-DD HH:mm:ss');
+    const beginDate = dayjs(sortTimeObjs[0].time).format('YYYY-MM-DD HH:mm:ss');
+    const endDate = dayjs(sortTimeObjs[sortTimeObjs.length - 1].time).format('YYYY-MM-DD HH:mm:ss');
     dataSourceDes = [
       { "text": `The follow data is derived from every launch the app between `, "isRich": false },
       { "text": `${beginDate}`, "isRich": true },
@@ -167,7 +167,7 @@ const LaunchTime = () => {
             <TableCell weighting={0.5} style={styles.tableHeader}>Cost</TableCell>
           </TableHeader>
           <TableBody>
-            <DataTableCell weighting={0.5} style={styles.tableRowLabel} getContent={(r) => dayjs.unix(r.time).format('M-D HH:mm')} />
+            <DataTableCell weighting={0.5} style={styles.tableRowLabel} getContent={(r) => dayjs(r.time).format('YYYY-MM-DD HH:mm:ss')} />
             <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => (r.launchCost.toFixed(0) + " ms")} />
           </TableBody>
         </Table></View> : null}

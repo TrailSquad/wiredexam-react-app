@@ -1,1587 +1,267 @@
 [
     {
-        "time": "1677477446.912516",
-        "topView": "Staging.WelcomeViewController",
-        "value": 59
+        "time":1680597761496,
+        "topView":"MainDoKitActivity",
+        "value":43
     },
     {
-        "time": "1677477447.911043",
-        "topView": "Staging.WelcomeViewController",
-        "value": 59
+        "time":1680597762513,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477448.912758",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597763517,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477449.914532",
-        "topView": "Staging.WelcomeViewController",
-        "value": 57
+        "time":1680597764518,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477450.915778",
-        "topView": "Staging.WelcomeViewController",
-        "value": 58
+        "time":1680597765519,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477451.91702",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597766520,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477452.918468",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597767521,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477453.919637",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597768523,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477454.921206",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597769534,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477455.922439",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597770535,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477456.923627",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597771537,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477457.92479",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597773539,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477458.926279",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597774540,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477459.927586",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597775543,
+        "topView":"MainDoKitActivity",
+        "value":59
     },
     {
-        "time": "1677477460.929116",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597776546,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477461.930511",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597777547,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477462.93177",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597780551,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477463.93311",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597781552,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477464.9345",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597782559,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477465.935793",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597783560,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477466.93719",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597784563,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477467.93863",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597785563,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477468.940067",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597786565,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477469.940589",
-        "topView": "Staging.WelcomeViewController",
-        "value": 56
+        "time":1680597787567,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477470.941847",
-        "topView": "Staging.WelcomeViewController",
-        "value": 60
+        "time":1680597791571,
+        "topView":"MainDoKitActivity",
+        "value":59
     },
     {
-        "time": "1677477471.942326",
-        "topView": "Staging.WelcomeViewController",
-        "value": 58
+        "time":1680597792584,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477472.942293",
-        "topView": "Staging.LoginOptionsViewController",
-        "value": 52
+        "time":1680597793586,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477473.943767",
-        "topView": "Staging.LoginInputViewController",
-        "value": 54
+        "time":1680597794587,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477474.944773",
-        "topView": "Staging.LoginInputViewController",
-        "value": 43
+        "time":1680597795588,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477475.94567",
-        "topView": "Staging.LoginInputViewController",
-        "value": 60
+        "time":1680597796590,
+        "topView":"EmptyActivity",
+        "value":59
     },
     {
-        "time": "1677477476.952585",
-        "topView": "Staging.LoginInputViewController",
-        "value": 60
+        "time":1680597797625,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477477.947814",
-        "topView": "Staging.LoginInputViewController",
-        "value": 60
+        "time":1680597798626,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477478.948587",
-        "topView": "Staging.LoginInputViewController",
-        "value": 57
+        "time":1680597799627,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477479.956111",
-        "topView": "Staging.LoginInputViewController",
-        "value": 59
+        "time":1680597800630,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477480.96656",
-        "topView": "Staging.LoginInputViewController",
-        "value": 57
+        "time":1680597801631,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477481.967659",
-        "topView": "Staging.LoginInputViewController",
-        "value": 60
+        "time":1680597802632,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477482.968987",
-        "topView": "Staging.LoginInputViewController",
-        "value": 58
+        "time":1680597803634,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477483.969403",
-        "topView": "Staging.LoginInputViewController",
-        "value": 58
+        "time":1680597804637,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477484.970034",
-        "topView": "Staging.HomeViewController",
-        "value": 60
+        "time":1680597805639,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477485.970767",
-        "topView": "Staging.HomeViewController",
-        "value": 60
+        "time":1680597806641,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477486.971465",
-        "topView": "Staging.HomeViewController",
-        "value": 60
+        "time":1680597807642,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477487.97189",
-        "topView": "Staging.HomeViewController",
-        "value": 60
+        "time":1680597808644,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477488.97254",
-        "topView": "Staging.HomeViewController",
-        "value": 60
+        "time":1680597809645,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477489.973193",
-        "topView": "Staging.HomeViewController",
-        "value": 60
+        "time":1680597810646,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477490.973809",
-        "topView": "Staging.HomeViewController",
-        "value": 60
+        "time":1680597811649,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477491.990181",
-        "topView": "Staging.AccountViewController",
-        "value": 56
+        "time":1680597812651,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477492.9909",
-        "topView": "Staging.AccountViewController",
-        "value": 58
+        "time":1680597813652,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477493.991455",
-        "topView": "Staging.AccountViewController",
-        "value": 60
+        "time":1680597814653,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477494.992605",
-        "topView": "APMReportViewController",
-        "value": 46
+        "time":1680597815658,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477495.994363",
-        "topView": "APMReportViewController",
-        "value": 60
+        "time":1680597816659,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477496.996012",
-        "topView": "APMReportViewController",
-        "value": 60
+        "time":1680597817660,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477497.997731",
-        "topView": "APMReportViewController",
-        "value": 60
+        "time":1680597818661,
+        "topView":"MainDoKitActivity",
+        "value":60
     },
     {
-        "time": "1677477498.999319",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477500.000957",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477501.002567",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477502.004199",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477503.006107",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477504.00964",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477505.0088",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477506.010741",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477507.010293",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477508.010874",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477509.011787",
-        "topView": "APMReportViewController",
-        "value": 59
-    },
-    {
-        "time": "1677477510.013263",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477511.014797",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477512.016156",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477513.017571",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477514.018971",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477515.02008",
-        "topView": "APMReportViewController",
-        "value": 59
-    },
-    {
-        "time": "1677477516.02064",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477517.037212",
-        "topView": "Staging.AccountViewController",
-        "value": 49
-    },
-    {
-        "time": "1677477518.037289",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477519.037555",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477520.056198",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477521.054088",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477522.055229",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477523.056106",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477524.070517",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477525.071296",
-        "topView": "Staging.AccountViewController",
-        "value": 59
-    },
-    {
-        "time": "1677477526.072476",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477527.073617",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477528.140993",
-        "topView": "Staging.AccountViewController",
-        "value": 55
-    },
-    {
-        "time": "1677477529.142039",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477530.143115",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477531.144631",
-        "topView": "Staging.AccountViewController",
-        "value": 59
-    },
-    {
-        "time": "1677477532.145238",
-        "topView": "Staging.AccountViewController",
-        "value": 59
-    },
-    {
-        "time": "1677477533.146233",
-        "topView": "Staging.AccountViewController",
-        "value": 59
-    },
-    {
-        "time": "1677477534.147469",
-        "topView": "Staging.AccountViewController",
-        "value": 58
-    },
-    {
-        "time": "1677477535.148445",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477536.149498",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477537.150392",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477538.151104",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477539.151934",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477540.15292",
-        "topView": "Staging.AccountViewController",
-        "value": 59
-    },
-    {
-        "time": "1677477541.153693",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477542.155025",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477543.155374",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477544.15661",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477545.157513",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677477546.158714",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478100.132608",
-        "topView": "Staging.HomeViewController",
-        "value": 59
-    },
-    {
-        "time": "1677478101.130767",
-        "topView": "Staging.HomeViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478102.132176",
-        "topView": "Staging.HomeViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478103.13319",
-        "topView": "Staging.HomeViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478104.155826",
-        "topView": "Staging.HomeViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478105.150373",
-        "topView": "Staging.HomeViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478106.15118",
-        "topView": "Staging.HomeViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478107.151871",
-        "topView": "Staging.HomeViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478108.152332",
-        "topView": "Staging.HomeViewController",
-        "value": 56
-    },
-    {
-        "time": "1677478109.153257",
-        "topView": "Staging.AccountViewController",
-        "value": 56
-    },
-    {
-        "time": "1677478110.153774",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478111.31293",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478112.155215",
-        "topView": "APMReportViewController",
-        "value": 50
-    },
-    {
-        "time": "1677478113.156843",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478114.158179",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478115.159595",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478116.160993",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478117.16236",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478118.163529",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478119.164971",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478120.166498",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478121.168038",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478122.169743",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478123.171086",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478124.172701",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478125.174211",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478126.175641",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478127.177194",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478128.178771",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478129.180313",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478130.181891",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478131.183293",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478132.18489",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478133.18641",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478134.187875",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478135.189421",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478136.190931",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478137.192568",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478138.195512",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478139.196033",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478140.196614",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478141.197223",
-        "topView": "Staging.AccountViewController",
-        "value": 46
-    },
-    {
-        "time": "1677478142.197847",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478143.198563",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478144.199245",
-        "topView": "Staging.AccountViewController",
-        "value": 53
-    },
-    {
-        "time": "1677478145.200089",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478160.570203",
-        "topView": "APMReportViewController",
-        "value": 39
-    },
-    {
-        "time": "1677478161.574436",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478162.575795",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478163.577325",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478164.578708",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478165.580149",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478166.581708",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478167.583197",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478168.584629",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478169.586171",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478170.587551",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478171.589024",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478172.590573",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478173.591963",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478174.593455",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478175.594985",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478176.596438",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478177.597919",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478178.600886",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478179.602748",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478180.604392",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478181.605154",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478182.605723",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478183.606561",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478184.607366",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478185.608304",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478186.609245",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478187.610115",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478188.611036",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478189.611943",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478190.612862",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478191.613833",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478192.614757",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478193.615606",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478194.616529",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478195.617435",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478196.618425",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478197.619268",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478198.620174",
-        "topView": "Staging.AccountViewController",
-        "value": 47
-    },
-    {
-        "time": "1677478199.621097",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478200.633218",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478201.649549",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478202.665762",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478203.682038",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478204.69836",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478205.714575",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478206.730959",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478207.747113",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478208.763389",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478209.779676",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478210.795938",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478211.812224",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478212.828494",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478213.844787",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478214.861186",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478215.876136",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478216.877024",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478217.877249",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478218.877482",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478219.877761",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478220.878011",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478221.87828",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478222.878528",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478223.878816",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478224.879109",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478225.87934",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478226.879636",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478227.879869",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478228.880118",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478229.880445",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478230.886606",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478231.88734",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478232.888154",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478233.888907",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478234.889599",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478235.890393",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478236.891087",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478237.891834",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478238.892591",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478239.893319",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478240.894069",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478241.894877",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478242.895626",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478243.896333",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478244.897066",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478245.897859",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478246.898556",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478247.899295",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478248.900089",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478249.900853",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478250.901564",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478251.902292",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478252.903036",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478253.903798",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478254.904664",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478255.905294",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478256.906126",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478257.906773",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478258.907523",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478259.908281",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478260.910904",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478261.927276",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478262.943655",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478263.960021",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478264.976401",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478265.992855",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478267.00922",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478268.025538",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478269.041978",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478270.058344",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478303.545403",
-        "topView": "Staging.HomeViewController",
-        "value": 57
-    },
-    {
-        "time": "1677478304.544343",
-        "topView": "Staging.HomeViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478305.546223",
-        "topView": "Staging.HomeViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478306.56461",
-        "topView": "Staging.HomeViewController",
-        "value": 59
-    },
-    {
-        "time": "1677478307.568577",
-        "topView": "Staging.HomeViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478308.581282",
-        "topView": "Staging.HomeViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478309.581533",
-        "topView": "Staging.AccountViewController",
-        "value": 57
-    },
-    {
-        "time": "1677478310.581749",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478311.606745",
-        "topView": "APMReportViewController",
-        "value": 52
-    },
-    {
-        "time": "1677478312.617284",
-        "topView": "APMReportViewController",
-        "value": 59
-    },
-    {
-        "time": "1677478313.618858",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478314.62041",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478315.621649",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478316.623452",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478317.624556",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478318.626064",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478319.627434",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478320.628912",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478321.62936",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478322.629689",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478323.630104",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478324.630809",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478325.6313",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478326.632269",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478327.635416",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478328.637048",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478329.636872",
-        "topView": "APMReportViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478330.637624",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478331.638392",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478332.639255",
-        "topView": "Staging.AccountViewController",
-        "value": 57
-    },
-    {
-        "time": "1677478333.640826",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478334.642172",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478335.643711",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478336.645046",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478337.647343",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478338.649051",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478339.650526",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478340.65164",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478341.652854",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478342.654072",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478343.655345",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478344.656534",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478345.657696",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478346.658896",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478347.66011",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478348.661298",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478349.662507",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478350.663712",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478351.664909",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478352.6661",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478383.160257",
-        "topView": "Staging.HomeViewController",
-        "value": 57
-    },
-    {
-        "time": "1677478384.161738",
-        "topView": "Staging.HomeViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478385.163083",
-        "topView": "Staging.HomeViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478386.1815",
-        "topView": "Staging.HomeViewController",
-        "value": 59
-    },
-    {
-        "time": "1677478387.181526",
-        "topView": "Staging.HomeViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478388.198025",
-        "topView": "Staging.HomeViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478389.19813",
-        "topView": "Staging.AccountViewController",
-        "value": 57
-    },
-    {
-        "time": "1677478390.199545",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478391.199236",
-        "topView": "Staging.AccountViewController",
-        "value": 60
-    },
-    {
-        "time": "1677478392.216771",
-        "topView": "APMReportViewController",
-        "value": 52
-    },
-    {
-        "time": "1677478393.218272",
-        "topView": "APMReportViewController",
-        "value": 60
+        "time":1680597819663,
+        "topView":"MainDoKitActivity",
+        "value":60
     }
 ]
