@@ -7,27 +7,21 @@ import grateUtil from 'src/utils/grade';
 import Constants from 'src/constants';
 import RichText from 'src/components/customize/RichText';
 
-const { generalMarkMap, getMemoryLeakMark } = grateUtil
+const { generalMarkMap, getMemoryLeakMark, getMemoryLeakDataSummaryDescription } = grateUtil
 
 const MemoryLeak = () => {
   const performanceData = useContext(Context);
   if (!performanceData) {
-    return null;
+    // return null;
   }
   const { memoryLeakData } = performanceData;
   if (!memoryLeakData || memoryLeakData.length < 1) {
-    return null;
+    // return null;
   }
   const sortData = memoryLeakData.sort((a, b) => (b.count - a.count));
   const rank = sortData.length > 3 ? sortData.slice(0, 3) : sortData;
   const memoryLeakMark = getMemoryLeakMark(memoryLeakData.length);
 
-  const dataSourceDes = [
-    { "text": `This test found `, "isRich": false },
-    { "text": `${sortData.length}`, "isRich": true },
-    { "text": " memory leaks in total. All issues should be fixed before going live. Here is a list of the most frequently occurring issues.", "isRich": false },
-  ]
-  
   return (
     <View bookmark={{ title: "Section 5: Memory Leak", fit: true }}>
       <View style={styles.contentContainer}>
@@ -41,25 +35,29 @@ const MemoryLeak = () => {
         <Text style={styles.highlightNumber} wrap={false}>{generalMarkMap(memoryLeakMark)}</Text>
 
         <Text style={styles.sectionsSubTitle}>5.3 Data Detail</Text>
-        <RichText richItems={dataSourceDes} normalStyle={styles.text} richStyle={styles.richText} />
-        {rank.length > 0 ? <View style={styles.tableContainer} wrap={false}><Table data={rank}>
-          <TableHeader>
-            <TableCell weighting={0.8} style={styles.tableHeader}>Description</TableCell>
-            <TableCell weighting={0.2} style={styles.tableHeader}>Count</TableCell>
-          </TableHeader>
-          <TableBody>
-            <DataTableCell weighting={0.8} style={styles.tableRowLabelSingleLine} getContent={(r) => r.info} />
-            <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.count} />
-          </TableBody>
-        </Table></View> : null}
+        <RichText richItems={getMemoryLeakDataSummaryDescription(sortData)} normalStyle={styles.text} richStyle={styles.richText} />
+        {rank.length > 0 ? <>
+          <Text style={styles.text}> Here is a list of the most frequently occurring issues.</Text>
+          <View style={styles.tableContainer} wrap={false}><Table data={rank}>
+            <TableHeader>
+              <TableCell weighting={0.8} style={styles.tableHeader}>Description</TableCell>
+              <TableCell weighting={0.2} style={styles.tableHeader}>Count</TableCell>
+            </TableHeader>
+            <TableBody>
+              <DataTableCell weighting={0.8} style={styles.tableRowLabelSingleLine} getContent={(r) => r.info} />
+              <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.count} />
+            </TableBody>
+          </Table></View></> : null}
       </View>
 
-      <View>
-        <Text style={styles.sectionsSubTitle}>5.4 Recommendations for Optimisation</Text>
-        <View style={styles.recommendationLayout} wrap={false}>
-          <Text style={styles.text}>{Constants.strings.memoryLeak.recommendation}</Text>
-        </View>
-      </View>
+      {memoryLeakMark < 100 ?
+        <View>
+          <Text style={styles.sectionsSubTitle}>5.4 Recommendations for Optimisation</Text>
+          <View style={styles.recommendationLayout} wrap={false}>
+            <Text style={styles.text}>{Constants.strings.memoryLeak.recommendation}</Text>
+          </View>
+        </View> : null}
+
     </View>
   )
 };

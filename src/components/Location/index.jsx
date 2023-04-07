@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Text, View } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
+import Constants from 'src/constants';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 
 const LocationUse = () => {
@@ -26,16 +27,6 @@ const LocationUse = () => {
     const gpsDes = `GPS positioning is an important factor in the app's power consumption, and the more frequently it is used and the longer it is used the greater the impact on power consumption.`
     const gpsTableHint = "the follow table lists the number of times positioning was used and the total length of time, in milliseconds"
 
-    const recommendations = [
-        `Optimizing GPS requests on mobile devices can improve the accuracy, response time, and user experience of an application. Here are some suggestions for optimizing GPS requests on mobile devices:`,
-
-        `1. Reduce the number of network requests: By combining multiple requests into one or using caching techniques, the number of requests can be reduced, which reduces network latency and data transfer time.`,
-
-        `2. Enable location caching: Enabling location caching can reduce the number of location requests and response time, improving the performance and user experience of the application.`,
-
-        `3. Adjust the priority of GPS requests: Adjusting the priority of GPS requests to a lower priority can reduce battery consumption and network traffic, improving the performance and user experience of the application.`,
-    ]
-
     return (
         <View bookmark={{ title: "3.5 GPS Positioning", fit: true }}>
             <View style={styles.contentContainer}>
@@ -55,12 +46,12 @@ const LocationUse = () => {
                 </Table></View>
             </View>
 
-            <View>
+            {count > 0 ? <View>
                 <Text style={styles.subTitle}>3.5.1 Recommendations for Optimisation</Text>
                 <View style={styles.recommendationLayout} wrap={false}>
-                    {recommendations.map(e => <Text style={styles.text}>{e}</Text>)}
+                    {Constants.strings.powerUsage.locationRecommendations.map(e => <Text style={styles.text}>{e}</Text>)}
                 </View>
-            </View>
+            </View> : null}
         </View>
     )
 };

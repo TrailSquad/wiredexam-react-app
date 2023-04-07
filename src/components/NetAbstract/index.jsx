@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Text, View } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
+import Constants from 'src/constants';
 import { Table, DataTableCell, TableCell, TableHeader, TableBody } from '@david.kucsai/react-pdf-table'
 
 function formatNumber(number) {
@@ -82,17 +83,8 @@ const NetAbstract = () => {
       "value": slowRequestCount,
     }
   ]
-  const recommendations = [
-    `Optimizing network requests on mobile devices is crucial for improving application performance and user experience. Here are some suggestions for optimizing network requests on mobile devices:`,
 
-    `1. Reduce the number of network requests: By combining multiple requests into one or using caching techniques, the number of requests can be reduced, which reduces network latency and data transfer time.`,
-
-    `2. Compress data: Compressing data can reduce data transfer size, thereby reducing response time and bandwidth usage.`,
-
-    `3. Use lazy loading: Lazy loading is a technique that delays loading resources until they are needed in the visible area of the page, which can reduce page load time and bandwidth usage.`,
-
-    `4. Cache data: Using caching on both the client and server can reduce network request times and response time, improving application performance.`,
-  ]
+  const noDataDesc = "No relevant data collected"
 
   return (
     <View bookmark={{ title: "3.4 Network Monitoring", fit: true }}>
@@ -111,8 +103,8 @@ const NetAbstract = () => {
           </TableBody>
         </Table></View>
 
+        <Text style={styles.tableTitle}>3.4.2 Ranking of Requests</Text>
         {reqCountRank.length > 0 ? <>
-          <Text style={styles.tableTitle}>3.4.2 Ranking of Requests</Text>
           <Text style={styles.text}>Too many requests may be unnecessary and can be optimized. Here is a list of the most frequently requested items in the collected data.</Text>
           <Text style={styles.hint}>The number on the right is the number of requests</Text>
           <View style={styles.tableContainer} wrap={false}>
@@ -127,10 +119,10 @@ const NetAbstract = () => {
               </TableBody>
             </Table>
           </View>
-        </> : null}
+        </> : <Text style={styles.hint}>{noDataDesc}</Text>}
 
+        <Text style={styles.tableTitle}>3.4.3 Ranking of Failed Requests</Text>
         {failReqCountRank.length > 0 ? <>
-          <Text style={styles.tableTitle}>3.4.3 Ranking of Failed Requests</Text>
           <Text style={styles.text}>Failed requests tell us there is a problem with the backend. Discover them and solve them.</Text>
           <Text style={styles.hint}>The number on the right is the number of requests</Text>
           <View style={styles.tableContainer} wrap={false}>
@@ -145,10 +137,10 @@ const NetAbstract = () => {
               </TableBody>
             </Table>
           </View>
-        </> : null}
+        </> : <Text style={styles.hint}>{noDataDesc}</Text>}
 
+        <Text style={styles.tableTitle}>3.4.4 Request Time Ranking</Text>
         {reqTimeRank.length > 0 ? <>
-          <Text style={styles.tableTitle}>3.4.4 Request Time Ranking</Text>
           <Text style={styles.text}>Excessive request time means that it can be optimized to improve response speed and improve user experience.</Text>
           <Text style={styles.hint}>The number on the right is the average request time of a single request</Text>
           <View style={styles.tableContainer} wrap={false}>
@@ -163,10 +155,10 @@ const NetAbstract = () => {
               </TableBody>
             </Table>
           </View>
-        </> : null}
+        </> : <Text style={styles.hint}>{noDataDesc}</Text>}
 
+        <Text style={styles.tableTitle}>3.4.5 Uplink Traffic Ranking</Text>
         {uploadDataRank.length > 0 ? <>
-          <Text style={styles.tableTitle}>3.4.5 Uplink Traffic Ranking</Text>
           <Text style={styles.text}>Optimizing the request with too large request data can improve the response speed, thereby improving the user experience</Text>
           <Text style={styles.hint}>The number on the right is the average uplink traffic size of a single request</Text>
           <View style={styles.tableContainer} wrap={false}>
@@ -181,10 +173,10 @@ const NetAbstract = () => {
               </TableBody>
             </Table>
           </View>
-        </> : null}
+        </> : <Text style={styles.hint}>{noDataDesc}</Text>}
 
+        <Text style={styles.tableTitle}>3.4.6 Downstream Traffic Ranking</Text>
         {uploadDataRank.length > 0 ? <>
-          <Text style={styles.tableTitle}>3.4.6 Downstream Traffic Ranking</Text>
           <Text style={styles.text}>Optimizing the request with too large request data can improve the response speed, thereby improving the user experience</Text>
           <Text style={styles.hint}>The number on the right is the average downstream traffic size of a single request</Text>
           <View style={styles.tableContainer} wrap={false}>
@@ -199,14 +191,14 @@ const NetAbstract = () => {
               </TableBody>
             </Table>
           </View>
-        </> : null}
+        </> : <Text style={styles.hint}>{noDataDesc}</Text>}
 
       </View>
 
       <View>
         <Text style={styles.subTitle}>3.4.7 Recommendations for Optimisation</Text>
         <View style={styles.recommendationLayout} wrap={false}>
-          {recommendations.map(e => <Text style={styles.text}>{e}</Text>)}
+          {Constants.strings.powerUsage.networkRecommendations.map(e => <Text style={styles.text}>{e}</Text>)}
         </View>
       </View>
     </View>

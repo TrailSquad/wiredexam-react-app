@@ -21,11 +21,11 @@
  */
 export const androidFunction = (callback) => {
   if (window.WebViewJavascriptBridge) {
-      callback(window.WebViewJavascriptBridge);
+    callback(window.WebViewJavascriptBridge);
   } else {
-      document.addEventListener('WebViewJavascriptBridgeReady', function () {
-          callback(window.WebViewJavascriptBridge);
-      }, false)
+    document.addEventListener('WebViewJavascriptBridgeReady', function () {
+      callback(window.WebViewJavascriptBridge);
+    }, false)
   }
 }
 
@@ -43,7 +43,9 @@ function setupWKWebViewJavascriptBridge(callback) {
     return window.WKWVJBCallbacks.push(callback);
   }
   window.WKWVJBCallbacks = [callback];
-  window.webkit.messageHandlers.iOS_Native_InjectJavascript.postMessage(null);
+  if (isIOS) {
+    window.webkit.messageHandlers.iOS_Native_InjectJavascript.postMessage(null);
+  }
 }
 
 export default setupWKWebViewJavascriptBridge;
