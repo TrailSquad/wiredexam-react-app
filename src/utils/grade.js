@@ -50,7 +50,7 @@ const getNetworkMark = (sucsessRate, slowReqRate) => {
 
 const getSlowRequestRate = (slowRequestCount, summaryRequestCount) => {
   let slowReqRate
-  if (summaryRequestCount == 0) {
+  if (summaryRequestCount === 0) {
     if (slowRequestCount > 0) {
       slowReqRate = 1
     } else {
