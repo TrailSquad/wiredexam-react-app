@@ -9,21 +9,9 @@ import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.
 import grateUtil from 'src/utils/grade';
 import RichText from 'src/components/customize/RichText';
 import Constants from 'src/constants';
-
+import { getStartTime, getEndTime } from "../../utils/powerUsage.util"
 const { generalMarkMap, getNetworkMark, getLocationMark } = grateUtil
 
-const getStartTime = (netTimes, locationTimes) => {
-    const netStart = netTimes.length > 0 ? netTimes[0] : 0;
-    const locationStart = locationTimes.length > 0 ? locationTimes[0] : 0;
-    if (netStart === 0 || locationStart === 0) return Math.max(netStart, locationStart);
-    return Math.round(Math.min(netStart, locationStart))
-}
-
-const getEndTime = (netTimes, locationTimes) => {
-    const netEnd = netTimes.length > 0 ? netTimes[netTimes.length - 1] : 0;
-    const locationEnd = locationTimes.length > 0 ? locationTimes[locationTimes.length - 1] : 0;
-    return Math.round(Math.max(netEnd, locationEnd))
-}
 
 function renderItem(params, api) {
     let categoryIndex = api.value(0);
