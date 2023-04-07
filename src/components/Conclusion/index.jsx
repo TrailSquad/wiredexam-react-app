@@ -6,7 +6,7 @@ import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.
 import RichText from 'src/components/customize/RichText';
 import gradeUtil from 'src/utils/grade';
 
-const { generalMarkMap, formatLaunchTimeGrade, getMemoryLeakMark, getFpsMark, getLocationMark, getNetworkMark } = gradeUtil
+const { generalMarkMap, formatLaunchTimeGrade, getMemoryLeakMark, getFpsMark, getLocationMark, getNetworkMark, getSlowRequestRate, getMemoryLeakDataSummaryDescription } = gradeUtil
 const des = 'According to the professional test team, the average score given:';
 const explanationRichText = [
   { "text": "The report rating includes ", "isRich": false },
@@ -55,7 +55,7 @@ const tableHeader = [
   {
     weight: 0.7,
     text: "Description"
-  },{
+  }, {
     weight: 0.1,
     text: "Grade"
   },
@@ -72,7 +72,7 @@ const tableContent = [
     text: "Description",
     style: styles.tableRowLabel,
     content: (r) => <RichText richItems={r.summary} normalStyle={styles.tableRowLabel} richStyle={styles.richText} />
-  },{
+  }, {
     weight: 0.1,
     text: "Grade",
     style: styles.tableRowValue,
@@ -178,14 +178,15 @@ const Conclusion = () => {
 
   // Power Usage
   const { network } = performanceData;
-  let networkMark = getNetworkMark(network.requestSuccessRate, network.slowRequestCount / network.summaryRequestCount);
+  let slowRequestRate = getSlowRequestRate(network.slowRequestCount, network.summaryRequestCount);
+  let networkMark = getNetworkMark(network.requestSuccessRate, slowRequestRate);
   let locationMark = getLocationMark();
   let powerUsageMark = networkMark * 0.8 + locationMark * 0.2;
   let powerUsageDes = [
     { "text": "Power consumption grade is based on success rate of network requests and rate of slow requests. In this test, success rate of network requests is ", "isRich": false },
     { "text": `${(network.requestSuccessRate * 100).toFixed(0)}%`, "isRich": true },
     { "text": `. Rate of slow requests is `, "isRich": false },
-    { "text": `${(network.slowRequestCount / network.summaryRequestCount * 100).toFixed(0)}%`, "isRich": true },
+    { "text": `${(slowRequestRate * 100).toFixed(0)}%`, "isRich": true },
     { "text": ". ", "isRich": false },
   ]
 
@@ -209,19 +210,7 @@ const Conclusion = () => {
   // Memory Leak
   const { memoryLeakData } = performanceData;
   let memoryLeakMark = getMemoryLeakMark(memoryLeakData.length);
-  // let memoryLeakDes = "The memory leak score is mainly based on the number of detected memory leaks. This test detected " + memoryLeakData.length + " memory leaks, and it is recommended to fix them before going live.";
-  let memoryLeakDes;
-  if (memoryLeakData.length <= 0) {
-    memoryLeakDes = [
-      { "text": "The memory leak score is mainly based on the number of detected memory leaks. This monitoring found no memory leaks.", "isRich": false },
-    ]
-  } else {
-    memoryLeakDes = [
-      { "text": "The memory leak score is mainly based on the number of detected memory leaks. This test detected ", "isRich": false },
-      { "text": memoryLeakData.length, "isRich": true },
-      { "text": " memory leaks, and it is recommended to fix them before going live.", "isRich": false },
-    ]
-  }
+  let memoryLeakDes = getMemoryLeakDataSummaryDescription(memoryLeakData);
 
   // Total Mark
   const totalMark = fpsMark * 0.3 + powerUsageMark * 0.1 + launchAverage * 0.3 + memoryLeakMark * 0.3
@@ -261,9 +250,9 @@ const Conclusion = () => {
         <View style={styles.tableContainer} wrap={false}>
           <Table data={tableData}>
             <TableHeader>
-            {tableHeader.map(header => 
-               <TableCell weighting={header.weight} style={styles.tableHeader} key={header.text}>{header.text}</TableCell>
-            )}
+              {tableHeader.map(header =>
+                <TableCell weighting={header.weight} style={styles.tableHeader} key={header.text}>{header.text}</TableCell>
+              )}
             </TableHeader>
             <TableBody>
               {tableContent.map(({ weight, style, content, text }) => <DataTableCell weighting={weight} style={style} getContent={content} key={text} />)}
@@ -275,7 +264,7 @@ const Conclusion = () => {
         <View style={styles.tableContainer} wrap={false}>
           <Table data={weightTableData}>
             <TableHeader>
-              {weightTableHeader.map(header => 
+              {weightTableHeader.map(header =>
                 <TableCell weighting={header.weight} style={styles.tableHeader} key={header.text}>{header.text}</TableCell>
               )}
             </TableHeader>

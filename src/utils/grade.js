@@ -48,6 +48,34 @@ const getNetworkMark = (sucsessRate, slowReqRate) => {
   return Math.round(sucsessRate * 50 + (1 - slowReqRate) * 50)
 }
 
+const getSlowRequestRate = (slowRequestCount, summaryRequestCount) => {
+  let slowReqRate
+  if (summaryRequestCount === 0) {
+    if (slowRequestCount > 0) {
+      slowReqRate = 1
+    } else {
+      slowReqRate = 0
+    }
+  } else {
+    slowReqRate = slowRequestCount / summaryRequestCount
+  }
+  return slowReqRate
+}
+
+const getMemoryLeakDataSummaryDescription = (memoryLeakData) => {
+  if (memoryLeakData.length <= 0) {
+    return [
+      { "text": "The memory leak score is mainly based on the number of detected memory leaks. This monitoring found no memory leaks.", "isRich": false },
+    ]
+  } else {
+    return [
+      { "text": "The memory leak score is mainly based on the number of detected memory leaks. This test detected ", "isRich": false },
+      { "text": memoryLeakData.length, "isRich": true },
+      { "text": " memory leaks, and it is recommended to fix them before going live.", "isRich": false },
+    ]
+  }
+}
+
 const getLocationMark = () => {
   return 100; // TODO
 }
@@ -58,6 +86,8 @@ const gradeUtils = {
   getMemoryLeakMark,
   getFpsMark,
   getNetworkMark,
+  getSlowRequestRate,
+  getMemoryLeakDataSummaryDescription,
   getLocationMark
 };
 
