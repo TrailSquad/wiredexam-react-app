@@ -151,7 +151,7 @@ const NetAbstract = () => {
               </TableHeader>
               <TableBody>
                 <DataTableCell weighting={0.8} style={styles.tableRowLabel} getContent={(r) => formatUrl(r.key)} />
-                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => formatNumber(r.value)} />
+                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => `${r.value} ms`} />
               </TableBody>
             </Table>
           </View>
@@ -169,7 +169,7 @@ const NetAbstract = () => {
               </TableHeader>
               <TableBody>
                 <DataTableCell weighting={0.8} style={styles.tableRowLabel} getContent={(r) => formatUrl(r.key)} />
-                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => formatNumber(r.value)} />
+                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => getReadableSizeString(r.value)} />
               </TableBody>
             </Table>
           </View>
@@ -187,7 +187,7 @@ const NetAbstract = () => {
               </TableHeader>
               <TableBody>
                 <DataTableCell weighting={0.8} style={styles.tableRowLabel} getContent={(r) => formatUrl(r.key)} />
-                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => formatNumber(r.value)} />
+                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => getReadableSizeString(r.value)} />
               </TableBody>
             </Table>
           </View>
