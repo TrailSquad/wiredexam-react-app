@@ -11,13 +11,7 @@ const { generalMarkMap, getMemoryLeakMark, getMemoryLeakDataSummaryDescription }
 
 const MemoryLeak = () => {
   const performanceData = useContext(Context);
-  if (!performanceData) {
-    // return null;
-  }
   const { memoryLeakData } = performanceData;
-  if (!memoryLeakData || memoryLeakData.length < 1) {
-    // return null;
-  }
   const sortData = memoryLeakData.sort((a, b) => (b.count - a.count));
   const rank = sortData.length > 3 ? sortData.slice(0, 3) : sortData;
   const memoryLeakMark = getMemoryLeakMark(memoryLeakData.length);
