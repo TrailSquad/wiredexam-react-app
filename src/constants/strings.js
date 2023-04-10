@@ -30,18 +30,6 @@ const locationRecommendations = [
   `3. Adjust the priority of GPS requests: Adjusting the priority of GPS requests to a lower priority can reduce battery consumption and network traffic, improving the performance and user experience of the application.`,
 ]
 
-const networkRecommendations = [
-  `Optimizing network requests on mobile devices is crucial for improving application performance and user experience. Here are some suggestions for optimizing network requests on mobile devices:`,
-
-  `1. Reduce the number of network requests: By combining multiple requests into one or using caching techniques, the number of requests can be reduced, which reduces network latency and data transfer time.`,
-
-  `2. Compress data: Compressing data can reduce data transfer size, thereby reducing response time and bandwidth usage.`,
-
-  `3. Use lazy loading: Lazy loading is a technique that delays loading resources until they are needed in the visible area of the page, which can reduce page load time and bandwidth usage.`,
-
-  `4. Cache data: Using caching on both the client and server can reduce network request times and response time, improving application performance.`,
-]
-
 const launchTimeSectionDescription = `The Launch Time section of the report measures the time elapsed from when the user clicks on the app icon to when the first screen is displayed. This is an important metric as it directly impacts the user experience of your app. A slow launch time can lead to frustration and impatience from users, which can ultimately lead to reduced usage and retention rates.
 
 The impact of a slow launch time can be significant, including a negative effect on the user experience. Users expect apps to load quickly and smoothly, and a slow launch time can cause users to become bored or annoyed. Additionally, a slow launch time can impact the frequency of use of your app, as users may be less likely to open the app if they anticipate a long loading time. This, in turn, can affect the overall activity and retention rate of your app.
@@ -103,6 +91,36 @@ const fpsIndicatorDescription = `FPS indicators are typically classified as foll
 
 3. Low FPS: This refers to a low number of frames per second, usually below 50 FPS. Low FPS can result in choppy or sluggish performance, making it difficult or frustrating for users to interact with the application.
 `
+const locationGpsDescription = `GPS positioning is an important factor in the app's power consumption, and the more frequently it is used and the longer it is used the greater the impact on power consumption.`
+
+const locationGpsTableHint = "the follow table lists the number of times positioning was used and the total length of time, in milliseconds"
+
+const locationGpsRecommendations= [
+  `Optimizing GPS requests on mobile devices can improve the accuracy, response time, and user experience of an application. Here are some suggestions for optimizing GPS requests on mobile devices:`,
+
+  `1. Reduce the number of network requests: By combining multiple requests into one or using caching techniques, the number of requests can be reduced, which reduces network latency and data transfer time.`,
+
+  `2. Enable location caching: Enabling location caching can reduce the number of location requests and response time, improving the performance and user experience of the application.`,
+
+  `3. Adjust the priority of GPS requests: Adjusting the priority of GPS requests to a lower priority can reduce battery consumption and network traffic, improving the performance and user experience of the application.`,
+]
+
+const networkDescription = `Network traffic monitoring is to monitor network traffic through continuous collection of network data. By monitoring network traffic, we can find potential problems with too many or too large requests in the application.`
+
+const networkRecommendations = [
+  `Optimizing network requests on mobile devices is crucial for improving application performance and user experience. Here are some suggestions for optimizing network requests on mobile devices:`,
+
+  `1. Reduce the number of network requests: By combining multiple requests into one or using caching techniques, the number of requests can be reduced, which reduces network latency and data transfer time.`,
+
+  `2. Compress data: Compressing data can reduce data transfer size, thereby reducing response time and bandwidth usage.`,
+
+  `3. Use lazy loading: Lazy loading is a technique that delays loading resources until they are needed in the visible area of the page, which can reduce page load time and bandwidth usage.`,
+
+  `4. Cache data: Using caching on both the client and server can reduce network request times and response time, improving application performance.`,
+]
+
+
+
 
 const Strings = {
   fps: {
@@ -123,6 +141,15 @@ const Strings = {
     sectionDescription: memoryLeakSectionDescription,
     recommendation: memoryLeakRecommendation,
   },
+  location: {
+    sectionDescription: locationGpsDescription,
+    recommendation: locationGpsRecommendations,
+    hint: locationGpsTableHint
+  },
+  network: {
+    sectionDescription: networkDescription,
+    recommendation: networkRecommendations,
+  }
 }
 
 export default Strings

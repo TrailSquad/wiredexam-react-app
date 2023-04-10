@@ -4,40 +4,33 @@ import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import Constants from 'src/constants';
 import { Table, DataTableCell, TableCell, TableHeader, TableBody } from '@david.kucsai/react-pdf-table'
+import Strings from 'src/constants/strings';
+import { formatNumber, getReadableSizeString, formatUrl } from "../../utils/netAbstract.util"
 
-function formatNumber(number) {
-  if (typeof number === 'number')
-    return number.toFixed(2)
-  else
-    return number
-}
 
-function getReadableSizeString(sizeInBytes) {
-  var i = -1;
-  var byteUnits = [' kB', ' MB', ' GB', ' TB', 'PB', 'EB', 'ZB', 'YB'];
-  do {
-    sizeInBytes /= 1024;
-    i++;
-  } while (sizeInBytes > 1024);
-
-  return Math.max(sizeInBytes, 0.1).toFixed(1) + byteUnits[i];
-}
-
-function formatUrl(url) {
-  const targetString = url.replace(" ", ":")
-  const stringArr = targetString.split("")
-  return stringArr.length > 70 ? stringArr.splice(0,70).join("") + "..." : targetString
+const TableSection = ({title, description, hint, data=[], tableHeaders=[], tableData=[]}) => {
+  return (
+    <>
+      <Text style={styles.tableTitle}>{title}</Text>
+      <Text style={styles.text}>{description}</Text>
+      <Text style={styles.hint}>{hint}</Text>
+      <View style={styles.tableContainer} wrap={false}>
+        <Table data={data}>
+          <TableHeader>
+            { tableHeaders.map(header => <TableCell key={header.span} weighting={header.span} style={styles.tableHeader}>{header.value}</TableCell> ) }
+          </TableHeader>
+          <TableBody>
+            { tableData.map(v => <DataTableCell key={v.span} weighting={v.span} style={v.style} getContent={v.value} /> ) }
+          </TableBody>
+        </Table>
+      </View>
+    </>
+  )
 }
 
 const NetAbstract = () => {
   const performanceData = useContext(Context);
-  if (!performanceData) {
-    return null;
-  }
   const { network } = performanceData;
-  if (!network) {
-    return null;
-  }
   const {
     summaryRequestCount,  // 请求总次数
     summaryRequestTime,  // 请求总时长
@@ -52,7 +45,6 @@ const NetAbstract = () => {
     uploadDataRank,  // 上行流量排行榜
     downloadDataRank  // 下行流量排行榜
   } = network;
-
   const tableData = [
     {
       "categary": "Total number of requests",
@@ -85,114 +77,68 @@ const NetAbstract = () => {
   ]
 
   const noDataDesc = "No relevant data collected"
+  const netRankings = [
+    {
+      title: "3.4.2 Ranking of Requests",
+      description: "Failed requests tell us there is a problem with the backend. Discover them and solve them.",
+      hint: "The number on the right is the number of requests",
+      data: reqCountRank,
+      tableHeaders: [{value: "Url", span: 0.8}, {value: "Count", span: 0.2}],
+      tableData: [{value: (r) => formatUrl(r.key), span: 0.8, style: styles.tableRowLabel}, {value: (r) => r.value, span: 0.2, style: styles.tableRowValue}]
+    },{
+      title: "3.4.3 Ranking of Failed Requests",
+      description: "Too many requests may be unnecessary and can be optimized. Here is a list of the most frequently requested items in the collected data.",
+      hint: "The number on the right is the number of requests",
+      data: failReqCountRank,
+      tableHeaders: [{value: "Url", span: 0.8}, {value: "Count", span: 0.2}],
+      tableData: [{value: (r) => formatUrl(r.key), span: 0.8, style: styles.tableRowLabel}, {value: (r) => r.value, span: 0.2, style: styles.tableRowValue}]
+    },{
+      title: "3.4.4 Request Time Ranking",
+      description: "Excessive request time means that it can be optimized to improve response speed and improve user experience.",
+      hint: "The number on the right is the number of requests",
+      data: reqTimeRank,
+      tableHeaders: [{value: "Url", span: 0.8}, {value: "Times", span: 0.2}],
+      tableData: [{value: (r) => formatUrl(r.key), span: 0.8, style: styles.tableRowLabel}, {value: (r) => `${r.value} ms`, span: 0.2, style: styles.tableRowValue}]
+    },{
+      title: "3.4.5 Uplink Traffic Ranking",
+      description: "Optimizing the request with too large request data can improve the response speed, thereby improving the user experience.",
+      hint: "The number on the right is the number of requests",
+      data: uploadDataRank,
+      tableHeaders: [{value: "Url", span: 0.8}, {value: "Size", span: 0.2}],
+      tableData: [{value: (r) => formatUrl(r.key), span: 0.8, style: styles.tableRowLabel}, {value: (r) => getReadableSizeString(r.value), span: 0.2, style: styles.tableRowValue}]
+    },{
+      title: "3.4.6 Downstream Traffic Ranking",
+      description: "Optimizing the request with too large request data can improve the response speed, thereby improving the user experience",
+      hint: "The number on the right is the number of requests",
+      data: downloadDataRank,
+      tableHeaders: [{value: "Url", span: 0.8}, {value: "Size", span: 0.2}],
+      tableData: [{value: (r) => formatUrl(r.key), span: 0.8, style: styles.tableRowLabel}, {value: (r) => getReadableSizeString(r.value), span: 0.2, style: styles.tableRowValue}]
+    },
+  ]
+
+  if (!performanceData || !network) {
+    return null;
+  }
 
   return (
     <View bookmark={{ title: "3.4 Network Monitoring", fit: true }}>
       <View style={styles.contentContainer}>
         <Text style={styles.sectionsSubTitle} id='link_network'>3.4 Network Monitoring</Text>
-        <Text style={styles.text}>Network traffic monitoring is to monitor network traffic through continuous collection of network data. By monitoring network traffic, we can find potential problems with too many or too large requests in the application.</Text>
+        <Text style={styles.text}>{Strings.network.sectionDescription}</Text>
         <Text style={styles.tableTitle}>3.4.1 Network Data Summary</Text>
-        <View style={styles.tableContainer} wrap={false}><Table data={tableData}>
-          <TableHeader>
-            <TableCell weighting={0.5} style={styles.tableHeader}>Item</TableCell>
-            <TableCell weighting={0.5} style={styles.tableHeader}>Value</TableCell>
-          </TableHeader>
-          <TableBody>
-            <DataTableCell weighting={0.5} style={styles.tableRowLabel} getContent={(r) => r.categary} />
-            <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => r.value} />
-          </TableBody>
-        </Table></View>
-
-        <Text style={styles.tableTitle}>3.4.2 Ranking of Requests</Text>
-        {reqCountRank.length > 0 ? <>
-          <Text style={styles.text}>Too many requests may be unnecessary and can be optimized. Here is a list of the most frequently requested items in the collected data.</Text>
-          <Text style={styles.hint}>The number on the right is the number of requests</Text>
-          <View style={styles.tableContainer} wrap={false}>
-            <Table data={reqCountRank}>
-              <TableHeader>
-                <TableCell weighting={0.8} style={styles.tableHeader}>Url</TableCell>
-                <TableCell weighting={0.2} style={styles.tableHeader}>Count</TableCell>
-              </TableHeader>
-              <TableBody>
-                <DataTableCell  weighting={0.8} style={styles.tableRowLabel} getContent={(r) => formatUrl(r.key)} />
-                <DataTableCell  weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.value} />
-              </TableBody>
-            </Table>
-          </View>
-        </> : <Text style={styles.hint}>{noDataDesc}</Text>}
-
-        <Text style={styles.tableTitle}>3.4.3 Ranking of Failed Requests</Text>
-        {failReqCountRank.length > 0 ? <>
-          <Text style={styles.text}>Failed requests tell us there is a problem with the backend. Discover them and solve them.</Text>
-          <Text style={styles.hint}>The number on the right is the number of requests</Text>
-          <View style={styles.tableContainer} wrap={false}>
-            <Table data={failReqCountRank}>
-              <TableHeader>
-                <TableCell weighting={0.8} style={styles.tableHeader}>Url</TableCell>
-                <TableCell weighting={0.2} style={styles.tableHeader}>Count</TableCell>
-              </TableHeader>
-              <TableBody>
-                <DataTableCell weighting={0.8} style={styles.tableRowLabel} getContent={(r) => formatUrl(r.key)} />
-                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => r.value} />
-              </TableBody>
-            </Table>
-          </View>
-        </> : <Text style={styles.hint}>{noDataDesc}</Text>}
-
-        <Text style={styles.tableTitle}>3.4.4 Request Time Ranking</Text>
-        {reqTimeRank.length > 0 ? <>
-          <Text style={styles.text}>Excessive request time means that it can be optimized to improve response speed and improve user experience.</Text>
-          <Text style={styles.hint}>The number on the right is the average request time of a single request</Text>
-          <View style={styles.tableContainer} wrap={false}>
-            <Table data={reqTimeRank}>
-              <TableHeader>
-                <TableCell weighting={0.8} style={styles.tableHeader}>Url</TableCell>
-                <TableCell weighting={0.2} style={styles.tableHeader}>Times</TableCell>
-              </TableHeader>
-              <TableBody>
-                <DataTableCell weighting={0.8} style={styles.tableRowLabel} getContent={(r) => formatUrl(r.key)} />
-                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => `${r.value} ms`} />
-              </TableBody>
-            </Table>
-          </View>
-        </> : <Text style={styles.hint}>{noDataDesc}</Text>}
-
-        <Text style={styles.tableTitle}>3.4.5 Uplink Traffic Ranking</Text>
-        {uploadDataRank.length > 0 ? <>
-          <Text style={styles.text}>Optimizing the request with too large request data can improve the response speed, thereby improving the user experience</Text>
-          <Text style={styles.hint}>The number on the right is the average uplink traffic size of a single request</Text>
-          <View style={styles.tableContainer} wrap={false}>
-            <Table data={uploadDataRank}>
-              <TableHeader>
-                <TableCell weighting={0.8} style={styles.tableHeader}>Url</TableCell>
-                <TableCell weighting={0.2} style={styles.tableHeader}>Size</TableCell>
-              </TableHeader>
-              <TableBody>
-                <DataTableCell weighting={0.8} style={styles.tableRowLabel} getContent={(r) => formatUrl(r.key)} />
-                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => getReadableSizeString(r.value)} />
-              </TableBody>
-            </Table>
-          </View>
-        </> : <Text style={styles.hint}>{noDataDesc}</Text>}
-
-        <Text style={styles.tableTitle}>3.4.6 Downstream Traffic Ranking</Text>
-        {uploadDataRank.length > 0 ? <>
-          <Text style={styles.text}>Optimizing the request with too large request data can improve the response speed, thereby improving the user experience</Text>
-          <Text style={styles.hint}>The number on the right is the average downstream traffic size of a single request</Text>
-          <View style={styles.tableContainer} wrap={false}>
-            <Table data={downloadDataRank}>
-              <TableHeader>
-                <TableCell weighting={0.8} style={styles.tableHeader}>Url</TableCell>
-                <TableCell weighting={0.2} style={styles.tableHeader}>Size</TableCell>
-              </TableHeader>
-              <TableBody>
-                <DataTableCell weighting={0.8} style={styles.tableRowLabel} getContent={(r) => formatUrl(r.key)} />
-                <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => getReadableSizeString(r.value)} />
-              </TableBody>
-            </Table>
-          </View>
-        </> : <Text style={styles.hint}>{noDataDesc}</Text>}
-
+        <View style={styles.tableContainer} wrap={false}>
+          <Table data={tableData}>
+            <TableHeader>
+              <TableCell weighting={0.5} style={styles.tableHeader}>Item</TableCell>
+              <TableCell weighting={0.5} style={styles.tableHeader}>Value</TableCell>
+            </TableHeader>
+            <TableBody>
+              <DataTableCell weighting={0.5} style={styles.tableRowLabel} getContent={(r) => r.categary} />
+              <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => r.value} />
+            </TableBody>
+          </Table>
+        </View>
+        { netRankings.map(rank => rank.data.length > 0 ? <TableSection key={rank.title} {...rank} /> : <Text style={styles.hint}>{noDataDesc}</Text> ) }
       </View>
 
       <View>
