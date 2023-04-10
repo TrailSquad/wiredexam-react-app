@@ -48,6 +48,7 @@ const LocationUse = () => {
                 <Text style={styles.subTitle}>3.5.1 Recommendations for Optimisation</Text>
                 <View style={styles.recommendationLayout} wrap={false}>
                     {Strings.powerUsage.locationRecommendations.map(e => <Text style={styles.text}>{e}</Text>)}
+
                 </View>
             </View> : null}
         </View>
