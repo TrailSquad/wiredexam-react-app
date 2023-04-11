@@ -99,8 +99,8 @@ const LaunchTime = () => {
   const launchRank = sortTimeObjs.length > 5 ? sortTimeObjs.slice(0, 5) : sortTimeObjs;
   const indicatorsDes = "The indicators of launch time are divided into three categories as Perfect, Normal and Bad, as follows"
   const indicators = [
-    { name: "Perfect", value: "400 ms ~ 600 ms" },
-    { name: "Normal", value: "600 ms ~ 800 ms" },
+    { name: "Perfect", value: "within 400 ms" },
+    { name: "Normal", value: "400 ms ~ 800 ms" },
     { name: "Bad", value: "> 800 ms" },
   ]
 
