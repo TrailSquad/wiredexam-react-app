@@ -119,8 +119,7 @@ const networkRecommendations = [
   `4. Cache data: Using caching on both the client and server can reduce network request times and response time, improving application performance.`,
 ]
 
-
-
+const launchTimeStandardLink = "https://developer.apple.com/videos/play/wwdc2019/423/?time=302"
 
 const Strings = {
   fps: {
@@ -136,6 +135,7 @@ const Strings = {
   launchTime: {
     sectionDescription: launchTimeSectionDescription,
     recommendation: launchTimeRecommendation,
+    launchTimeStandardLink: launchTimeStandardLink,
   },
   memoryLeak: {
     sectionDescription: memoryLeakSectionDescription,

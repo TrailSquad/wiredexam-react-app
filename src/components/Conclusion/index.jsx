@@ -1,11 +1,12 @@
 import { useContext } from 'react';
-import { Text, View } from '@react-pdf/renderer';
+import { Text, View, Link } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 import RichText from 'src/components/customize/RichText';
 import gradeUtil from 'src/utils/grade';
 import { getColorStyle } from "../../utils/conclusion.util"
+import constants from '../../constants'
 
 const { generalMarkMap, formatLaunchTimeGrade, getMemoryLeakMark, getFpsMark, getLocationMark, getNetworkMark, getSlowRequestRate, getMemoryLeakDataSummaryDescription } = gradeUtil
 const des = 'According to the professional test team, the average score given:';
@@ -157,9 +158,9 @@ const Conclusion = () => {
   const launchAverage = formatLaunchTimeGrade(averageCost)
   const launchTimeDes = [
     { "text": "Launch speed is the first thing users experience about our app, ", "isRich": false },
-    { "text": "400 ms ~ 600 ms", "isRich": true },
+    { "text": "within 400ms", "isRich": true },
     { "text": " is excellent, ", "isRich": false },
-    { "text": "600 ms ~ 800 ms", "isRich": true },
+    { "text": "400 ms ~ 800 ms", "isRich": true },
     { "text": " is normal, more than ", "isRich": false },
     { "text": "800 ms", "isRich": true },
     { "text": " is considered to be in need of optimisation. In this test, the average launch time is ", "isRich": false },
@@ -233,6 +234,8 @@ const Conclusion = () => {
             </TableBody>
           </Table>
         </View>
+        <Text style={styles.subTitle}>Reference links</Text>
+        <Text style={styles.text}><Link>{constants.strings.launchTime.launchTimeStandardLink}</Link></Text>
       </View>
     </View >
   )
