@@ -12,7 +12,7 @@ const generalMarkMap = (score) => {
 }
 
 const formatLaunchTimeGrade = (average) => {
-  if (average <= 600)
+  if (average <= 400)
     return 100
   if (average <= 800)
     return 95 // TODO Median of this grade, a more linear value is required
