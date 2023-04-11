@@ -236,6 +236,7 @@ const Conclusion = () => {
         </View>
         <Text style={styles.subTitle}>Reference links</Text>
         <Text style={styles.text}><Link>{constants.strings.launchTime.launchTimeStandardLink}</Link></Text>
+        {constants.strings.network.standardLinks.map(e => <Text style={styles.text}><Link>{e}</Link></Text>)}
       </View>
     </View >
   )
