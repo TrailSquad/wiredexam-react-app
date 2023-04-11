@@ -8,7 +8,7 @@ import Strings from 'src/constants/strings';
 import { formatNumber, getReadableSizeString, formatUrl } from "../../utils/netAbstract.util"
 
 
-const TableSection = ({title, description, hint, data=[], tableHeaders=[], tableData=[]}) => {
+const TableSection = ({ title, description, hint, data = [], tableHeaders = [], tableData = [] }) => {
   return (
     <>
       <Text style={styles.tableTitle}>{title}</Text>
@@ -17,10 +17,10 @@ const TableSection = ({title, description, hint, data=[], tableHeaders=[], table
       <View style={styles.tableContainer} wrap={false}>
         <Table data={data}>
           <TableHeader>
-            { tableHeaders.map(header => <TableCell key={header.span} weighting={header.span} style={styles.tableHeader}>{header.value}</TableCell> ) }
+            {tableHeaders.map(header => <TableCell key={header.span} weighting={header.span} style={styles.tableHeader}>{header.value}</TableCell>)}
           </TableHeader>
           <TableBody>
-            { tableData.map(v => <DataTableCell key={v.span} weighting={v.span} style={v.style} getContent={v.value} /> ) }
+            {tableData.map(v => <DataTableCell key={v.span} weighting={v.span} style={v.style} getContent={v.value} />)}
           </TableBody>
         </Table>
       </View>
@@ -83,36 +83,36 @@ const NetAbstract = () => {
       description: "Failed requests tell us there is a problem with the backend. Discover them and solve them.",
       hint: "The number on the right is the number of requests",
       data: reqCountRank,
-      tableHeaders: [{value: "Url", span: 0.8}, {value: "Count", span: 0.2}],
-      tableData: [{value: (r) => formatUrl(r.key), span: 0.8, style: styles.tableRowLabel}, {value: (r) => r.value, span: 0.2, style: styles.tableRowValue}]
-    },{
+      tableHeaders: [{ value: "Url", span: 0.8 }, { value: "Count", span: 0.2 }],
+      tableData: [{ value: (r) => formatUrl(r.key), span: 0.8, style: styles.tableRowLabel }, { value: (r) => r.value, span: 0.2, style: styles.tableRowValue }]
+    }, {
       title: "3.4.3 Ranking of Failed Requests",
       description: "Too many requests may be unnecessary and can be optimized. Here is a list of the most frequently requested items in the collected data.",
       hint: "The number on the right is the number of requests",
       data: failReqCountRank,
-      tableHeaders: [{value: "Url", span: 0.8}, {value: "Count", span: 0.2}],
-      tableData: [{value: (r) => formatUrl(r.key), span: 0.8, style: styles.tableRowLabel}, {value: (r) => r.value, span: 0.2, style: styles.tableRowValue}]
-    },{
+      tableHeaders: [{ value: "Url", span: 0.8 }, { value: "Count", span: 0.2 }],
+      tableData: [{ value: (r) => formatUrl(r.key), span: 0.8, style: styles.tableRowLabel }, { value: (r) => r.value, span: 0.2, style: styles.tableRowValue }]
+    }, {
       title: "3.4.4 Request Time Ranking",
       description: "Excessive request time means that it can be optimized to improve response speed and improve user experience.",
       hint: "The number on the right is the number of requests",
       data: reqTimeRank,
-      tableHeaders: [{value: "Url", span: 0.8}, {value: "Times", span: 0.2}],
-      tableData: [{value: (r) => formatUrl(r.key), span: 0.8, style: styles.tableRowLabel}, {value: (r) => `${r.value} ms`, span: 0.2, style: styles.tableRowValue}]
-    },{
+      tableHeaders: [{ value: "Url", span: 0.8 }, { value: "Times", span: 0.2 }],
+      tableData: [{ value: (r) => formatUrl(r.key), span: 0.8, style: styles.tableRowLabel }, { value: (r) => `${r.value} ms`, span: 0.2, style: styles.tableRowValue }]
+    }, {
       title: "3.4.5 Uplink Traffic Ranking",
       description: "Optimizing the request with too large request data can improve the response speed, thereby improving the user experience.",
       hint: "The number on the right is the number of requests",
       data: uploadDataRank,
-      tableHeaders: [{value: "Url", span: 0.8}, {value: "Size", span: 0.2}],
-      tableData: [{value: (r) => formatUrl(r.key), span: 0.8, style: styles.tableRowLabel}, {value: (r) => getReadableSizeString(r.value), span: 0.2, style: styles.tableRowValue}]
-    },{
+      tableHeaders: [{ value: "Url", span: 0.8 }, { value: "Size", span: 0.2 }],
+      tableData: [{ value: (r) => formatUrl(r.key), span: 0.8, style: styles.tableRowLabel }, { value: (r) => getReadableSizeString(r.value), span: 0.2, style: styles.tableRowValue }]
+    }, {
       title: "3.4.6 Downstream Traffic Ranking",
       description: "Optimizing the request with too large request data can improve the response speed, thereby improving the user experience",
       hint: "The number on the right is the number of requests",
       data: downloadDataRank,
-      tableHeaders: [{value: "Url", span: 0.8}, {value: "Size", span: 0.2}],
-      tableData: [{value: (r) => formatUrl(r.key), span: 0.8, style: styles.tableRowLabel}, {value: (r) => getReadableSizeString(r.value), span: 0.2, style: styles.tableRowValue}]
+      tableHeaders: [{ value: "Url", span: 0.8 }, { value: "Size", span: 0.2 }],
+      tableData: [{ value: (r) => formatUrl(r.key), span: 0.8, style: styles.tableRowLabel }, { value: (r) => getReadableSizeString(r.value), span: 0.2, style: styles.tableRowValue }]
     },
   ]
 
@@ -138,7 +138,9 @@ const NetAbstract = () => {
             </TableBody>
           </Table>
         </View>
-        { netRankings.map(rank => rank.data.length > 0 ? <TableSection key={rank.title} {...rank} /> : <Text style={styles.hint}>{noDataDesc}</Text> ) }
+        {netRankings.map(rank => rank.data.length > 0
+          ? <TableSection key={rank.title} {...rank} />
+          : <><Text style={styles.tableTitle}>{rank.title}</Text><Text style={styles.hint}>{noDataDesc}</Text></>)}
       </View>
 
       <View>
