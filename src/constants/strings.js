@@ -120,6 +120,10 @@ const networkRecommendations = [
 ]
 
 const launchTimeStandardLink = "https://developer.apple.com/videos/play/wwdc2019/423/?time=302"
+const networkStandardLink = [
+  "https://www.runoob.com/http/http-status-codes.html",
+  "https://developer.aliyun.com/article/35115"
+]
 
 const Strings = {
   fps: {
@@ -149,6 +153,7 @@ const Strings = {
   network: {
     sectionDescription: networkDescription,
     recommendation: networkRecommendations,
+    standardLinks: networkStandardLink,
   }
 }
 
