@@ -4,6 +4,7 @@ import Cover from 'src/components/Cover';
 import Contents from 'src/components/Contents';
 import FPS from 'src/components/FPS';
 import LaunchTime from 'src/components/LaunchTime';
+import PageLoadTime from 'src/components/PageLoadTime';
 import NetAbstract from "src/components/NetAbstract"
 import MemoryLeak from "src/components/MemoryLeak"
 import LocationUse from "src/components/Location"
@@ -28,6 +29,7 @@ const PDFDocument = ({ performanceData }) => {
 
   const [powerIndex, setPowerIndex] = useState(0)
   const [launchTimeIndex, setLaunchTimeIndex] = useState(0)
+  const [pageLoadTimeIndex, setPageLoadTimeIndex] = useState(0)
   const [memoryIndex, setMemoryIndex] = useState(0)
   const [endIndex, setEndIndex] = useState(0)
 
@@ -36,7 +38,7 @@ const PDFDocument = ({ performanceData }) => {
       <Page size="A4" style={styles.page} >
         <Text style={styles.header} fixed>Wiredcraft</Text>
         <Cover performanceData={performanceData} />
-        <Contents powerIndex={powerIndex} launchTimeIndex={launchTimeIndex} memoryIndex={memoryIndex} endIndex={endIndex} />
+        <Contents powerIndex={powerIndex} launchTimeIndex={launchTimeIndex} pageLoadTimeIndex={pageLoadTimeIndex} memoryIndex={memoryIndex} endIndex={endIndex} />
         <Conclusion />
         <FPS />
         <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
@@ -74,13 +76,27 @@ const PDFDocument = ({ performanceData }) => {
         )} fixed />
       </Page>
 
+      <Page size='A4' style={styles.page}>
+        <Text style={styles.header} fixed>Wiredcraft</Text>
+        <Text style={styles.sectionsChapter} render={({ pageNumber }) => {
+          if (pageNumber !== pageLoadTimeIndex) {
+            setPageLoadTimeIndex(pageNumber)
+          }
+          return "Section 5"
+        }} />
+        <PageLoadTime />
+        <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (
+          `${pageNumber} / ${totalPages}`
+        )} fixed />
+      </Page>
+
       <Page size="A4" style={styles.page} >
         <Text style={styles.header} fixed>Wiredcraft</Text>
         <Text style={styles.sectionsChapter} render={({ pageNumber }) => {
           if (pageNumber !== memoryIndex) {
             setMemoryIndex(pageNumber)
           }
-          return "Section 5"
+          return "Section 6"
         }} />
         <MemoryLeak />
         <Text style={styles.pageNumber} render={({ pageNumber, totalPages }) => (

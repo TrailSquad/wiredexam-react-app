@@ -24,6 +24,17 @@ const formatLaunchTimeGrade = (average) => {
     return 30 // TODO Median of this grade, a more linear value is required
 }
 
+const formatPageLoadTimeGrade = (average) => {
+  if (average <= 50)
+    return 100
+  if (average <= 100)
+    return 95 // TODO Median of this grade, a more linear value is required
+  if (average <= 200)
+    return 85 // TODO Median of this grade, a more linear value is required
+  else
+    return 30 // TODO Median of this grade, a more linear value is required
+}
+
 const getMemoryLeakMark = (leakCount) => {
   let memoryLeakMark
   if (leakCount <= 0) {
@@ -83,6 +94,7 @@ const getLocationMark = () => {
 const gradeUtils = {
   generalMarkMap,
   formatLaunchTimeGrade,
+  formatPageLoadTimeGrade,
   getMemoryLeakMark,
   getFpsMark,
   getNetworkMark,

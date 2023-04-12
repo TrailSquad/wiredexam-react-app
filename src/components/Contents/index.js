@@ -4,7 +4,7 @@ import styles from 'src/pdfStyles';
 import Context from 'src/context';
 
 const Contents = (props) => {
-  const { powerIndex ,launchTimeIndex, memoryIndex, endIndex } = props
+  const { powerIndex, launchTimeIndex, pageLoadTimeIndex, memoryIndex, endIndex } = props
   const performanceData = useContext(Context);
   const CONTENT_ITEMS = [
     {
@@ -23,7 +23,13 @@ const Contents = (props) => {
       title: "4. Launch Time  … … … … … … … … … … … … … … … … … … …",
       source: "#link_launch",
       pageIndex: launchTimeIndex,
-    },{
+    },
+    {
+      title: "5. Page Load Time  … … … … … … … … … … … … … … … …",
+      source: "#link_page_load",
+      pageIndex: pageLoadTimeIndex,
+    },
+    {
       title: "5. Memory Leak  … … … … … … … … … … … … … … … … … … …",
       source: "#link_memory",
       pageIndex: memoryIndex,
