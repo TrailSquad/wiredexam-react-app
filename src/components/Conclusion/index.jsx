@@ -8,7 +8,7 @@ import gradeUtil from 'src/utils/grade';
 import { getColorStyle } from "../../utils/conclusion.util"
 import constants from '../../constants'
 
-const { generalMarkMap, formatLaunchTimeGrade, getMemoryLeakMark, getFpsMark, getLocationMark, getNetworkMark, getSlowRequestRate, getMemoryLeakDataSummaryDescription } = gradeUtil
+const { generalMarkMap, formatLaunchTimeGrade, formatPageLoadTimeGrade, getMemoryLeakMark, getFpsMark, getLocationMark, getNetworkMark, getSlowRequestRate, getMemoryLeakDataSummaryDescription } = gradeUtil
 const des = 'According to the professional test team, the average score given:';
 const explanationRichText = [
   { "text": "The report rating includes ", "isRich": false },
@@ -25,16 +25,16 @@ const explanationRichText = [
   { "text": "A+", "isRich": true },
   { "text": " is the best and ", "isRich": false },
   { "text": "D", "isRich": true },
-  { "text": " is the worst. Ratings are converted based on specific numerical values ​​(", "isRich": false },
+  { "text": " is the worst. Ratings are converted based on specific numerical values (", "isRich": false },
   { "text": "0", "isRich": true },
   { "text": " to ", "isRich": false },
   { "text": "100", "isRich": true },
-  { "text": "). The total rating comes from the weighted average of the values ​​of each section. The weights for each section are as follows:", "isRich": false },
+  { "text": "). The total rating comes from the weighted average of the values of each section. The weights for each section are as follows:", "isRich": false },
 ]
 const weightTableData = [
   {
     "section": "FPS",
-    "weight": 0.3,
+    "weight": 0.1,
   },
   {
     "section": "Power Usage",
@@ -43,6 +43,10 @@ const weightTableData = [
   {
     "section": "Launch Time",
     "weight": 0.3,
+  },
+  {
+    "section": "Page Load Time",
+    "weight": 0.2,
   },
   {
     "section": "Memory Leak",
@@ -107,6 +111,14 @@ const weightTableContent = [
   }
 ]
 
+function averageDuration(data) {
+  let sum = 0;
+  for (let i = 0; i < data.length; i++) {
+    sum += data[i].duration;
+  }
+  return sum / data.length;
+}
+
 const Conclusion = () => {
   const performanceData = useContext(Context);
   if (!performanceData) {
@@ -168,13 +180,29 @@ const Conclusion = () => {
     { "text": ".", "isRich": false },
   ]
 
+  // page load time
+  const { pageSpeedData } = performanceData;
+  const avgDuration = averageDuration(pageSpeedData);
+  const loadAvgGrade = formatPageLoadTimeGrade(avgDuration.toFixed(0));
+  const pageLoadTimeDes = [
+    { "text": "Page load time is the amount of time it takes for a page to fully load, ", "isRich": false },
+    { "text": "50 ms ~ 100 ms", "isRich": true },
+    { "text": " is excellent, ", "isRich": false },
+    { "text": "100 ms ~ 200 ms", "isRich": true },
+    { "text": " is normal, more than ", "isRich": false },
+    { "text": "200 ms", "isRich": true },
+    { "text": " is considered to be in need of optimisation. In this test, the average load time is ", "isRich": false },
+    { "text": `${loadAvgGrade} ms`, "isRich": true },
+    { "text": ".", "isRich": false },
+  ]
+
   // Memory Leak
   const { memoryLeakData } = performanceData;
   let memoryLeakMark = getMemoryLeakMark(memoryLeakData.length);
   let memoryLeakDes = getMemoryLeakDataSummaryDescription(memoryLeakData);
 
   // Total Mark
-  const totalMark = fpsMark * 0.3 + powerUsageMark * 0.1 + launchAverage * 0.3 + memoryLeakMark * 0.3
+  const totalMark = fpsMark * 0.1 + powerUsageMark * 0.1 + launchAverage * 0.3 + memoryLeakMark * 0.3 + loadAvgGrade * 0.2;
 
   const tableData = [
     {
@@ -191,6 +219,11 @@ const Conclusion = () => {
       "section": "Launch Time",
       "summary": launchTimeDes,
       "value": generalMarkMap(launchAverage),
+    },
+    {
+      "section": "Page Load Time",
+      "summary": pageLoadTimeDes,
+      "value": generalMarkMap(loadAvgGrade),
     },
     {
       "section": "Memory Leak",

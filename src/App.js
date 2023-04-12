@@ -8,6 +8,7 @@ import PDFDocument from 'src/components/PdfDocument/index';
 import { isAndroid } from 'src/jsBridge';
 import './App.css';
 import launchTimeData from './mock/launchTime.json';
+import pageLoadTimeData from './mock/pageLoadTime.json';
 import memoryLeakData from './mock/memoryLeak.json';
 import networkData from './mock/network.json';
 import fpsData from './mock/fps.json';
@@ -29,8 +30,10 @@ function App() {
       "network": networkData,
       "networkFlowData": netFlowData,
       "launchTimeData": launchTimeData,
+      "pageLoadTimeData": pageLoadTimeData,
       "memoryLeakData": memoryLeakData,
-      "locationData": locationData
+      "locationData": locationData,
+      "pageSpeedData": pageLoadTimeData,
     }
   )
 

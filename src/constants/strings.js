@@ -37,6 +37,10 @@ The impact of a slow launch time can be significant, including a negative effect
 It is important to monitor and optimize the launch time of your app to ensure a positive user experience and improve user retention rates. By identifying and addressing bottlenecks in the app's startup process, developers can improve the launch time and ultimately create a more enjoyable and efficient user experience. See below for detailed measurements and analysis of your app's launch time.
 `
 
+const pageLoadTimeSectionDescription = `Page load time is the average amount of time it takes for a page to show up on your screen. It is calculated from initiation (when you tap a button or similar controls) to completion (when the page is fully loaded and appeared).
+It varies depending on several factors such as the size of the page, the amount of content, the speed of the user's internet connection, and the processing power of the device being used to access the page.
+`
+
 const memoryLeakSectionDescription = `Memory leaks occur when an application fails to release unused objects from memory, causing memory resources to be tied up by objects that are no longer needed. As a result, the memory available to the application becomes increasingly limited, leading to issues such as app freezes, crashes, and slow performance.
 
 The impact of memory leaks on an app can be significant. As memory usage grows, the app may start to consume more system resources, causing other apps to slow down or crash. In some cases, memory leaks can cause the entire system to become unstable, leading to a range of other issues such as data loss, security vulnerabilities, and more.
@@ -82,6 +86,8 @@ const launchTimeRecommendation = `1. Minimizing the loading of resources at star
 
 5. Delaying the initialisation or loading of some less frequently used functions.
 `
+
+const pageLoadTimeRecommendation = `To ensure a fast page load time, you can optimize your code and content, use caching techniques, compress images to reduce their size.`
 
 const fpsIndicatorDescription = `FPS indicators are typically classified as follows:
 
@@ -140,6 +146,10 @@ const Strings = {
     sectionDescription: launchTimeSectionDescription,
     recommendation: launchTimeRecommendation,
     launchTimeStandardLink: launchTimeStandardLink,
+  },
+  pageLoadTime: {
+    sectionDescription: pageLoadTimeSectionDescription,
+    recommendation: pageLoadTimeRecommendation,
   },
   memoryLeak: {
     sectionDescription: memoryLeakSectionDescription,
