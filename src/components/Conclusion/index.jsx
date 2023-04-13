@@ -112,6 +112,10 @@ const weightTableContent = [
 ]
 
 function averageDuration(data) {
+  if (typeof (data) == "undefined") {
+    return 0
+  }
+
   let sum = 0;
   for (let i = 0; i < data.length; i++) {
     sum += data[i].duration;
