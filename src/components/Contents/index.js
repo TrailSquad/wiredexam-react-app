@@ -30,11 +30,11 @@ const Contents = (props) => {
       pageIndex: pageLoadTimeIndex,
     },
     {
-      title: "5. Memory Leak  … … … … … … … … … … … … … … … … … … …",
+      title: "6. Memory Leak  … … … … … … … … … … … … … … … … … … …",
       source: "#link_memory",
       pageIndex: memoryIndex,
     },{
-      title: "6. About  … … … … … … … … … … … … … … … … … … …",
+      title: "7. About  … … … … … … … … … … … … … … … … … … …",
       source: "#link_back_cover",
       pageIndex: endIndex,
     },
