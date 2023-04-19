@@ -33,7 +33,6 @@ function App() {
       "pageLoadTimeData": pageLoadTimeData,
       "memoryLeakData": memoryLeakData,
       "locationData": locationData,
-      "pageSpeedData": pageLoadTimeData,
       "cpuData": null
     }
   )

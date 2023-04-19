@@ -192,8 +192,8 @@ const Conclusion = () => {
   ]
 
   // page load time
-  const { pageSpeedData } = performanceData;
-  const avgDuration = averageDuration(pageSpeedData).toFixed(0);
+  const { pageLoadTimeData } = performanceData;
+  const avgDuration = averageDuration(pageLoadTimeData).toFixed(0);
   const loadAvgGrade = formatPageLoadTimeGrade(avgDuration);
   const pageLoadTimeDes = [
     { "text": "Page load time is the amount of time it takes for a page to fully load, ", "isRich": false },
