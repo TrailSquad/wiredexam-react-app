@@ -1,3 +1,5 @@
+// grade calculation logic reference: https://wiredcraft.atlassian.net/browse/MOB-399
+
 const generalMarkMap = (score) => {
   if (score >= 100)
     return "A+"
@@ -12,47 +14,29 @@ const generalMarkMap = (score) => {
 }
 
 const formatLaunchTimeGrade = (average) => {
-  if (average <= 400)
-    return 100
-  if (average <= 800)
-    return 95 // TODO Median of this grade, a more linear value is required
-  if (average <= 900)
-    return 85 // TODO Median of this grade, a more linear value is required
-  if (average <= 1000)
-    return 70 // TODO Median of this grade, a more linear value is required
-  else
-    return 30 // TODO Median of this grade, a more linear value is required
+  const deduct = 15.946 * Math.log(average) - 95.53
+  return 100 - Math.max(Math.min(deduct.toFixed(0), 100), 0)
 }
 
 const formatPageLoadTimeGrade = (average) => {
-  if (average <= 50)
-    return 100
-  if (average <= 100)
-    return 95 // TODO Median of this grade, a more linear value is required
-  if (average <= 200)
-    return 85 // TODO Median of this grade, a more linear value is required
-  else
-    return 30 // TODO Median of this grade, a more linear value is required
+  const deduct = 13.301 * Math.log(average) - 52
+  return 100 - Math.max(Math.min(deduct.toFixed(0), 100), 0)
 }
 
 const getMemoryLeakMark = (leakCount) => {
-  let memoryLeakMark
-  if (leakCount <= 0) {
-    memoryLeakMark = 100
-  } else if (leakCount <= 1) {
-    memoryLeakMark = 95 // TODO Median of this grade, a more linear value is required
-  } else if (leakCount <= 3) {
-    memoryLeakMark = 85 // TODO Median of this grade, a more linear value is required
-  } else if (leakCount <= 5) {
-    memoryLeakMark = 70 // TODO Median of this grade, a more linear value is required
-  } else {
-    memoryLeakMark = 30 // TODO Median of this grade, a more linear value is required
-  }
-  return memoryLeakMark;
+  return 100 - Math.min(5 * leakCount, 100);
 }
 
 const getFpsMark = (lowRate) => {
   return Math.round((1 - lowRate) * 100)
+}
+
+const getBlockMark = (blockData) => {
+  let sum = 0
+  blockData.forEach((d) => {
+    sum += Math.min(Math.max(0.0083 * d.duration - 1.66, 0), 40)
+  })
+  return 100 - Math.min(sum.toFixed(0), 100);
 }
 
 const getNetworkMark = (sucsessRate, slowReqRate) => {
@@ -91,16 +75,31 @@ const getLocationMark = () => {
   return 100; // TODO
 }
 
+const getCpuMark = (cpuData) => {
+  let sum = 0
+  if (!cpuData) return 100
+  if (!cpuData.itemList) return 100
+
+  cpuData.itemList.forEach((d) => {
+    if (d.usageRate > 70) sum += 3
+    else if (d.usageRate > 50) sum += 2
+    else if (d.usageRate > 30) sum += 1
+  })
+  return 100 - Math.min(sum, 100);
+}
+
 const gradeUtils = {
   generalMarkMap,
   formatLaunchTimeGrade,
   formatPageLoadTimeGrade,
   getMemoryLeakMark,
   getFpsMark,
+  getBlockMark,
   getNetworkMark,
   getSlowRequestRate,
   getMemoryLeakDataSummaryDescription,
-  getLocationMark
+  getLocationMark,
+  getCpuMark,
 };
 
 export default gradeUtils;

@@ -8,7 +8,7 @@ import gradeUtil from 'src/utils/grade';
 import { getColorStyle } from "../../utils/conclusion.util"
 import constants from '../../constants'
 
-const { generalMarkMap, formatLaunchTimeGrade, formatPageLoadTimeGrade, getMemoryLeakMark, getFpsMark, getLocationMark, getNetworkMark, getSlowRequestRate, getMemoryLeakDataSummaryDescription } = gradeUtil
+const { generalMarkMap, formatLaunchTimeGrade, formatPageLoadTimeGrade, getMemoryLeakMark, getFpsMark, getLocationMark, getCpuMark, getNetworkMark, getSlowRequestRate, getMemoryLeakDataSummaryDescription } = gradeUtil
 const des = 'According to the professional test team, the average score given:';
 const explanationRichText = [
   { "text": "The report rating includes ", "isRich": false },
@@ -31,26 +31,32 @@ const explanationRichText = [
   { "text": "100", "isRich": true },
   { "text": "). The total rating comes from the weighted average of the values of each section. The weights for each section are as follows:", "isRich": false },
 ]
+const fpsWeight = 0.25
+const powerUsageWeight = 0.1
+const launchTimeWeight = 0.25
+const pageLoadTimeWeight = 0.25
+const memoryLeakWeight = 0.15
+
 const weightTableData = [
   {
     "section": "FPS",
-    "weight": 0.1,
+    "weight": fpsWeight,
   },
   {
     "section": "Power Usage",
-    "weight": 0.1,
+    "weight": powerUsageWeight,
   },
   {
     "section": "Launch Time",
-    "weight": 0.3,
+    "weight": launchTimeWeight,
   },
   {
     "section": "Page Load Time",
-    "weight": 0.2,
+    "weight": pageLoadTimeWeight,
   },
   {
     "section": "Memory Leak",
-    "weight": 0.3,
+    "weight": memoryLeakWeight,
   },
 ]
 const tableHeader = [
@@ -154,11 +160,12 @@ const Conclusion = () => {
   ]
 
   // Power Usage
-  const { network } = performanceData;
+  const { network, cpuData } = performanceData;
   let slowRequestRate = getSlowRequestRate(network.slowRequestCount, network.summaryRequestCount);
   let networkMark = getNetworkMark(network.requestSuccessRate, slowRequestRate);
   let locationMark = getLocationMark();
-  let powerUsageMark = networkMark * 0.8 + locationMark * 0.2;
+  let cpuMark = getCpuMark(cpuData);
+  let powerUsageMark = networkMark * 0.5 + locationMark * 0 + cpuMark * 0.5;
   let powerUsageDes = [
     { "text": "Power consumption grade is based on success rate of network requests and rate of slow requests. In this test, success rate of network requests is ", "isRich": false },
     { "text": `${(network.requestSuccessRate * 100).toFixed(0)}%`, "isRich": true },
@@ -186,8 +193,8 @@ const Conclusion = () => {
 
   // page load time
   const { pageSpeedData } = performanceData;
-  const avgDuration = averageDuration(pageSpeedData);
-  const loadAvgGrade = formatPageLoadTimeGrade(avgDuration.toFixed(0));
+  const avgDuration = averageDuration(pageSpeedData).toFixed(0);
+  const loadAvgGrade = formatPageLoadTimeGrade(avgDuration);
   const pageLoadTimeDes = [
     { "text": "Page load time is the amount of time it takes for a page to fully load, ", "isRich": false },
     { "text": "50 ms ~ 100 ms", "isRich": true },
@@ -196,7 +203,7 @@ const Conclusion = () => {
     { "text": " is normal, more than ", "isRich": false },
     { "text": "200 ms", "isRich": true },
     { "text": " is considered to be in need of optimisation. In this test, the average load time is ", "isRich": false },
-    { "text": `${loadAvgGrade} ms`, "isRich": true },
+    { "text": `${avgDuration} ms`, "isRich": true },
     { "text": ".", "isRich": false },
   ]
 
@@ -206,7 +213,7 @@ const Conclusion = () => {
   let memoryLeakDes = getMemoryLeakDataSummaryDescription(memoryLeakData);
 
   // Total Mark
-  const totalMark = fpsMark * 0.1 + powerUsageMark * 0.1 + launchAverage * 0.3 + memoryLeakMark * 0.3 + loadAvgGrade * 0.2;
+  const totalMark = fpsMark * fpsWeight + powerUsageMark * powerUsageWeight + launchAverage * launchTimeWeight + loadAvgGrade * pageLoadTimeWeight + memoryLeakMark * memoryLeakWeight;
 
   const tableData = [
     {
