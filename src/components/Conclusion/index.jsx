@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 import { Text, View, Link } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
@@ -284,6 +284,6 @@ const Conclusion = () => {
       </View>
     </View >
   )
-};
+}
 
-export default Conclusion;
+export default memo(Conclusion);
