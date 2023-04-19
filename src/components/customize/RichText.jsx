@@ -1,4 +1,5 @@
 import { Text } from '@react-pdf/renderer';
+import { memo } from 'react';
 import styles from 'src/pdfStyles';
 
 const RichText = (props) => {
@@ -18,6 +19,6 @@ const RichText = (props) => {
     return (
         <Text style={normalStyle}>{richItems.map(e => (<Text style={e.isRich ? richStyle : normalStyle}>{e.text}</Text>))}</Text>
     )
-};
+}
 
-export default RichText;
+export default memo(RichText);
