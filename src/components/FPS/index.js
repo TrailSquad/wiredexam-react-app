@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 import { View, Text } from '@react-pdf/renderer';
 import { Image } from '@react-pdf/renderer';
 import Context from 'src/context';
@@ -210,4 +210,4 @@ const FPS = () => {
   );
 }
 
-export default FPS;
+export default memo(FPS);
