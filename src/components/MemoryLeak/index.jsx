@@ -17,18 +17,18 @@ const MemoryLeak = () => {
   const memoryLeakMark = getMemoryLeakMark(memoryLeakData.length);
 
   return (
-    <View bookmark={{ title: "Section 5: Memory Leak", fit: true }}>
+    <View bookmark={{ title: "Section 6: Memory Leak", fit: true }}>
       <View style={styles.contentContainer}>
         {/* <Text style={styles.sectionsChapter}>Section 5</Text> */}
         <Text style={styles.sectionsTitle} id='link_memory'>Memory Leak</Text>
 
-        <Text style={styles.sectionsSubTitle}>5.1 Description</Text>
+        <Text style={styles.sectionsSubTitle}>6.1 Description</Text>
         <Text style={styles.text}>{Constants.strings.memoryLeak.sectionDescription}</Text>
 
-        <Text style={styles.sectionsSubTitle}>5.2 Grade</Text>
+        <Text style={styles.sectionsSubTitle}>6.2 Grade</Text>
         <Text style={styles.highlightNumber} wrap={false}>{generalMarkMap(memoryLeakMark)}</Text>
 
-        <Text style={styles.sectionsSubTitle}>5.3 Data Detail</Text>
+        <Text style={styles.sectionsSubTitle}>6.3 Data Detail</Text>
         <RichText richItems={getMemoryLeakDataSummaryDescription(sortData)} normalStyle={styles.text} richStyle={styles.richText} />
         {rank.length > 0 ? <>
           <Text style={styles.text}> Here is a list of the most frequently occurring issues.</Text>
@@ -46,7 +46,7 @@ const MemoryLeak = () => {
 
       {memoryLeakMark < 100 ?
         <View>
-          <Text style={styles.sectionsSubTitle}>5.4 Recommendations for Optimisation</Text>
+          <Text style={styles.sectionsSubTitle}>6.4 Recommendations for Optimisation</Text>
           <View style={styles.recommendationLayout} wrap={false}>
             <Text style={styles.text}>{Constants.strings.memoryLeak.recommendation}</Text>
           </View>
