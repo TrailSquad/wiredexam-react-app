@@ -32,6 +32,6 @@ const Cover = ({performanceData}) => {
       <CoverRow left="Version:" right="v0.1" />
     </View>
   )
-};
+}
 
 export default memo(Cover);

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, memo } from 'react';
 import { Text, View, Image } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
@@ -274,6 +274,6 @@ const PowerUsageChart = () => {
             </View>
         </View>
     )
-};
+}
 
-export default PowerUsageChart;
+export default memo(PowerUsageChart);

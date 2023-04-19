@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 import { Text, View } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
 import Context from 'src/context';
@@ -53,6 +53,6 @@ const LocationUse = () => {
             </View> : null}
         </View>
     )
-};
+}
 
-export default LocationUse;
+export default memo(LocationUse);
