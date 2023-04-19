@@ -29,7 +29,7 @@ const Cover = ({performanceData}) => {
       <CoverRow left="Device:" right={deviceInfo} />
       <CoverRow left="By:" right="Wiredcraft Mobile Team" />
       <CoverRow left="Date:" right={dayjs().format('YYYY-MM-DD')} />
-      <CoverRow left="Version:" right="v0.1" />
+      <CoverRow left="Version:" right="v0.3" />
     </View>
   )
 };
