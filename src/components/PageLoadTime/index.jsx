@@ -39,13 +39,13 @@ const PageLoadTime = () => {
   if (!performanceData) {
     return null;
   }
-  const { pageSpeedData } = performanceData;
-  if (!pageSpeedData || pageSpeedData.length < 1) {
+  const { pageLoadTimeData } = performanceData;
+  if (!pageLoadTimeData || pageLoadTimeData.length < 1) {
     return null;
   }
 
-  const sortedPages = sortPages(pageSpeedData);
-  const avgDuration = averageDuration(pageSpeedData);
+  const sortedPages = sortPages(pageLoadTimeData);
+  const avgDuration = averageDuration(pageLoadTimeData);
   const loadAvgGrade = formatPageLoadTimeGrade(avgDuration.toFixed(0));
 
   const launchRank = sortedPages.length > 5 ? sortedPages.slice(0, 5) : sortedPages;
@@ -59,7 +59,7 @@ const PageLoadTime = () => {
   let dataSourceDes = [
     { "text": "The following data derives from app pages loaded and appeared to user. ", "isRich": false },
     { "text": "A total of ", "isRich": false },
-    { "text": `${pageSpeedData.length}`, "isRich": true },
+    { "text": `${pageLoadTimeData.length}`, "isRich": true },
     { "text": " times were recorded in this test, and the average time was ", "isRich": false },
     { "text": `${avgDuration.toFixed(0)}`, "isRich": true },
     { "text": " ms.", "isRich": false },
