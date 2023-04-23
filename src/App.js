@@ -14,6 +14,7 @@ import networkData from './mock/network.json';
 import fpsData from './mock/fps.json';
 import netFlowData from './mock/netFlow.json';
 import locationData from './mock/location.json';
+import blockData from './mock/jank.json';
 
 
 function App() {
@@ -33,7 +34,8 @@ function App() {
       "pageLoadTimeData": pageLoadTimeData,
       "memoryLeakData": memoryLeakData,
       "locationData": locationData,
-      "cpuData": null
+      "cpuData": null,
+      "blockData": blockData
     }
   )
 

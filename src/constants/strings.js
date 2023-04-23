@@ -131,11 +131,56 @@ const networkStandardLink = [
   "https://developer.aliyun.com/article/35115"
 ]
 
+const anrDescription = `
+ANR Its full name is Application Not Responding, which means the application is not responding.
+
+When an application's main thread fails to respond to input events or message processing within five seconds, an ANR prompt pops up to inform the user that the application is unresponsive and give the user the option to wait or stop the application.
+
+ANR can have a big impact on your App:
+
+1. Poor user experience. ANR can make users feel that the App is "stuck", which seriously affects the user experience.
+
+2. The App score is affected. Frequent ANRs will make users feel that the App performance is poor and affect the App's rating in the store.
+
+3. Reduce user engagement. Apps with poor user experience will also reduce user stickiness, reducing the number of times and time to open the App.
+
+4. Influence brand image. Other apps from the same developer will also be affected, and users will feel that the overall quality of the developer's software is not high.
+
+Therefore,ANR is a problem that must be paid great attention to and avoided as much as possible in the process of App development`
+
+const anrRecommendation = `
+1. Avoid time-consuming operations in the main thread, such as network requests and massive calculations, and use asynchronous threads for processing.
+
+2. Use Handler to send messages and Looper to process messages properly to avoid message queue congestion in the main thread.
+
+3. Reduce the workload of the main thread by placing some tasks on the worker thread.
+
+4. Optimize the layout, reduce the redrawing area, optimize the image loading mode, etc., to reduce the pressure on the main thread.
+
+5. Use the ProgressBar wisely to let users know what it feels like to be loading, not stuck.
+
+6. Test and monitor ANR, find the cause of ANR and solve it.
+
+7. Others, such as avoiding memory leaks, using efficient data structures, etc
+`
+const anrDataDescription = [
+  { "text": "The data is collected from the monitoring during the app operation. If the stalling time exceeds ", "isRich": false },
+  {"text": "200ms", "isRich": true},
+  {"text": ", it is recorded as an exception", "ieRich": false}
+]
+const anrNoDataDescription = "No ANR exception was detected, and the app fluency was good"
+
 const Strings = {
   fps: {
     sectionDescription: fpsSectionDescription,
     recommendation: fpsRecommendation,
     indicatorDescription: fpsIndicatorDescription,
+  },
+  anr: {
+    sectionDescription: anrDescription,
+    recommendation: anrRecommendation,
+    dataDescription: anrDataDescription,
+    noDataDescription: anrNoDataDescription
   },
   powerUsage: {
     sectionDescription: powerUsageSectionDescription,

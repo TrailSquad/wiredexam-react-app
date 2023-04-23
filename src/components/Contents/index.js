@@ -20,8 +20,8 @@ const Contents = ({
         pageIndex: 3,
       },
       {
-        title: "2. FPS  … … … … … … … … … … … … … … … … … … … … … … … …",
-        source: "#link_fps",
+        title: "2. ANR  … … … … … … … … … … … … … … … … … … … … … … … …",
+        source: "#link_ANR",
         pageIndex: 5,
       },
       {
