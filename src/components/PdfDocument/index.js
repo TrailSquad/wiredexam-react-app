@@ -2,7 +2,8 @@
 import { Document, Page, Text, Font } from '@react-pdf/renderer';
 import Cover from 'src/components/Cover';
 import Contents from 'src/components/Contents';
-import FPS from 'src/components/FPS';
+// import FPS from 'src/components/FPS';
+import ANR from 'src/components/ANR';
 import LaunchTime from 'src/components/LaunchTime';
 import PageLoadTime from 'src/components/PageLoadTime';
 import NetAbstract from "src/components/NetAbstract"
@@ -68,7 +69,7 @@ const PDFDocument = ({ performanceData }) => {
           <Cover performanceData={performanceData} />
           <Contents powerIndex={powerIndex} launchTimeIndex={launchTimeIndex} pageLoadTimeIndex={pageLoadTimeIndex} memoryIndex={memoryIndex} endIndex={endIndex} />
           <Conclusion />
-          <FPS />
+          <ANR />
         </PageSection>
 
         <PageSection>

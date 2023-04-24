@@ -7,8 +7,9 @@ import RichText from 'src/components/customize/RichText';
 import gradeUtil from 'src/utils/grade';
 import { getColorStyle } from "../../utils/conclusion.util"
 import constants from '../../constants'
+import Constants from '../../constants';
 
-const { generalMarkMap, formatLaunchTimeGrade, formatPageLoadTimeGrade, getMemoryLeakMark, getFpsMark, getLocationMark, getCpuMark, getNetworkMark, getSlowRequestRate, getMemoryLeakDataSummaryDescription } = gradeUtil
+const { generalMarkMap, formatLaunchTimeGrade, formatPageLoadTimeGrade, getMemoryLeakMark, getBlockMark, getLocationMark, getCpuMark, getNetworkMark, getSlowRequestRate, getMemoryLeakDataSummaryDescription } = gradeUtil
 const des = 'According to the professional test team, the average score given:';
 const explanationRichText = [
   { "text": "The report rating includes ", "isRich": false },
@@ -31,7 +32,7 @@ const explanationRichText = [
   { "text": "100", "isRich": true },
   { "text": "). The total rating comes from the weighted average of the values of each section. The weights for each section are as follows:", "isRich": false },
 ]
-const fpsWeight = 0.25
+const anrWeight = 0.25
 const powerUsageWeight = 0.1
 const launchTimeWeight = 0.25
 const pageLoadTimeWeight = 0.25
@@ -39,8 +40,8 @@ const memoryLeakWeight = 0.15
 
 const weightTableData = [
   {
-    "section": "FPS",
-    "weight": fpsWeight,
+    "section": "ANR",
+    "weight": anrWeight,
   },
   {
     "section": "Power Usage",
@@ -134,30 +135,14 @@ const Conclusion = () => {
   if (!performanceData) {
     return null;
   }
-  const { fps } = performanceData;
-  if (!fps) {
+  const { blockData } = performanceData;
+  if (!blockData) {
     return null;
   }
 
   //FPS
-  const droppedFramesFpsValue = 50
-  const highFpsValue = 55
-  const lowFps = fps.filter(item => item.value < droppedFramesFpsValue);
-  const lowRate = lowFps.length / fps.length;
-  const highFps = fps.filter(item => item.value >= highFpsValue);
-  const highRate = (highFps.length * 100 / fps.length).toFixed(0);
-  const fpsMark = getFpsMark(lowRate);
-  const fpsDes = [
-    { "text": "FPS is a simple and direct reflection of the app's lag, ", "isRich": false },
-    { "text": `${highFpsValue} ~ 60`, "isRich": true },
-    { "text": " is excellent, ", "isRich": false },
-    { "text": `${droppedFramesFpsValue} ~ ${highFpsValue}`, "isRich": true },
-    { "text": " is normal,below ", "isRich": false },
-    { "text": `${droppedFramesFpsValue}`, "isRich": true },
-    { "text": " is considered to be dropped frames. In this test, ", "isRich": false },
-    { "text": `${highRate}%`, "isRich": true },
-    { "text": " of the FPS sampling values ​​are excellent.", "isRich": false },
-  ]
+  const anrMark = getBlockMark(blockData);
+  const anrDes = Constants.strings.anr.dataDescription
 
   // Power Usage
   const { network, cpuData } = performanceData;
@@ -213,13 +198,13 @@ const Conclusion = () => {
   let memoryLeakDes = getMemoryLeakDataSummaryDescription(memoryLeakData);
 
   // Total Mark
-  const totalMark = fpsMark * fpsWeight + powerUsageMark * powerUsageWeight + launchAverage * launchTimeWeight + loadAvgGrade * pageLoadTimeWeight + memoryLeakMark * memoryLeakWeight;
+  const totalMark = anrMark * anrWeight + powerUsageMark * powerUsageWeight + launchAverage * launchTimeWeight + loadAvgGrade * pageLoadTimeWeight + memoryLeakMark * memoryLeakWeight;
 
   const tableData = [
     {
-      "section": "FPS",
-      "summary": fpsDes,
-      "value": generalMarkMap(fpsMark),
+      "section": "ANR",
+      "summary": anrDes,
+      "value": generalMarkMap(anrMark),
     },
     {
       "section": "Power Usage",
