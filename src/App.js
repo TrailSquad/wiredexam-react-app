@@ -11,7 +11,6 @@ import launchTimeData from './mock/launchTime.json';
 import pageLoadTimeData from './mock/pageLoadTime.json';
 import memoryLeakData from './mock/memoryLeak.json';
 import networkData from './mock/network.json';
-import fpsData from './mock/fps.json';
 import netFlowData from './mock/netFlow.json';
 import locationData from './mock/location.json';
 import blockData from './mock/jank.json';
@@ -27,7 +26,6 @@ function App() {
     {
       "appName": 'CONFIRMED',
       "deviceInfo": 'iPhone 12, iOS 15.0',
-      "fps": fpsData,
       "network": networkData,
       "networkFlowData": netFlowData,
       "launchTimeData": launchTimeData,
