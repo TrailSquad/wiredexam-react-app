@@ -7,6 +7,7 @@ import ANR from 'src/components/ANR';
 import LaunchTime from 'src/components/LaunchTime';
 import PageLoadTime from 'src/components/PageLoadTime';
 import NetAbstract from "src/components/NetAbstract"
+import CPU from "src/components/CPU"
 import MemoryLeak from "src/components/MemoryLeak"
 import LocationUse from "src/components/Location"
 import PowerUsageChart from "src/components/PowerUsageChart"
@@ -92,6 +93,7 @@ const PDFDocument = ({ performanceData }) => {
           <PowerUsageChart />
           <NetAbstract />
           <LocationUse />
+          <CPU />
         </PageSection>
 
         <PageSection>
