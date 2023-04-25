@@ -20,13 +20,13 @@ const CPU = () => {
     return (
         <View bookmark={{ title: "3.6 CPU Usage", fit: true }}>
             <View style={styles.contentContainer}>
-                <Text style={styles.sectionsSubTitle} id='link_cpu'>3.5 CPU Usage</Text>
+                <Text style={styles.sectionsSubTitle} id='link_cpu'>3.6 CPU Usage</Text>
                 <Text style={styles.text}>{Strings.cpu.description}</Text>
                 <Text style={styles.text}>{Strings.cpu.highUsageDescription}</Text>
             </View>
             {count > 0 ?
                 <View>
-                    <Text style={styles.subTitle}>3.5.1 Rank Table</Text>
+                    <Text style={styles.subTitle}>3.6.1 Rank Table</Text>
                     <Text style={styles.hint}>{Strings.cpu.hint}</Text>
                     <View style={styles.tableContainer} wrap={false}><Table data={anomalies}>
                         <TableHeader>
@@ -43,14 +43,14 @@ const CPU = () => {
                 </View> : null}
             {count > 0 ?
                 <View>
-                    <Text style={styles.subTitle}>3.5.2 Recommendations for Optimisation</Text>
+                    <Text style={styles.subTitle}>3.6.2 Recommendations for Optimisation</Text>
                     <View style={styles.recommendationLayout} wrap={false}>
                         <Text style={styles.text}>{Strings.cpu.recommendation}</Text>
                     </View>
                 </View> : null}
             {count === 0 ?
                 <View>
-                    <Text style={styles.subTitle}>3.5.1 Abnormal data</Text>
+                    <Text style={styles.subTitle}>3.6.1 Abnormal data</Text>
                     <Text style={styles.text}>No cpu overuse scenarios found</Text>
                 </View> : null}
         </View>
