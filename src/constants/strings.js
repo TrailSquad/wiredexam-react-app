@@ -170,6 +170,37 @@ const anrDataDescription = [
 ]
 const anrNoDataDescription = "No ANR exception was detected, and the app fluency was good"
 
+const cpuDescription = "CPU usage refers to the proportion of time in a period when the CPU is active and running instructions in the total time. It is an important index to measure the utilization and consumption of CPU resources in an application or system."
+const highCpuDescription = `
+CPU usage has a big impact on apps:
+
+1. App performance is affected. High CPU usage means that the App occupies a large amount of CPU resources. In this case, the running speed of the App slows down, resulting in performance problems such as interface stutters and uneven animation.
+
+2. Reduce battery life. CPU operation requires power, and higher CPU usage means more power consumption, which drains your phone's battery faster and reduces battery life.
+
+3. Fever. CPU running generates heat. High CPU usage generates more heat. Running for a long time may overheat the mobile phone, affecting hardware stability.
+
+4. Risk of ANR or Crash. When the CPU usage is very high, the CPU resources occupied by the App will be less and less. At this time, the main thread is prone to ANR, which will also cause Crash due to resource shortage.
+
+5. User experience is affected. Due to the above reasons, high CPU usage will make users feel that the App runs slowly, consumes power quickly, and the machine heats up, which seriously affects the user experience.
+`
+const cpuRankTableHint = "the number of left is the average usage rate, the number of middle is the max usage rate, the number of right is the duration"
+const cpuRecommendation = `
+1. Avoid time-consuming operations in the main thread, such as network requests and massive calculations, and use asynchronous threads for processing.
+
+2. Use Handler to send messages and Looper to process messages properly to avoid message queue congestion in the main thread.
+
+3. Reduce the workload of the main thread by placing some tasks on the worker thread.
+
+4. Optimize the layout, reduce the redrawing area, optimize the image loading mode, etc., to reduce the pressure on the main thread.
+
+5. Use the ProgressBar wisely to let users know what it feels like to be loading, not stuck.
+
+6. Test and monitor ANR, find the cause of ANR and solve it.
+
+7. Others, such as avoiding memory leaks, using efficient data structures, etc.
+`
+
 const Strings = {
   fps: {
     sectionDescription: fpsSectionDescription,
@@ -186,6 +217,12 @@ const Strings = {
     sectionDescription: powerUsageSectionDescription,
     locationRecommendations: locationRecommendations,
     networkRecommendations: networkRecommendations,
+  },
+  cpu: {
+    description: cpuDescription,
+    highUsageDescription: highCpuDescription,
+    hint: cpuRankTableHint,
+    recommendation: cpuRecommendation
   },
   launchTime: {
     sectionDescription: launchTimeSectionDescription,

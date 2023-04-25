@@ -10,18 +10,18 @@ import grateUtil from 'src/utils/grade';
 import RichText from 'src/components/customize/RichText';
 import Constants from 'src/constants';
 import { getStartTime, getEndTime } from "../../utils/powerUsage.util"
-const { generalMarkMap, getNetworkMark, getLocationMark } = grateUtil
+const { generalMarkMap, getNetworkMark, getCpuMark } = grateUtil
 
 
 function renderItem(params, api) {
     let categoryIndex = api.value(0);
     let start = api.coord([api.value(1), categoryIndex]);
     let end = api.coord([api.value(2), categoryIndex]);
-    let height = api.size([0, 1])[1] * 0.6;
+    let height = api.size([0, 1])[1] * 0.7;
     let rectShape = echarts.graphic.clipRectByRect(
         {
             x: start[0],
-            y: start[1] - height / 2,
+            y: start[1] - height / 3,
             width: (end[0] - start[0]) + 1,
             height: height
         },
@@ -49,24 +49,33 @@ const PowerUsageChart = () => {
     }
     const { networkFlowData } = performanceData;
     const { locationData } = performanceData;
+    const { cpuData } = performanceData;
     const sortNetworkFlowData = networkFlowData.sort((a, b) => (a.time - b.time));
     const sortLocationData = locationData.sort((a, b) => (a.time - b.time));
+    const sortCpuData = cpuData.itemList.sort((a, b) => (a.time - b.time));
     const networkTotalTime = sortNetworkFlowData.reduce(function (sum, item) {
         return sum + item.duration;
     }, 0);
     const locationTotalTime = sortLocationData.reduce(function (sum, item) {
         return sum + item.duration;
     }, 0);
+    const cpuTotalTime = sortCpuData.reduce(function (sum, item) {
+        return sum + 500;
+    }, 0);
 
     const { network } = performanceData;
     let networkMark = getNetworkMark(network.requestSuccessRate, network.slowRequestCount / network.summaryRequestCount);
-    let locationMark = getLocationMark();
-    let powerUsageMark = networkMark * 0.8 + locationMark * 0.2;
+    let cpuMark = getCpuMark(cpuData);
+    let powerUsageMark = networkMark * 0.5 + cpuMark * 0.5;
 
-    let categories = [{ name: "Network", color: "#72b362", data: sortNetworkFlowData }, { name: "GPS", color: "#dc77dc", data: sortLocationData }];
+    let categories = [
+        { name: "Network", color: "#72b362", data: sortNetworkFlowData },
+        { name: "GPS", color: "#dc77dc", data: sortLocationData },
+        { name: "CPU", color: "#a90000", data: sortCpuData }
+    ];
 
-    const startTime = getStartTime(sortNetworkFlowData.map(e => e.time), sortLocationData.map(e => e.time))
-    const endTime = getEndTime(sortNetworkFlowData.map(e => e.time), sortLocationData.map(e => e.time))
+    const startTime = getStartTime(sortNetworkFlowData.map(e => e.time), sortLocationData.map(e => e.time), sortCpuData.map(e => e.time))
+    const endTime = getEndTime(sortNetworkFlowData.map(e => e.time), sortLocationData.map(e => e.time), sortCpuData.map(e => e.time))
 
     let data = [];
     data.push({
@@ -75,15 +84,20 @@ const PowerUsageChart = () => {
         color: "#72b36222"
     });
     data.push({
-        name: "Gps",
+        name: "GPS",
         value: [1, startTime, endTime, endTime - startTime],
         color: "#dc77dc22"
+    });
+    data.push({
+        name: "CPU",
+        value: [2, startTime, endTime, endTime - startTime],
+        color: "#a9000022"
     });
     categories.forEach(function (category, index) {
         let datas = category.data;
         for (let i = 0; i < datas.length; i++) {
             let item = datas[i];
-            let duration = item.duration;
+            let duration = category.name === "CPU" ? 500 : item.duration;
             let time = item.time;
             let beginTime = time
             let endTime = beginTime + duration
@@ -155,7 +169,7 @@ const PowerUsageChart = () => {
             },
             splitLine: {
                 show: true,
-                interval: '20%',
+                // interval: '20%',
                 lineStyle: {
                     color: '#f1f1f100',
                     type: 'solid',
@@ -166,7 +180,7 @@ const PowerUsageChart = () => {
                 rotate: 90,
                 textStyle: {
                     color: '#999',
-                    fontSize: 12,
+                    fontSize: 10,
                 },
             },
             data: categories.map(e => e.name)
@@ -201,41 +215,42 @@ const PowerUsageChart = () => {
 
     const tableHeader = [
         {
-          weight: 0.3,
-          text: "Category"
+            weight: 0.3,
+            text: "Category"
         },
         {
-          weight: 0.35,
-          text: "Total Count"
-        },{
-          weight: 0.35,
-          text: "Total Duration"
+            weight: 0.35,
+            text: "Total Count"
+        }, {
+            weight: 0.35,
+            text: "Total Duration"
         },
     ]
 
     const tableContent = [
         {
-          weight: 0.3,
-          text: "name",
-          style: styles.tableHeader,
-          content: (r) => r.name
+            weight: 0.3,
+            text: "name",
+            style: styles.tableHeader,
+            content: (r) => r.name
         },
         {
-          weight: 0.35,
-          text: "count",
-          style: styles.tableRowValue,
-          content: (r) => r.count
-        },{
-          weight: 0.35,
-          text: "duration",
-          style: styles.tableRowValue,
-          content: (r) => `${r.duration} ms`
+            weight: 0.35,
+            text: "count",
+            style: styles.tableRowValue,
+            content: (r) => r.count
+        }, {
+            weight: 0.35,
+            text: "duration",
+            style: styles.tableRowValue,
+            content: (r) => `${r.duration} ms`
         },
     ]
 
     const tableDatas = [
         { name: 'Network', count: sortNetworkFlowData.length, duration: networkTotalTime },
         { name: 'GPS', count: sortLocationData.length, duration: locationTotalTime },
+        { name: 'CPU', count: sortCpuData.length, duration: cpuTotalTime },
     ];
 
     return (
@@ -255,14 +270,14 @@ const PowerUsageChart = () => {
                 <Text style={styles.text}>Through the statistics of the number and time of GPS and network requests, some unexpected problems may be found, such as too many times or long-term requests.</Text>
                 <View style={styles.tableContainer} wrap={false}><Table data={tableDatas}>
                     <TableHeader>
-                        {tableHeader.map(header => 
+                        {tableHeader.map(header =>
                             <TableCell weighting={header.weight} style={styles.tableHeader} key={header.text}>{header.text}</TableCell>
                         )}
                     </TableHeader>
                     <TableBody>
-                        {tableContent.map(({ weight, style, content, text }) => 
-                            <DataTableCell weighting={weight} style={style} getContent={content} key={text} 
-                        />)}
+                        {tableContent.map(({ weight, style, content, text }) =>
+                            <DataTableCell weighting={weight} style={style} getContent={content} key={text}
+                            />)}
                     </TableBody>
                 </Table></View>
                 <Text style={styles.text}></Text>
