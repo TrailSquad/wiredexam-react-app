@@ -1,0 +1,28 @@
+{
+    "itemList": [
+        {
+            "time": 1678259115990,
+            "usageRate": 11
+        },
+        {
+            "time": 1678259116000,
+            "usageRate": 14
+        },
+        {
+            "time": 1678259116100,
+            "usageRate": 29
+        },
+        {
+            "time": 1678259116700,
+            "usageRate": 70
+        }
+    ],
+    "anomalies": [
+        {
+            "beginEndTime": "1678259115947-1678259116700",
+            "averageCpuUsageRate": 40,
+            "maxCpuUsageRate": 80,
+            "count": 20
+        }
+    ]
+}
