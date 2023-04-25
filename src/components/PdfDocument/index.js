@@ -51,6 +51,21 @@ const Section = ({ index, setIndex, title }) => {
     <Text style={styles.sectionsChapter} render={handleRender} />
   );
 };
+const BackCoverSection = ({ index, setIndex }) => {
+  const handleRender = useCallback(
+    ({ pageNumber }) => {
+      if (pageNumber !== index) {
+        setIndex(pageNumber);
+      }
+      return "";
+    },
+    [index, setIndex]
+  );
+
+  return (
+    <Text render={handleRender} />
+  );
+};
 
 // 需要使用指定Component组织内容，更多可见 https://react-pdf.org/components
 const PDFDocument = ({ performanceData }) => {
@@ -95,7 +110,7 @@ const PDFDocument = ({ performanceData }) => {
         </PageSection>
 
         <PageSection>
-          <Section index={endIndex} setIndex={setEndIndex} title="" />
+          <BackCoverSection index={endIndex} setIndex={setEndIndex} />
           <BackCover />
         </PageSection>
 
