@@ -46,7 +46,7 @@ const CPU = () => {
                 </View> : null}
             {count > 0 ?
                 <View>
-                    <Text style={styles.subTitle}>{`${sectionIndex}.6.2 Recommendations for Optimization`}</Text>
+                    <Text style={styles.subTitle}>{`${sectionIndex}.6.2 Recommendations for optimisation`}</Text>
                     <View style={styles.recommendationLayout} wrap={false}>
                         <Text style={styles.text}>{Strings.cpu.recommendation}</Text>
                     </View>

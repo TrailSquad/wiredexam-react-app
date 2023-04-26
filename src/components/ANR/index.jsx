@@ -58,7 +58,7 @@ const ANR = () => {
       </View>
 
       {blockData.length === 0 ? null : (<View>
-        <Text style={styles.sectionsSubTitle}>{`${sectionIndex}.4 Recommendations for Optimization`}</Text>
+        <Text style={styles.sectionsSubTitle}>{`${sectionIndex}.4 Recommendations for optimisation`}</Text>
         <View style={styles.recommendationLayout} wrap={false}>
           <Text style={styles.text}>{Constants.strings.anr.recommendation}</Text>
         </View>
