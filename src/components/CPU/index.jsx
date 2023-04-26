@@ -14,7 +14,7 @@ const CPU = () => {
     if (!cpuData) {
         return null;
     }
-    const anomalies = cpuData.anomalies;
+    const anomalies = cpuData.anomalies.length > 5 ? cpuData.anomalies.slice(0, 5) : cpuData.anomalies;
     const count = anomalies.length
 
     return (
