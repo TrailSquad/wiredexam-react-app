@@ -1,7 +1,7 @@
 import { memo, useContext } from 'react';
 import { Text, View } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
-import Context from 'src/context';
+import PerformanceContext from 'src/context/PerformanceContext';
 import Constants from 'src/constants';
 import { Table, DataTableCell, TableCell, TableHeader, TableBody } from '@david.kucsai/react-pdf-table'
 import Strings from 'src/constants/strings';
@@ -29,7 +29,7 @@ const TableSection = ({ title, description, hint, data = [], tableHeaders = [], 
 }
 
 const NetAbstract = () => {
-  const performanceData = useContext(Context);
+  const performanceData = useContext(PerformanceContext);
   const { network } = performanceData;
   const {
     summaryRequestCount,  // 请求总次数

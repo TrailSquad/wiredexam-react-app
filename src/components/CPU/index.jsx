@@ -1,12 +1,15 @@
 import { memo, useContext } from 'react';
 import { Text, View } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
-import Context from 'src/context';
+import PerformanceContext from 'src/context/PerformanceContext';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 import Strings from 'src/constants/strings';
+import useSectionIndex from 'src/utils/hooks/useSectionIndex';
 
 const CPU = () => {
-    const performanceData = useContext(Context);
+    const performanceData = useContext(PerformanceContext);
+    const sectionIndex = useSectionIndex('powerUsage')
+
     if (!performanceData) {
         return null;
     }
@@ -18,15 +21,15 @@ const CPU = () => {
     const count = anomalies.length
 
     return (
-        <View bookmark={{ title: "3.6 CPU Usage", fit: true }}>
+        <View bookmark={{ title: `${sectionIndex}.6 CPU Usage`, fit: true }}>
             <View style={styles.contentContainer}>
-                <Text style={styles.sectionsSubTitle} id='link_cpu'>3.6 CPU Usage</Text>
+                <Text style={styles.sectionsSubTitle} id='link_cpu'>{`${sectionIndex}.6 CPU Usage`}</Text>
                 <Text style={styles.text}>{Strings.cpu.description}</Text>
                 <Text style={styles.text}>{Strings.cpu.highUsageDescription}</Text>
             </View>
             {count > 0 ?
                 <View>
-                    <Text style={styles.subTitle}>3.6.1 Rank Table</Text>
+                    <Text style={styles.subTitle}>{`${sectionIndex}.6.1 Rank Table`}</Text>
                     <Text style={styles.hint}>{Strings.cpu.hint}</Text>
                     <View style={styles.tableContainer} wrap={false}><Table data={anomalies}>
                         <TableHeader>
@@ -43,14 +46,14 @@ const CPU = () => {
                 </View> : null}
             {count > 0 ?
                 <View>
-                    <Text style={styles.subTitle}>3.6.2 Recommendations for Optimisation</Text>
+                    <Text style={styles.subTitle}>{`${sectionIndex}.6.2 Recommendations for Optimization`}</Text>
                     <View style={styles.recommendationLayout} wrap={false}>
                         <Text style={styles.text}>{Strings.cpu.recommendation}</Text>
                     </View>
                 </View> : null}
             {count === 0 ?
                 <View>
-                    <Text style={styles.subTitle}>3.6.1 Abnormal data</Text>
+                    <Text style={styles.subTitle}>{`${sectionIndex}.6.1 Abnormal data`}</Text>
                     <Text style={styles.text}>No cpu overuse scenarios found</Text>
                 </View> : null}
         </View>
