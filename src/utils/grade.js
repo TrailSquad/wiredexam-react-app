@@ -78,12 +78,12 @@ const getLocationMark = () => {
 const getCpuMark = (cpuData) => {
   let sum = 0
   if (!cpuData) return 100
-  if (!cpuData.itemList) return 100
+  if (!cpuData.anomalies) return 100
 
-  cpuData.itemList.forEach((d) => {
-    if (d.usageRate > 70) sum += 3
-    else if (d.usageRate > 50) sum += 2
-    else if (d.usageRate > 30) sum += 1
+  cpuData.anomalies.forEach((d) => {
+    if (d.averageCpuUsageRate > 70) sum += 3
+    else if (d.averageCpuUsageRate > 50) sum += 2
+    else if (d.averageCpuUsageRate > 30) sum += 1
   })
   return 100 - Math.min(sum, 100);
 }
