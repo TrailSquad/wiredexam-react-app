@@ -81,9 +81,9 @@ const getCpuMark = (cpuData) => {
   if (!cpuData.anomalies) return 100
 
   cpuData.anomalies.forEach((d) => {
-    if (d.averageCpuUsageRate > 70) sum += 3
-    else if (d.averageCpuUsageRate > 50) sum += 2
-    else if (d.averageCpuUsageRate > 30) sum += 1
+    if (d.averageCpuUsageRate > 70) sum += 15
+    else if (d.averageCpuUsageRate > 50) sum += 10
+    else if (d.averageCpuUsageRate > 30) sum += 5
   })
   return 100 - Math.min(sum, 100);
 }
