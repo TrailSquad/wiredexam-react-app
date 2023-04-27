@@ -18,7 +18,7 @@ import styles from "src/pdfStyles";
 import Conclusion from "../Conclusion";
 import BackCover from "../BackCover";
 import { memo, useState, useCallback } from "react";
-
+import { DIRECTORIES } from "src/constants/directories";
 // 默认只支持拉丁英文，中文字体一定要注入
 // 方正黑体相对来说非常小（3M），而且是可免费商用无书面授权的字体，因此采用
 Font.register({
@@ -77,20 +77,7 @@ const PDFDocument = ({ performanceData }) => {
   const [memoryIndex, setMemoryIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(0);
 
-  // refer to the key of CONTENT_ITEMS
-  const DIRECTORIES = {
-    ios: [
-      "overView",
-      "anr",
-      "powerUsage",
-      "launchTime",
-      "pageLoadTime",
-      "memoryLeak",
-      "about",
-    ],
-    android: [],
-    flutter: [],
-  };
+
 
   const CONTENT_ITEMS = [
     {
