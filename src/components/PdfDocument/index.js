@@ -163,7 +163,7 @@ const PDFDocument = ({ performanceData }) => {
             <Section
               index={powerIndex}
               setIndex={setPowerIndex}
-              title={displayContents.find(i => i.key === "powerUsage")?.index}
+              title={displayContents.find(i => i.key === Constants.directories.DIRECTORIES_KEY_POWER_USAGE)?.index}
             />
             <PowerUsageChart />
             <NetAbstract />
@@ -174,7 +174,7 @@ const PDFDocument = ({ performanceData }) => {
             <Section
               index={launchTimeIndex}
               setIndex={setLaunchTimeIndex}
-              title={displayContents.find(i => i.key === "launchTime")?.index}
+              title={displayContents.find(i => i.key === Constants.directories.DIRECTORIES_KEY_LAUNCH_TIME)?.index}
             />
             <LaunchTime />
           </PageSection>
@@ -182,7 +182,7 @@ const PDFDocument = ({ performanceData }) => {
             <Section
               index={pageLoadTimeIndex}
               setIndex={setPageLoadTimeIndex}
-              title={displayContents.find(i => i.key === "pageLoadTime")?.index}
+              title={displayContents.find(i => i.key === Constants.directories.DIRECTORIES_KEY_PAGE_LOAD_TIME)?.index}
             />
             <PageLoadTime />
           </PageSection>
@@ -190,7 +190,7 @@ const PDFDocument = ({ performanceData }) => {
             <Section
               index={memoryIndex}
               setIndex={setMemoryIndex}
-              title={displayContents.find(i => i.key === "memoryLeak")?.index}
+              title={displayContents.find(i => i.key === Constants.directories.DIRECTORIES_KEY_MEMORY_LEAK)?.index}
             />
             <MemoryLeak />
           </PageSection>
