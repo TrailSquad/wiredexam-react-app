@@ -1,7 +1,7 @@
 import { useContext, memo } from 'react';
 import { Text, View, Image } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
-import Context from 'src/context';
+import PerformanceContext from 'src/context/PerformanceContext';
 import * as echarts from 'echarts';
 import getChartsBlobImage from 'src/utils/getChartsBlobImage';
 import dayjs from 'dayjs';
@@ -10,6 +10,8 @@ import grateUtil from 'src/utils/grade';
 import RichText from 'src/components/customize/RichText';
 import Constants from 'src/constants';
 import { getStartTime, getEndTime } from "../../utils/powerUsage.util"
+import useSectionIndex from 'src/utils/hooks/useSectionIndex';
+
 const { generalMarkMap, getNetworkMark, getCpuMark } = grateUtil
 
 
@@ -43,7 +45,8 @@ function renderItem(params, api) {
 }
 
 const PowerUsageChart = () => {
-    const performanceData = useContext(Context);
+    const sectionIndex = useSectionIndex("powerUsage")
+    const performanceData = useContext(PerformanceContext);
     if (!performanceData) {
         return null;
     }
@@ -254,18 +257,18 @@ const PowerUsageChart = () => {
     ];
 
     return (
-        <View bookmark={{ title: "Section 3: Power Usage", fit: true }}>
+        <View bookmark={{ title: `Section ${sectionIndex}: Power Usage`, fit: true }}>
             <View style={styles.contentContainer}>
                 {/* <Text style={styles.sectionsChapter}>Section 3</Text> */}
                 <Text style={styles.sectionsTitle} id='link_power'>Power Usage</Text>
 
-                <Text style={styles.sectionsSubTitle}>3.1 Description</Text>
+                <Text style={styles.sectionsSubTitle}>{sectionIndex}.1 Description</Text>
                 <Text style={styles.text}>{Constants.strings.powerUsage.sectionDescription}</Text>
 
-                <Text style={styles.sectionsSubTitle}>3.2 Grade</Text>
+                <Text style={styles.sectionsSubTitle}>{sectionIndex}.2 Grade</Text>
                 <Text style={styles.highlightNumber} wrap={false}>{generalMarkMap(powerUsageMark)}</Text>
 
-                <Text style={styles.sectionsSubTitle}>3.3 Data Detail</Text>
+                <Text style={styles.sectionsSubTitle}>{sectionIndex}.3 Data Detail</Text>
                 <RichText richItems={dataSourceDes} normalStyle={styles.text} richStyle={styles.richText} />
                 <Text style={styles.text}>Through the statistics of the number and time of GPS and network requests, some unexpected problems may be found, such as too many times or long-term requests.</Text>
                 <View style={styles.tableContainer} wrap={false}><Table data={tableDatas}>

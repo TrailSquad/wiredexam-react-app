@@ -1,13 +1,14 @@
 import { memo, useContext } from 'react';
 import { Text, View, Link } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
-import Context from 'src/context';
+import PerformanceContext from 'src/context/PerformanceContext';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 import RichText from 'src/components/customize/RichText';
 import gradeUtil from 'src/utils/grade';
 import { getColorStyle } from "../../utils/conclusion.util"
 import constants from '../../constants'
 import Constants from '../../constants';
+import useSectionIndex from 'src/utils/hooks/useSectionIndex';
 
 const { generalMarkMap, formatLaunchTimeGrade, formatPageLoadTimeGrade, getMemoryLeakMark, getBlockMark, getLocationMark, getCpuMark, getNetworkMark, getSlowRequestRate, getMemoryLeakDataSummaryDescription } = gradeUtil
 const des = 'According to the professional test team, the average score given:';
@@ -131,7 +132,9 @@ function averageDuration(data) {
 }
 
 const Conclusion = () => {
-  const performanceData = useContext(Context);
+  const sectionIndex = useSectionIndex('overView')
+  const performanceData = useContext(PerformanceContext);
+
   if (!performanceData) {
     return null;
   }
@@ -230,9 +233,9 @@ const Conclusion = () => {
   // const counclusionImage = getChartsBlobImage(option);
 
   return (
-    <View bookmark={{ title: "Section 1: Overview", fit: true }} break>
+    <View bookmark={{ title: `Section ${sectionIndex}: Overview`, fit: true }} break>
       <View style={styles.contentContainer}>
-        <Text style={styles.sectionsChapter}>Section 1</Text>
+        <Text style={styles.sectionsChapter}>{`Section ${sectionIndex}`}</Text>
         <Text style={styles.sectionsTitle} id='link_overview'>Overview</Text>
 
         <Text style={styles.text}>{des}</Text>

@@ -1,7 +1,7 @@
 import { memo, useContext } from 'react';
 import { View, Text } from '@react-pdf/renderer';
 import { Image } from '@react-pdf/renderer';
-import Context from 'src/context';
+import PerformanceContext from 'src/context/PerformanceContext';
 import styles from 'src/pdfStyles';
 import getChartsBlobImage from 'src/utils/getChartsBlobImage';
 import dayjs from 'dayjs';
@@ -13,7 +13,7 @@ import Constants from 'src/constants';
 const { generalMarkMap, getFpsMark } = gradeUtil;
 const FPS = () => {
   const droppedFramesFpsValue = 50
-  const performanceData = useContext(Context);
+  const performanceData = useContext(PerformanceContext);
   if (!performanceData) {
     return null;
   }

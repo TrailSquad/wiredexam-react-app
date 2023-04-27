@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Text, View } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
-import Context from 'src/context';
+import PerformanceContext from 'src/context/PerformanceContext';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 import gradeUtil from 'src/utils/grade';
 import RichText from 'src/components/customize/RichText';
@@ -35,7 +35,7 @@ function averageDuration(data) {
 }
 
 const PageLoadTime = () => {
-  const performanceData = useContext(Context);
+  const performanceData = useContext(PerformanceContext);
   if (!performanceData) {
     return null;
   }

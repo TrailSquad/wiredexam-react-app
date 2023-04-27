@@ -1,13 +1,15 @@
 import { memo, useContext } from 'react';
 import { Text, View } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
-import Context from 'src/context';
+import PerformanceContext from 'src/context/PerformanceContext';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 
 import Strings from 'src/constants/strings';
+import useSectionIndex from 'src/utils/hooks/useSectionIndex';
 
 const LocationUse = () => {
-    const performanceData = useContext(Context);
+    const sectionIndex = useSectionIndex("powerUsage")
+    const performanceData = useContext(PerformanceContext);
     if (!performanceData) {
         return null;
     }
@@ -26,9 +28,9 @@ const LocationUse = () => {
     ]
     
     return (
-        <View bookmark={{ title: "3.5 GPS Positioning", fit: true }}>
+        <View bookmark={{ title: `${sectionIndex}.5 GPS Positioning`, fit: true }}>
             <View style={styles.contentContainer}>
-                <Text style={styles.sectionsSubTitle} id='link_gps'>3.5 GPS Positioning</Text>
+                <Text style={styles.sectionsSubTitle} id='link_gps'>{sectionIndex}.5 GPS Positioning</Text>
                 <Text style={styles.text}>{Strings.location.sectionDescription}</Text>
                 <Text style={styles.text}>Frequent positioning or long positioning times indicate a greater impact on power consumption, please judge according to the specific business scenario</Text>
                 <Text style={styles.hint}>{Strings.location.hint}</Text>
@@ -45,7 +47,7 @@ const LocationUse = () => {
             </View>
 
             {count > 0 ? <View>
-                <Text style={styles.subTitle}>3.5.1 Recommendations for Optimisation</Text>
+                <Text style={styles.subTitle}>{sectionIndex}.5.1 Recommendations for Optimisation</Text>
                 <View style={styles.recommendationLayout} wrap={false}>
                     {Strings.powerUsage.locationRecommendations.map(e => <Text style={styles.text}>{e}</Text>)}
 

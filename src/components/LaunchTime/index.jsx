@@ -1,18 +1,19 @@
 import { memo, useContext } from 'react';
 import { Text, View, Image } from '@react-pdf/renderer';
 import styles from 'src/pdfStyles';
-import Context from 'src/context';
+import PerformanceContext from 'src/context/PerformanceContext';
 import { Table, DataTableCell, TableBody, TableHeader, TableCell } from '@david.kucsai/react-pdf-table'
 import dayjs from 'dayjs';
 import getChartsBlobImage from 'src/utils/getChartsBlobImage';
 import gradeUtil from 'src/utils/grade';
 import RichText from 'src/components/customize/RichText';
 import Constants from 'src/constants';
-
+import useSectionIndex from 'src/utils/hooks/useSectionIndex';
 const { generalMarkMap, formatLaunchTimeGrade } = gradeUtil;
 
 const LaunchTime = () => {
-  const performanceData = useContext(Context);
+  const sectionIndex = useSectionIndex("launchTime")
+  const performanceData = useContext(PerformanceContext);
   if (!performanceData) {
     return null;
   }
@@ -122,22 +123,22 @@ const LaunchTime = () => {
   }
 
   return (
-    <View bookmark={{ title: "Section 4: Launch Time", fit: true }}>
+    <View bookmark={{ title: `"Section ${sectionIndex}: Launch Time"`, fit: true }}>
       <View style={styles.contentContainer}>
         {/* <Text style={styles.sectionsChapter}>Section 4</Text> */}
         <Text style={styles.sectionsTitle} id='link_launch'>Launch Time</Text>
         {/* launchTimeDes */}
-        <Text style={styles.sectionsSubTitle}>4.1 Description</Text>
+        <Text style={styles.sectionsSubTitle}>{sectionIndex}.1 Description</Text>
         <Text style={styles.text}>{Constants.strings.launchTime.sectionDescription}</Text>
 
-        <Text style={styles.sectionsSubTitle}>4.2 Grade</Text>
+        <Text style={styles.sectionsSubTitle}>{sectionIndex}.2 Grade</Text>
         <Text style={styles.highlightNumber} wrap={false}>{generalMarkMap(launchAverage)}</Text>
 
-        <Text style={styles.sectionsSubTitle}>4.3 Data Detail</Text>
+        <Text style={styles.sectionsSubTitle}>{sectionIndex}.3 Data Detail</Text>
         {/* data source descraption */}
         {dataSourceDes === undefined ? <></> : <RichText richItems={dataSourceDes} normalStyle={styles.text} richStyle={styles.richText} />}
         {/* indicators of launch time */}
-        <Text style={styles.subTitle}>4.3.1 Indicator Classification</Text>
+        <Text style={styles.subTitle}>{sectionIndex}.3.1 Indicator Classification</Text>
         <Text style={styles.text}>{indicatorsDes}</Text>
         <Text style={styles.hint}>The right is the range of indicator for left category</Text>
         <View style={styles.tableContainer} wrap={false}><Table data={indicators}>
@@ -150,7 +151,7 @@ const LaunchTime = () => {
             <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => r.value} />
           </TableBody>
         </Table></View>
-        <Text style={styles.subTitle}>4.3.2 Data Chart</Text>
+        <Text style={styles.subTitle}>{sectionIndex}.3.2 Data Chart</Text>
         {/* chart and descraption */}
         <View style={styles.chartDesBox} break>
           <View style={styles.chartContainer}><Image src={launchTimeImage} /></View>
@@ -159,7 +160,7 @@ const LaunchTime = () => {
           </View>
         </View>
 
-        {launchRank.length > 0 ? <Text style={styles.subTitle}>4.3.3 Rank Table</Text> : null}
+        {launchRank.length > 0 ? <Text style={styles.subTitle}>{sectionIndex}.3.3 Rank Table</Text> : null}
         {launchRank.length > 0 ? <Text style={styles.hint}>The number on the right is the cost time of this launch</Text> : null}
         {launchRank.length > 0 ? <View style={styles.tableContainer} wrap={false}><Table data={launchRank}>
           <TableHeader>
@@ -174,7 +175,7 @@ const LaunchTime = () => {
       </View>
 
       <View>
-        <Text style={styles.sectionsSubTitle}>4.4 Recommendations for Optimisation</Text>
+        <Text style={styles.sectionsSubTitle}>{sectionIndex}.4 Recommendations for Optimisation</Text>
         <View style={styles.recommendationLayout} wrap={false}>
           <Text style={styles.text}>{Constants.strings.launchTime.recommendation}</Text>
         </View>

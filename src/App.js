@@ -27,6 +27,7 @@ function App() {
     {
       "appName": 'CONFIRMED',
       "deviceInfo": 'iPhone 12, iOS 15.0',
+      "platform": "ios",
       "network": networkData,
       "networkFlowData": netFlowData,
       "launchTimeData": launchTimeData,
