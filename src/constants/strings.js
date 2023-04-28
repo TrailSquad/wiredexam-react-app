@@ -134,8 +134,6 @@ const networkStandardLink = [
 const anrDescription = `
 ANR Its full name is Application Not Responding, which means the application is not responding.
 
-When an application's main thread fails to respond to input events or message processing within five seconds, an ANR prompt pops up to inform the user that the application is unresponsive and give the user the option to wait or stop the application.
-
 ANR can have a big impact on your App:
 
 1. Poor user experience. ANR can make users feel that the App is "stuck", which seriously affects the user experience.
