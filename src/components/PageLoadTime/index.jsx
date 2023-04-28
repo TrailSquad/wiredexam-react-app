@@ -99,12 +99,12 @@ const PageLoadTime = () => {
         {launchRank.length > 0 ? <Text style={styles.hint}>The number on the right is the load time for the page.</Text> : null}
         {launchRank.length > 0 ? <View style={styles.tableContainer} wrap={false}><Table data={launchRank}>
           <TableHeader>
-            <TableCell weighting={0.5} style={styles.tableHeader}>Page Name</TableCell>
-            <TableCell weighting={0.5} style={styles.tableHeader}>Load Time</TableCell>
+            <TableCell weighting={0.8} style={styles.tableHeader}>Page Name</TableCell>
+            <TableCell weighting={0.2} style={styles.tableHeader}>Load Time</TableCell>
           </TableHeader>
           <TableBody>
-            <DataTableCell weighting={0.5} style={styles.tableRowLabel} getContent={(r) => r.pageName} />
-            <DataTableCell weighting={0.5} style={styles.tableRowValue} getContent={(r) => (r.duration.toFixed(0) + " ms")} />
+            <DataTableCell weighting={0.8} style={styles.tableRowLabel} getContent={(r) => r.pageName} />
+            <DataTableCell weighting={0.2} style={styles.tableRowValue} getContent={(r) => (r.duration.toFixed(0) + " ms")} />
           </TableBody>
         </Table></View> : null}
       </View>
