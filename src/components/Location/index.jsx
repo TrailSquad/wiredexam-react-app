@@ -23,8 +23,8 @@ const LocationUse = () => {
         return sum + item.duration;
     }, 0);
     const tableData = [
-        { "name": "Count", "value": count },
-        { "name": "totalTime", "value": Math.round(totalTime) + " ms" }
+        { "name": "Total Count", "value": count },
+        { "name": "Total Duration", "value": Math.round(totalTime) + " ms" }
     ]
     
     return (
