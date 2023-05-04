@@ -131,22 +131,22 @@ const networkStandardLink = [
   "https://developer.aliyun.com/article/35115"
 ]
 
-const anrDescription = `
-ANR Its full name is Application Not Responding, which means the application is not responding.
+const uiResDescription = `
+Users can experience UI hangs for various reasons. If there's a longer than usual delay (200ms on average) or a failure to respond to a user's input, it's considered a UI hang.
 
-ANR can have a big impact on your App:
+UI hang can have a big impact on your App:
 
-1. Poor user experience. ANR can make users feel that the App is "stuck", which seriously affects the user experience.
+1. Poor user experience. UI hang can make users feel that the App is "stuck", which seriously affects the user experience.
 
-2. The App score is affected. Frequent ANRs will make users feel that the App performance is poor and affect the App's rating in the store.
+2. The App score is affected. Frequent UI hang will make users feel that the App performance is poor and affect the App's rating in the store.
 
 3. Reduce user engagement. Apps with poor user experience will also reduce user stickiness, reducing the number of times and time to open the App.
 
 4. Influence brand image. Other apps from the same developer will also be affected, and users will feel that the overall quality of the developer's software is not high.
 
-Therefore,ANR is a problem that must be paid great attention to and avoided as much as possible in the process of App development`
+Therefore,UI hang is a problem that must be paid great attention to and avoided as much as possible in the process of App development`
 
-const anrRecommendation = `
+const uiResRecommendation = `
 1. Avoid time-consuming operations in the main thread, such as network requests and massive calculations, and use asynchronous threads for processing.
 
 2. Use Handler to send messages and Looper to process messages properly to avoid message queue congestion in the main thread.
@@ -157,16 +157,14 @@ const anrRecommendation = `
 
 5. Use the ProgressBar wisely to let users know what it feels like to be loading, not stuck.
 
-6. Test and monitor ANR, find the cause of ANR and solve it.
-
-7. Others, such as avoiding memory leaks, using efficient data structures, etc
+6. Others, such as avoiding memory leaks, using efficient data structures, etc
 `
-const anrDataDescription = [
+const uiResDataDescription = [
   { "text": "The data is collected from the monitoring during the app operation. If the stalling time exceeds ", "isRich": false },
   {"text": "200ms", "isRich": true},
   {"text": ", it is recorded as an exception", "ieRich": false}
 ]
-const anrNoDataDescription = "No ANR exception was detected, and the app fluency was good"
+const uiResNoDataDescription = "No ANR exception was detected, and the app fluency was good"
 
 const cpuDescription = "CPU usage refers to the proportion of time in a period when the CPU is active and running instructions in the total time. It is an important index to measure the utilization and consumption of CPU resources in an application or system."
 const highCpuDescription = `
@@ -205,11 +203,11 @@ const Strings = {
     recommendation: fpsRecommendation,
     indicatorDescription: fpsIndicatorDescription,
   },
-  anr: {
-    sectionDescription: anrDescription,
-    recommendation: anrRecommendation,
-    dataDescription: anrDataDescription,
-    noDataDescription: anrNoDataDescription
+  uiRes: {
+    sectionDescription: uiResDescription,
+    recommendation: uiResRecommendation,
+    dataDescription: uiResDataDescription,
+    noDataDescription: uiResNoDataDescription
   },
   powerUsage: {
     sectionDescription: powerUsageSectionDescription,

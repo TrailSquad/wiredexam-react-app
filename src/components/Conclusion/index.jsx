@@ -33,7 +33,7 @@ const explanationRichText = [
   { "text": "100", "isRich": true },
   { "text": "). The total rating comes from the weighted average of the values of each section. The weights for each section are as follows:", "isRich": false },
 ]
-const anrWeight = 0.25
+const uiResponseWeight = 0.25
 const powerUsageWeight = 0.1
 const launchTimeWeight = 0.25
 const pageLoadTimeWeight = 0.25
@@ -41,8 +41,8 @@ const memoryLeakWeight = 0.15
 
 const weightTableData = [
   {
-    "section": "ANR",
-    "weight": anrWeight,
+    "section": "UI Response",
+    "weight": uiResponseWeight,
   },
   {
     "section": "Power Usage",
@@ -143,9 +143,9 @@ const Conclusion = () => {
     return null;
   }
 
-  //FPS
-  const anrMark = getBlockMark(blockData);
-  const anrDes = Constants.strings.anr.dataDescription
+  //UIResponse
+  const uiResponseMark = getBlockMark(blockData);
+  const uiResponseDes = Constants.strings.uiRes.dataDescription
 
   // Power Usage
   const { network, cpuData } = performanceData;
@@ -201,13 +201,13 @@ const Conclusion = () => {
   let memoryLeakDes = getMemoryLeakDataSummaryDescription(memoryLeakData);
 
   // Total Mark
-  const totalMark = anrMark * anrWeight + powerUsageMark * powerUsageWeight + launchAverage * launchTimeWeight + loadAvgGrade * pageLoadTimeWeight + memoryLeakMark * memoryLeakWeight;
+  const totalMark = uiResponseMark * uiResponseWeight + powerUsageMark * powerUsageWeight + launchAverage * launchTimeWeight + loadAvgGrade * pageLoadTimeWeight + memoryLeakMark * memoryLeakWeight;
 
   const tableData = [
     {
-      "section": "ANR",
-      "summary": anrDes,
-      "value": generalMarkMap(anrMark),
+      "section": "UI Response",
+      "summary": uiResponseDes,
+      "value": generalMarkMap(uiResponseMark),
     },
     {
       "section": "Power Usage",

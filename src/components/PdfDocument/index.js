@@ -2,8 +2,7 @@
 import { Document, Page, Text, Font } from "@react-pdf/renderer";
 import Cover from "src/components/Cover";
 import Contents from "src/components/Contents";
-// import FPS from 'src/components/FPS';
-import ANR from "src/components/ANR";
+import UIResponse from "src/components/UIResponse";
 import LaunchTime from "src/components/LaunchTime";
 import PageLoadTime from "src/components/PageLoadTime";
 import NetAbstract from "src/components/NetAbstract";
@@ -88,10 +87,10 @@ const PDFDocument = ({ performanceData }) => {
     },
     {
       index: null,
-      title: "ANR  … … … … … … … … … … … … … … … … … … … … … … … …",
-      source: "#link_ANR",
+      title: "UI Response  … … … … … … … … … … … … … … … … … … … … … … … …",
+      source: "#link_UIResponse",
       pageIndex: 5,
-      key: Constants.directories.DIRECTORIES_KEY_ANR
+      key: Constants.directories.DIRECTORIES_KEY_UIResponse
     },
     {
       index: null,
@@ -157,7 +156,7 @@ const PDFDocument = ({ performanceData }) => {
               endIndex={endIndex}
             />
             <Conclusion />
-            <ANR />
+            <UIResponse />
           </PageSection>
           <PageSection>
             <Section
