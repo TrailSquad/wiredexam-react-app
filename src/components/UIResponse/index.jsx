@@ -10,9 +10,9 @@ import useSectionIndex from 'src/utils/hooks/useSectionIndex';
 
 const { generalMarkMap, getBlockMark } = gradeUtil;
 
-const ANR = () => {
+const UIResponse = () => {
   const performanceData = useContext(PerformanceContext);
-  const sectionIndex = useSectionIndex('anr')
+  const sectionIndex = useSectionIndex('UIResponse')
 
   if (!performanceData) {
     return null;
@@ -23,23 +23,21 @@ const ANR = () => {
   }
   const blockMark = getBlockMark(blockData)
 
-
-
   return (
-    <View bookmark={{ title: `Section ${sectionIndex}: ANR`, fit: true }} break>
+    <View bookmark={{ title: `Section ${sectionIndex}: UIResponse`, fit: true }} break>
       <View style={styles.contentContainer}>
         <Text style={styles.sectionsChapter}>{`Section ${sectionIndex}`}</Text>
-        <Text style={styles.sectionsTitle} id='link_ANR'>ANR</Text>
+        <Text style={styles.sectionsTitle} id='link_UIResponse'>UI Response</Text>
         {/* des */}
         <Text style={styles.sectionsSubTitle}>{`${sectionIndex}.1 Description`}</Text>
-        <Text style={styles.text}>{Constants.strings.anr.sectionDescription}</Text>
+        <Text style={styles.text}>{Constants.strings.uiRes.sectionDescription}</Text>
 
         <Text style={styles.sectionsSubTitle}>{`${sectionIndex}.2 Grade`}</Text>
         <Text style={styles.highlightNumber} wrap={false}>{generalMarkMap(blockMark)}</Text>
 
         <Text style={styles.sectionsSubTitle}>{`${sectionIndex}.3 Data Detail`}</Text>
         {/* data source descraption */}
-        {blockData.length === 0 ? <Text style={styles.text}>{Constants.strings.anr.noDataDescription}</Text> : <RichText richItems={Constants.strings.anr.dataDescription} normalStyle={styles.text} richStyle={styles.richText} />}
+        {blockData.length === 0 ? <Text style={styles.text}>{Constants.strings.uiRes.noDataDescription}</Text> : <RichText richItems={Constants.strings.uiRes.dataDescription} normalStyle={styles.text} richStyle={styles.richText} />}
 
         {blockData.length > 0 ? <Text style={styles.subTitle}>{`${sectionIndex}.3.1 Rank Table`}</Text> : null}
         {blockData.length > 0 ? <Text style={styles.hint}>The string on the left is the page info or main callstack, the number on the middle is the duration, the number on the right is the count</Text> : null}
@@ -60,7 +58,7 @@ const ANR = () => {
       {blockData.length === 0 ? null : (<View>
         <Text style={styles.sectionsSubTitle}>{`${sectionIndex}.4 Recommendations for optimisation`}</Text>
         <View style={styles.recommendationLayout} wrap={false}>
-          <Text style={styles.text}>{Constants.strings.anr.recommendation}</Text>
+          <Text style={styles.text}>{Constants.strings.uiRes.recommendation}</Text>
         </View>
       </View>)}
       
@@ -68,4 +66,4 @@ const ANR = () => {
   )
 };
 
-export default ANR;
+export default UIResponse;
