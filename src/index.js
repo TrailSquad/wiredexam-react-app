@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import setupWKWebViewJavascriptBridge, { androidFunction, isAndroid } from './jsBridge';
+import ErrorBoundary from "./components//ErrorBoundary/ErrorBoundary"
 
 /**
  * 注册 setupWebViewJavascriptBridge 方法
@@ -34,7 +35,9 @@ if (isAndroid) {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
   </React.StrictMode>
 );
 

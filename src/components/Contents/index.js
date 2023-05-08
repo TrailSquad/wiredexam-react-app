@@ -3,7 +3,6 @@ import { Text, View, Link } from "@react-pdf/renderer";
 import styles from "src/pdfStyles";
 import PerformanceContext from "src/context/PerformanceContext";
 import ContentsContext from "src/context/ContentsContext";
-
 const Contents = ({
   powerIndex,
   launchTimeIndex,

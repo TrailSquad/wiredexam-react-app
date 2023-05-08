@@ -79,6 +79,8 @@ function App() {
 
   const document = <PDFDocument performanceData={performanceData}/>;
 
+  // console.log(process.env.NODE_ENV);
+
   return (
     <div className="App">
       {/* 工具栏 */}
