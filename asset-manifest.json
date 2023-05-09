@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/wiredexam-react-app/static/css/main.4308a08d.css",
+    "main.js": "/wiredexam-react-app/static/js/main.3ac0dff3.js",
+    "static/js/787.acfab17f.chunk.js": "/wiredexam-react-app/static/js/787.acfab17f.chunk.js",
+    "static/media/FZHei.ttf": "/wiredexam-react-app/static/media/FZHei.1085e3af19598ea8a0c9.ttf",
+    "static/media/pdf.worker.js": "/wiredexam-react-app/static/media/pdf.worker.63f8862f9b1a6f643f2f.js",
+    "index.html": "/wiredexam-react-app/index.html",
+    "main.4308a08d.css.map": "/wiredexam-react-app/static/css/main.4308a08d.css.map",
+    "main.3ac0dff3.js.map": "/wiredexam-react-app/static/js/main.3ac0dff3.js.map",
+    "787.acfab17f.chunk.js.map": "/wiredexam-react-app/static/js/787.acfab17f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4308a08d.css",
+    "static/js/main.3ac0dff3.js"
+  ]
+}
